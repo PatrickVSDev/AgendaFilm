@@ -45,7 +45,7 @@ namespace AgendaFilm
                     this.Visible = false;
 
                 }else{
-                    MessageBox.Show("Usuário, ou senha incorreto.",
+                    MessageBox.Show("Usuário, ou senha incorretos!",
                                     "Desculpe.",
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
