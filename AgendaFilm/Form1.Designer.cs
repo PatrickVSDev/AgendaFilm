@@ -44,9 +44,10 @@
             // pboxLogo
             // 
             pboxLogo.Image = (Image)resources.GetObject("pboxLogo.Image");
-            pboxLogo.Location = new Point(83, 22);
+            pboxLogo.Location = new Point(119, 45);
+            pboxLogo.Margin = new Padding(3, 4, 3, 4);
             pboxLogo.Name = "pboxLogo";
-            pboxLogo.Size = new Size(269, 204);
+            pboxLogo.Size = new Size(307, 272);
             pboxLogo.TabIndex = 0;
             pboxLogo.TabStop = false;
             pboxLogo.Click += pictureBox1_Click;
@@ -54,34 +55,36 @@
             // Usuario
             // 
             Usuario.AutoSize = true;
-            Usuario.Location = new Point(83, 249);
+            Usuario.Location = new Point(75, 332);
             Usuario.Name = "Usuario";
-            Usuario.Size = new Size(50, 15);
+            Usuario.Size = new Size(62, 20);
             Usuario.TabIndex = 1;
             Usuario.Text = "Usuário:";
             Usuario.Click += label1_Click;
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(139, 246);
+            txtUsuario.Location = new Point(139, 328);
+            txtUsuario.Margin = new Padding(3, 4, 3, 4);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(213, 23);
+            txtUsuario.Size = new Size(243, 27);
             txtUsuario.TabIndex = 2;
             // 
             // txtSenha
             // 
-            txtSenha.Location = new Point(139, 275);
+            txtSenha.Location = new Point(139, 367);
+            txtSenha.Margin = new Padding(3, 4, 3, 4);
             txtSenha.Name = "txtSenha";
-            txtSenha.Size = new Size(213, 23);
+            txtSenha.Size = new Size(243, 27);
             txtSenha.TabIndex = 4;
             txtSenha.UseSystemPasswordChar = true;
             // 
             // Senha
             // 
             Senha.AutoSize = true;
-            Senha.Location = new Point(91, 278);
+            Senha.Location = new Point(84, 371);
             Senha.Name = "Senha";
-            Senha.Size = new Size(42, 15);
+            Senha.Size = new Size(52, 20);
             Senha.TabIndex = 3;
             Senha.Text = "Senha:";
             Senha.Click += label1_Click_1;
@@ -95,18 +98,21 @@
             groupBox1.Controls.Add(txtSenha);
             groupBox1.Controls.Add(txtUsuario);
             groupBox1.Controls.Add(Senha);
-            groupBox1.Location = new Point(12, 12);
+            groupBox1.Location = new Point(14, 16);
+            groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(445, 365);
+            groupBox1.Padding = new Padding(3, 4, 3, 4);
+            groupBox1.Size = new Size(509, 487);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Formulário de Login";
             // 
             // btAcessar
             // 
-            btAcessar.Location = new Point(277, 314);
+            btAcessar.Location = new Point(297, 419);
+            btAcessar.Margin = new Padding(3, 4, 3, 4);
             btAcessar.Name = "btAcessar";
-            btAcessar.Size = new Size(75, 23);
+            btAcessar.Size = new Size(86, 31);
             btAcessar.TabIndex = 7;
             btAcessar.Text = "Acessar";
             btAcessar.UseVisualStyleBackColor = true;
@@ -114,9 +120,10 @@
             // 
             // btCancelar
             // 
-            btCancelar.Location = new Point(196, 314);
+            btCancelar.Location = new Point(204, 419);
+            btCancelar.Margin = new Padding(3, 4, 3, 4);
             btCancelar.Name = "btCancelar";
-            btCancelar.Size = new Size(75, 23);
+            btCancelar.Size = new Size(86, 31);
             btCancelar.TabIndex = 6;
             btCancelar.Text = "Cancelar";
             btCancelar.UseVisualStyleBackColor = true;
@@ -124,11 +131,12 @@
             // 
             // PaginaLogin
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(469, 384);
+            ClientSize = new Size(536, 512);
             Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "PaginaLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AgendaFilm";
