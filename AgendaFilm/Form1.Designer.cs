@@ -28,29 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaginaLogin));
-            pboxLogo = new PictureBox();
             Usuario = new Label();
             txtUsuario = new TextBox();
             txtSenha = new TextBox();
             Senha = new Label();
             groupBox1 = new GroupBox();
+            pictureBox1 = new PictureBox();
             btAcessar = new Button();
             btCancelar = new Button();
-            ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // pboxLogo
-            // 
-            pboxLogo.Image = (Image)resources.GetObject("pboxLogo.Image");
-            pboxLogo.Location = new Point(119, 45);
-            pboxLogo.Margin = new Padding(3, 4, 3, 4);
-            pboxLogo.Name = "pboxLogo";
-            pboxLogo.Size = new Size(307, 272);
-            pboxLogo.TabIndex = 0;
-            pboxLogo.TabStop = false;
-            pboxLogo.Click += pictureBox1_Click;
             // 
             // Usuario
             // 
@@ -91,9 +79,9 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(pictureBox1);
             groupBox1.Controls.Add(btAcessar);
             groupBox1.Controls.Add(btCancelar);
-            groupBox1.Controls.Add(pboxLogo);
             groupBox1.Controls.Add(Usuario);
             groupBox1.Controls.Add(txtSenha);
             groupBox1.Controls.Add(txtUsuario);
@@ -107,12 +95,22 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Formulário de Login";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.Screenshot_1_removebg_preview;
+            pictureBox1.Location = new Point(-21, 60);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(561, 261);
+            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox1.TabIndex = 8;
+            pictureBox1.TabStop = false;
+            // 
             // btAcessar
             // 
-            btAcessar.Location = new Point(297, 419);
+            btAcessar.Location = new Point(139, 411);
             btAcessar.Margin = new Padding(3, 4, 3, 4);
             btAcessar.Name = "btAcessar";
-            btAcessar.Size = new Size(86, 31);
+            btAcessar.Size = new Size(124, 31);
             btAcessar.TabIndex = 7;
             btAcessar.Text = "Acessar";
             btAcessar.UseVisualStyleBackColor = true;
@@ -120,10 +118,10 @@
             // 
             // btCancelar
             // 
-            btCancelar.Location = new Point(204, 419);
+            btCancelar.Location = new Point(260, 411);
             btCancelar.Margin = new Padding(3, 4, 3, 4);
             btCancelar.Name = "btCancelar";
-            btCancelar.Size = new Size(86, 31);
+            btCancelar.Size = new Size(122, 31);
             btCancelar.TabIndex = 6;
             btCancelar.Text = "Cancelar";
             btCancelar.UseVisualStyleBackColor = true;
@@ -141,15 +139,13 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AgendaFilm";
             Load += Form1_Load;
-            ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private PictureBox pboxLogo;
         private Label Usuario;
         private TextBox txtUsuario;
         private TextBox txtSenha;
@@ -157,5 +153,6 @@
         private GroupBox groupBox1;
         private Button btCancelar;
         private Button btAcessar;
+        private PictureBox pictureBox1;
     }
 }

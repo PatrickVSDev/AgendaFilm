@@ -28,11 +28,6 @@ namespace AgendaFilm
 
         }
 
-        private void btCancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btAcessar_Click(object sender, EventArgs e)
         {
             try
@@ -59,6 +54,10 @@ namespace AgendaFilm
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
             }
+        }
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
