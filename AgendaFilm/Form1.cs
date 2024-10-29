@@ -39,7 +39,9 @@ namespace AgendaFilm
 
                     this.Visible = false;
 
-                }else{
+                }
+                else
+                {
                     MessageBox.Show("Usuário, ou senha incorretos!",
                                     "Desculpe.",
                                     MessageBoxButtons.OK,
@@ -48,7 +50,8 @@ namespace AgendaFilm
                     txtSenha.Text = "";
                 }
             }
-            catch(Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show("Desculpe.",
                                 ex.Message,
                                 MessageBoxButtons.OK,
@@ -58,6 +61,11 @@ namespace AgendaFilm
         private void btCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -25,6 +25,11 @@ namespace AgendaFilm
         }
         private void button1_Click_1(object sender, EventArgs e)
         {
+            
+            Form2 novoFormulario = new Form2(); // Substitua "Form2" pelo nome do seu formulário
+            novoFormulario.Show(); // Abre o novo formulário sem fechar o atual
+                                       // Use novoFormulario.ShowDialog(); para abrir como uma janela modal
+           
 
         }
 
