@@ -31,7 +31,7 @@ namespace AgendaFilm
         {
             Form3 novoFormulario = new Form3();
             novoFormulario.Location = new Point(this.Location.X + button1.Location.X + 242,
-                                        this.Location.Y + button1.Location.Y + -537);
+                                        this.Location.Y + button1.Location.Y + -535);
             novoFormulario.Show();
         }
 

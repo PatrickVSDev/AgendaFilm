@@ -75,7 +75,7 @@
             button1.Name = "button1";
             button1.Size = new Size(234, 135);
             button1.TabIndex = 2;
-            button1.Text = "Funcionarios";
+            button1.Text = "Funcionários";
             button1.TextAlign = ContentAlignment.MiddleRight;
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
