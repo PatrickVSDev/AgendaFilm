@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AgendaFilm
 {
-    public partial class Form3 : Form
+    public partial class FuncionarioPage : Form
     {
-        public Form3()
+        public FuncionarioPage()
         {
             InitializeComponent();
         }
@@ -104,7 +104,13 @@ namespace AgendaFilm
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Point buttonScreenPosition = button1.PointToScreen(Point.Empty);
 
+            // Defina a posição do novo formulário usando o ponto do botão
+            CadastroFuncionarioPage novoFormulario = new CadastroFuncionarioPage();
+            //novoFormulario.StartPosition = FormStartPosition.CenterScreen; // Defina a posição manualmente
+            //novoFormulario.Location = new Point(buttonScreenPosition.X + 100, buttonScreenPosition.Y - 50);
+            novoFormulario.Show();
         }
     }
 }

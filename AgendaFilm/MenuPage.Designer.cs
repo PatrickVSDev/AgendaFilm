@@ -1,6 +1,6 @@
 ﻿namespace AgendaFilm
 {
-    partial class PaginaRestrita
+    partial class MenuPage
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaginaRestrita));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPage));
             button1 = new Button();
             pictureBox1 = new PictureBox();
             button2 = new Button();

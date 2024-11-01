@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AgendaFilm
 {
-    public partial class PaginaRestrita : Form
+    public partial class MenuPage : Form
     {
-        public PaginaRestrita()
+        public MenuPage()
         {
             InitializeComponent();
         }
@@ -26,7 +26,7 @@ namespace AgendaFilm
         private void button1_Click_1(object sender, EventArgs e)
         {
             
-            Form2 novoFormulario = new Form2(); // Substitua "Form2" pelo nome do seu formulário
+            CadastroPage novoFormulario = new CadastroPage(); // Substitua "Form2" pelo nome do seu formulário
             novoFormulario.Show(); // Abre o novo formulário sem fechar o atual
                                        // Use novoFormulario.ShowDialog(); para abrir como uma janela modal
            

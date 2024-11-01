@@ -1,6 +1,6 @@
 ﻿namespace AgendaFilm
 {
-    partial class Form3
+    partial class FuncionarioPage
     {
         /// <summary>
         /// Required designer variable.
@@ -32,29 +32,31 @@
             textBox1 = new TextBox();
             label2 = new Label();
             button1 = new Button();
-            label3 = new Label();
-            comboBox1 = new ComboBox();
             Senha = new Label();
             textBox2 = new TextBox();
             label4 = new Label();
             textBox3 = new TextBox();
-            label5 = new Label();
-            comboBox2 = new ComboBox();
             button2 = new Button();
             button3 = new Button();
             button4 = new Button();
             textBox4 = new TextBox();
             label6 = new Label();
-            groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
             radioButton3 = new RadioButton();
             radioButton1 = new RadioButton();
             radioButton2 = new RadioButton();
             dataGridView1 = new DataGridView();
+            label5 = new Label();
+            label3 = new Label();
+            comboBox1 = new ComboBox();
+            comboBox2 = new ComboBox();
+            label7 = new Label();
+            textBox5 = new TextBox();
+            groupBox1 = new GroupBox();
             label1 = new Label();
-            groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -78,7 +80,7 @@
             textBox1.BackColor = SystemColors.Control;
             textBox1.Location = new Point(31, 502);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(716, 27);
+            textBox1.Size = new Size(402, 27);
             textBox1.TabIndex = 1;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
@@ -88,9 +90,9 @@
             label2.Font = new Font("Segoe UI Semibold", 11F);
             label2.Location = new Point(22, 471);
             label2.Name = "label2";
-            label2.Size = new Size(73, 25);
+            label2.Size = new Size(67, 25);
             label2.TabIndex = 2;
-            label2.Text = "*Nome";
+            label2.Text = "*Login";
             label2.Click += label2_Click;
             // 
             // button1
@@ -104,28 +106,6 @@
             button1.Text = "Cadastrar";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 11F);
-            label3.Location = new Point(847, 86);
-            label3.Name = "label3";
-            label3.Size = new Size(63, 25);
-            label3.TabIndex = 5;
-            label3.Text = "Cargo";
-            label3.Click += label3_Click;
-            // 
-            // comboBox1
-            // 
-            comboBox1.BackColor = SystemColors.Control;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Atendente", "Gerente" });
-            comboBox1.Location = new Point(847, 114);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(142, 28);
-            comboBox1.TabIndex = 8;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged_1;
             // 
             // Senha
             // 
@@ -159,32 +139,11 @@
             // textBox3
             // 
             textBox3.BackColor = SystemColors.Control;
-            textBox3.Location = new Point(539, 569);
+            textBox3.Location = new Point(536, 97);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(208, 27);
+            textBox3.Size = new Size(272, 27);
             textBox3.TabIndex = 12;
             textBox3.TextChanged += textBox3_TextChanged;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Semibold", 11F);
-            label5.Location = new Point(847, 16);
-            label5.Name = "label5";
-            label5.Size = new Size(144, 25);
-            label5.TabIndex = 13;
-            label5.Text = "Nível de acesso";
-            // 
-            // comboBox2
-            // 
-            comboBox2.BackColor = SystemColors.Control;
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "Funcionário", "Administrador" });
-            comboBox2.Location = new Point(847, 47);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(142, 28);
-            comboBox2.TabIndex = 14;
-            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
             // button2
             // 
@@ -239,19 +198,6 @@
             label6.TabIndex = 20;
             label6.Text = "Defina o tipo de pesquisa:";
             label6.Click += label6_Click;
-            // 
-            // groupBox1
-            // 
-            groupBox1.BackColor = SystemColors.Control;
-            groupBox1.Controls.Add(comboBox2);
-            groupBox1.Controls.Add(comboBox1);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(label5);
-            groupBox1.Location = new Point(3, 455);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1063, 160);
-            groupBox1.TabIndex = 21;
-            groupBox1.TabStop = false;
             // 
             // groupBox2
             // 
@@ -310,7 +256,84 @@
             dataGridView1.Size = new Size(1054, 354);
             dataGridView1.TabIndex = 23;
             // 
-            // Form3
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI Semibold", 11F);
+            label5.Location = new Point(847, 16);
+            label5.Name = "label5";
+            label5.Size = new Size(144, 25);
+            label5.TabIndex = 13;
+            label5.Text = "Nível de acesso";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 11F);
+            label3.Location = new Point(847, 86);
+            label3.Name = "label3";
+            label3.Size = new Size(63, 25);
+            label3.TabIndex = 5;
+            label3.Text = "Cargo";
+            label3.Click += label3_Click;
+            // 
+            // comboBox1
+            // 
+            comboBox1.BackColor = SystemColors.Control;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Atendente", "Gerente" });
+            comboBox1.Location = new Point(847, 114);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(142, 28);
+            comboBox1.TabIndex = 8;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged_1;
+            // 
+            // comboBox2
+            // 
+            comboBox2.BackColor = SystemColors.Control;
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "Funcionário", "Administrador" });
+            comboBox2.Location = new Point(847, 47);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(142, 28);
+            comboBox2.TabIndex = 14;
+            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI Semibold", 11F);
+            label7.Location = new Point(448, 46);
+            label7.Name = "label7";
+            label7.Size = new Size(65, 25);
+            label7.TabIndex = 15;
+            label7.Text = "Nome";
+            // 
+            // textBox5
+            // 
+            textBox5.BackColor = SystemColors.Control;
+            textBox5.Location = new Point(536, 47);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(272, 27);
+            textBox5.TabIndex = 16;
+            // 
+            // groupBox1
+            // 
+            groupBox1.BackColor = SystemColors.Control;
+            groupBox1.Controls.Add(textBox5);
+            groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(comboBox2);
+            groupBox1.Controls.Add(comboBox1);
+            groupBox1.Controls.Add(textBox3);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Location = new Point(3, 455);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(1063, 160);
+            groupBox1.TabIndex = 21;
+            groupBox1.TabStop = false;
+            // 
+            // FuncionarioPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -321,7 +344,6 @@
             Controls.Add(textBox4);
             Controls.Add(button3);
             Controls.Add(button2);
-            Controls.Add(textBox3);
             Controls.Add(label4);
             Controls.Add(textBox2);
             Controls.Add(Senha);
@@ -332,15 +354,15 @@
             Controls.Add(groupBox1);
             Controls.Add(groupBox2);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Form3";
+            Name = "FuncionarioPage";
             StartPosition = FormStartPosition.Manual;
             Text = "Gerente";
             Load += Form3_Load;
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -351,25 +373,27 @@
         private TextBox textBox1;
         private Label label2;
         private Button button1;
-        private Label label3;
-        private ComboBox comboBox1;
         private Label Senha;
         private TextBox textBox2;
         private Label label4;
         private TextBox textBox3;
-        private Label label5;
-        private ComboBox comboBox2;
         private Button button2;
         private Button button3;
         private Button button4;
         private TextBox textBox4;
         private PictureBox pictureBox1;
         private Label label6;
-        private GroupBox groupBox1;
         private GroupBox groupBox2;
         private RadioButton radioButton3;
         private RadioButton radioButton1;
         private RadioButton radioButton2;
         private DataGridView dataGridView1;
+        private Label label5;
+        private Label label3;
+        private ComboBox comboBox1;
+        private ComboBox comboBox2;
+        private Label label7;
+        private TextBox textBox5;
+        private GroupBox groupBox1;
     }
 }
