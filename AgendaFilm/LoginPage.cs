@@ -34,7 +34,7 @@ namespace AgendaFilm
             {
                 if (txtUsuario.Text.Equals("admin") && txtSenha.Text.Equals("admin"))
                 {
-                    var menu = new PaginaRestrita();
+                    var menu = new MenuPage();
                     menu.Show();
 
                     this.Visible = false;

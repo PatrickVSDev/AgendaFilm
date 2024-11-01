@@ -1,6 +1,6 @@
 ﻿namespace AgendaFilm
 {
-    partial class Form2
+    partial class CadastroPage
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastroPage));
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             button1 = new Button();
@@ -95,6 +95,7 @@
             button2.TabIndex = 3;
             button2.Text = "Clientes";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // Veíc
             // 

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AgendaFilm
 {
-    public partial class Form2 : Form
+    public partial class CadastroPage : Form
     {
-        public Form2()
+        public CadastroPage()
         {
             InitializeComponent();
         }
@@ -29,7 +29,7 @@ namespace AgendaFilm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form3 novoFormulario = new Form3();
+            FuncionarioPage novoFormulario = new FuncionarioPage();
             novoFormulario.Location = new Point(this.Location.X + button1.Location.X + 242,
                                         this.Location.Y + button1.Location.Y + -535);
             novoFormulario.Show();
@@ -48,6 +48,14 @@ namespace AgendaFilm
         private void button4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ClientePage novoFormulario = new ClientePage();
+            novoFormulario.Location = new Point(this.Location.X + button1.Location.X + 242,
+                                        this.Location.Y + button1.Location.Y + -535);
+            novoFormulario.Show();
         }
     }
 }
