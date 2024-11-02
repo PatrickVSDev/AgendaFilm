@@ -57,6 +57,7 @@
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(243, 27);
             txtUsuario.TabIndex = 2;
+            txtUsuario.TextChanged += txtUsuario_TextChanged;
             // 
             // txtSenha
             // 
@@ -66,6 +67,7 @@
             txtSenha.Size = new Size(243, 27);
             txtSenha.TabIndex = 4;
             txtSenha.UseSystemPasswordChar = true;
+            txtSenha.TextChanged += txtSenha_TextChanged;
             // 
             // Senha
             // 
