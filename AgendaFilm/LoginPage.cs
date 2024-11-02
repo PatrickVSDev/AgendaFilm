@@ -1,11 +1,24 @@
+using AgendaFilm.Model;
+using AgendaFilm.Model.Repositories;
+using AgendaFilm.Controller;
+
+
 namespace AgendaFilm
 {
     public partial class PaginaLogin : Form
     {
+        public List<Funcionario> funcionarios;
+
         public PaginaLogin()
         {
             InitializeComponent();
+            ObterFuncionarios();
+        }
 
+        private void ObterFuncionarios()
+        {
+            var repository = new FuncionarioRepositorio();
+            funcionarios = repository.GetAll();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -30,40 +43,43 @@ namespace AgendaFilm
 
         private void btAcessar_Click(object sender, EventArgs e)
         {
-            try
+            bool funcExiste = false;
+
+            foreach (var funcionario in funcionarios)
             {
-                if (txtUsuario.Text.Equals("admin") && txtSenha.Text.Equals("admin"))
+                if (funcionario.login.Equals(txtUsuario.Text) && funcionario.senha.Equals(txtSenha.Text))
                 {
-                    var menu = new MenuPage();
-                    menu.Show();
-
-                    this.Visible = false;
-
-                }
-                else
-                {
-                    MessageBox.Show("Usuário, ou senha incorretos!",
-                                    "Desculpe.",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
-                    txtUsuario.Focus();
-                    txtSenha.Text = "";
+                    funcExiste = true;
+                    Global.funcionarioLogado = funcionario.id;
+                    this.Hide();
+                    MenuPage adminHomePage = new MenuPage();
+                    adminHomePage.Show();
+                    break;
                 }
             }
-            catch (Exception ex)
+
+            if (!funcExiste)
             {
-                MessageBox.Show("Desculpe.",
-                                ex.Message,
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                MessageBox.Show("Usuário não cadastrado!", "Error", MessageBoxButtons.OK);
             }
         }
+
         private void btCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSenha_TextChanged(object sender, EventArgs e)
         {
 
         }

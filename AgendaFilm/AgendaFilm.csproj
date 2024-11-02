@@ -9,10 +9,42 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.35" />
+    <PackageReference Include="Npgsql" Version="8.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="CadastroFuncionarioPage - Cópia - Cópia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="CadastroPage - Cópia - Cópia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ClientePage - Cópia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FuncionarioPage - Cópia.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="View\CadastroFuncionarioPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\CadastroPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\ClientePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\FuncionarioPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\MenuPage.cs">
+      <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
 
