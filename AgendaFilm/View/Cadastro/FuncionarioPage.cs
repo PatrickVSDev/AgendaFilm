@@ -112,5 +112,11 @@ namespace AgendaFilm
             //novoFormulario.Location = new Point(buttonScreenPosition.X + 100, buttonScreenPosition.Y - 50);
             novoFormulario.Show();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            CadastroFuncionarioPage novoFormulario = new CadastroFuncionarioPage();
+            novoFormulario.ShowDialog();
+        }
     }
 }

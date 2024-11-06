@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AgendaFilm.View.Editar;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,11 +32,10 @@ namespace AgendaFilm
         {
             Point buttonScreenPosition = button1.PointToScreen(Point.Empty);
 
-            // Defina a posição do novo formulário usando o ponto do botão
-            CadastroClientePage novoFormulario = new CadastroClientePage();
-            //novoFormulario.StartPosition = FormStartPosition.Manual; // Defina a posição manualmente
-            //novoFormulario.Location = new Point(buttonScreenPosition.X + 100, buttonScreenPosition.Y - 50);
-            novoFormulario.Show();
+
+            CadastroClientePage novoFormulario = new CadastroClientePage(); ;
+            
+            novoFormulario.ShowDialog();
 
 
         }
@@ -43,6 +43,12 @@ namespace AgendaFilm
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+           EditarClientePage novoFormulario = new EditarClientePage(); ;
+           novoFormulario.ShowDialog();
         }
     }
 }
