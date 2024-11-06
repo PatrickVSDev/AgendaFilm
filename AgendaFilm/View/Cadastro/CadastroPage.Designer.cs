@@ -112,6 +112,7 @@
             Veíc.TabIndex = 4;
             Veíc.Text = " Veículos";
             Veíc.UseVisualStyleBackColor = false;
+            Veíc.Click += Veíc_Click;
             // 
             // button3
             // 
@@ -154,7 +155,7 @@
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
-            // Form2
+            // CadastroPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -168,7 +169,7 @@
             Controls.Add(pictureBox2);
             Controls.Add(button1);
             Controls.Add(pictureBox1);
-            Name = "Form2";
+            Name = "CadastroPage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

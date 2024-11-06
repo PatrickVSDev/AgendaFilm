@@ -1,6 +1,6 @@
-﻿namespace AgendaFilm
+﻿namespace AgendaFilm.View.Editar
 {
-    partial class CadastroFuncionarioPage
+    partial class EditarProdutoPage
     {
         /// <summary>
         /// Required designer variable.
@@ -28,17 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SuspendLayout();
-            // 
-            // CadastroFuncionarioPage
-            // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(888, 535);
-            Name = "CadastroFuncionarioPage";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "CadastroFuncionarioPage";
-            ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "EditarProdutoPage";
         }
 
         #endregion

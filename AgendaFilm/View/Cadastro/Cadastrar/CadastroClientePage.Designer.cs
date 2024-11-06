@@ -72,11 +72,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Nirmala UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Nirmala UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(2, 9);
             label1.Name = "label1";
-            label1.Size = new Size(313, 46);
+            label1.Size = new Size(329, 46);
             label1.TabIndex = 0;
             label1.Text = "Cadastro de Cliente";
             label1.Click += label1_Click;
@@ -132,7 +132,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 11F);
-            label2.Location = new Point(75, 36);
+            label2.Location = new Point(74, 36);
             label2.Name = "label2";
             label2.Size = new Size(49, 25);
             label2.TabIndex = 1;
@@ -161,7 +161,7 @@
             // groupBox4
             // 
             groupBox4.Controls.Add(label4);
-            groupBox4.Location = new Point(12, 161);
+            groupBox4.Location = new Point(11, 161);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(180, 48);
             groupBox4.TabIndex = 9;
@@ -316,7 +316,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 11F);
-            label7.Location = new Point(43, 14);
+            label7.Location = new Point(41, 14);
             label7.Name = "label7";
             label7.Size = new Size(83, 25);
             label7.TabIndex = 17;
@@ -354,7 +354,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI Semibold", 11F);
-            label9.Location = new Point(57, 15);
+            label9.Location = new Point(55, 15);
             label9.Name = "label9";
             label9.Size = new Size(63, 25);
             label9.TabIndex = 23;

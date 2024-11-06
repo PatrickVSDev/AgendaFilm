@@ -31,16 +31,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="View\CadastroFuncionarioPage.cs">
+    <Compile Update="View\Cadastro\Cadastrar\CadastroFuncionarioPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\CadastroPage.cs">
+    <Compile Update="View\Cadastro\CadastroPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\ClientePage.cs">
+    <Compile Update="View\Cadastro\ClientePage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="View\FuncionarioPage.cs">
+    <Compile Update="View\Cadastro\FuncionarioPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="View\MenuPage.cs">

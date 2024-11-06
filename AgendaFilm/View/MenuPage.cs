@@ -27,9 +27,9 @@ namespace AgendaFilm
         {
             
             CadastroPage novoFormulario = new CadastroPage(); // Substitua "Form2" pelo nome do seu formulário
-            novoFormulario.Show(); // Abre o novo formulário sem fechar o atual
-                                       // Use novoFormulario.ShowDialog(); para abrir como uma janela modal
-           
+            novoFormulario.ShowDialog(); // Abre o novo formulário sem fechar o atual
+                                         // Use novoFormulario.ShowDialog(); para abrir como uma janela modal
+
 
         }
 
