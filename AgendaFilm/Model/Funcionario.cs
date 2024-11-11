@@ -8,7 +8,7 @@ namespace AgendaFilm.Model
 {
     public class Funcionario
     {
-        public int id{ get; set; }
+        public int id { get; set; }
         public string nome { get; set; }
         public string telefone { get; set; }
         public string login { get; set; }

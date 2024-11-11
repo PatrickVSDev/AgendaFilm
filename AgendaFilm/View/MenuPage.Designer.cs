@@ -39,6 +39,7 @@
             pictureBox2 = new PictureBox();
             lDataMenu = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
+            lbUsuarioLogado = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -153,12 +154,25 @@
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick_1;
             // 
-            // PaginaRestrita
+            // lbUsuarioLogado
+            // 
+            lbUsuarioLogado.AutoSize = true;
+            lbUsuarioLogado.BackColor = SystemColors.ActiveCaption;
+            lbUsuarioLogado.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbUsuarioLogado.Location = new Point(0, 222);
+            lbUsuarioLogado.Name = "lbUsuarioLogado";
+            lbUsuarioLogado.Size = new Size(70, 28);
+            lbUsuarioLogado.TabIndex = 7;
+            lbUsuarioLogado.Text = "label1";
+            lbUsuarioLogado.Click += lbUsuarioLogado_Click;
+            // 
+            // MenuPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(2176, 1325);
+            ClientSize = new Size(1924, 1055);
+            Controls.Add(lbUsuarioLogado);
             Controls.Add(lDataMenu);
             Controls.Add(pictureBox2);
             Controls.Add(button3);
@@ -167,7 +181,7 @@
             Controls.Add(button1);
             Controls.Add(pictureBox1);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "PaginaRestrita";
+            Name = "MenuPage";
             Text = "PaginaRestrita";
             WindowState = FormWindowState.Maximized;
             Load += PaginaRestrita_Load;
@@ -187,5 +201,6 @@
         private PictureBox pictureBox2;
         private Label lDataMenu;
         private System.Windows.Forms.Timer timer1;
+        private Label lbUsuarioLogado;
     }
 }

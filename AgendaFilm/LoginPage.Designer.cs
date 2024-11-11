@@ -56,7 +56,7 @@
             txtUsuario.Margin = new Padding(3, 4, 3, 4);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(243, 27);
-            txtUsuario.TabIndex = 2;
+            txtUsuario.TabIndex = 1;
             txtUsuario.TextChanged += txtUsuario_TextChanged;
             // 
             // txtSenha
@@ -65,7 +65,7 @@
             txtSenha.Margin = new Padding(3, 4, 3, 4);
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(243, 27);
-            txtSenha.TabIndex = 4;
+            txtSenha.TabIndex = 2;
             txtSenha.UseSystemPasswordChar = true;
             txtSenha.TextChanged += txtSenha_TextChanged;
             // 
@@ -114,7 +114,7 @@
             btAcessar.Margin = new Padding(3, 4, 3, 4);
             btAcessar.Name = "btAcessar";
             btAcessar.Size = new Size(123, 31);
-            btAcessar.TabIndex = 7;
+            btAcessar.TabIndex = 3;
             btAcessar.Text = "Acessar";
             btAcessar.UseVisualStyleBackColor = true;
             btAcessar.Click += btAcessar_Click;
@@ -125,7 +125,7 @@
             btCancelar.Margin = new Padding(3, 4, 3, 4);
             btCancelar.Name = "btCancelar";
             btCancelar.Size = new Size(122, 31);
-            btCancelar.TabIndex = 6;
+            btCancelar.TabIndex = 4;
             btCancelar.Text = "Cancelar";
             btCancelar.UseVisualStyleBackColor = true;
             btCancelar.Click += btCancelar_Click;
