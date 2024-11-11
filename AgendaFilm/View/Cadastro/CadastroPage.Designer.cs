@@ -37,6 +37,7 @@
             button3 = new Button();
             button4 = new Button();
             button5 = new Button();
+            lbUsuarioLogado = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -155,12 +156,25 @@
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
+            // lbUsuarioLogado
+            // 
+            lbUsuarioLogado.AutoSize = true;
+            lbUsuarioLogado.BackColor = SystemColors.ActiveCaption;
+            lbUsuarioLogado.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbUsuarioLogado.Location = new Point(0, 1);
+            lbUsuarioLogado.Name = "lbUsuarioLogado";
+            lbUsuarioLogado.Size = new Size(70, 28);
+            lbUsuarioLogado.TabIndex = 8;
+            lbUsuarioLogado.Text = "label1";
+            lbUsuarioLogado.Click += lbUsuarioLogado_Click;
+            // 
             // CadastroPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(1313, 771);
+            Controls.Add(lbUsuarioLogado);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button3);
@@ -172,9 +186,11 @@
             Name = "CadastroPage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
+            Load += CadastroPage_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -187,5 +203,6 @@
         private Button button3;
         private Button button4;
         private Button button5;
+        private Label lbUsuarioLogado;
     }
 }

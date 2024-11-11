@@ -60,7 +60,7 @@ namespace AgendaFilm
 
             if (!funcExiste)
             {
-                MessageBox.Show("Usuário não cadastrado!", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("Usuário ou senha incorretos!", "Error", MessageBoxButtons.OK);
             }
         }
 
