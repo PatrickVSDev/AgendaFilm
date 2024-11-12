@@ -121,5 +121,10 @@ namespace AgendaFilm
         {
 
         }
+
+        private void txtNivelAcesso_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -134,7 +134,7 @@ namespace AgendaFilm
             CadastroFuncionarioPage novoFormulario = new CadastroFuncionarioPage();
             //novoFormulario.StartPosition = FormStartPosition.CenterScreen; // Defina a posição manualmente
             //novoFormulario.Location = new Point(buttonScreenPosition.X + 100, buttonScreenPosition.Y - 50);
-            novoFormulario.Show();
+            novoFormulario.ShowDialog();
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
@@ -178,28 +178,8 @@ namespace AgendaFilm
 
         private void btEditar_Click(object sender, EventArgs e)
         {
-            /* if (dataGridView1.SelectedRows.Count == 1)
-             {
-                 DataGridViewRow dataGridViewRow = dataGridView1.SelectedRows[0];
-                 Funcionario funcionarioSelecionado = dataGridViewRow.DataBoundItem as Funcionario;
-
-                 EditarFuncionarioPage editPage = new EditarFuncionarioPage(funcionarioSelecionado);
-                 int index = funcionarios.IndexOf(funcionarioSelecionado);
-                 editPage.ShowDialog();
-
-
-                 if (editPage.DialogResult == DialogResult.OK)
-                 {
-                     funcionarios[index] = editPage.funcionario;
-                 }
-
-                 dataGridView1.Refresh();
-             }
-             else
-             {
-                 MessageBox.Show("Só é possivel editar apenas um funcionário por vez!", "Error", MessageBoxButtons.OK);
-             }
-            */
+            EditarFuncionarioPage novoFormulario = new EditarFuncionarioPage(); ;
+            novoFormulario.ShowDialog();
         }
 
         private void button4_Click_1(object sender, EventArgs e)

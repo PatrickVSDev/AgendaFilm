@@ -159,7 +159,7 @@
             lbUsuarioLogado.AutoSize = true;
             lbUsuarioLogado.BackColor = SystemColors.ActiveCaption;
             lbUsuarioLogado.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbUsuarioLogado.Location = new Point(0, 222);
+            lbUsuarioLogado.Location = new Point(0, 219);
             lbUsuarioLogado.Name = "lbUsuarioLogado";
             lbUsuarioLogado.Size = new Size(70, 28);
             lbUsuarioLogado.TabIndex = 7;
