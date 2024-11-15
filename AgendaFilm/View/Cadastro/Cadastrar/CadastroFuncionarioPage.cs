@@ -25,6 +25,8 @@ namespace AgendaFilm
         DateTime dataAtual = DateTime.Today;
         int id;
 
+        public event Action RefreshGrid;
+
         public CadastroFuncionarioPage()
         {
             InitializeComponent();
@@ -113,6 +115,7 @@ namespace AgendaFilm
             txtCargo.Clear();
             txtNivelAcesso.Clear();
 
+            RefreshGrid?.Invoke();
             this.Close();
 
         }

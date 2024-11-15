@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataFormats;
 
 namespace AgendaFilm
 {
@@ -33,6 +34,7 @@ namespace AgendaFilm
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["senha"].Visible = false;
+            dataGridView1.Columns["login"].Visible = false;
         }
 
         public void ObterDados()
@@ -134,7 +136,19 @@ namespace AgendaFilm
             CadastroFuncionarioPage novoFormulario = new CadastroFuncionarioPage();
             //novoFormulario.StartPosition = FormStartPosition.CenterScreen; // Defina a posição manualmente
             //novoFormulario.Location = new Point(buttonScreenPosition.X + 100, buttonScreenPosition.Y - 50);
+            novoFormulario.RefreshGrid += AtualizarDataGridView;
             novoFormulario.ShowDialog();
+        }
+
+        private void AtualizarDataGridView()
+        {
+            ObterDados();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = funcionarios;
+            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dataGridView1.Columns["senha"].Visible = false;
+            dataGridView1.Columns["login"].Visible = false;
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
@@ -178,8 +192,26 @@ namespace AgendaFilm
 
         private void btEditar_Click(object sender, EventArgs e)
         {
-            EditarFuncionarioPage novoFormulario = new EditarFuncionarioPage(); ;
-            novoFormulario.ShowDialog();
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                DataGridViewRow dataGridViewRow = dataGridView1.SelectedRows[0];
+                Funcionario funcionarioSelecionado = dataGridViewRow.DataBoundItem as Funcionario;
+
+                EditarFuncionarioPage novoFormulario = new EditarFuncionarioPage(funcionarioSelecionado);
+                int index = funcionarios.IndexOf(funcionarioSelecionado);
+                novoFormulario.RefreshGrid += AtualizarDataGridView;
+                novoFormulario.ShowDialog();
+
+
+                if (novoFormulario.DialogResult == DialogResult.OK)
+                {
+                    funcionarios[index] = novoFormulario.funcionario;
+                }
+            }
+            else
+            {
+                MessageBox.Show("É possivel editar apenas um funcionário por vez!", "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void button4_Click_1(object sender, EventArgs e)
@@ -188,12 +220,14 @@ namespace AgendaFilm
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = buscaFuncionarios;
             dataGridView1.Columns["senha"].Visible = false;
+            dataGridView1.Columns["login"].Visible = false;
 
             if (radioTodos.Checked)
             {
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = funcionarios;
                 dataGridView1.Columns["senha"].Visible = false;
+                dataGridView1.Columns["login"].Visible = false;
             }
             else
             {
