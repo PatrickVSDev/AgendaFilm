@@ -51,6 +51,8 @@ namespace AgendaFilm
                 {
                     funcExiste = true;
                     Global.funcionarioLogado = funcionario.id;
+                    Global.loginLogado = funcionario.login;
+                    Global.senhaLogado = funcionario.senha;
                     this.Hide();
                     MenuPage adminHomePage = new MenuPage();
                     adminHomePage.Show();

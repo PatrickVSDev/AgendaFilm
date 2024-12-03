@@ -152,6 +152,7 @@
             button3.TabIndex = 3;
             button3.Text = "Editar";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button2
             // 

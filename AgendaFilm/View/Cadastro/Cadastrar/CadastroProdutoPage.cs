@@ -29,7 +29,8 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            CadastrarCategoria novoFormulario = new CadastrarCategoria(); ;
+            novoFormulario.ShowDialog();
         }
     }
 }

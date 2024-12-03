@@ -10,5 +10,7 @@ namespace AgendaFilm.Controller
     public class Global
     {
         public static int funcionarioLogado;
+        public static String senhaLogado;
+        public static String loginLogado;
     }
 }

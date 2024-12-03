@@ -1,4 +1,5 @@
 ﻿using AgendaFilm.View.Cadastro.Cadastrar;
+using AgendaFilm.View.Editar;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,8 +21,14 @@ namespace AgendaFilm.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-           CadastroVeiculoPage novoFormulario = new CadastroVeiculoPage(); ;
-           novoFormulario.ShowDialog();
+            CadastroVeiculoPage novoFormulario = new CadastroVeiculoPage(); ;
+            novoFormulario.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            EditarVeiculoPage novoFormulario = new EditarVeiculoPage(); ;
+            novoFormulario.ShowDialog();
         }
     }
 }

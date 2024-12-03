@@ -1,0 +1,37 @@
+﻿CREATE TABLE funcionarios (
+    id SERIAL PRIMARY KEY,
+    login VARCHAR(50) NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    telefone VARCHAR(15),
+    nivelAcesso INT NOT NULL
+);
+
+ALTER TABLE funcionarios
+ADD COLUMN cargo VARCHAR(50) NOT NULL,
+ADD COLUMN dataCriacao DATE NOT NULL DEFAULT CURRENT_DATE,
+ADD COLUMN dataAlteracao DATE NOT NULL,
+ADD COLUMN funcionarioAlteracao INT NOT NULL;
+;
+
+
+INSERT INTO funcionarios (login, senha, nome, telefone, nivelAcesso, cargo, dataCriacao, dataAlteracao, funcionarioAlteracao)
+VALUES ('admin', 'admin', 'Administrador', NULL, 1, 'SEM CARGO', CURRENT_DATE, CURRENT_DATE, 1);
+
+
+
+CREATE TABLE clientes (
+    id SERIAL PRIMARY KEY,                
+    tipo_cliente VARCHAR(8) NOT NULL,     
+    documento VARCHAR(18) NOT NULL UNIQUE,
+    nome VARCHAR(255) NOT NULL,           
+    telefone VARCHAR(15),                 
+    funcionario_fk INT NOT NULL,                   
+    dataCriacao DATE NOT NULL DEFAULT CURRENT_DATE,
+    dataAlteracao DATE NOT NULL, 
+    
+    -- Definição da chave estrangeira
+    CONSTRAINT fk_funcionarios FOREIGN KEY (funcionario_fk) REFERENCES funcionarios (id) 
+        ON DELETE SET NULL                -- Define ação ao deletar o funcionário
+        ON UPDATE CASCADE
+);
