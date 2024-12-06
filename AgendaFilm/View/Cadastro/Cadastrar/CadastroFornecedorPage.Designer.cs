@@ -30,10 +30,10 @@
         {
             label1 = new Label();
             groupBox1 = new GroupBox();
-            textBox2 = new TextBox();
+            textDocumento = new TextBox();
             groupBox3 = new GroupBox();
             label3 = new Label();
-            textBox1 = new TextBox();
+            textNome = new TextBox();
             groupBox2 = new GroupBox();
             groupBox10 = new GroupBox();
             textBox8 = new TextBox();
@@ -55,28 +55,13 @@
             groupBox16 = new GroupBox();
             label2 = new Label();
             groupBox6 = new GroupBox();
-            textBox3 = new TextBox();
+            textTelefone = new TextBox();
             label4 = new Label();
-            textBox4 = new TextBox();
-            textBox13 = new TextBox();
-            textBox14 = new TextBox();
-            textBox15 = new TextBox();
-            label5 = new Label();
-            textBox16 = new TextBox();
-            groupBox4 = new GroupBox();
-            label6 = new Label();
-            groupBox5 = new GroupBox();
-            groupBox17 = new GroupBox();
-            label13 = new Label();
-            groupBox18 = new GroupBox();
-            label14 = new Label();
-            groupBox19 = new GroupBox();
-            label15 = new Label();
             groupBox20 = new GroupBox();
             groupBox7 = new GroupBox();
             groupBox8 = new GroupBox();
             label7 = new Label();
-            textBox6 = new TextBox();
+            textEmail = new TextBox();
             button1 = new Button();
             groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -86,11 +71,6 @@
             groupBox14.SuspendLayout();
             groupBox15.SuspendLayout();
             groupBox6.SuspendLayout();
-            groupBox4.SuspendLayout();
-            groupBox17.SuspendLayout();
-            groupBox18.SuspendLayout();
-            groupBox19.SuspendLayout();
-            groupBox7.SuspendLayout();
             groupBox8.SuspendLayout();
             SuspendLayout();
             // 
@@ -106,9 +86,9 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox2);
+            groupBox1.Controls.Add(textDocumento);
             groupBox1.Controls.Add(groupBox3);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(textNome);
             groupBox1.Controls.Add(groupBox2);
             groupBox1.Location = new Point(2, 35);
             groupBox1.Margin = new Padding(3, 2, 3, 2);
@@ -118,13 +98,13 @@
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             // 
-            // textBox2
+            // textDocumento
             // 
-            textBox2.Location = new Point(552, 25);
-            textBox2.Margin = new Padding(3, 2, 3, 2);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(196, 23);
-            textBox2.TabIndex = 4;
+            textDocumento.Location = new Point(552, 25);
+            textDocumento.Margin = new Padding(3, 2, 3, 2);
+            textDocumento.Name = "textDocumento";
+            textDocumento.Size = new Size(196, 23);
+            textDocumento.TabIndex = 4;
             // 
             // groupBox3
             // 
@@ -147,13 +127,13 @@
             label3.TabIndex = 2;
             label3.Text = "CNPJ";
             // 
-            // textBox1
+            // textNome
             // 
-            textBox1.Location = new Point(171, 25);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(215, 23);
-            textBox1.TabIndex = 3;
+            textNome.Location = new Point(171, 25);
+            textNome.Margin = new Padding(3, 2, 3, 2);
+            textNome.Name = "textNome";
+            textNome.Size = new Size(215, 23);
+            textNome.TabIndex = 3;
             // 
             // groupBox2
             // 
@@ -370,19 +350,10 @@
             // 
             // groupBox6
             // 
-            groupBox6.Controls.Add(textBox3);
+            groupBox6.Controls.Add(groupBox8);
+            groupBox6.Controls.Add(textTelefone);
+            groupBox6.Controls.Add(textEmail);
             groupBox6.Controls.Add(label4);
-            groupBox6.Controls.Add(textBox4);
-            groupBox6.Controls.Add(textBox13);
-            groupBox6.Controls.Add(textBox14);
-            groupBox6.Controls.Add(textBox15);
-            groupBox6.Controls.Add(label5);
-            groupBox6.Controls.Add(textBox16);
-            groupBox6.Controls.Add(groupBox4);
-            groupBox6.Controls.Add(groupBox5);
-            groupBox6.Controls.Add(groupBox17);
-            groupBox6.Controls.Add(groupBox18);
-            groupBox6.Controls.Add(groupBox19);
             groupBox6.Controls.Add(groupBox20);
             groupBox6.Location = new Point(2, 106);
             groupBox6.Margin = new Padding(3, 2, 3, 2);
@@ -392,178 +363,27 @@
             groupBox6.TabIndex = 13;
             groupBox6.TabStop = false;
             // 
-            // textBox3
+            // textTelefone
             // 
-            textBox3.BackColor = SystemColors.ButtonHighlight;
-            textBox3.Location = new Point(543, 147);
-            textBox3.Margin = new Padding(3, 2, 3, 2);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(211, 23);
-            textBox3.TabIndex = 28;
+            textTelefone.BackColor = SystemColors.ButtonHighlight;
+            textTelefone.Location = new Point(121, 25);
+            textTelefone.Margin = new Padding(3, 2, 3, 2);
+            textTelefone.Name = "textTelefone";
+            textTelefone.Size = new Size(211, 23);
+            textTelefone.TabIndex = 28;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 11F);
-            label4.Location = new Point(446, 146);
+            label4.Location = new Point(24, 24);
             label4.Name = "label4";
             label4.Size = new Size(67, 20);
             label4.TabIndex = 26;
             label4.Text = "Telefone";
             // 
-            // textBox4
-            // 
-            textBox4.BackColor = SystemColors.ButtonHighlight;
-            textBox4.Location = new Point(172, 147);
-            textBox4.Margin = new Padding(3, 2, 3, 2);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(252, 23);
-            textBox4.TabIndex = 25;
-            // 
-            // textBox13
-            // 
-            textBox13.BackColor = SystemColors.ButtonHighlight;
-            textBox13.Location = new Point(518, 87);
-            textBox13.Margin = new Padding(3, 2, 3, 2);
-            textBox13.Name = "textBox13";
-            textBox13.Size = new Size(237, 23);
-            textBox13.TabIndex = 22;
-            // 
-            // textBox14
-            // 
-            textBox14.BackColor = SystemColors.ButtonHighlight;
-            textBox14.Location = new Point(172, 86);
-            textBox14.Margin = new Padding(3, 2, 3, 2);
-            textBox14.Name = "textBox14";
-            textBox14.Size = new Size(186, 23);
-            textBox14.TabIndex = 19;
-            // 
-            // textBox15
-            // 
-            textBox15.BackColor = SystemColors.ButtonHighlight;
-            textBox15.Location = new Point(585, 23);
-            textBox15.Margin = new Padding(3, 2, 3, 2);
-            textBox15.Name = "textBox15";
-            textBox15.Size = new Size(170, 23);
-            textBox15.TabIndex = 16;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Semibold", 11F);
-            label5.Location = new Point(524, 25);
-            label5.Name = "label5";
-            label5.Size = new Size(35, 20);
-            label5.TabIndex = 15;
-            label5.Text = "CEP";
-            // 
-            // textBox16
-            // 
-            textBox16.BackColor = SystemColors.ButtonHighlight;
-            textBox16.Location = new Point(171, 23);
-            textBox16.Margin = new Padding(3, 2, 3, 2);
-            textBox16.Name = "textBox16";
-            textBox16.Size = new Size(316, 23);
-            textBox16.TabIndex = 14;
-            textBox16.TextChanged += textBox16_TextChanged;
-            // 
-            // groupBox4
-            // 
-            groupBox4.Controls.Add(label6);
-            groupBox4.Location = new Point(9, 11);
-            groupBox4.Margin = new Padding(3, 2, 3, 2);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Padding = new Padding(3, 2, 3, 2);
-            groupBox4.Size = new Size(158, 36);
-            groupBox4.TabIndex = 13;
-            groupBox4.TabStop = false;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI Semibold", 11F);
-            label6.Location = new Point(31, 12);
-            label6.Name = "label6";
-            label6.Size = new Size(90, 20);
-            label6.TabIndex = 12;
-            label6.Text = "Logradouro";
-            // 
-            // groupBox5
-            // 
-            groupBox5.Location = new Point(518, 11);
-            groupBox5.Margin = new Padding(3, 2, 3, 2);
-            groupBox5.Name = "groupBox5";
-            groupBox5.Padding = new Padding(3, 2, 3, 2);
-            groupBox5.Size = new Size(50, 36);
-            groupBox5.TabIndex = 13;
-            groupBox5.TabStop = false;
-            // 
-            // groupBox17
-            // 
-            groupBox17.Controls.Add(label13);
-            groupBox17.Location = new Point(9, 75);
-            groupBox17.Margin = new Padding(3, 2, 3, 2);
-            groupBox17.Name = "groupBox17";
-            groupBox17.Padding = new Padding(3, 2, 3, 2);
-            groupBox17.Size = new Size(158, 36);
-            groupBox17.TabIndex = 18;
-            groupBox17.TabStop = false;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Segoe UI Semibold", 11F);
-            label13.Location = new Point(38, 12);
-            label13.Name = "label13";
-            label13.Size = new Size(66, 20);
-            label13.TabIndex = 17;
-            label13.Text = "Número";
-            // 
-            // groupBox18
-            // 
-            groupBox18.Controls.Add(label14);
-            groupBox18.Location = new Point(370, 75);
-            groupBox18.Margin = new Padding(3, 2, 3, 2);
-            groupBox18.Name = "groupBox18";
-            groupBox18.Padding = new Padding(3, 2, 3, 2);
-            groupBox18.Size = new Size(134, 36);
-            groupBox18.TabIndex = 21;
-            groupBox18.TabStop = false;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Segoe UI Semibold", 11F);
-            label14.Location = new Point(7, 11);
-            label14.Name = "label14";
-            label14.Size = new Size(105, 20);
-            label14.TabIndex = 20;
-            label14.Text = "Complemento";
-            // 
-            // groupBox19
-            // 
-            groupBox19.Controls.Add(label15);
-            groupBox19.Location = new Point(9, 135);
-            groupBox19.Margin = new Padding(3, 2, 3, 2);
-            groupBox19.Name = "groupBox19";
-            groupBox19.Padding = new Padding(3, 2, 3, 2);
-            groupBox19.Size = new Size(157, 36);
-            groupBox19.TabIndex = 24;
-            groupBox19.TabStop = false;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Segoe UI Semibold", 11F);
-            label15.Location = new Point(50, 12);
-            label15.Name = "label15";
-            label15.Size = new Size(51, 20);
-            label15.TabIndex = 23;
-            label15.Text = "Bairro";
-            // 
             // groupBox20
             // 
-            groupBox20.Location = new Point(428, 135);
             groupBox20.Margin = new Padding(3, 2, 3, 2);
             groupBox20.Name = "groupBox20";
             groupBox20.Padding = new Padding(3, 2, 3, 2);
@@ -573,8 +393,6 @@
             // 
             // groupBox7
             // 
-            groupBox7.Controls.Add(groupBox8);
-            groupBox7.Controls.Add(textBox6);
             groupBox7.Location = new Point(2, 286);
             groupBox7.Margin = new Padding(3, 2, 3, 2);
             groupBox7.Name = "groupBox7";
@@ -586,7 +404,7 @@
             // groupBox8
             // 
             groupBox8.Controls.Add(label7);
-            groupBox8.Location = new Point(9, 12);
+            groupBox8.Location = new Point(2, 54);
             groupBox8.Margin = new Padding(3, 2, 3, 2);
             groupBox8.Name = "groupBox8";
             groupBox8.Padding = new Padding(3, 2, 3, 2);
@@ -604,13 +422,13 @@
             label7.TabIndex = 23;
             label7.Text = "Email";
             // 
-            // textBox6
+            // textEmail
             // 
-            textBox6.Location = new Point(172, 28);
-            textBox6.Margin = new Padding(3, 2, 3, 2);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(583, 23);
-            textBox6.TabIndex = 3;
+            textEmail.Location = new Point(171, 63);
+            textEmail.Margin = new Padding(3, 2, 3, 2);
+            textEmail.Name = "textEmail";
+            textEmail.Size = new Size(583, 23);
+            textEmail.TabIndex = 3;
             // 
             // button1
             // 
@@ -623,6 +441,7 @@
             button1.TabIndex = 15;
             button1.Text = "Salvar";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // CadastroFornecedorPage
             // 
@@ -655,16 +474,6 @@
             groupBox15.PerformLayout();
             groupBox6.ResumeLayout(false);
             groupBox6.PerformLayout();
-            groupBox4.ResumeLayout(false);
-            groupBox4.PerformLayout();
-            groupBox17.ResumeLayout(false);
-            groupBox17.PerformLayout();
-            groupBox18.ResumeLayout(false);
-            groupBox18.PerformLayout();
-            groupBox19.ResumeLayout(false);
-            groupBox19.PerformLayout();
-            groupBox7.ResumeLayout(false);
-            groupBox7.PerformLayout();
             groupBox8.ResumeLayout(false);
             groupBox8.PerformLayout();
             ResumeLayout(false);
@@ -675,10 +484,10 @@
 
         private Label label1;
         private GroupBox groupBox1;
-        private TextBox textBox2;
+        private TextBox textDocumento;
         private GroupBox groupBox3;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox textNome;
         private GroupBox groupBox2;
         private Label label2;
         private GroupBox groupBox10;
@@ -700,26 +509,11 @@
         private Label label12;
         private GroupBox groupBox16;
         private GroupBox groupBox6;
-        private TextBox textBox3;
+        private TextBox textTelefone;
         private Label label4;
-        private TextBox textBox4;
-        private TextBox textBox13;
-        private TextBox textBox14;
-        private TextBox textBox15;
-        private Label label5;
-        private TextBox textBox16;
-        private GroupBox groupBox4;
-        private GroupBox groupBox5;
-        private GroupBox groupBox17;
-        private Label label13;
-        private GroupBox groupBox18;
-        private Label label14;
         private GroupBox groupBox20;
-        private Label label6;
         private GroupBox groupBox7;
-        private TextBox textBox6;
-        private GroupBox groupBox19;
-        private Label label15;
+        private TextBox textEmail;
         private GroupBox groupBox8;
         private Label label7;
         private Button button1;

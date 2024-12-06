@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             groupBox2 = new GroupBox();
-            radioButton5 = new RadioButton();
-            radioButton6 = new RadioButton();
+            radioTodos = new RadioButton();
+            radioTelefone = new RadioButton();
+            radioId = new RadioButton();
+            radioNome = new RadioButton();
             label2 = new Label();
-            textBox1 = new TextBox();
-            button4 = new Button();
+            textBoxPesquisar = new TextBox();
+            btPesquisar = new Button();
             dataGridView1 = new DataGridView();
             groupBox1 = new GroupBox();
             button1 = new Button();
@@ -47,42 +49,62 @@
             // groupBox2
             // 
             groupBox2.BackgroundImageLayout = ImageLayout.None;
-            groupBox2.Controls.Add(radioButton5);
-            groupBox2.Controls.Add(radioButton6);
+            groupBox2.Controls.Add(radioTodos);
+            groupBox2.Controls.Add(radioTelefone);
+            groupBox2.Controls.Add(radioId);
+            groupBox2.Controls.Add(radioNome);
             groupBox2.Controls.Add(label2);
-            groupBox2.Controls.Add(textBox1);
-            groupBox2.Controls.Add(button4);
-            groupBox2.Location = new Point(22, 1);
-            groupBox2.Margin = new Padding(3, 2, 3, 2);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(3, 2, 3, 2);
-            groupBox2.Size = new Size(917, 64);
-            groupBox2.TabIndex = 31;
-            groupBox2.TabStop = false;
+            groupBox2.Controls.Add(textBoxPesquisar);
+            groupBox2.Controls.Add(btPesquisar);
+            groupBox2.Enter += groupBox2_Enter;
             // 
-            // radioButton5
+            // radioTodos
             // 
-            radioButton5.AutoSize = true;
-            radioButton5.Location = new Point(290, 12);
-            radioButton5.Margin = new Padding(3, 2, 3, 2);
-            radioButton5.Name = "radioButton5";
-            radioButton5.Size = new Size(36, 19);
-            radioButton5.TabIndex = 2;
-            radioButton5.TabStop = true;
-            radioButton5.Text = "ID";
-            radioButton5.UseVisualStyleBackColor = true;
+            radioTodos.AutoSize = true;
+            radioTodos.Location = new Point(405, 12);
+            radioTodos.Margin = new Padding(3, 2, 3, 2);
+            radioTodos.Name = "radioTodos";
+            radioTodos.Size = new Size(56, 19);
+            radioTodos.TabIndex = 35;
+            radioTodos.TabStop = true;
+            radioTodos.Text = "Todos";
+            radioTodos.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // radioTelefone
             // 
-            radioButton6.AutoSize = true;
-            radioButton6.Location = new Point(216, 12);
-            radioButton6.Margin = new Padding(3, 2, 3, 2);
-            radioButton6.Name = "radioButton6";
-            radioButton6.Size = new Size(58, 19);
-            radioButton6.TabIndex = 3;
-            radioButton6.TabStop = true;
-            radioButton6.Text = "Nome";
-            radioButton6.UseVisualStyleBackColor = true;
+            radioTelefone.AutoSize = true;
+            radioTelefone.Location = new Point(331, 12);
+            radioTelefone.Margin = new Padding(2);
+            radioTelefone.Name = "radioTelefone";
+            radioTelefone.Size = new Size(69, 19);
+            radioTelefone.TabIndex = 34;
+            radioTelefone.TabStop = true;
+            radioTelefone.Text = "Telefone";
+            radioTelefone.UseVisualStyleBackColor = true;
+            // 
+            // radioId
+            // 
+            radioId.AutoSize = true;
+            radioId.Location = new Point(285, 12);
+            radioId.Margin = new Padding(3, 2, 3, 2);
+            radioId.Name = "radioId";
+            radioId.Size = new Size(36, 19);
+            radioId.TabIndex = 2;
+            radioId.TabStop = true;
+            radioId.Text = "ID";
+            radioId.UseVisualStyleBackColor = true;
+            // 
+            // radioNome
+            // 
+            radioNome.AutoSize = true;
+            radioNome.Location = new Point(216, 12);
+            radioNome.Margin = new Padding(3, 2, 3, 2);
+            radioNome.Name = "radioNome";
+            radioNome.Size = new Size(58, 19);
+            radioNome.TabIndex = 3;
+            radioNome.TabStop = true;
+            radioNome.Text = "Nome";
+            radioNome.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -94,26 +116,27 @@
             label2.TabIndex = 2;
             label2.Text = "Defina o tipo de pesquisa:";
             // 
-            // textBox1
+            // textBoxPesquisar
             // 
-            textBox1.BackColor = SystemColors.ButtonHighlight;
-            textBox1.Location = new Point(216, 35);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(681, 23);
-            textBox1.TabIndex = 1;
+            textBoxPesquisar.BackColor = SystemColors.ButtonHighlight;
+            textBoxPesquisar.Location = new Point(216, 35);
+            textBoxPesquisar.Margin = new Padding(3, 2, 3, 2);
+            textBoxPesquisar.Name = "textBoxPesquisar";
+            textBoxPesquisar.Size = new Size(681, 23);
+            textBoxPesquisar.TabIndex = 1;
             // 
-            // button4
+            // btPesquisar
             // 
-            button4.BackColor = Color.SpringGreen;
-            button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button4.Location = new Point(5, 32);
-            button4.Margin = new Padding(3, 2, 3, 2);
-            button4.Name = "button4";
-            button4.Size = new Size(192, 26);
-            button4.TabIndex = 0;
-            button4.Text = "Pesquisar";
-            button4.UseVisualStyleBackColor = false;
+            btPesquisar.BackColor = Color.SpringGreen;
+            btPesquisar.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btPesquisar.Location = new Point(5, 32);
+            btPesquisar.Margin = new Padding(3, 2, 3, 2);
+            btPesquisar.Name = "btPesquisar";
+            btPesquisar.Size = new Size(192, 26);
+            btPesquisar.TabIndex = 0;
+            btPesquisar.Text = "Pesquisar";
+            btPesquisar.UseVisualStyleBackColor = false;
+            btPesquisar.Click += button4_Click;
             // 
             // dataGridView1
             // 
@@ -201,15 +224,17 @@
         #endregion
 
         private GroupBox groupBox2;
-        private RadioButton radioButton5;
-        private RadioButton radioButton6;
+        private RadioButton radioId;
+        private RadioButton radioNome;
         private Label label2;
-        private TextBox textBox1;
-        private Button button4;
+        private TextBox textBoxPesquisar;
+        private Button btPesquisar;
         private DataGridView dataGridView1;
         private GroupBox groupBox1;
         private Button button1;
         private Button button3;
         private Button button2;
+        private RadioButton radioTelefone;
+        private RadioButton radioTodos;
     }
 }

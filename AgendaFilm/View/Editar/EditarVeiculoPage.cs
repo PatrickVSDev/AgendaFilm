@@ -16,5 +16,10 @@ namespace AgendaFilm.View.Editar
         {
             InitializeComponent();
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
