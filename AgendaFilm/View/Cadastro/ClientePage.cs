@@ -134,5 +134,119 @@ namespace AgendaFilm
                 MessageBox.Show("Nenhum Cliente selecionado!", "Error", MessageBoxButtons.OK);
             }
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            buscaClientes.Clear();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = buscaClientes;
+
+            if (radioTodos.Checked)
+            {
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = clientes;
+            }
+            else
+            {
+                if (!(string.IsNullOrWhiteSpace(textBoxPesquisar.Text)))
+                {
+                    if (radioNome.Checked)
+                    {
+
+                        bool clienteExiste = false;
+
+                        foreach (var cliente in clientes)
+                        {
+                            if (cliente.nome.Contains(textBoxPesquisar.Text.Trim(), StringComparison.OrdinalIgnoreCase))
+                            {
+                                buscaClientes.Add(cliente);
+
+                                clienteExiste = true;
+                            }
+                        }
+
+                        if (!clienteExiste)
+                        {
+                            MessageBox.Show("Cliente não está cadastrado", "Error", MessageBoxButtons.OK);
+                        }
+                        else
+                        {
+                            dataGridView1.Refresh();
+                        }
+                    }
+                    else if (radioId.Checked)
+                    {
+                        bool clienteExiste = false;
+
+                        try
+                        {
+                            int numId = int.Parse(textBoxPesquisar.Text);
+                        }
+                        catch (FormatException ex)
+                        {
+                            MessageBox.Show("Você tem que digitar apenas numeros", "Error", MessageBoxButtons.OK);
+                            return;
+                        }
+
+
+                        foreach (var cliente in clientes)
+                        {
+                            if (cliente.id == int.Parse(textBoxPesquisar.Text))
+                            {
+                                buscaClientes.Add(cliente);
+
+                                clienteExiste = true;
+                            }
+                        }
+
+                        if (!clienteExiste)
+                        {
+                            MessageBox.Show("Cliente não cadastrado", "Error", MessageBoxButtons.OK);
+                        }
+                        else
+                        {
+                            dataGridView1.Refresh();
+                        }
+                    }
+                    else if (radioTelefone.Checked)
+                    {
+                        bool clienteExiste = false;
+
+                        foreach (var cliente in clientes)
+                        {
+                            if (cliente.telefone.Contains(textBoxPesquisar.Text.Trim(), StringComparison.OrdinalIgnoreCase))
+                            {
+                                buscaClientes.Add(cliente);
+
+                                clienteExiste = true;
+                            }
+                        }
+
+                        if (!clienteExiste)
+                        {
+                            MessageBox.Show("Não há nenhum cliente com este telefone", "Error", MessageBoxButtons.OK);
+                        }
+                        else
+                        {
+                            dataGridView1.Refresh();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Marque uma das opções de busca!", "Error", MessageBoxButtons.OK);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Você não digitou nenhum termo para ser pesquisado!", "Error", MessageBoxButtons.OK);
+                }
+            }
+            textBoxPesquisar.Clear();
+        }
     }
 }

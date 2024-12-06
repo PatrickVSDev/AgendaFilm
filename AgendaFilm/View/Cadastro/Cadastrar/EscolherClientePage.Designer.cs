@@ -1,4 +1,5 @@
-﻿namespace AgendaFilm.View.Cadastro.Cadastrar
+﻿
+namespace AgendaFilm.View.Cadastro.Cadastrar
 {
     partial class EscolherClientePage
     {
@@ -30,59 +31,65 @@
         {
             dataGridView1 = new DataGridView();
             button1 = new Button();
-            button2 = new Button();
+            btConfirmar = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 12);
+            dataGridView1.Location = new Point(10, 9);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1000, 396);
+            dataGridView1.Size = new Size(875, 297);
             dataGridView1.TabIndex = 0;
             // 
             // button1
             // 
             button1.BackColor = Color.SpringGreen;
             button1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            button1.Location = new Point(12, 424);
+            button1.Location = new Point(10, 318);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(154, 39);
+            button1.Size = new Size(135, 29);
             button1.TabIndex = 1;
             button1.Text = "Voltar";
             button1.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btConfirmar
             // 
-            button2.BackColor = Color.SpringGreen;
-            button2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            button2.Location = new Point(824, 422);
-            button2.Name = "button2";
-            button2.Size = new Size(188, 43);
-            button2.TabIndex = 2;
-            button2.Text = "Confirmar";
-            button2.UseVisualStyleBackColor = false;
+            btConfirmar.BackColor = Color.SpringGreen;
+            btConfirmar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            btConfirmar.Location = new Point(721, 316);
+            btConfirmar.Margin = new Padding(3, 2, 3, 2);
+            btConfirmar.Name = "btConfirmar";
+            btConfirmar.Size = new Size(164, 32);
+            btConfirmar.TabIndex = 2;
+            btConfirmar.Text = "Confirmar";
+            btConfirmar.UseVisualStyleBackColor = false;
+            btConfirmar.Click += btConfirmar_Click;
             // 
             // EscolherClientePage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1024, 475);
-            Controls.Add(button2);
+            ClientSize = new Size(896, 356);
+            Controls.Add(btConfirmar);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "EscolherClientePage";
             Text = "EscolherClientePage";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
+
         #endregion
 
         private DataGridView dataGridView1;
         private Button button1;
-        private Button button2;
+        private Button btConfirmar;
     }
 }
