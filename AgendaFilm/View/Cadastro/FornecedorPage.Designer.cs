@@ -56,13 +56,6 @@
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(textBoxPesquisar);
             groupBox2.Controls.Add(btPesquisar);
-            groupBox2.Location = new Point(22, 1);
-            groupBox2.Margin = new Padding(3, 2, 3, 2);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(3, 2, 3, 2);
-            groupBox2.Size = new Size(917, 64);
-            groupBox2.TabIndex = 31;
-            groupBox2.TabStop = false;
             groupBox2.Enter += groupBox2_Enter;
             // 
             // radioTodos

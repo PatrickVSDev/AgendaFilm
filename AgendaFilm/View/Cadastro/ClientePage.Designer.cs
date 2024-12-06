@@ -182,6 +182,7 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(833, 398);
             dataGridView1.TabIndex = 21;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // groupBox2
             // 

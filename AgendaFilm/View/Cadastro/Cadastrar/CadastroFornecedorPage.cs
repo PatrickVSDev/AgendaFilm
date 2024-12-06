@@ -28,7 +28,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             ObterDados();
             InitializeComponent();
         }
-
+        
         public void ObterDados()
         {
             fornecedores = new BindingList<Fornecedor>(repository.GetAll());
@@ -104,7 +104,5 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             textTelefone.Clear();
             textEmail.Clear();
         }
-
-        
     }
 }

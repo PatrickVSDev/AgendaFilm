@@ -384,7 +384,6 @@
             // 
             // groupBox20
             // 
-            groupBox20.Location = new Point(6, 13);
             groupBox20.Margin = new Padding(3, 2, 3, 2);
             groupBox20.Name = "groupBox20";
             groupBox20.Padding = new Padding(3, 2, 3, 2);
