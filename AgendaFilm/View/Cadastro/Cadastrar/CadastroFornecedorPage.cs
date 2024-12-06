@@ -16,5 +16,15 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
         {
             InitializeComponent();
         }
+
+        private void textBox16_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CadastroFornecedorPage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

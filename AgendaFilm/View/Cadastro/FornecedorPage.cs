@@ -35,5 +35,10 @@ namespace AgendaFilm.View.Cadastro
             EditarFornecedorPage novoFormulario = new EditarFornecedorPage(); ;
             novoFormulario.ShowDialog();
         }
+
+        private void FornecedorPage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

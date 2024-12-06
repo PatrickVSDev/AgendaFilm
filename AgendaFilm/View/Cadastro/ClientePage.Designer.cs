@@ -60,6 +60,7 @@
             groupBox1.Size = new Size(833, 69);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // radioButton3
             // 
@@ -178,6 +179,7 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(833, 398);
             dataGridView1.TabIndex = 21;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // groupBox2
             // 

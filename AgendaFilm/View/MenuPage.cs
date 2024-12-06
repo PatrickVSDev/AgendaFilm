@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AgendaFilm.Model.Repositories;
+using AgendaFilm.View.Agendamento;
 
 namespace AgendaFilm
 {
@@ -58,7 +59,8 @@ namespace AgendaFilm
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            AgendamentoPage novoFormulario = new AgendamentoPage(); // Substitua "Form2" pelo nome do seu formulário
+            novoFormulario.ShowDialog();
         }
 
         private void Relatorios_Click(object sender, EventArgs e)
