@@ -81,6 +81,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             Margin = new Padding(3, 2, 3, 2);
             Name = "EscolherClientePage";
             Text = "EscolherClientePage";
+            Load += EscolherClientePage_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
