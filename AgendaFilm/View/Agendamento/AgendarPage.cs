@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AgendaFilm.Model;
+using AgendaFilm.Model.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +14,14 @@ namespace AgendaFilm.View.Agendamento
 {
     public partial class AgendarPage : Form
     {
+
         public AgendarPage()
         {
             InitializeComponent();
+
+
         }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -29,10 +35,52 @@ namespace AgendaFilm.View.Agendamento
 
         private void AgendarPage_Load(object sender, EventArgs e)
         {
-
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "dd/MM/yyyy HH:mm";
+            dateTimePicker1.Value = DateTime.Now;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SelecionarVeiculoAgenda novoFormulario = new SelecionarVeiculoAgenda(); // Substitua "Form2" pelo nome do seu formulário
+            novoFormulario.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SelecionarClienteAgenda novoFormulario = new SelecionarClienteAgenda(); // Substitua "Form2" pelo nome do seu formulário
+            novoFormulario.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SelecionarProdutoAgenda novoFormulario = new SelecionarProdutoAgenda(); // Substitua "Form2" pelo nome do seu formulário
+            novoFormulario.ShowDialog();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }

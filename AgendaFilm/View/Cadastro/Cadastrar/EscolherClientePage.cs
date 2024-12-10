@@ -72,6 +72,11 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
                 MessageBox.Show("Por favor, selecione um cliente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void EscolherClientePage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
