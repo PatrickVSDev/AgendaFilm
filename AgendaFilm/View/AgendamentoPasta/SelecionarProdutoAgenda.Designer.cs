@@ -1,6 +1,6 @@
 ﻿namespace AgendaFilm.View.Agendamento
 {
-    partial class SelecionarVeiculoAgenda
+    partial class SelecionarProdutoAgenda
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             groupBox2 = new GroupBox();
-            radioButton5 = new RadioButton();
-            radioButton6 = new RadioButton();
+            radioTodos = new RadioButton();
+            radioId = new RadioButton();
+            radioNome = new RadioButton();
             label2 = new Label();
-            textBox1 = new TextBox();
+            textBoxPesquisar = new TextBox();
             button4 = new Button();
             btConfirmar = new Button();
             button1 = new Button();
@@ -43,10 +44,11 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(radioButton5);
-            groupBox2.Controls.Add(radioButton6);
+            groupBox2.Controls.Add(radioTodos);
+            groupBox2.Controls.Add(radioId);
+            groupBox2.Controls.Add(radioNome);
             groupBox2.Controls.Add(label2);
-            groupBox2.Controls.Add(textBox1);
+            groupBox2.Controls.Add(textBoxPesquisar);
             groupBox2.Controls.Add(button4);
             groupBox2.Location = new Point(12, 10);
             groupBox2.Margin = new Padding(3, 2, 3, 2);
@@ -56,29 +58,42 @@
             groupBox2.TabIndex = 35;
             groupBox2.TabStop = false;
             // 
-            // radioButton5
+            // radioTodos
             // 
-            radioButton5.AutoSize = true;
-            radioButton5.Location = new Point(290, 10);
-            radioButton5.Margin = new Padding(3, 2, 3, 2);
-            radioButton5.Name = "radioButton5";
-            radioButton5.Size = new Size(36, 19);
-            radioButton5.TabIndex = 2;
-            radioButton5.TabStop = true;
-            radioButton5.Text = "ID";
-            radioButton5.UseVisualStyleBackColor = true;
+            radioTodos.AutoSize = true;
+            radioTodos.Location = new Point(332, 10);
+            radioTodos.Margin = new Padding(3, 2, 3, 2);
+            radioTodos.Name = "radioTodos";
+            radioTodos.Size = new Size(56, 19);
+            radioTodos.TabIndex = 4;
+            radioTodos.TabStop = true;
+            radioTodos.Text = "Todos";
+            radioTodos.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // radioId
             // 
-            radioButton6.AutoSize = true;
-            radioButton6.Location = new Point(216, 10);
-            radioButton6.Margin = new Padding(3, 2, 3, 2);
-            radioButton6.Name = "radioButton6";
-            radioButton6.Size = new Size(58, 19);
-            radioButton6.TabIndex = 3;
-            radioButton6.TabStop = true;
-            radioButton6.Text = "Nome";
-            radioButton6.UseVisualStyleBackColor = true;
+            radioId.AutoSize = true;
+            radioId.Location = new Point(290, 10);
+            radioId.Margin = new Padding(3, 2, 3, 2);
+            radioId.Name = "radioId";
+            radioId.Size = new Size(36, 19);
+            radioId.TabIndex = 2;
+            radioId.TabStop = true;
+            radioId.Text = "ID";
+            radioId.UseVisualStyleBackColor = true;
+            // 
+            // radioNome
+            // 
+            radioNome.AutoSize = true;
+            radioNome.Location = new Point(216, 10);
+            radioNome.Margin = new Padding(3, 2, 3, 2);
+            radioNome.Name = "radioNome";
+            radioNome.Size = new Size(58, 19);
+            radioNome.TabIndex = 3;
+            radioNome.TabStop = true;
+            radioNome.Text = "Nome";
+            radioNome.UseVisualStyleBackColor = true;
+            radioNome.CheckedChanged += radioButton6_CheckedChanged;
             // 
             // label2
             // 
@@ -90,14 +105,14 @@
             label2.TabIndex = 2;
             label2.Text = "Defina o tipo de pesquisa:";
             // 
-            // textBox1
+            // textBoxPesquisar
             // 
-            textBox1.BackColor = SystemColors.ButtonHighlight;
-            textBox1.Location = new Point(216, 35);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(528, 23);
-            textBox1.TabIndex = 1;
+            textBoxPesquisar.BackColor = SystemColors.ButtonHighlight;
+            textBoxPesquisar.Location = new Point(216, 35);
+            textBoxPesquisar.Margin = new Padding(3, 2, 3, 2);
+            textBoxPesquisar.Name = "textBoxPesquisar";
+            textBoxPesquisar.Size = new Size(528, 23);
+            textBoxPesquisar.TabIndex = 1;
             // 
             // button4
             // 
@@ -110,6 +125,7 @@
             button4.TabIndex = 0;
             button4.Text = "Pesquisar";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // btConfirmar
             // 
@@ -122,6 +138,7 @@
             btConfirmar.TabIndex = 34;
             btConfirmar.Text = "Confirmar";
             btConfirmar.UseVisualStyleBackColor = false;
+            btConfirmar.Click += btConfirmar_Click;
             // 
             // button1
             // 
@@ -145,7 +162,7 @@
             dataGridView1.Size = new Size(776, 314);
             dataGridView1.TabIndex = 32;
             // 
-            // SelecionarVeiculoAgenda
+            // SelecionarProdutoAgenda
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -154,9 +171,9 @@
             Controls.Add(btConfirmar);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
-            Name = "SelecionarVeiculoAgenda";
-            Text = "SelecionarVeiculoAgendacs";
-            Load += SelecionarVeiculoAgenda_Load;
+            Name = "SelecionarProdutoAgenda";
+            Text = "SelecionarProdutoAgenda";
+            Load += SelecionarProdutoAgenda_Load;
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -166,13 +183,14 @@
         #endregion
 
         private GroupBox groupBox2;
-        private RadioButton radioButton5;
-        private RadioButton radioButton6;
+        private RadioButton radioId;
+        private RadioButton radioNome;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox textBoxPesquisar;
         private Button button4;
         private Button btConfirmar;
         private Button button1;
         private DataGridView dataGridView1;
+        private RadioButton radioTodos;
     }
 }

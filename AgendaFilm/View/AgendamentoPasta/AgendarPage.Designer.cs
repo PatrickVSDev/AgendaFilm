@@ -32,20 +32,20 @@
             button1 = new Button();
             button4 = new Button();
             groupBox1 = new GroupBox();
-            textBox3 = new TextBox();
-            textBox1 = new TextBox();
+            lbNomeCliente = new Label();
+            lbIdCliente = new Label();
             groupBox2 = new GroupBox();
-            textBox6 = new TextBox();
+            lbPlacaVeiculo = new Label();
+            lbIdVeiculo = new Label();
             label4 = new Label();
-            textBox7 = new TextBox();
             button3 = new Button();
             groupBox3 = new GroupBox();
-            textBox4 = new TextBox();
+            lbNomeProduto = new Label();
+            lbIdProduto = new Label();
             label3 = new Label();
-            textBox5 = new TextBox();
             button2 = new Button();
             dateTimePicker1 = new DateTimePicker();
-            textBox2 = new TextBox();
+            txtObeservacoes = new TextBox();
             label2 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -87,12 +87,13 @@
             button4.TabIndex = 12;
             button4.Text = "Concluir Agendamento";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox3);
+            groupBox1.Controls.Add(lbNomeCliente);
+            groupBox1.Controls.Add(lbIdCliente);
             groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(textBox1);
             groupBox1.Controls.Add(button1);
             groupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             groupBox1.Location = new Point(10, 12);
@@ -103,28 +104,35 @@
             groupBox1.Text = "Cliente";
             groupBox1.Enter += groupBox1_Enter;
             // 
-            // textBox3
+            // lbNomeCliente
             // 
-            textBox3.Location = new Point(250, 38);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(60, 29);
-            textBox3.TabIndex = 18;
-            textBox3.TextChanged += textBox3_TextChanged;
+            lbNomeCliente.AutoSize = true;
+            lbNomeCliente.BackColor = SystemColors.ButtonHighlight;
+            lbNomeCliente.BorderStyle = BorderStyle.FixedSingle;
+            lbNomeCliente.ForeColor = SystemColors.ActiveCaptionText;
+            lbNomeCliente.Location = new Point(334, 41);
+            lbNomeCliente.Name = "lbNomeCliente";
+            lbNomeCliente.Size = new Size(59, 23);
+            lbNomeCliente.TabIndex = 20;
+            lbNomeCliente.Text = "label5";
             // 
-            // textBox1
+            // lbIdCliente
             // 
-            textBox1.BackColor = SystemColors.ButtonHighlight;
-            textBox1.Location = new Point(334, 38);
-            textBox1.Margin = new Padding(2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(295, 29);
-            textBox1.TabIndex = 2;
+            lbIdCliente.AutoSize = true;
+            lbIdCliente.BackColor = SystemColors.ButtonHighlight;
+            lbIdCliente.BorderStyle = BorderStyle.FixedSingle;
+            lbIdCliente.ForeColor = SystemColors.ActiveCaptionText;
+            lbIdCliente.Location = new Point(251, 40);
+            lbIdCliente.Name = "lbIdCliente";
+            lbIdCliente.Size = new Size(59, 23);
+            lbIdCliente.TabIndex = 19;
+            lbIdCliente.Text = "label5";
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(textBox6);
+            groupBox2.Controls.Add(lbPlacaVeiculo);
+            groupBox2.Controls.Add(lbIdVeiculo);
             groupBox2.Controls.Add(label4);
-            groupBox2.Controls.Add(textBox7);
             groupBox2.Controls.Add(button3);
             groupBox2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             groupBox2.Location = new Point(10, 118);
@@ -134,12 +142,29 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Veículo";
             // 
-            // textBox6
+            // lbPlacaVeiculo
             // 
-            textBox6.Location = new Point(250, 38);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(60, 29);
-            textBox6.TabIndex = 18;
+            lbPlacaVeiculo.AutoSize = true;
+            lbPlacaVeiculo.BackColor = SystemColors.ButtonHighlight;
+            lbPlacaVeiculo.BorderStyle = BorderStyle.FixedSingle;
+            lbPlacaVeiculo.ForeColor = SystemColors.ActiveCaptionText;
+            lbPlacaVeiculo.Location = new Point(334, 42);
+            lbPlacaVeiculo.Name = "lbPlacaVeiculo";
+            lbPlacaVeiculo.Size = new Size(59, 23);
+            lbPlacaVeiculo.TabIndex = 22;
+            lbPlacaVeiculo.Text = "label5";
+            // 
+            // lbIdVeiculo
+            // 
+            lbIdVeiculo.AutoSize = true;
+            lbIdVeiculo.BackColor = SystemColors.ButtonHighlight;
+            lbIdVeiculo.BorderStyle = BorderStyle.FixedSingle;
+            lbIdVeiculo.ForeColor = SystemColors.ActiveCaptionText;
+            lbIdVeiculo.Location = new Point(251, 41);
+            lbIdVeiculo.Name = "lbIdVeiculo";
+            lbIdVeiculo.Size = new Size(59, 23);
+            lbIdVeiculo.TabIndex = 21;
+            lbIdVeiculo.Text = "label5";
             // 
             // label4
             // 
@@ -150,15 +175,6 @@
             label4.Size = new Size(28, 20);
             label4.TabIndex = 1;
             label4.Text = "ID:";
-            // 
-            // textBox7
-            // 
-            textBox7.BackColor = SystemColors.ButtonHighlight;
-            textBox7.Location = new Point(334, 38);
-            textBox7.Margin = new Padding(2);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(295, 29);
-            textBox7.TabIndex = 2;
             // 
             // button3
             // 
@@ -175,9 +191,9 @@
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(textBox4);
+            groupBox3.Controls.Add(lbNomeProduto);
+            groupBox3.Controls.Add(lbIdProduto);
             groupBox3.Controls.Add(label3);
-            groupBox3.Controls.Add(textBox5);
             groupBox3.Controls.Add(button2);
             groupBox3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             groupBox3.Location = new Point(10, 237);
@@ -187,12 +203,29 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Produto";
             // 
-            // textBox4
+            // lbNomeProduto
             // 
-            textBox4.Location = new Point(250, 43);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(60, 29);
-            textBox4.TabIndex = 18;
+            lbNomeProduto.AutoSize = true;
+            lbNomeProduto.BackColor = SystemColors.ButtonHighlight;
+            lbNomeProduto.BorderStyle = BorderStyle.FixedSingle;
+            lbNomeProduto.ForeColor = SystemColors.ActiveCaptionText;
+            lbNomeProduto.Location = new Point(334, 47);
+            lbNomeProduto.Name = "lbNomeProduto";
+            lbNomeProduto.Size = new Size(59, 23);
+            lbNomeProduto.TabIndex = 24;
+            lbNomeProduto.Text = "label5";
+            // 
+            // lbIdProduto
+            // 
+            lbIdProduto.AutoSize = true;
+            lbIdProduto.BackColor = SystemColors.ButtonHighlight;
+            lbIdProduto.BorderStyle = BorderStyle.FixedSingle;
+            lbIdProduto.ForeColor = SystemColors.ActiveCaptionText;
+            lbIdProduto.Location = new Point(251, 46);
+            lbIdProduto.Name = "lbIdProduto";
+            lbIdProduto.Size = new Size(59, 23);
+            lbIdProduto.TabIndex = 23;
+            lbIdProduto.Text = "label5";
             // 
             // label3
             // 
@@ -203,15 +236,6 @@
             label3.Size = new Size(28, 20);
             label3.TabIndex = 1;
             label3.Text = "ID:";
-            // 
-            // textBox5
-            // 
-            textBox5.BackColor = SystemColors.ButtonHighlight;
-            textBox5.Location = new Point(334, 38);
-            textBox5.Margin = new Padding(2);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(295, 29);
-            textBox5.TabIndex = 2;
             // 
             // button2
             // 
@@ -236,14 +260,14 @@
             dateTimePicker1.Value = new DateTime(2024, 12, 14, 0, 0, 0, 0);
             dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
-            // textBox2
+            // txtObeservacoes
             // 
-            textBox2.Location = new Point(12, 458);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(646, 120);
-            textBox2.TabIndex = 25;
-            textBox2.TextChanged += textBox2_TextChanged;
+            txtObeservacoes.Location = new Point(12, 458);
+            txtObeservacoes.Multiline = true;
+            txtObeservacoes.Name = "txtObeservacoes";
+            txtObeservacoes.Size = new Size(646, 120);
+            txtObeservacoes.TabIndex = 25;
+            txtObeservacoes.TextChanged += textBox2_TextChanged;
             // 
             // label2
             // 
@@ -261,7 +285,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(683, 648);
             Controls.Add(label2);
-            Controls.Add(textBox2);
+            Controls.Add(txtObeservacoes);
             Controls.Add(dateTimePicker1);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
@@ -285,20 +309,20 @@
         private Button button1;
         private Button button4;
         private GroupBox groupBox1;
-        private TextBox textBox3;
-        private TextBox textBox1;
         private GroupBox groupBox2;
-        private TextBox textBox6;
         private Label label4;
-        private TextBox textBox7;
         private Button button3;
         private GroupBox groupBox3;
-        private TextBox textBox4;
         private Label label3;
-        private TextBox textBox5;
         private Button button2;
         private DateTimePicker dateTimePicker1;
-        private TextBox textBox2;
+        private TextBox txtObeservacoes;
         private Label label2;
+        public Label lbIdCliente;
+        public Label lbNomeCliente;
+        public Label lbPlacaVeiculo;
+        public Label lbIdVeiculo;
+        public Label lbNomeProduto;
+        public Label lbIdProduto;
     }
 }

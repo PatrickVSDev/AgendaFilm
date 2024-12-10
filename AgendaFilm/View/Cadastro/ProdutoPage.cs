@@ -67,5 +67,10 @@ namespace AgendaFilm.View
         {
 
         }
+
+        private void ProdutoPage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

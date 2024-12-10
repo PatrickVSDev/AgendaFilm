@@ -88,6 +88,17 @@ namespace AgendaFilm.Model.Repositories
             return nomeRetornado;
         }
 
+        public string getPlacaById(int id)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"SELECT placa FROM veiculos WHERE id = @Id;";
+
+            string placaRetornada = connection.Connection.QuerySingleOrDefault<string>(query, new { Id = id });
+
+            return placaRetornada;
+        }
+
         public Veiculo getById(int id)
         {
             using var connection = new ConnectionDb();

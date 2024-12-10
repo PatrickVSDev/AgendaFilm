@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox2 = new GroupBox();
+            radioTodos = new RadioButton();
             radioButton5 = new RadioButton();
             radioButton3 = new RadioButton();
             radioButton6 = new RadioButton();
@@ -40,7 +41,6 @@
             button1 = new Button();
             button3 = new Button();
             button2 = new Button();
-            radioTodos = new RadioButton();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
@@ -64,6 +64,18 @@
             groupBox2.TabIndex = 30;
             groupBox2.TabStop = false;
             groupBox2.Enter += groupBox2_Enter;
+            // 
+            // radioTodos
+            // 
+            radioTodos.AutoSize = true;
+            radioTodos.Location = new Point(427, 13);
+            radioTodos.Margin = new Padding(3, 2, 3, 2);
+            radioTodos.Name = "radioTodos";
+            radioTodos.Size = new Size(56, 19);
+            radioTodos.TabIndex = 36;
+            radioTodos.TabStop = true;
+            radioTodos.Text = "Todos";
+            radioTodos.UseVisualStyleBackColor = true;
             // 
             // radioButton5
             // 
@@ -193,18 +205,6 @@
             button2.Text = "Inativar";
             button2.UseVisualStyleBackColor = false;
             // 
-            // radioTodos
-            // 
-            radioTodos.AutoSize = true;
-            radioTodos.Location = new Point(427, 13);
-            radioTodos.Margin = new Padding(3, 2, 3, 2);
-            radioTodos.Name = "radioTodos";
-            radioTodos.Size = new Size(56, 19);
-            radioTodos.TabIndex = 36;
-            radioTodos.TabStop = true;
-            radioTodos.Text = "Todos";
-            radioTodos.UseVisualStyleBackColor = true;
-            // 
             // ProdutoPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -218,6 +218,7 @@
             Name = "ProdutoPage";
             StartPosition = FormStartPosition.Manual;
             Text = "ProdutoPage";
+            Load += ProdutoPage_Load;
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
