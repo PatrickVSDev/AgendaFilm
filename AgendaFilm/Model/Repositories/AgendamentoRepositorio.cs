@@ -57,7 +57,7 @@ namespace AgendaFilm.Model.Repositories
         {
             using var connection = new ConnectionDb();
 
-            string query = @"DELETE FROM agendamento WHERE id = @Id";
+            string query = @"DELETE FROM agendamentos WHERE id = @Id";
 
             var result = connection.Connection.Execute(sql: query, param: agendamento);
 

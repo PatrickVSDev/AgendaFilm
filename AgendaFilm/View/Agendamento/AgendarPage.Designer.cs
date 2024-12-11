@@ -45,7 +45,7 @@
             label3 = new Label();
             button2 = new Button();
             dateTimePicker1 = new DateTimePicker();
-            txtObeservacoes = new TextBox();
+            txtObservacoes = new TextBox();
             label2 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -260,14 +260,14 @@
             dateTimePicker1.Value = new DateTime(2024, 12, 14, 0, 0, 0, 0);
             dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
-            // txtObeservacoes
+            // txtObservacoes
             // 
-            txtObeservacoes.Location = new Point(12, 458);
-            txtObeservacoes.Multiline = true;
-            txtObeservacoes.Name = "txtObeservacoes";
-            txtObeservacoes.Size = new Size(646, 120);
-            txtObeservacoes.TabIndex = 25;
-            txtObeservacoes.TextChanged += textBox2_TextChanged;
+            txtObservacoes.Location = new Point(12, 458);
+            txtObservacoes.Multiline = true;
+            txtObservacoes.Name = "txtObservacoes";
+            txtObservacoes.Size = new Size(646, 120);
+            txtObservacoes.TabIndex = 25;
+            txtObservacoes.TextChanged += textBox2_TextChanged;
             // 
             // label2
             // 
@@ -285,7 +285,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(683, 648);
             Controls.Add(label2);
-            Controls.Add(txtObeservacoes);
+            Controls.Add(txtObservacoes);
             Controls.Add(dateTimePicker1);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
@@ -316,7 +316,7 @@
         private Label label3;
         private Button button2;
         private DateTimePicker dateTimePicker1;
-        private TextBox txtObeservacoes;
+        private TextBox txtObservacoes;
         private Label label2;
         public Label lbIdCliente;
         public Label lbNomeCliente;

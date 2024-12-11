@@ -28,9 +28,9 @@ namespace AgendaFilm.View.Agendamento
         int id;
 
 
-        public int clienteIdRecebido { get; set; }
-        public int produtoIdRecebido { get; set; }
-        public int veiculoIdRecebido { get; set; }
+        public int clienteIdRecebido { get; set; } = -1;
+        public int produtoIdRecebido { get; set; } = -1;
+        public int veiculoIdRecebido { get; set; } = -1;
 
         public AgendarPage()
         {
@@ -119,7 +119,7 @@ namespace AgendaFilm.View.Agendamento
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            observacoes = txtObeservacoes.Text;
+            observacoes = txtObservacoes.Text;
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -128,18 +128,39 @@ namespace AgendaFilm.View.Agendamento
 
         private void button4_Click(object sender, EventArgs e)
         {
-            lbIdCliente.Text = "";
-            lbNomeCliente.Text = "";
-            lbIdProduto.Text = "";
-            lbNomeProduto.Text = "";
-            lbIdVeiculo.Text = "";
-            lbPlacaVeiculo.Text = "";
+            if (clienteIdRecebido == -1)
+            {
+                MessageBox.Show("Por favor, selecione um cliente antes de continuar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (veiculoIdRecebido == -1)
+            {
+                MessageBox.Show("Por favor, selecione um veículo antes de continuar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (produtoIdRecebido == -1)
+            {
+                MessageBox.Show("Por favor, selecione um produto antes de continuar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            lbIdCliente.Text = null;
+            lbNomeCliente.Text = null;
+            lbIdProduto.Text = null;
+            lbNomeProduto.Text = null;
+            lbIdVeiculo.Text = null;
+            lbPlacaVeiculo.Text = null;
 
             Agendamentos agendamento = new Agendamentos(id, clienteIdRecebido, veiculoIdRecebido, produtoIdRecebido, dataHoraAgendamento, observacoes, dataAtual, dataAtual, Global.funcionarioLogado);
             agendamentos.Add(agendamento);
             repository.Add(agendamento);
 
             id++;
+            txtObservacoes.Clear();
+
+            this.Close();
         }
     }
 }

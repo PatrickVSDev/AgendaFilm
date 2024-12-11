@@ -51,7 +51,7 @@ namespace AgendaFilm.View.Agendamento
 
         private void button4_Click(object sender, EventArgs e)
         {
-            AgendarPage novoFormulario = new AgendarPage(); // Substitua "Form2" pelo nome do seu formulário
+            AgendarPage novoFormulario = new AgendarPage();
             novoFormulario.ShowDialog();
         }
 
@@ -86,6 +86,40 @@ namespace AgendaFilm.View.Agendamento
         }
 
         private void AgendamentoPage_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Agendamentos agendamentoSelecionado;
+            DataGridViewRow dataGridViewRow;
+
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                for (int i = dataGridView1.SelectedRows.Count - 1; i >= 0; i--)
+                {
+                    dataGridViewRow = dataGridView1.SelectedRows[i];
+                    agendamentoSelecionado = dataGridViewRow.DataBoundItem as Agendamentos;
+
+
+                    if (agendamentoSelecionado != null)
+                    {
+                        agendamentos.Remove(agendamentoSelecionado);
+                        buscaAgendamentos.Remove(agendamentoSelecionado);
+                        repository.RemoveAgendamento(agendamentoSelecionado);
+                    }
+                }
+
+                dataGridView1.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Nenhum agendamento selecionado", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
 
         }
