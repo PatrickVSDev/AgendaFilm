@@ -11,7 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AgendaFilm.View.Agendamento
 {
@@ -19,14 +18,13 @@ namespace AgendaFilm.View.Agendamento
     {
         AgendamentoRepositorio repository = new AgendamentoRepositorio();
         Actions actions = new Actions();
-        BindingList<Agendamentos> buscaAgendamentos = new BindingList<Agendamentos>();
-        BindingList<Agendamentos> agendamentos;
+        BindingList<dynamic> buscaAgendamentos = new BindingList<dynamic>();
+        BindingList<dynamic> agendamentos;
         List<string> textBoxes = new List<string>();
         DateTime dataAtual = DateTime.Today;
         DateTime dataHoraAgendamento;
         string observacoes;
         int id;
-
 
         public int clienteIdRecebido { get; set; } = -1;
         public int produtoIdRecebido { get; set; } = -1;
@@ -36,15 +34,13 @@ namespace AgendaFilm.View.Agendamento
         {
             InitializeComponent();
             ObterDados();
-
         }
 
         public void ObterDados()
         {
-            agendamentos = new BindingList<Agendamentos>(repository.GetAll());
+            agendamentos = new BindingList<dynamic>(repository.getAll());
             id = repository.getHighestId() + 1;
         }
-
 
         public void AtualizarIdCliente(int clienteId)
         {
@@ -61,36 +57,11 @@ namespace AgendaFilm.View.Agendamento
             veiculoIdRecebido = veiculoId;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void AgendarPage_Load(object sender, EventArgs e)
         {
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "dd/MM/yyyy HH:mm";
             dateTimePicker1.Value = DateTime.Now;
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        public void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -113,19 +84,13 @@ namespace AgendaFilm.View.Agendamento
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            DateTime dataHoraAgendamento = dateTimePicker1.Value;
-            this.dataHoraAgendamento = dataHoraAgendamento;
+            dataHoraAgendamento = dateTimePicker1.Value;
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             observacoes = txtObservacoes.Text;
         }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
             if (clienteIdRecebido == -1)

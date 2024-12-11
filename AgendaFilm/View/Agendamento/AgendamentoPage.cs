@@ -17,8 +17,8 @@ namespace AgendaFilm.View.Agendamento
     {
         AgendamentoRepositorio repository = new AgendamentoRepositorio();
         Actions actions = new Actions();
-        BindingList<Agendamentos> buscaAgendamentos = new BindingList<Agendamentos>();
-        BindingList<Agendamentos> agendamentos;
+        BindingList<dynamic> buscaAgendamentos = new BindingList<dynamic>();
+        BindingList<dynamic> agendamentos;
         List<string> textBoxes = new List<string>();
         DateTime dataAtual = DateTime.Today;
         int id;
@@ -27,26 +27,46 @@ namespace AgendaFilm.View.Agendamento
         {
             InitializeComponent();
             ObterDados();
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = agendamentos;
-            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["cliente_fk"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["veiculo_fk"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["produto_fk"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["dataHoraAgendamento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["observacoes"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["funcionario_fk"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            ConfigurarDataGridView();
         }
 
         public void ObterDados()
         {
-            agendamentos = new BindingList<Agendamentos>(repository.GetAll());
+            agendamentos = new BindingList<dynamic>(repository.getAll());
             id = repository.getHighestId() + 1;
+        }
+
+        private void ConfigurarDataGridView()
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = agendamentos;
+
+            dataGridView1.Columns["id"].HeaderText = "ID";
+            dataGridView1.Columns["nome_cliente"].HeaderText = "Cliente";
+            dataGridView1.Columns["placa_veiculo"].HeaderText = "Veículo";
+            dataGridView1.Columns["nome_produto"].HeaderText = "Produto";
+            dataGridView1.Columns["dataHoraAgendamento"].HeaderText = "Data/Hora";
+            dataGridView1.Columns["observacoes"].HeaderText = "Observações";
+            dataGridView1.Columns["dataCriacao"].HeaderText = "Data Criação";
+            dataGridView1.Columns["dataAlteracao"].HeaderText = "Última Alteração";
+            dataGridView1.Columns["nome_funcionario"].HeaderText = "Funcionário";
+
+            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                if (column.ValueType == typeof(string))
+                {
+                    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                }
+                else
+                {
+                    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                }
+
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -55,59 +75,20 @@ namespace AgendaFilm.View.Agendamento
             novoFormulario.ShowDialog();
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AgendamentoPage_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
-            Agendamentos agendamentoSelecionado;
-            DataGridViewRow dataGridViewRow;
-
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 for (int i = dataGridView1.SelectedRows.Count - 1; i >= 0; i--)
                 {
-                    dataGridViewRow = dataGridView1.SelectedRows[i];
-                    agendamentoSelecionado = dataGridViewRow.DataBoundItem as Agendamentos;
-
+                    var dataGridViewRow = dataGridView1.SelectedRows[i];
+                    var agendamentoSelecionado = dataGridViewRow.DataBoundItem as dynamic;
 
                     if (agendamentoSelecionado != null)
                     {
                         agendamentos.Remove(agendamentoSelecionado);
                         buscaAgendamentos.Remove(agendamentoSelecionado);
-                        repository.RemoveAgendamento(agendamentoSelecionado);
+                        repository.RemoveAgendamento(agendamentoSelecionado.id);
                     }
                 }
 
@@ -117,6 +98,11 @@ namespace AgendaFilm.View.Agendamento
             {
                 MessageBox.Show("Nenhum agendamento selecionado", "Error", MessageBoxButtons.OK);
             }
+        }
+
+        private void AgendamentoPage_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)

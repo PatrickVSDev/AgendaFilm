@@ -61,7 +61,6 @@
             label1.Size = new Size(28, 20);
             label1.TabIndex = 1;
             label1.Text = "ID:";
-            label1.Click += label1_Click;
             // 
             // button1
             // 
@@ -102,7 +101,6 @@
             groupBox1.TabIndex = 13;
             groupBox1.TabStop = false;
             groupBox1.Text = "Cliente";
-            groupBox1.Enter += groupBox1_Enter;
             // 
             // lbNomeCliente
             // 

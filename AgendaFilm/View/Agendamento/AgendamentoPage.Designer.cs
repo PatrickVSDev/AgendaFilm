@@ -59,7 +59,6 @@
             pictureBox2.Size = new Size(807, 53);
             pictureBox2.TabIndex = 2;
             pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click;
             // 
             // pictureBox1
             // 
@@ -91,7 +90,6 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(783, 239);
             dataGridView1.TabIndex = 6;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // groupBox1
             // 
@@ -108,7 +106,6 @@
             groupBox1.Size = new Size(807, 72);
             groupBox1.TabIndex = 7;
             groupBox1.TabStop = false;
-            groupBox1.Enter += groupBox1_Enter;
             // 
             // radioButton3
             // 
@@ -121,7 +118,6 @@
             radioButton3.TabStop = true;
             radioButton3.Text = "Todos";
             radioButton3.UseVisualStyleBackColor = true;
-            radioButton3.CheckedChanged += radioButton3_CheckedChanged;
             // 
             // radioButton2
             // 
@@ -146,7 +142,6 @@
             radioButton1.TabStop = true;
             radioButton1.Text = "Nome";
             radioButton1.UseVisualStyleBackColor = true;
-            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
             // 
             // label2
             // 

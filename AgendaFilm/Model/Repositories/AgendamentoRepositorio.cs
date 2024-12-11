@@ -22,13 +22,32 @@ namespace AgendaFilm.Model.Repositories
             return result == 1;
         }
 
-        public List<Agendamentos> GetAll()
+        public List<dynamic> getAll()
         {
             using var connection = new ConnectionDb();
 
-            string query = @"SELECT * from public.agendamentos";
+            string query = @"SELECT 
+                                a.id, 
+                                c.nome AS nome_cliente, 
+                                v.placa AS placa_veiculo, 
+                                p.nome AS nome_produto, 
+                                a.dataHoraAgendamento, 
+                                a.observacoes, 
+                                a.dataCriacao, 
+                                a.dataAlteracao, 
+                                f.nome AS nome_funcionario
+                            FROM 
+                                agendamentos a
+                            JOIN 
+                                clientes c ON a.cliente_fk = c.id
+                            JOIN 
+                                veiculos v ON a.veiculo_fk = v.id
+                            JOIN 
+                                produtos p ON a.produto_fk = p.id
+                            JOIN 
+                                funcionarios f ON a.funcionario_fk = f.id;";
 
-            var agendamentos = connection.Connection.Query<Agendamentos>(sql: query);
+            var agendamentos = connection.Connection.Query(query);
 
             return agendamentos.ToList();
         }
@@ -53,13 +72,13 @@ namespace AgendaFilm.Model.Repositories
             return id;
         }
 
-        public bool RemoveAgendamento(Agendamentos agendamento)
+        public bool RemoveAgendamento(int id)
         {
             using var connection = new ConnectionDb();
 
             string query = @"DELETE FROM agendamentos WHERE id = @Id";
 
-            var result = connection.Connection.Execute(sql: query, param: agendamento);
+            var result = connection.Connection.Execute(sql: query, param: new { Id = id });
 
             return result == 1;
         }
@@ -68,7 +87,7 @@ namespace AgendaFilm.Model.Repositories
         {
             using var connection = new ConnectionDb();
 
-            string query = @"UPDATE public.agendamento
+            string query = @"UPDATE public.agendamentos
 	                        SET id= @id, tipo_cliente= @tipo_cliente, documento= @documento, nome= @nome, telefone= @telefone, funcionario_fk= @funcionario_fk, dataAlteracao= @dataAlteracao, dataCriacao= @dataCriacao
 	                        WHERE id= @id;";
 
