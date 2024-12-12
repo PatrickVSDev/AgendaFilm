@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             groupBox2 = new GroupBox();
+            radioTodos = new RadioButton();
             label3 = new Label();
             RelatorioTextBox = new TextBox();
             button5 = new Button();
-            radioButton5 = new RadioButton();
-            radioButton3 = new RadioButton();
-            radioButton6 = new RadioButton();
+            radioId = new RadioButton();
+            radioPlaca = new RadioButton();
+            radioModelo = new RadioButton();
             label2 = new Label();
-            textBox1 = new TextBox();
+            textBoxPesquisar = new TextBox();
             button4 = new Button();
             dataGridView1 = new DataGridView();
             groupBox1 = new GroupBox();
@@ -50,14 +51,15 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(radioTodos);
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(RelatorioTextBox);
             groupBox2.Controls.Add(button5);
-            groupBox2.Controls.Add(radioButton5);
-            groupBox2.Controls.Add(radioButton3);
-            groupBox2.Controls.Add(radioButton6);
+            groupBox2.Controls.Add(radioId);
+            groupBox2.Controls.Add(radioPlaca);
+            groupBox2.Controls.Add(radioModelo);
             groupBox2.Controls.Add(label2);
-            groupBox2.Controls.Add(textBox1);
+            groupBox2.Controls.Add(textBoxPesquisar);
             groupBox2.Controls.Add(button4);
             groupBox2.Location = new Point(22, 1);
             groupBox2.Margin = new Padding(3, 2, 3, 2);
@@ -66,6 +68,17 @@
             groupBox2.Size = new Size(917, 73);
             groupBox2.TabIndex = 30;
             groupBox2.TabStop = false;
+            // 
+            // radioTodos
+            // 
+            radioTodos.AutoSize = true;
+            radioTodos.Location = new Point(395, 13);
+            radioTodos.Name = "radioTodos";
+            radioTodos.Size = new Size(56, 19);
+            radioTodos.TabIndex = 39;
+            radioTodos.TabStop = true;
+            radioTodos.Text = "Todos";
+            radioTodos.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -99,41 +112,41 @@
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
-            // radioButton5
+            // radioId
             // 
-            radioButton5.AutoSize = true;
-            radioButton5.Location = new Point(290, 12);
-            radioButton5.Margin = new Padding(3, 2, 3, 2);
-            radioButton5.Name = "radioButton5";
-            radioButton5.Size = new Size(36, 19);
-            radioButton5.TabIndex = 2;
-            radioButton5.TabStop = true;
-            radioButton5.Text = "ID";
-            radioButton5.UseVisualStyleBackColor = true;
+            radioId.AutoSize = true;
+            radioId.Location = new Point(290, 12);
+            radioId.Margin = new Padding(3, 2, 3, 2);
+            radioId.Name = "radioId";
+            radioId.Size = new Size(36, 19);
+            radioId.TabIndex = 2;
+            radioId.TabStop = true;
+            radioId.Text = "ID";
+            radioId.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // radioPlaca
             // 
-            radioButton3.AutoSize = true;
-            radioButton3.Location = new Point(336, 13);
-            radioButton3.Margin = new Padding(3, 2, 3, 2);
-            radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(53, 19);
-            radioButton3.TabIndex = 28;
-            radioButton3.TabStop = true;
-            radioButton3.Text = "Placa";
-            radioButton3.UseVisualStyleBackColor = true;
+            radioPlaca.AutoSize = true;
+            radioPlaca.Location = new Point(336, 13);
+            radioPlaca.Margin = new Padding(3, 2, 3, 2);
+            radioPlaca.Name = "radioPlaca";
+            radioPlaca.Size = new Size(53, 19);
+            radioPlaca.TabIndex = 28;
+            radioPlaca.TabStop = true;
+            radioPlaca.Text = "Placa";
+            radioPlaca.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // radioModelo
             // 
-            radioButton6.AutoSize = true;
-            radioButton6.Location = new Point(216, 12);
-            radioButton6.Margin = new Padding(3, 2, 3, 2);
-            radioButton6.Name = "radioButton6";
-            radioButton6.Size = new Size(58, 19);
-            radioButton6.TabIndex = 3;
-            radioButton6.TabStop = true;
-            radioButton6.Text = "Nome";
-            radioButton6.UseVisualStyleBackColor = true;
+            radioModelo.AutoSize = true;
+            radioModelo.Location = new Point(216, 12);
+            radioModelo.Margin = new Padding(3, 2, 3, 2);
+            radioModelo.Name = "radioModelo";
+            radioModelo.Size = new Size(66, 19);
+            radioModelo.TabIndex = 3;
+            radioModelo.TabStop = true;
+            radioModelo.Text = "Modelo";
+            radioModelo.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -145,14 +158,14 @@
             label2.TabIndex = 2;
             label2.Text = "Defina o tipo de pesquisa:";
             // 
-            // textBox1
+            // textBoxPesquisar
             // 
-            textBox1.BackColor = SystemColors.ButtonHighlight;
-            textBox1.Location = new Point(216, 35);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(292, 23);
-            textBox1.TabIndex = 1;
+            textBoxPesquisar.BackColor = SystemColors.ButtonHighlight;
+            textBoxPesquisar.Location = new Point(216, 35);
+            textBoxPesquisar.Margin = new Padding(3, 2, 3, 2);
+            textBoxPesquisar.Name = "textBoxPesquisar";
+            textBoxPesquisar.Size = new Size(292, 23);
+            textBoxPesquisar.TabIndex = 1;
             // 
             // button4
             // 
@@ -165,6 +178,7 @@
             button4.TabIndex = 0;
             button4.Text = "Pesquisar";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // dataGridView1
             // 
@@ -252,11 +266,11 @@
         #endregion
 
         private GroupBox groupBox2;
-        private RadioButton radioButton5;
-        private RadioButton radioButton3;
-        private RadioButton radioButton6;
+        private RadioButton radioId;
+        private RadioButton radioPlaca;
+        private RadioButton radioModelo;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox textBoxPesquisar;
         private Button button4;
         private DataGridView dataGridView1;
         private GroupBox groupBox1;
@@ -266,5 +280,6 @@
         private Label label3;
         private TextBox RelatorioTextBox;
         private Button button5;
+        private RadioButton radioTodos;
     }
 }

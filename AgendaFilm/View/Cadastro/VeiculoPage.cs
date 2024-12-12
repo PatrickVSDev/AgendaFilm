@@ -51,17 +51,56 @@ namespace AgendaFilm.View
             veiculos = new BindingList<Veiculo>(repository.GetAll());
             id = repository.getHighestId() + 1;
         }
+        private void AtualizarDataGridView()
+        {
+            ObterDados();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = veiculos;
+            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["placa"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["modelo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["ano"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["marca"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["funcionario_fk"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["cliente_fk"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             CadastroVeiculoPage novoFormulario = new CadastroVeiculoPage(); ;
+            novoFormulario.RefreshGrid += AtualizarDataGridView;
             novoFormulario.ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            EditarVeiculoPage novoFormulario = new EditarVeiculoPage(); ;
-            novoFormulario.ShowDialog();
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                DataGridViewRow dataGridViewRow = dataGridView1.SelectedRows[0];
+                Veiculo veiculoSelecionado = dataGridViewRow.DataBoundItem as Veiculo;
+
+                EditarVeiculoPage editPage = new EditarVeiculoPage(veiculoSelecionado);
+                int index = veiculos.IndexOf(veiculoSelecionado);
+                editPage.RefreshGrid += AtualizarDataGridView;
+                editPage.ShowDialog();
+
+
+                if (editPage.DialogResult == DialogResult.OK)
+                {
+                    veiculos[index] = editPage.veiculo;
+                }
+
+                dataGridView1.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("É possivel editar apenas um cliente por vez!", "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void VeiculoPage_Load(object sender, EventArgs e)
@@ -127,6 +166,115 @@ namespace AgendaFilm.View
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            buscaVeiculos.Clear();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = buscaVeiculos;
+
+            if (radioTodos.Checked)
+            {
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = veiculos;
+            }
+            else
+            {
+                if (!(string.IsNullOrWhiteSpace(textBoxPesquisar.Text)))
+                {
+                    if (radioModelo.Checked)
+                    {
+
+                        bool veiculoExiste = false;
+
+                        foreach (var veiculo in veiculos)
+                        {
+                            if (veiculo.modelo.Contains(textBoxPesquisar.Text.Trim(), StringComparison.OrdinalIgnoreCase))
+                            {
+                                buscaVeiculos.Add(veiculo);
+
+                                veiculoExiste = true;
+                            }
+                        }
+
+                        if (!veiculoExiste)
+                        {
+                            MessageBox.Show("Cliente não está cadastrado", "Error", MessageBoxButtons.OK);
+                        }
+                        else
+                        {
+                            dataGridView1.Refresh();
+                        }
+                    }
+                    else if (radioId.Checked)
+                    {
+                        bool veiculoExiste = false;
+
+                        try
+                        {
+                            int numId = int.Parse(textBoxPesquisar.Text);
+                        }
+                        catch (FormatException ex)
+                        {
+                            MessageBox.Show("Você tem que digitar apenas numeros", "Error", MessageBoxButtons.OK);
+                            return;
+                        }
+
+
+                        foreach (var veiculo in veiculos)
+                        {
+                            if (veiculo.id == int.Parse(textBoxPesquisar.Text))
+                            {
+                                buscaVeiculos.Add(veiculo);
+
+                                veiculoExiste = true;
+                            }
+                        }
+
+                        if (!veiculoExiste)
+                        {
+                            MessageBox.Show("Veículo não cadastrado", "Error", MessageBoxButtons.OK);
+                        }
+                        else
+                        {
+                            dataGridView1.Refresh();
+                        }
+                    }
+                    else if (radioPlaca.Checked)
+                    {
+                        bool veiculoExiste = false;
+
+                        foreach (var veiculo in veiculos)
+                        {
+                            if (veiculo.placa.Contains(textBoxPesquisar.Text.Trim(), StringComparison.OrdinalIgnoreCase))
+                            {
+                                buscaVeiculos.Add(veiculo);
+
+                                veiculoExiste = true;
+                            }
+                        }
+
+                        if (!veiculoExiste)
+                        {
+                            MessageBox.Show("Não há nenhum veículo com esta placa", "Error", MessageBoxButtons.OK);
+                        }
+                        else
+                        {
+                            dataGridView1.Refresh();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Marque uma das opções de busca!", "Error", MessageBoxButtons.OK);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Você não digitou nenhum termo para ser pesquisado!", "Error", MessageBoxButtons.OK);
+                }
+            }
+            textBoxPesquisar.Clear();
         }
     }
 }

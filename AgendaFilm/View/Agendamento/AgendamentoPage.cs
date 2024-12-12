@@ -36,6 +36,26 @@ namespace AgendaFilm.View.Agendamento
             id = repository.getHighestId() + 1;
         }
 
+        private void AtualizarDataGridView()
+        {
+            ObterDados();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = agendamentos;
+
+            dataGridView1.Columns["id"].HeaderText = "ID";
+            dataGridView1.Columns["nome_cliente"].HeaderText = "Cliente";
+            dataGridView1.Columns["placa_veiculo"].HeaderText = "Veículo";
+            dataGridView1.Columns["nome_produto"].HeaderText = "Produto";
+            dataGridView1.Columns["dataHoraAgendamento"].HeaderText = "Data/Hora";
+            dataGridView1.Columns["observacoes"].HeaderText = "Observações";
+            dataGridView1.Columns["dataCriacao"].HeaderText = "Data Criação";
+            dataGridView1.Columns["dataAlteracao"].HeaderText = "Última Alteração";
+            dataGridView1.Columns["nome_funcionario"].HeaderText = "Funcionário";
+
+            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+        }
+
         private void ConfigurarDataGridView()
         {
             dataGridView1.DataSource = null;
@@ -72,6 +92,7 @@ namespace AgendaFilm.View.Agendamento
         private void button4_Click(object sender, EventArgs e)
         {
             AgendarPage novoFormulario = new AgendarPage();
+            novoFormulario.RefreshGrid += AtualizarDataGridView;
             novoFormulario.ShowDialog();
         }
 

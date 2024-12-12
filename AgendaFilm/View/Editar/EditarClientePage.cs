@@ -20,6 +20,8 @@ namespace AgendaFilm.View.Editar
         public Cliente cliente { get; set; }
         Actions actions = new Actions();
 
+        public event Action RefreshGrid;
+
         public EditarClientePage(Cliente cliente)
         {
             InitializeComponent();
@@ -48,6 +50,8 @@ namespace AgendaFilm.View.Editar
             this.cliente.dataAlteracao = DateTime.Today;
             this.cliente.funcionario_fk = Global.funcionarioLogado;
             repository.UpdateCliente(cliente);
+
+            RefreshGrid?.Invoke();
             this.Close();
         }
     }
