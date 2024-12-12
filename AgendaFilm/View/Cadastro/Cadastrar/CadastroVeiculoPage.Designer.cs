@@ -74,7 +74,7 @@
             groupBox1.Controls.Add(groupBox3);
             groupBox1.Controls.Add(txtPlaca);
             groupBox1.Controls.Add(groupBox2);
-            groupBox1.Location = new Point(2, 35);
+            groupBox1.Location = new Point(2, 41);
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
@@ -146,7 +146,7 @@
             groupBox4.Controls.Add(groupBox5);
             groupBox4.Controls.Add(txtModelo);
             groupBox4.Controls.Add(groupBox6);
-            groupBox4.Location = new Point(2, 98);
+            groupBox4.Location = new Point(2, 102);
             groupBox4.Margin = new Padding(3, 2, 3, 2);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(3, 2, 3, 2);
@@ -215,7 +215,7 @@
             // groupBox7
             // 
             groupBox7.Controls.Add(groupBox9);
-            groupBox7.Location = new Point(2, 160);
+            groupBox7.Location = new Point(2, 170);
             groupBox7.Margin = new Padding(3, 2, 3, 2);
             groupBox7.Name = "groupBox7";
             groupBox7.Padding = new Padding(3, 2, 3, 2);
@@ -251,7 +251,7 @@
             // 
             btSalvar.BackColor = Color.SpringGreen;
             btSalvar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            btSalvar.Location = new Point(556, 361);
+            btSalvar.Location = new Point(556, 304);
             btSalvar.Margin = new Padding(3, 2, 3, 2);
             btSalvar.Name = "btSalvar";
             btSalvar.Size = new Size(211, 33);
@@ -264,7 +264,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(777, 401);
+            ClientSize = new Size(777, 354);
             Controls.Add(btSalvar);
             Controls.Add(groupBox7);
             Controls.Add(groupBox4);
@@ -273,7 +273,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "CadastroVeiculoPage";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "CadastroVeiculoPage";
+            Text = "Cadastro de Veiculo";
             Load += CadastroVeiculoPage_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

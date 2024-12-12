@@ -65,7 +65,7 @@
             groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(2);
-            groupBox1.Size = new Size(833, 69);
+            groupBox1.Size = new Size(833, 98);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Enter += groupBox1_Enter;
@@ -74,7 +74,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(561, 0);
+            label3.Location = new Point(588, 46);
             label3.Name = "label3";
             label3.Size = new Size(180, 15);
             label3.TabIndex = 35;
@@ -84,7 +84,7 @@
             // RelatorioTextBox
             // 
             RelatorioTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            RelatorioTextBox.Location = new Point(542, 21);
+            RelatorioTextBox.Location = new Point(560, 67);
             RelatorioTextBox.Name = "RelatorioTextBox";
             RelatorioTextBox.Size = new Size(240, 20);
             RelatorioTextBox.TabIndex = 34;
@@ -94,10 +94,10 @@
             // 
             button2.BackColor = Color.SpringGreen;
             button2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            button2.Location = new Point(566, 46);
+            button2.Location = new Point(588, 13);
             button2.Margin = new Padding(2);
             button2.Name = "button2";
-            button2.Size = new Size(175, 27);
+            button2.Size = new Size(175, 34);
             button2.TabIndex = 5;
             button2.Text = "Gerar Relatório";
             button2.UseVisualStyleBackColor = false;
@@ -106,7 +106,7 @@
             // radioTodos
             // 
             radioTodos.AutoSize = true;
-            radioTodos.Location = new Point(383, 13);
+            radioTodos.Location = new Point(373, 17);
             radioTodos.Margin = new Padding(3, 2, 3, 2);
             radioTodos.Name = "radioTodos";
             radioTodos.Size = new Size(56, 19);
@@ -118,7 +118,7 @@
             // radioTelefone
             // 
             radioTelefone.AutoSize = true;
-            radioTelefone.Location = new Point(309, 13);
+            radioTelefone.Location = new Point(299, 17);
             radioTelefone.Margin = new Padding(2);
             radioTelefone.Name = "radioTelefone";
             radioTelefone.Size = new Size(69, 19);
@@ -130,7 +130,7 @@
             // radioId
             // 
             radioId.AutoSize = true;
-            radioId.Location = new Point(265, 13);
+            radioId.Location = new Point(259, 17);
             radioId.Margin = new Padding(2);
             radioId.Name = "radioId";
             radioId.Size = new Size(36, 19);
@@ -142,7 +142,7 @@
             // radioNome
             // 
             radioNome.AutoSize = true;
-            radioNome.Location = new Point(198, 13);
+            radioNome.Location = new Point(197, 17);
             radioNome.Margin = new Padding(2);
             radioNome.Name = "radioNome";
             radioNome.Size = new Size(58, 19);
@@ -155,7 +155,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
-            label2.Location = new Point(7, 10);
+            label2.Location = new Point(7, 16);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(186, 20);
@@ -165,10 +165,10 @@
             // textBoxPesquisar
             // 
             textBoxPesquisar.BackColor = SystemColors.ButtonHighlight;
-            textBoxPesquisar.Location = new Point(198, 38);
+            textBoxPesquisar.Location = new Point(198, 48);
             textBoxPesquisar.Margin = new Padding(2);
             textBoxPesquisar.Name = "textBoxPesquisar";
-            textBoxPesquisar.Size = new Size(241, 23);
+            textBoxPesquisar.Size = new Size(281, 23);
             textBoxPesquisar.TabIndex = 1;
             textBoxPesquisar.TextChanged += textBox1_TextChanged;
             // 
@@ -176,7 +176,7 @@
             // 
             button1.BackColor = Color.SpringGreen;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button1.Location = new Point(5, 34);
+            button1.Location = new Point(8, 46);
             button1.Margin = new Padding(2);
             button1.Name = "button1";
             button1.Size = new Size(175, 28);
@@ -227,12 +227,13 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(20, 83);
+            dataGridView1.Location = new Point(20, 103);
             dataGridView1.Margin = new Padding(2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(833, 398);
+            dataGridView1.Size = new Size(833, 378);
             dataGridView1.TabIndex = 21;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // groupBox2
             // 

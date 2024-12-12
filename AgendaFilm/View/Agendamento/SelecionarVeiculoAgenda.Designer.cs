@@ -156,7 +156,7 @@
             Controls.Add(button1);
             Controls.Add(dataGridView1);
             Name = "SelecionarVeiculoAgenda";
-            Text = "SelecionarVeiculoAgendacs";
+            Text = "Selecionar Veiculo";
             Load += SelecionarVeiculoAgenda_Load;
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();

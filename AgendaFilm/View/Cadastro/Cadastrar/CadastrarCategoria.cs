@@ -16,5 +16,10 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
         {
             InitializeComponent();
         }
+
+        private void CadastroCategoria_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

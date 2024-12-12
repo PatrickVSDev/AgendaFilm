@@ -80,7 +80,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             Controls.Add(dataGridView1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "EscolherClientePage";
-            Text = "EscolherClientePage";
+            Text = "Escolher de Cliente";
             Load += EscolherClientePage_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

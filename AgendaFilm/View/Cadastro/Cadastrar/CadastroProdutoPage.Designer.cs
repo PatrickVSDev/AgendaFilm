@@ -249,7 +249,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "CadastroProdutoPage";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "CadastroProduto";
+            Text = "Cadastro de Produto";
             Load += CadastroProduto_Load;
             groupBox5.ResumeLayout(false);
             groupBox5.PerformLayout();

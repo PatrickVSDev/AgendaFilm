@@ -130,5 +130,10 @@ namespace AgendaFilm.View.Agendamento
             RefreshGrid?.Invoke();
             this.Close();
         }
+
+        private void lbPlacaVeiculo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
