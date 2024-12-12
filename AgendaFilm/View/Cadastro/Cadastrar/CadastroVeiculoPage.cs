@@ -26,6 +26,8 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
         DateTime dataAtual = DateTime.Today;
         int id;
 
+        public event Action RefreshGrid;
+
         public CadastroVeiculoPage()
         {
             InitializeComponent();
@@ -113,6 +115,9 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             txtModelo.Clear();
             txtPlaca.Clear();
             txtAno.Clear();
+
+            RefreshGrid?.Invoke();
+            this.Close();
         }
 
         private void CadastroVeiculoPage_Load(object sender, EventArgs e)

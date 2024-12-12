@@ -24,6 +24,8 @@ namespace AgendaFilm
         DateTime dataAtual = DateTime.Today;
         int id;
 
+        public event Action RefreshGrid;
+
         public CadastroClientePage()
         {
             ObterDados();
@@ -135,6 +137,9 @@ namespace AgendaFilm
             textDocumento.Clear();
             textNome.Clear();
             textTelefone.Clear();
+
+            RefreshGrid?.Invoke();
+            this.Close();
         }
 
         private void label10_Click(object sender, EventArgs e)

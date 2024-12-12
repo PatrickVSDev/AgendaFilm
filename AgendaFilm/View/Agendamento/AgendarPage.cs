@@ -26,6 +26,8 @@ namespace AgendaFilm.View.Agendamento
         string observacoes;
         int id;
 
+        public event Action RefreshGrid;
+
         public int clienteIdRecebido { get; set; } = -1;
         public int produtoIdRecebido { get; set; } = -1;
         public int veiculoIdRecebido { get; set; } = -1;
@@ -125,6 +127,7 @@ namespace AgendaFilm.View.Agendamento
             id++;
             txtObservacoes.Clear();
 
+            RefreshGrid?.Invoke();
             this.Close();
         }
 

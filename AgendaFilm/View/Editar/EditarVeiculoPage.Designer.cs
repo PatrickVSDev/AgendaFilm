@@ -33,20 +33,20 @@
             groupBox9 = new GroupBox();
             button2 = new Button();
             groupBox4 = new GroupBox();
+            textAno = new TextBox();
             groupBox5 = new GroupBox();
             label4 = new Label();
-            textBox4 = new TextBox();
+            textModelo = new TextBox();
             groupBox6 = new GroupBox();
             label5 = new Label();
             groupBox1 = new GroupBox();
-            textBox2 = new TextBox();
+            textMarca = new TextBox();
             groupBox3 = new GroupBox();
             label3 = new Label();
-            textBox1 = new TextBox();
+            textPlaca = new TextBox();
             groupBox2 = new GroupBox();
             label2 = new Label();
             label1 = new Label();
-            txtAno = new TextBox();
             groupBox7.SuspendLayout();
             groupBox9.SuspendLayout();
             groupBox4.SuspendLayout();
@@ -68,6 +68,7 @@
             button1.TabIndex = 28;
             button1.Text = "Salvar";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // groupBox7
             // 
@@ -105,9 +106,9 @@
             // 
             // groupBox4
             // 
-            groupBox4.Controls.Add(txtAno);
+            groupBox4.Controls.Add(textAno);
             groupBox4.Controls.Add(groupBox5);
-            groupBox4.Controls.Add(textBox4);
+            groupBox4.Controls.Add(textModelo);
             groupBox4.Controls.Add(groupBox6);
             groupBox4.Location = new Point(6, 98);
             groupBox4.Margin = new Padding(3, 2, 3, 2);
@@ -116,6 +117,13 @@
             groupBox4.Size = new Size(765, 62);
             groupBox4.TabIndex = 26;
             groupBox4.TabStop = false;
+            // 
+            // textAno
+            // 
+            textAno.Location = new Point(578, 22);
+            textAno.Name = "textAno";
+            textAno.Size = new Size(100, 23);
+            textAno.TabIndex = 4;
             // 
             // groupBox5
             // 
@@ -138,13 +146,13 @@
             label4.TabIndex = 2;
             label4.Text = "Ano";
             // 
-            // textBox4
+            // textModelo
             // 
-            textBox4.Location = new Point(189, 25);
-            textBox4.Margin = new Padding(3, 2, 3, 2);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(223, 23);
-            textBox4.TabIndex = 3;
+            textModelo.Location = new Point(189, 25);
+            textModelo.Margin = new Padding(3, 2, 3, 2);
+            textModelo.Name = "textModelo";
+            textModelo.Size = new Size(223, 23);
+            textModelo.TabIndex = 3;
             // 
             // groupBox6
             // 
@@ -169,9 +177,9 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox2);
+            groupBox1.Controls.Add(textMarca);
             groupBox1.Controls.Add(groupBox3);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(textPlaca);
             groupBox1.Controls.Add(groupBox2);
             groupBox1.Location = new Point(6, 35);
             groupBox1.Margin = new Padding(3, 2, 3, 2);
@@ -181,13 +189,13 @@
             groupBox1.TabIndex = 25;
             groupBox1.TabStop = false;
             // 
-            // textBox2
+            // textMarca
             // 
-            textBox2.Location = new Point(534, 25);
-            textBox2.Margin = new Padding(3, 2, 3, 2);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(207, 23);
-            textBox2.TabIndex = 4;
+            textMarca.Location = new Point(534, 25);
+            textMarca.Margin = new Padding(3, 2, 3, 2);
+            textMarca.Name = "textMarca";
+            textMarca.Size = new Size(207, 23);
+            textMarca.TabIndex = 4;
             // 
             // groupBox3
             // 
@@ -210,13 +218,13 @@
             label3.TabIndex = 2;
             label3.Text = "Marca";
             // 
-            // textBox1
+            // textPlaca
             // 
-            textBox1.Location = new Point(189, 25);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(151, 23);
-            textBox1.TabIndex = 3;
+            textPlaca.Location = new Point(189, 25);
+            textPlaca.Margin = new Padding(3, 2, 3, 2);
+            textPlaca.Name = "textPlaca";
+            textPlaca.Size = new Size(151, 23);
+            textPlaca.TabIndex = 3;
             // 
             // groupBox2
             // 
@@ -250,13 +258,6 @@
             label1.TabIndex = 24;
             label1.Text = "Editar Veículos";
             // 
-            // txtAno
-            // 
-            txtAno.Location = new Point(578, 22);
-            txtAno.Name = "txtAno";
-            txtAno.Size = new Size(100, 23);
-            txtAno.TabIndex = 4;
-            // 
             // EditarVeiculoPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -271,6 +272,7 @@
             Name = "EditarVeiculoPage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EditarVeiculoPage";
+            Load += EditarVeiculoPage_Load;
             groupBox7.ResumeLayout(false);
             groupBox9.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
@@ -298,17 +300,17 @@
         private GroupBox groupBox4;
         private GroupBox groupBox5;
         private Label label4;
-        private TextBox textBox4;
+        private TextBox textModelo;
         private GroupBox groupBox6;
         private Label label5;
         private GroupBox groupBox1;
-        private TextBox textBox2;
+        private TextBox textMarca;
         private GroupBox groupBox3;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox textPlaca;
         private GroupBox groupBox2;
         private Label label2;
         private Label label1;
-        private TextBox txtAno;
+        private TextBox textAno;
     }
 }
