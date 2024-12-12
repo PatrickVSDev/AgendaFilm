@@ -12,6 +12,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuestPDF.Fluent;
+using System.Globalization;
 
 namespace AgendaFilm.View
 {
@@ -63,6 +65,66 @@ namespace AgendaFilm.View
         }
 
         private void VeiculoPage_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("Você quer gerar o relatorio em PDF?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+
+                bool veiculoExiste = false;
+                List<Veiculo> veiculosRelatorio = new List<Veiculo>();
+
+                string pesquisa = RelatorioTextBox.Text.Trim();
+                if (string.IsNullOrWhiteSpace(pesquisa))
+                {
+                    foreach (var veiculo in veiculos)
+                    {
+                        veiculosRelatorio.Add(veiculo);
+                        veiculoExiste = true;
+                    }
+                }
+                else
+                {
+                    foreach (var veiculo in veiculos)
+                    {
+                        if (veiculo.modelo.Contains(pesquisa, StringComparison.OrdinalIgnoreCase))
+                        {
+                            veiculosRelatorio.Add(veiculo);
+                            veiculoExiste = true;
+                        }
+                    }
+                }
+
+                if (!veiculoExiste)
+                {
+                    MessageBox.Show("Nenhum produto com este nome!", "Error", MessageBoxButtons.OK);
+                }
+
+
+
+                QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+                string dataAtual = DateTime.Now.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+                string titulo = $"Relatório De Veículo Por Modelo - {dataAtual}";
+
+                string diretorio = @"C:\Users\patri\OneDrive\Área de Trabalho\Relatórios";
+                if (!Directory.Exists(diretorio))
+                {
+                    MessageBox.Show("Diretorio Incorreto, verificar!", "Error", MessageBoxButtons.OK);
+                    return;
+                }
+
+                string nomeArquivo = Path.Combine(diretorio, $"relatorio-Veiculos-Por-Modelo-{dataAtual}.pdf");
+
+                var relatorio = new RelatorioVeiculos(veiculosRelatorio, titulo);
+                relatorio.GeneratePdf(nomeArquivo);
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }

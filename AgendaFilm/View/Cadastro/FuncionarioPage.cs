@@ -2,11 +2,13 @@
 using AgendaFilm.Model;
 using AgendaFilm.Model.Repositories;
 using AgendaFilm.View.Editar;
+using QuestPDF.Fluent;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -330,6 +332,61 @@ namespace AgendaFilm
         private void radioButton1_CheckedChanged_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("Você quer gerar o relatorio em PDF?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+
+                bool funcionarioExiste = false;
+                List<Funcionario> funcionariosRelatorio = new List<Funcionario>();
+
+                string pesquisa = RelatorioTextBox.Text.Trim();
+                if (string.IsNullOrWhiteSpace(pesquisa))
+                {
+                    foreach (var funcionario in funcionarios)
+                    {
+                        funcionariosRelatorio.Add(funcionario);
+                        funcionarioExiste = true;
+                    }
+                }
+                else
+                {
+                    foreach (var funcionario in funcionarios)
+                    {
+                        if (funcionario.nome.Contains(pesquisa, StringComparison.OrdinalIgnoreCase))
+                        {
+                            funcionariosRelatorio.Add(funcionario);
+                            funcionarioExiste = true;
+                        }
+                    }
+                }
+
+                if (!funcionarioExiste)
+                {
+                    MessageBox.Show("Nenhum funcionario com este nome!", "Error", MessageBoxButtons.OK);
+                }
+
+
+
+                QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+                string dataAtual = DateTime.Now.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+                string titulo = $"Relatório De Funcionários Por Nome - {dataAtual}";
+
+                string diretorio = @"C:\Users\patri\OneDrive\Área de Trabalho\Relatórios";
+                if (!Directory.Exists(diretorio))
+                {
+                    MessageBox.Show("Diretorio Incorreto, verificar!", "Error", MessageBoxButtons.OK);
+                    return;
+                }
+
+                string nomeArquivo = Path.Combine(diretorio, $"relatorio-Funcionrios-Por-Nome-{dataAtual}.pdf");
+
+                var relatorio = new RelatorioFuncionarios(funcionariosRelatorio, titulo);
+                relatorio.GeneratePdf(nomeArquivo);
+            }
         }
     }
 }

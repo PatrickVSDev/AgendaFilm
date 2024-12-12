@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             groupBox2 = new GroupBox();
+            label3 = new Label();
+            RelatorioTextBox = new TextBox();
+            button5 = new Button();
             radioButton5 = new RadioButton();
             radioButton3 = new RadioButton();
             radioButton6 = new RadioButton();
@@ -47,6 +50,9 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(label3);
+            groupBox2.Controls.Add(RelatorioTextBox);
+            groupBox2.Controls.Add(button5);
             groupBox2.Controls.Add(radioButton5);
             groupBox2.Controls.Add(radioButton3);
             groupBox2.Controls.Add(radioButton6);
@@ -57,9 +63,41 @@
             groupBox2.Margin = new Padding(3, 2, 3, 2);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 2, 3, 2);
-            groupBox2.Size = new Size(917, 64);
+            groupBox2.Size = new Size(917, 73);
             groupBox2.TabIndex = 30;
             groupBox2.TabStop = false;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(632, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(188, 15);
+            label3.TabIndex = 38;
+            label3.Text = "Gerar Relatorio PDF Por Modelo:";
+            label3.Click += label3_Click;
+            // 
+            // RelatorioTextBox
+            // 
+            RelatorioTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            RelatorioTextBox.Location = new Point(613, 21);
+            RelatorioTextBox.Name = "RelatorioTextBox";
+            RelatorioTextBox.Size = new Size(240, 20);
+            RelatorioTextBox.TabIndex = 37;
+            // 
+            // button5
+            // 
+            button5.BackColor = Color.SpringGreen;
+            button5.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            button5.Location = new Point(637, 46);
+            button5.Margin = new Padding(2);
+            button5.Name = "button5";
+            button5.Size = new Size(175, 27);
+            button5.TabIndex = 36;
+            button5.Text = "Gerar Relatório";
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // radioButton5
             // 
@@ -113,7 +151,7 @@
             textBox1.Location = new Point(216, 35);
             textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(681, 23);
+            textBox1.Size = new Size(292, 23);
             textBox1.TabIndex = 1;
             // 
             // button4
@@ -225,5 +263,8 @@
         private Button button1;
         private Button button3;
         private Button button2;
+        private Label label3;
+        private TextBox RelatorioTextBox;
+        private Button button5;
     }
 }

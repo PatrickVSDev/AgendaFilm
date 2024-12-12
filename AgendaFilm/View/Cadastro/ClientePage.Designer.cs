@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            label3 = new Label();
+            RelatorioTextBox = new TextBox();
+            button2 = new Button();
+            radioTodos = new RadioButton();
             radioTelefone = new RadioButton();
             radioId = new RadioButton();
             radioNome = new RadioButton();
@@ -40,7 +44,6 @@
             button4 = new Button();
             dataGridView1 = new DataGridView();
             groupBox2 = new GroupBox();
-            radioTodos = new RadioButton();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox2.SuspendLayout();
@@ -48,6 +51,9 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(RelatorioTextBox);
+            groupBox1.Controls.Add(button2);
             groupBox1.Controls.Add(radioTodos);
             groupBox1.Controls.Add(radioTelefone);
             groupBox1.Controls.Add(radioId);
@@ -63,6 +69,51 @@
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(561, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(180, 15);
+            label3.TabIndex = 35;
+            label3.Text = "Gerar Relatorio PDF Por Nome:";
+            label3.Click += label3_Click;
+            // 
+            // RelatorioTextBox
+            // 
+            RelatorioTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            RelatorioTextBox.Location = new Point(542, 21);
+            RelatorioTextBox.Name = "RelatorioTextBox";
+            RelatorioTextBox.Size = new Size(240, 20);
+            RelatorioTextBox.TabIndex = 34;
+            RelatorioTextBox.TextChanged += RelatorioTextBox_TextChanged;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.SpringGreen;
+            button2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            button2.Location = new Point(566, 46);
+            button2.Margin = new Padding(2);
+            button2.Name = "button2";
+            button2.Size = new Size(175, 27);
+            button2.TabIndex = 5;
+            button2.Text = "Gerar Relatório";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click_1;
+            // 
+            // radioTodos
+            // 
+            radioTodos.AutoSize = true;
+            radioTodos.Location = new Point(383, 13);
+            radioTodos.Margin = new Padding(3, 2, 3, 2);
+            radioTodos.Name = "radioTodos";
+            radioTodos.Size = new Size(56, 19);
+            radioTodos.TabIndex = 30;
+            radioTodos.TabStop = true;
+            radioTodos.Text = "Todos";
+            radioTodos.UseVisualStyleBackColor = true;
             // 
             // radioTelefone
             // 
@@ -117,7 +168,7 @@
             textBoxPesquisar.Location = new Point(198, 38);
             textBoxPesquisar.Margin = new Padding(2);
             textBoxPesquisar.Name = "textBoxPesquisar";
-            textBoxPesquisar.Size = new Size(623, 23);
+            textBoxPesquisar.Size = new Size(241, 23);
             textBoxPesquisar.TabIndex = 1;
             textBoxPesquisar.TextChanged += textBox1_TextChanged;
             // 
@@ -196,18 +247,6 @@
             groupBox2.TabIndex = 22;
             groupBox2.TabStop = false;
             // 
-            // radioTodos
-            // 
-            radioTodos.AutoSize = true;
-            radioTodos.Location = new Point(383, 13);
-            radioTodos.Margin = new Padding(3, 2, 3, 2);
-            radioTodos.Name = "radioTodos";
-            radioTodos.Size = new Size(56, 19);
-            radioTodos.TabIndex = 30;
-            radioTodos.TabStop = true;
-            radioTodos.Text = "Todos";
-            radioTodos.UseVisualStyleBackColor = true;
-            // 
             // ClientePage
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -245,5 +284,8 @@
         private DataGridView dataGridView1;
         private GroupBox groupBox2;
         private RadioButton radioTodos;
+        private Label label3;
+        private TextBox RelatorioTextBox;
+        private Button button2;
     }
 }
