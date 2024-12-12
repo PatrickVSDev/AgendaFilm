@@ -276,5 +276,20 @@ namespace AgendaFilm.View
             }
             textBoxPesquisar.Clear();
         }
+
+        private void radioId_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioTodos_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxPesquisar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

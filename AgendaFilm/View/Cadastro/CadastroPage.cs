@@ -41,35 +41,35 @@ namespace AgendaFilm
         {
             SelecionarBotao((Button)sender);
             AbrirFormulario(new FuncionarioPage(),
-                new Point(this.Location.X + button1.Location.X + 242, this.Location.Y + button1.Location.Y - 535));
+                new Point(this.Location.X + button1.Location.X + 248, this.Location.Y + button1.Location.Y - 490));
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             SelecionarBotao((Button)sender);
             AbrirFormulario(new FornecedorPage(),
-                new Point(this.Location.X + button1.Location.X + 242, this.Location.Y + button1.Location.Y - 535));
+                new Point(this.Location.X + button1.Location.X + 248, this.Location.Y + button1.Location.Y - 490));
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             SelecionarBotao((Button)sender);
             AbrirFormulario(new ProdutoPage(),
-                new Point(this.Location.X + button1.Location.X + 242, this.Location.Y + button1.Location.Y - 535));
+                new Point(this.Location.X + button1.Location.X + 248, this.Location.Y + button1.Location.Y - 490));
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             SelecionarBotao((Button)sender);
             AbrirFormulario(new ClientePage(),
-                new Point(this.Location.X + button1.Location.X + 242, this.Location.Y + button1.Location.Y - 535));
+                new Point(this.Location.X + button1.Location.X + 248, this.Location.Y + button1.Location.Y - 490));
         }
 
         private void Veíc_Click(object sender, EventArgs e)
         {
             SelecionarBotao((Button)sender);
             AbrirFormulario(new VeiculoPage(),
-                new Point(this.Location.X + button1.Location.X + 242, this.Location.Y + button1.Location.Y - 535));
+                new Point(this.Location.X + button1.Location.X + 248, this.Location.Y + button1.Location.Y - 490));
         }
 
         private void SelecionarBotao(Button botao)
