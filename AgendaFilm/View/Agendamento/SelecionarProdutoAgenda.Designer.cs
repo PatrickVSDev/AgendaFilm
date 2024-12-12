@@ -172,7 +172,7 @@
             Controls.Add(button1);
             Controls.Add(dataGridView1);
             Name = "SelecionarProdutoAgenda";
-            Text = "SelecionarProdutoAgenda";
+            Text = "Selecionar Produto";
             Load += SelecionarProdutoAgenda_Load;
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();

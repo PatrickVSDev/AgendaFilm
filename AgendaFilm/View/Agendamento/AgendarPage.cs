@@ -127,5 +127,10 @@ namespace AgendaFilm.View.Agendamento
 
             this.Close();
         }
+
+        private void lbPlacaVeiculo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

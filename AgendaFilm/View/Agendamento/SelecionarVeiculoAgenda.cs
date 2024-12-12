@@ -32,6 +32,7 @@ namespace AgendaFilm.View.Agendamento
             InitializeComponent();
             this.clienteId = clienteId;
             agendaPage = mainform;
+
         }
 
         public void ObterDados()

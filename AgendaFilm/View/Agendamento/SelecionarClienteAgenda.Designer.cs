@@ -177,7 +177,7 @@
             Controls.Add(button1);
             Controls.Add(dataGridView1);
             Name = "SelecionarClienteAgenda";
-            Text = "SelecionarClienteAgenda";
+            Text = "Selecionar Cliente";
             Load += SelecionarClienteAgenda_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox2.ResumeLayout(false);

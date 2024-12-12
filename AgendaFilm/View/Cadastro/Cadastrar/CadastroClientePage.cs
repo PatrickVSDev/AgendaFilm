@@ -136,5 +136,10 @@ namespace AgendaFilm
             textNome.Clear();
             textTelefone.Clear();
         }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

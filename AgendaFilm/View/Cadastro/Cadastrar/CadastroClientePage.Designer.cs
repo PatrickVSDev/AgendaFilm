@@ -42,13 +42,14 @@
             textNome = new TextBox();
             groupBox6 = new GroupBox();
             textTelefone = new TextBox();
-            label10 = new Label();
             groupBox12 = new GroupBox();
+            label10 = new Label();
             btSalvar = new Button();
             groupBox3.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox5.SuspendLayout();
             groupBox6.SuspendLayout();
+            groupBox12.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -182,13 +183,12 @@
             // groupBox6
             // 
             groupBox6.Controls.Add(textTelefone);
-            groupBox6.Controls.Add(label10);
             groupBox6.Controls.Add(groupBox12);
             groupBox6.Location = new Point(3, 176);
             groupBox6.Margin = new Padding(3, 2, 3, 2);
             groupBox6.Name = "groupBox6";
             groupBox6.Padding = new Padding(3, 2, 3, 2);
-            groupBox6.Size = new Size(765, 176);
+            groupBox6.Size = new Size(765, 72);
             groupBox6.TabIndex = 12;
             groupBox6.TabStop = false;
             groupBox6.Enter += groupBox6_Enter;
@@ -196,37 +196,39 @@
             // textTelefone
             // 
             textTelefone.BackColor = SystemColors.ButtonHighlight;
-            textTelefone.Location = new Point(121, 20);
+            textTelefone.Location = new Point(192, 24);
             textTelefone.Margin = new Padding(3, 2, 3, 2);
             textTelefone.Name = "textTelefone";
-            textTelefone.Size = new Size(211, 23);
+            textTelefone.Size = new Size(278, 23);
             textTelefone.TabIndex = 28;
+            // 
+            // groupBox12
+            // 
+            groupBox12.Controls.Add(label10);
+            groupBox12.Location = new Point(6, 10);
+            groupBox12.Margin = new Padding(3, 2, 3, 2);
+            groupBox12.Name = "groupBox12";
+            groupBox12.Padding = new Padding(3, 2, 3, 2);
+            groupBox12.Size = new Size(160, 42);
+            groupBox12.TabIndex = 27;
+            groupBox12.TabStop = false;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI Semibold", 11F);
-            label10.Location = new Point(24, 19);
+            label10.Location = new Point(44, 13);
             label10.Name = "label10";
             label10.Size = new Size(67, 20);
             label10.TabIndex = 26;
             label10.Text = "Telefone";
-            // 
-            // groupBox12
-            // 
-            groupBox12.Location = new Point(6, 8);
-            groupBox12.Margin = new Padding(3, 2, 3, 2);
-            groupBox12.Name = "groupBox12";
-            groupBox12.Padding = new Padding(3, 2, 3, 2);
-            groupBox12.Size = new Size(110, 36);
-            groupBox12.TabIndex = 27;
-            groupBox12.TabStop = false;
+            label10.Click += label10_Click;
             // 
             // btSalvar
             // 
             btSalvar.BackColor = Color.SpringGreen;
             btSalvar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            btSalvar.Location = new Point(556, 361);
+            btSalvar.Location = new Point(557, 300);
             btSalvar.Margin = new Padding(3, 2, 3, 2);
             btSalvar.Name = "btSalvar";
             btSalvar.Size = new Size(211, 33);
@@ -240,7 +242,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(777, 401);
+            ClientSize = new Size(777, 347);
             Controls.Add(btSalvar);
             Controls.Add(textDocumento);
             Controls.Add(label3);
@@ -254,7 +256,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "CadastroClientePage";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "CadastroClientePage";
+            Text = "Cadastro de Cliente";
             Load += CadastroClientePage_Load;
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
@@ -264,6 +266,8 @@
             groupBox5.PerformLayout();
             groupBox6.ResumeLayout(false);
             groupBox6.PerformLayout();
+            groupBox12.ResumeLayout(false);
+            groupBox12.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -283,9 +287,9 @@
         private GroupBox groupBox6;
         private TextBox textTelefone;
         private Label label10;
-        private GroupBox groupBox12;
         private Label label2;
         private GroupBox groupBox1;
         private Button btSalvar;
+        private GroupBox groupBox12;
     }
 }

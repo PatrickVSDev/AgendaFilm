@@ -33,23 +33,33 @@
             button4 = new Button();
             groupBox1 = new GroupBox();
             lbNomeCliente = new Label();
+            groupBox4 = new GroupBox();
             lbIdCliente = new Label();
+            groupBox5 = new GroupBox();
             groupBox2 = new GroupBox();
-            lbPlacaVeiculo = new Label();
             lbIdVeiculo = new Label();
             label4 = new Label();
             button3 = new Button();
+            groupBox6 = new GroupBox();
+            groupBox7 = new GroupBox();
+            lbPlacaVeiculo = new Label();
             groupBox3 = new GroupBox();
-            lbNomeProduto = new Label();
-            lbIdProduto = new Label();
             label3 = new Label();
             button2 = new Button();
+            groupBox8 = new GroupBox();
+            lbIdProduto = new Label();
+            groupBox9 = new GroupBox();
+            lbNomeProduto = new Label();
             dateTimePicker1 = new DateTimePicker();
             txtObservacoes = new TextBox();
             label2 = new Label();
             groupBox1.SuspendLayout();
+            groupBox4.SuspendLayout();
             groupBox2.SuspendLayout();
+            groupBox7.SuspendLayout();
             groupBox3.SuspendLayout();
+            groupBox8.SuspendLayout();
+            groupBox9.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -91,9 +101,10 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(lbNomeCliente);
-            groupBox1.Controls.Add(lbIdCliente);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(groupBox4);
+            groupBox1.Controls.Add(groupBox5);
             groupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             groupBox1.Location = new Point(10, 12);
             groupBox1.Name = "groupBox1";
@@ -108,11 +119,21 @@
             lbNomeCliente.BackColor = SystemColors.ButtonHighlight;
             lbNomeCliente.BorderStyle = BorderStyle.FixedSingle;
             lbNomeCliente.ForeColor = SystemColors.ActiveCaptionText;
-            lbNomeCliente.Location = new Point(334, 41);
+            lbNomeCliente.Location = new Point(352, 39);
             lbNomeCliente.Name = "lbNomeCliente";
-            lbNomeCliente.Size = new Size(59, 23);
+            lbNomeCliente.Size = new Size(56, 23);
             lbNomeCliente.TabIndex = 20;
-            lbNomeCliente.Text = "label5";
+            lbNomeCliente.Text = "           ";
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(lbIdCliente);
+            groupBox4.ImeMode = ImeMode.Off;
+            groupBox4.Location = new Point(245, 19);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(87, 53);
+            groupBox4.TabIndex = 21;
+            groupBox4.TabStop = false;
             // 
             // lbIdCliente
             // 
@@ -120,18 +141,28 @@
             lbIdCliente.BackColor = SystemColors.ButtonHighlight;
             lbIdCliente.BorderStyle = BorderStyle.FixedSingle;
             lbIdCliente.ForeColor = SystemColors.ActiveCaptionText;
-            lbIdCliente.Location = new Point(251, 40);
+            lbIdCliente.Location = new Point(14, 20);
             lbIdCliente.Name = "lbIdCliente";
-            lbIdCliente.Size = new Size(59, 23);
+            lbIdCliente.Size = new Size(52, 23);
             lbIdCliente.TabIndex = 19;
-            lbIdCliente.Text = "label5";
+            lbIdCliente.Text = "          \r\n";
+            // 
+            // groupBox5
+            // 
+            groupBox5.ImeMode = ImeMode.Off;
+            groupBox5.Location = new Point(338, 19);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(223, 53);
+            groupBox5.TabIndex = 22;
+            groupBox5.TabStop = false;
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(lbPlacaVeiculo);
             groupBox2.Controls.Add(lbIdVeiculo);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(button3);
+            groupBox2.Controls.Add(groupBox6);
+            groupBox2.Controls.Add(groupBox7);
             groupBox2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             groupBox2.Location = new Point(10, 118);
             groupBox2.Name = "groupBox2";
@@ -140,29 +171,17 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Veículo";
             // 
-            // lbPlacaVeiculo
-            // 
-            lbPlacaVeiculo.AutoSize = true;
-            lbPlacaVeiculo.BackColor = SystemColors.ButtonHighlight;
-            lbPlacaVeiculo.BorderStyle = BorderStyle.FixedSingle;
-            lbPlacaVeiculo.ForeColor = SystemColors.ActiveCaptionText;
-            lbPlacaVeiculo.Location = new Point(334, 42);
-            lbPlacaVeiculo.Name = "lbPlacaVeiculo";
-            lbPlacaVeiculo.Size = new Size(59, 23);
-            lbPlacaVeiculo.TabIndex = 22;
-            lbPlacaVeiculo.Text = "label5";
-            // 
             // lbIdVeiculo
             // 
             lbIdVeiculo.AutoSize = true;
             lbIdVeiculo.BackColor = SystemColors.ButtonHighlight;
             lbIdVeiculo.BorderStyle = BorderStyle.FixedSingle;
             lbIdVeiculo.ForeColor = SystemColors.ActiveCaptionText;
-            lbIdVeiculo.Location = new Point(251, 41);
+            lbIdVeiculo.Location = new Point(259, 40);
             lbIdVeiculo.Name = "lbIdVeiculo";
-            lbIdVeiculo.Size = new Size(59, 23);
+            lbIdVeiculo.Size = new Size(52, 23);
             lbIdVeiculo.TabIndex = 21;
-            lbIdVeiculo.Text = "label5";
+            lbIdVeiculo.Text = "          ";
             // 
             // label4
             // 
@@ -187,12 +206,44 @@
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
+            // groupBox6
+            // 
+            groupBox6.ImeMode = ImeMode.Off;
+            groupBox6.Location = new Point(245, 20);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Size = new Size(87, 53);
+            groupBox6.TabIndex = 22;
+            groupBox6.TabStop = false;
+            // 
+            // groupBox7
+            // 
+            groupBox7.Controls.Add(lbPlacaVeiculo);
+            groupBox7.ImeMode = ImeMode.Off;
+            groupBox7.Location = new Point(338, 20);
+            groupBox7.Name = "groupBox7";
+            groupBox7.Size = new Size(223, 53);
+            groupBox7.TabIndex = 23;
+            groupBox7.TabStop = false;
+            // 
+            // lbPlacaVeiculo
+            // 
+            lbPlacaVeiculo.AutoSize = true;
+            lbPlacaVeiculo.BackColor = SystemColors.ButtonHighlight;
+            lbPlacaVeiculo.BorderStyle = BorderStyle.FixedSingle;
+            lbPlacaVeiculo.ForeColor = SystemColors.ActiveCaptionText;
+            lbPlacaVeiculo.Location = new Point(16, 20);
+            lbPlacaVeiculo.Name = "lbPlacaVeiculo";
+            lbPlacaVeiculo.Size = new Size(56, 23);
+            lbPlacaVeiculo.TabIndex = 22;
+            lbPlacaVeiculo.Text = "           ";
+            lbPlacaVeiculo.Click += lbPlacaVeiculo_Click;
+            // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(lbNomeProduto);
-            groupBox3.Controls.Add(lbIdProduto);
             groupBox3.Controls.Add(label3);
             groupBox3.Controls.Add(button2);
+            groupBox3.Controls.Add(groupBox8);
+            groupBox3.Controls.Add(groupBox9);
             groupBox3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             groupBox3.Location = new Point(10, 237);
             groupBox3.Name = "groupBox3";
@@ -200,30 +251,6 @@
             groupBox3.TabIndex = 23;
             groupBox3.TabStop = false;
             groupBox3.Text = "Produto";
-            // 
-            // lbNomeProduto
-            // 
-            lbNomeProduto.AutoSize = true;
-            lbNomeProduto.BackColor = SystemColors.ButtonHighlight;
-            lbNomeProduto.BorderStyle = BorderStyle.FixedSingle;
-            lbNomeProduto.ForeColor = SystemColors.ActiveCaptionText;
-            lbNomeProduto.Location = new Point(334, 47);
-            lbNomeProduto.Name = "lbNomeProduto";
-            lbNomeProduto.Size = new Size(59, 23);
-            lbNomeProduto.TabIndex = 24;
-            lbNomeProduto.Text = "label5";
-            // 
-            // lbIdProduto
-            // 
-            lbIdProduto.AutoSize = true;
-            lbIdProduto.BackColor = SystemColors.ButtonHighlight;
-            lbIdProduto.BorderStyle = BorderStyle.FixedSingle;
-            lbIdProduto.ForeColor = SystemColors.ActiveCaptionText;
-            lbIdProduto.Location = new Point(251, 46);
-            lbIdProduto.Name = "lbIdProduto";
-            lbIdProduto.Size = new Size(59, 23);
-            lbIdProduto.TabIndex = 23;
-            lbIdProduto.Text = "label5";
             // 
             // label3
             // 
@@ -247,6 +274,50 @@
             button2.Text = "Selecionar Produto";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
+            // 
+            // groupBox8
+            // 
+            groupBox8.Controls.Add(lbIdProduto);
+            groupBox8.ImeMode = ImeMode.Off;
+            groupBox8.Location = new Point(245, 28);
+            groupBox8.Name = "groupBox8";
+            groupBox8.Size = new Size(87, 53);
+            groupBox8.TabIndex = 23;
+            groupBox8.TabStop = false;
+            // 
+            // lbIdProduto
+            // 
+            lbIdProduto.AutoSize = true;
+            lbIdProduto.BackColor = SystemColors.ButtonHighlight;
+            lbIdProduto.BorderStyle = BorderStyle.FixedSingle;
+            lbIdProduto.ForeColor = SystemColors.ActiveCaptionText;
+            lbIdProduto.Location = new Point(14, 21);
+            lbIdProduto.Name = "lbIdProduto";
+            lbIdProduto.Size = new Size(52, 23);
+            lbIdProduto.TabIndex = 23;
+            lbIdProduto.Text = "          ";
+            // 
+            // groupBox9
+            // 
+            groupBox9.Controls.Add(lbNomeProduto);
+            groupBox9.ImeMode = ImeMode.Off;
+            groupBox9.Location = new Point(338, 28);
+            groupBox9.Name = "groupBox9";
+            groupBox9.Size = new Size(223, 53);
+            groupBox9.TabIndex = 25;
+            groupBox9.TabStop = false;
+            // 
+            // lbNomeProduto
+            // 
+            lbNomeProduto.AutoSize = true;
+            lbNomeProduto.BackColor = SystemColors.ButtonHighlight;
+            lbNomeProduto.BorderStyle = BorderStyle.FixedSingle;
+            lbNomeProduto.ForeColor = SystemColors.ActiveCaptionText;
+            lbNomeProduto.Location = new Point(15, 21);
+            lbNomeProduto.Name = "lbNomeProduto";
+            lbNomeProduto.Size = new Size(56, 23);
+            lbNomeProduto.TabIndex = 24;
+            lbNomeProduto.Text = "           ";
             // 
             // dateTimePicker1
             // 
@@ -290,14 +361,22 @@
             Controls.Add(button4);
             Controls.Add(groupBox1);
             Name = "AgendarPage";
-            Text = "AgendarPage";
+            Text = "Página Agenda";
             Load += AgendarPage_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            groupBox7.ResumeLayout(false);
+            groupBox7.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
+            groupBox8.ResumeLayout(false);
+            groupBox8.PerformLayout();
+            groupBox9.ResumeLayout(false);
+            groupBox9.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -322,5 +401,11 @@
         public Label lbIdVeiculo;
         public Label lbNomeProduto;
         public Label lbIdProduto;
+        private GroupBox groupBox4;
+        private GroupBox groupBox5;
+        private GroupBox groupBox6;
+        private GroupBox groupBox7;
+        private GroupBox groupBox8;
+        private GroupBox groupBox9;
     }
 }
