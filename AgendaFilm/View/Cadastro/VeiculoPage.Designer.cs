@@ -115,39 +115,14 @@
 
             // radioButton5
             // 
-            radioButton5.AutoSize = true;
-            radioButton5.Location = new Point(259, 17);
-            radioButton5.Margin = new Padding(3, 2, 3, 2);
-            radioButton5.Name = "radioButton5";
-            radioButton5.Size = new Size(36, 19);
-            radioButton5.TabIndex = 2;
-            radioButton5.TabStop = true;
-            radioButton5.Text = "ID";
-            radioButton5.UseVisualStyleBackColor = true;
+
             // 
             // radioButton3
             // 
-            radioButton3.AutoSize = true;
-            radioButton3.Location = new Point(299, 17);
-            radioButton3.Margin = new Padding(3, 2, 3, 2);
-            radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(53, 19);
-            radioButton3.TabIndex = 28;
-            radioButton3.TabStop = true;
-            radioButton3.Text = "Placa";
-            radioButton3.UseVisualStyleBackColor = true;
+
             // 
             // radioButton6
-            // 
-            radioButton6.AutoSize = true;
-            radioButton6.Location = new Point(197, 17);
-            radioButton6.Margin = new Padding(3, 2, 3, 2);
-            radioButton6.Name = "radioButton6";
-            radioButton6.Size = new Size(58, 19);
-            radioButton6.TabIndex = 3;
-            radioButton6.TabStop = true;
-            radioButton6.Text = "Nome";
-            radioButton6.UseVisualStyleBackColor = true;
+            //
 
             // 
             // label2
@@ -162,13 +137,6 @@
             // 
             // textBoxPesquisar
             // 
-
-            textBox1.BackColor = SystemColors.ButtonHighlight;
-            textBox1.Location = new Point(198, 48);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(292, 23);
-            textBox1.TabIndex = 1;
 
             // 
             // button4
