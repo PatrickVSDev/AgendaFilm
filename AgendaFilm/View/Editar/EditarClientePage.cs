@@ -54,5 +54,10 @@ namespace AgendaFilm.View.Editar
             RefreshGrid?.Invoke();
             this.Close();
         }
+
+        private void textTelefone_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
