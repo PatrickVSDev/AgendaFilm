@@ -53,9 +53,10 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(501, 0);
+            button1.Location = new Point(393, 0);
+            button1.Margin = new Padding(4);
             button1.Name = "button1";
-            button1.Size = new Size(219, 219);
+            button1.Size = new Size(274, 274);
             button1.TabIndex = 0;
             button1.Text = "Cadastros";
             button1.TextAlign = ContentAlignment.BottomCenter;
@@ -67,8 +68,9 @@
             // 
             pictureBox1.BackColor = SystemColors.ActiveCaption;
             pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1923, 219);
+            pictureBox1.Size = new Size(2404, 274);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
@@ -81,9 +83,10 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI Semibold", 12F);
             button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(725, 0);
+            button2.Location = new Point(673, 0);
+            button2.Margin = new Padding(4);
             button2.Name = "button2";
-            button2.Size = new Size(229, 219);
+            button2.Size = new Size(286, 274);
             button2.TabIndex = 2;
             button2.Text = "Agendamentos";
             button2.TextAlign = ContentAlignment.BottomCenter;
@@ -99,9 +102,10 @@
             Relatorios.FlatStyle = FlatStyle.Flat;
             Relatorios.Font = new Font("Segoe UI Semibold", 12F);
             Relatorios.Image = (Image)resources.GetObject("Relatorios.Image");
-            Relatorios.Location = new Point(960, 0);
+            Relatorios.Location = new Point(967, 0);
+            Relatorios.Margin = new Padding(4);
             Relatorios.Name = "Relatorios";
-            Relatorios.Size = new Size(243, 219);
+            Relatorios.Size = new Size(304, 274);
             Relatorios.TabIndex = 3;
             Relatorios.Text = "Relatórios";
             Relatorios.TextAlign = ContentAlignment.BottomCenter;
@@ -117,9 +121,10 @@
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI Semibold", 12F);
             button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(1209, 0);
+            button3.Location = new Point(1278, 0);
+            button3.Margin = new Padding(4);
             button3.Name = "button3";
-            button3.Size = new Size(232, 219);
+            button3.Size = new Size(290, 274);
             button3.TabIndex = 4;
             button3.Text = "Lembretes";
             button3.TextAlign = ContentAlignment.BottomCenter;
@@ -130,7 +135,8 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.Screenshot_1_removebg_preview;
-            pictureBox2.Location = new Point(626, 415);
+            pictureBox2.Location = new Point(603, 519);
+            pictureBox2.Margin = new Padding(4);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(668, 352);
             pictureBox2.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -143,9 +149,10 @@
             lDataMenu.AutoSize = true;
             lDataMenu.BackColor = SystemColors.ActiveCaption;
             lDataMenu.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lDataMenu.Location = new Point(0, 963);
+            lDataMenu.Location = new Point(0, 1204);
+            lDataMenu.Margin = new Padding(4, 0, 4, 0);
             lDataMenu.Name = "lDataMenu";
-            lDataMenu.Size = new Size(0, 28);
+            lDataMenu.Size = new Size(0, 32);
             lDataMenu.TabIndex = 6;
             // 
             // timer1
@@ -159,19 +166,20 @@
             lbUsuarioLogado.AutoSize = true;
             lbUsuarioLogado.BackColor = SystemColors.ActiveCaption;
             lbUsuarioLogado.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbUsuarioLogado.Location = new Point(0, 219);
+            lbUsuarioLogado.Location = new Point(0, 274);
+            lbUsuarioLogado.Margin = new Padding(4, 0, 4, 0);
             lbUsuarioLogado.Name = "lbUsuarioLogado";
-            lbUsuarioLogado.Size = new Size(70, 28);
+            lbUsuarioLogado.Size = new Size(83, 32);
             lbUsuarioLogado.TabIndex = 7;
             lbUsuarioLogado.Text = "label1";
             lbUsuarioLogado.Click += lbUsuarioLogado_Click;
             // 
             // MenuPage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(1924, 1055);
+            ClientSize = new Size(1924, 1050);
             Controls.Add(lbUsuarioLogado);
             Controls.Add(lDataMenu);
             Controls.Add(pictureBox2);
@@ -180,7 +188,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(pictureBox1);
-            Margin = new Padding(3, 4, 3, 4);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "MenuPage";
             Text = "PaginaRestrita";
             WindowState = FormWindowState.Maximized;
