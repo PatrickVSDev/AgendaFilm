@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,9 +20,11 @@ namespace AgendaFilm
 
         public MenuPage()
         {
+
             InitializeComponent();
             this.FormClosed += MenuPage_FormClosed;
             lbUsuarioLogado.Text = repositoryFuncionario.getNameById(Global.funcionarioLogado);
+           
         }
 
         DateTime time;
@@ -46,10 +47,11 @@ namespace AgendaFilm
         {
 
         }
+        
 
         private void PaginaRestrita_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -61,8 +63,13 @@ namespace AgendaFilm
         {
             AgendamentoPage novoFormulario = new AgendamentoPage(); // Substitua "Form2" pelo nome do seu formulário
             novoFormulario.ShowDialog();
-        }
 
+          
+        }
+        private void AplicarEstilo()
+        {
+           
+        }
         private void Relatorios_Click(object sender, EventArgs e)
         {
 
