@@ -16,5 +16,10 @@ namespace AgendaFilm.View.Editar
         {
             InitializeComponent();
         }
+
+        private void EditarProdutoPage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

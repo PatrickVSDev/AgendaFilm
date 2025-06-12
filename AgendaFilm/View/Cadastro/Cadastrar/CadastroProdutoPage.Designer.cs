@@ -113,14 +113,12 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(comboBoxFornecedor);
-            groupBox1.Controls.Add(textMarca);
-            groupBox1.Controls.Add(groupBox7);
             groupBox1.Controls.Add(groupBox3);
             groupBox1.Location = new Point(2, 131);
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(765, 127);
+            groupBox1.Size = new Size(765, 49);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
             // 
@@ -134,7 +132,7 @@
             // 
             // textMarca
             // 
-            textMarca.Location = new Point(172, 84);
+            textMarca.Location = new Point(176, 199);
             textMarca.Margin = new Padding(3, 2, 3, 2);
             textMarca.Name = "textMarca";
             textMarca.Size = new Size(210, 23);
@@ -143,7 +141,7 @@
             // groupBox7
             // 
             groupBox7.Controls.Add(label5);
-            groupBox7.Location = new Point(3, 70);
+            groupBox7.Location = new Point(7, 186);
             groupBox7.Margin = new Padding(3, 2, 3, 2);
             groupBox7.Name = "groupBox7";
             groupBox7.Padding = new Padding(3, 2, 3, 2);
@@ -242,6 +240,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(777, 401);
             Controls.Add(button2);
+            Controls.Add(textMarca);
+            Controls.Add(groupBox7);
             Controls.Add(groupBox6);
             Controls.Add(groupBox1);
             Controls.Add(groupBox5);
@@ -256,7 +256,6 @@
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
             groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             groupBox7.ResumeLayout(false);
             groupBox7.PerformLayout();
             groupBox3.ResumeLayout(false);
