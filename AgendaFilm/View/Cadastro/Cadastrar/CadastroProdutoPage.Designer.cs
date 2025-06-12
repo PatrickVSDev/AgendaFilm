@@ -72,11 +72,11 @@
             // 
             groupBox5.Controls.Add(groupBox4);
             groupBox5.Controls.Add(textNome);
-            groupBox5.Location = new Point(2, 44);
+            groupBox5.Location = new Point(6, 44);
             groupBox5.Margin = new Padding(3, 2, 3, 2);
             groupBox5.Name = "groupBox5";
             groupBox5.Padding = new Padding(3, 2, 3, 2);
-            groupBox5.Size = new Size(765, 62);
+            groupBox5.Size = new Size(761, 62);
             groupBox5.TabIndex = 11;
             groupBox5.TabStop = false;
             // 
@@ -116,11 +116,11 @@
             groupBox1.Controls.Add(textMarca);
             groupBox1.Controls.Add(groupBox7);
             groupBox1.Controls.Add(groupBox3);
-            groupBox1.Location = new Point(2, 131);
+            groupBox1.Location = new Point(6, 110);
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(765, 127);
+            groupBox1.Size = new Size(765, 124);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
             // 
@@ -164,7 +164,7 @@
             // groupBox3
             // 
             groupBox3.Controls.Add(label3);
-            groupBox3.Location = new Point(4, 8);
+            groupBox3.Location = new Point(10, 17);
             groupBox3.Margin = new Padding(3, 2, 3, 2);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(3, 2, 3, 2);
@@ -187,7 +187,7 @@
             // 
             groupBox6.Controls.Add(textGarantia);
             groupBox6.Controls.Add(groupBox11);
-            groupBox6.Location = new Point(2, 276);
+            groupBox6.Location = new Point(6, 252);
             groupBox6.Margin = new Padding(3, 2, 3, 2);
             groupBox6.Name = "groupBox6";
             groupBox6.Padding = new Padding(3, 2, 3, 2);

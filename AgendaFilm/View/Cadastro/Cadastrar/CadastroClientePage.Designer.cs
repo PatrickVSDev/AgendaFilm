@@ -55,9 +55,10 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.PowderBlue;
             label1.Font = new Font("Nirmala UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(2, 7);
+            label1.Location = new Point(4, 4);
             label1.Name = "label1";
             label1.Size = new Size(268, 37);
             label1.TabIndex = 0;
@@ -109,7 +110,7 @@
             // 
             groupBox3.Controls.Add(label2);
             groupBox3.Controls.Add(groupBox1);
-            groupBox3.Location = new Point(2, 35);
+            groupBox3.Location = new Point(8, 35);
             groupBox3.Margin = new Padding(3, 2, 3, 2);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(3, 2, 3, 2);
@@ -163,7 +164,7 @@
             // groupBox5
             // 
             groupBox5.Controls.Add(textNome);
-            groupBox5.Location = new Point(2, 105);
+            groupBox5.Location = new Point(8, 105);
             groupBox5.Margin = new Padding(3, 2, 3, 2);
             groupBox5.Name = "groupBox5";
             groupBox5.Padding = new Padding(3, 2, 3, 2);
@@ -184,7 +185,7 @@
             // 
             groupBox6.Controls.Add(textTelefone);
             groupBox6.Controls.Add(groupBox12);
-            groupBox6.Location = new Point(3, 176);
+            groupBox6.Location = new Point(9, 176);
             groupBox6.Margin = new Padding(3, 2, 3, 2);
             groupBox6.Name = "groupBox6";
             groupBox6.Padding = new Padding(3, 2, 3, 2);

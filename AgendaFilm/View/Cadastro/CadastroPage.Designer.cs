@@ -45,9 +45,10 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = SystemColors.ActiveCaption;
-            pictureBox1.Location = new Point(4, 7);
+            pictureBox1.Location = new Point(4, 5);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(243, 760);
+            pictureBox1.Size = new Size(213, 570);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -56,9 +57,10 @@
             pictureBox2.BackColor = SystemColors.ActiveCaption;
             pictureBox2.ErrorImage = (Image)resources.GetObject("pictureBox2.ErrorImage");
             pictureBox2.ImageLocation = "500";
-            pictureBox2.Location = new Point(4, 4);
+            pictureBox2.Location = new Point(4, 3);
+            pictureBox2.Margin = new Padding(3, 2, 3, 2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(1305, 117);
+            pictureBox2.Size = new Size(1142, 88);
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             // 
@@ -71,9 +73,10 @@
             button1.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
             button1.Image = (Image)resources.GetObject("button1.Image");
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(9, 613);
+            button1.Location = new Point(8, 460);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(234, 146);
+            button1.Size = new Size(205, 110);
             button1.TabIndex = 2;
             button1.Text = "Funcionários";
             button1.TextAlign = ContentAlignment.MiddleRight;
@@ -89,9 +92,10 @@
             button2.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
             button2.Image = (Image)resources.GetObject("button2.Image");
             button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(13, 118);
+            button2.Location = new Point(11, 88);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(234, 143);
+            button2.Size = new Size(205, 107);
             button2.TabIndex = 3;
             button2.Text = "Clientes";
             button2.UseVisualStyleBackColor = false;
@@ -106,9 +110,10 @@
             Veíc.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
             Veíc.Image = (Image)resources.GetObject("Veíc.Image");
             Veíc.ImageAlign = ContentAlignment.MiddleLeft;
-            Veíc.Location = new Point(12, 249);
+            Veíc.Location = new Point(10, 187);
+            Veíc.Margin = new Padding(3, 2, 3, 2);
             Veíc.Name = "Veíc";
-            Veíc.Size = new Size(234, 135);
+            Veíc.Size = new Size(205, 101);
             Veíc.TabIndex = 4;
             Veíc.Text = " Veículos";
             Veíc.UseVisualStyleBackColor = false;
@@ -116,9 +121,10 @@
             // 
             // button3
             // 
-            button3.Location = new Point(705, 368);
+            button3.Location = new Point(617, 276);
+            button3.Margin = new Padding(3, 2, 3, 2);
             button3.Name = "button3";
-            button3.Size = new Size(8, 8);
+            button3.Size = new Size(7, 6);
             button3.TabIndex = 5;
             button3.Text = "button3";
             button3.UseVisualStyleBackColor = true;
@@ -131,9 +137,10 @@
             button4.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
             button4.Image = (Image)resources.GetObject("button4.Image");
             button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(9, 371);
+            button4.Location = new Point(8, 278);
+            button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
-            button4.Size = new Size(234, 135);
+            button4.Size = new Size(205, 101);
             button4.TabIndex = 6;
             button4.Text = "Produto";
             button4.UseVisualStyleBackColor = false;
@@ -147,9 +154,10 @@
             button5.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
             button5.Image = (Image)resources.GetObject("button5.Image");
             button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.Location = new Point(9, 495);
+            button5.Location = new Point(8, 371);
+            button5.Margin = new Padding(3, 2, 3, 2);
             button5.Name = "button5";
-            button5.Size = new Size(234, 135);
+            button5.Size = new Size(205, 101);
             button5.TabIndex = 7;
             button5.Text = "     Fornecedor";
             button5.UseVisualStyleBackColor = false;
@@ -162,16 +170,17 @@
             lbUsuarioLogado.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lbUsuarioLogado.Location = new Point(0, 1);
             lbUsuarioLogado.Name = "lbUsuarioLogado";
-            lbUsuarioLogado.Size = new Size(0, 28);
+            lbUsuarioLogado.Size = new Size(0, 21);
             lbUsuarioLogado.TabIndex = 8;
             lbUsuarioLogado.Click += lbUsuarioLogado_Click;
             // 
             // CadastroPage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(1313, 771);
+            ClientSize = new Size(1149, 578);
+            ControlBox = false;
             Controls.Add(lbUsuarioLogado);
             Controls.Add(button5);
             Controls.Add(button4);
@@ -181,6 +190,10 @@
             Controls.Add(pictureBox2);
             Controls.Add(button1);
             Controls.Add(pictureBox1);
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "CadastroPage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro";
