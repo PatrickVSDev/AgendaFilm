@@ -47,16 +47,20 @@ namespace AgendaFilm
         public CadastroPage()
         {
             InitializeComponent();
-
+            InitializeComponent();
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(318, 180);
             this.Shown += CadastroPage_Shown;
             this.FormClosed += CadastroPage_FormClosed;
             this.FormBorderStyle = FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.ControlBox = false;
-            this.StartPosition = FormStartPosition.CenterScreen;
 
             InicializarBotaoFechar();
+
+
+
         }
 
         private void pictureBox2_Click(object sender, EventArgs e) { }
@@ -107,7 +111,7 @@ namespace AgendaFilm
                 botaoSelecionado.ForeColor = SystemColors.ControlText;
             }
 
-           
+
         }
 
         private void AbrirFormulario(Form novoFormulario, Point localizacao)
@@ -124,9 +128,10 @@ namespace AgendaFilm
             formularioAberto.Show();
         }
 
-        private void CadastroPage_Load(object sender, EventArgs e) {
+        private void CadastroPage_Load(object sender, EventArgs e)
+        {
 
-            
+
 
 
         }
@@ -135,9 +140,9 @@ namespace AgendaFilm
         {
 
 
-        
+
             clientePage = new ClientePage();
-            AbrirFormulario(clientePage, new Point(this.Location.X + 237, this.Location.Y + 116));
+            AbrirFormulario(clientePage, new Point(this.Location.X + 217, this.Location.Y + 92));
         }
 
         private void CadastroPage_FormClosed(object sender, FormClosedEventArgs e)
@@ -147,7 +152,7 @@ namespace AgendaFilm
                 formularioAberto.Close();
             }
 
-            
+
 
             if (clientePage != null && !clientePage.IsDisposed)
             {
@@ -198,5 +203,10 @@ namespace AgendaFilm
 
 
         private void lbUsuarioLogado_Click(object sender, EventArgs e) { }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
