@@ -36,47 +36,50 @@
             Veíc = new Button();
             button3 = new Button();
             button4 = new Button();
-            button5 = new Button();
             lbUsuarioLogado = new Label();
+            button5 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = SystemColors.ActiveCaption;
-            pictureBox1.Location = new Point(4, 5);
+            pictureBox1.BackColor = Color.DarkSlateGray;
+            pictureBox1.Location = new Point(4, 3);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(213, 570);
+            pictureBox1.Size = new Size(213, 673);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // pictureBox2
             // 
-            pictureBox2.BackColor = SystemColors.ActiveCaption;
+            pictureBox2.BackColor = Color.PowderBlue;
             pictureBox2.ErrorImage = (Image)resources.GetObject("pictureBox2.ErrorImage");
             pictureBox2.ImageLocation = "500";
-            pictureBox2.Location = new Point(4, 3);
+            pictureBox2.Location = new Point(217, 3);
             pictureBox2.Margin = new Padding(3, 2, 3, 2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(1142, 88);
+            pictureBox2.Size = new Size(1068, 96);
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             // 
             // button1
             // 
-            button1.BackColor = SystemColors.ActiveCaption;
+            button1.BackColor = Color.DarkSlateGray;
             button1.BackgroundImageLayout = ImageLayout.None;
-            button1.FlatAppearance.BorderColor = SystemColors.ActiveCaption;
+            button1.FlatAppearance.BorderColor = Color.Teal;
+            button1.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
+            button1.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
             button1.Image = (Image)resources.GetObject("button1.Image");
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(8, 460);
+            button1.Location = new Point(4, 555);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(205, 110);
+            button1.Size = new Size(212, 120);
             button1.TabIndex = 2;
             button1.Text = "Funcionários";
             button1.TextAlign = ContentAlignment.MiddleRight;
@@ -85,17 +88,19 @@
             // 
             // button2
             // 
-            button2.BackColor = SystemColors.ActiveCaption;
+            button2.BackColor = Color.DarkSlateGray;
             button2.BackgroundImageLayout = ImageLayout.None;
-            button2.FlatAppearance.BorderColor = SystemColors.ActiveCaption;
+            button2.FlatAppearance.BorderColor = Color.Teal;
+            button2.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
+            button2.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
             button2.Image = (Image)resources.GetObject("button2.Image");
             button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(11, 88);
+            button2.Location = new Point(4, 93);
             button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(205, 107);
+            button2.Size = new Size(212, 113);
             button2.TabIndex = 3;
             button2.Text = "Clientes";
             button2.UseVisualStyleBackColor = false;
@@ -103,17 +108,19 @@
             // 
             // Veíc
             // 
-            Veíc.BackColor = SystemColors.ActiveCaption;
+            Veíc.BackColor = Color.DarkSlateGray;
             Veíc.BackgroundImageLayout = ImageLayout.None;
-            Veíc.FlatAppearance.BorderColor = SystemColors.ActiveCaption;
+            Veíc.FlatAppearance.BorderColor = Color.Teal;
+            Veíc.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
+            Veíc.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
             Veíc.FlatStyle = FlatStyle.Flat;
             Veíc.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
             Veíc.Image = (Image)resources.GetObject("Veíc.Image");
             Veíc.ImageAlign = ContentAlignment.MiddleLeft;
-            Veíc.Location = new Point(10, 187);
+            Veíc.Location = new Point(4, 205);
             Veíc.Margin = new Padding(3, 2, 3, 2);
             Veíc.Name = "Veíc";
-            Veíc.Size = new Size(205, 101);
+            Veíc.Size = new Size(212, 115);
             Veíc.TabIndex = 4;
             Veíc.Text = " Veículos";
             Veíc.UseVisualStyleBackColor = false;
@@ -131,37 +138,22 @@
             // 
             // button4
             // 
-            button4.BackColor = SystemColors.ActiveCaption;
-            button4.FlatAppearance.BorderColor = SystemColors.ActiveCaption;
+            button4.BackColor = Color.DarkSlateGray;
+            button4.FlatAppearance.BorderColor = Color.Teal;
+            button4.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
+            button4.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
             button4.Image = (Image)resources.GetObject("button4.Image");
             button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(8, 278);
+            button4.Location = new Point(4, 319);
             button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
-            button4.Size = new Size(205, 101);
+            button4.Size = new Size(212, 111);
             button4.TabIndex = 6;
             button4.Text = "Produto";
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
-            // 
-            // button5
-            // 
-            button5.BackColor = SystemColors.ActiveCaption;
-            button5.FlatAppearance.BorderColor = SystemColors.ActiveCaption;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
-            button5.Image = (Image)resources.GetObject("button5.Image");
-            button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.Location = new Point(8, 371);
-            button5.Margin = new Padding(3, 2, 3, 2);
-            button5.Name = "button5";
-            button5.Size = new Size(205, 101);
-            button5.TabIndex = 7;
-            button5.Text = "     Fornecedor";
-            button5.UseVisualStyleBackColor = false;
-            button5.Click += button5_Click;
             // 
             // lbUsuarioLogado
             // 
@@ -174,25 +166,44 @@
             lbUsuarioLogado.TabIndex = 8;
             lbUsuarioLogado.Click += lbUsuarioLogado_Click;
             // 
+            // button5
+            // 
+            button5.BackColor = Color.DarkSlateGray;
+            button5.FlatAppearance.BorderColor = Color.LightSeaGreen;
+            button5.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
+            button5.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
+            button5.Image = (Image)resources.GetObject("button5.Image");
+            button5.ImageAlign = ContentAlignment.MiddleLeft;
+            button5.Location = new Point(4, 429);
+            button5.Margin = new Padding(3, 2, 3, 2);
+            button5.Name = "button5";
+            button5.Size = new Size(213, 127);
+            button5.TabIndex = 7;
+            button5.Text = "     Fornecedor";
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
+            // 
             // CadastroPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(1149, 578);
+            ClientSize = new Size(1288, 680);
             ControlBox = false;
+            Controls.Add(pictureBox2);
             Controls.Add(lbUsuarioLogado);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(Veíc);
             Controls.Add(button2);
-            Controls.Add(pictureBox2);
             Controls.Add(button1);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
+            Location = new Point(10, 400);
             Margin = new Padding(3, 2, 3, 2);
-            MaximizeBox = false;
             MinimizeBox = false;
             Name = "CadastroPage";
             StartPosition = FormStartPosition.CenterScreen;
@@ -213,7 +224,7 @@
         private Button Veíc;
         private Button button3;
         private Button button4;
-        private Button button5;
         private Label lbUsuarioLogado;
+        private Button button5;
     }
 }

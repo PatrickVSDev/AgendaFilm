@@ -19,7 +19,7 @@ namespace AgendaFilm
         Actions actions = new Actions();
         FuncionarioRepositorio repositoryFuncionario = new FuncionarioRepositorio();
 
-        private Button btnFechar; // Botão de fechar personalizado
+        private Button btnFechar;
         DateTime time;
 
         public MenuPage()
@@ -29,16 +29,17 @@ namespace AgendaFilm
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Size = new Size(1280, 680);
-            this.WindowState = FormWindowState.Normal; // <<< Corrige tela cheia
-            this.MaximumSize = this.Size;              // <<< Impede maximizar
-            this.MinimumSize = this.Size;              // <<< Impede redimensionar
+            this.WindowState = FormWindowState.Normal;
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
             this.FormClosed += MenuPage_FormClosed;
 
             lbUsuarioLogado.Text = repositoryFuncionario.getNameById(Global.funcionarioLogado);
 
             InicializarBotaoFechar();
-        }
 
+            // >>> NÃO chamar o arredondamento aqui
+        }
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -78,7 +79,6 @@ namespace AgendaFilm
             btnFechar.BringToFront();
         }
 
-        // Impede que o formulário seja movido
         protected override void WndProc(ref Message m)
         {
             const int WM_NCLBUTTONDOWN = 0xA1;
@@ -94,6 +94,18 @@ namespace AgendaFilm
         private static extern IntPtr CreateRoundRectRgn(
             int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
             int nWidthEllipse, int nHeightEllipse);
+
+        // >>> MÉTODO PARA ARREDONDAR A PICTUREBOX
+        private void ArredondarPictureBox(PictureBox pic, int raio)
+        {
+            pic.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pic.Width, pic.Height, raio, raio));
+        }
+
+        // >>> CHAMAR ARREDONDAMENTO NO LOAD DO FORM
+        private void MenuPage_Load(object sender, EventArgs e)
+        {
+            ArredondarPictureBox(pictureBox4, 20);
+        }
 
         private void pictureBox1_Click(object sender, EventArgs e) { }
 
@@ -135,5 +147,16 @@ namespace AgendaFilm
         private void lbUsuarioLogado_Click(object sender, EventArgs e) { }
 
         private void pictureBox3_Click(object sender, EventArgs e) { }
+
+        private void label1_Click(object sender, EventArgs e) { }
+
+        private void label3_Click(object sender, EventArgs e) { }
+
+        private void pictureBox4_Click(object sender, EventArgs e) { }
+
+        private void pictureBox3_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
