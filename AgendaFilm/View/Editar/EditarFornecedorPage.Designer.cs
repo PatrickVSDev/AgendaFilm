@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            btSalvar = new Button();
             groupBox7 = new GroupBox();
             groupBox8 = new GroupBox();
             label7 = new Label();
-            textBox6 = new TextBox();
-            textBox3 = new TextBox();
+            textEmail = new TextBox();
+            textTelefone = new TextBox();
             label4 = new Label();
             groupBox20 = new GroupBox();
             groupBox1 = new GroupBox();
-            textBox2 = new TextBox();
+            textDocumento = new TextBox();
             groupBox3 = new GroupBox();
             label3 = new Label();
-            textBox1 = new TextBox();
+            textNome = new TextBox();
             groupBox2 = new GroupBox();
             label2 = new Label();
             label1 = new Label();
@@ -54,22 +54,23 @@
             groupBox4.SuspendLayout();
             SuspendLayout();
             // 
-            // button1
+            // btSalvar
             // 
-            button1.BackColor = Color.SpringGreen;
-            button1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            button1.Location = new Point(556, 295);
-            button1.Margin = new Padding(3, 2, 3, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(211, 33);
-            button1.TabIndex = 20;
-            button1.Text = "Salvar";
-            button1.UseVisualStyleBackColor = false;
+            btSalvar.BackColor = Color.SpringGreen;
+            btSalvar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            btSalvar.Location = new Point(556, 295);
+            btSalvar.Margin = new Padding(3, 2, 3, 2);
+            btSalvar.Name = "btSalvar";
+            btSalvar.Size = new Size(211, 33);
+            btSalvar.TabIndex = 20;
+            btSalvar.Text = "Salvar";
+            btSalvar.UseVisualStyleBackColor = false;
+            btSalvar.Click += btSalvar_Click;
             // 
             // groupBox7
             // 
             groupBox7.Controls.Add(groupBox8);
-            groupBox7.Controls.Add(textBox6);
+            groupBox7.Controls.Add(textEmail);
             groupBox7.Location = new Point(2, 197);
             groupBox7.Margin = new Padding(3, 2, 3, 2);
             groupBox7.Name = "groupBox7";
@@ -100,22 +101,22 @@
             label7.TabIndex = 23;
             label7.Text = "Email";
             // 
-            // textBox6
+            // textEmail
             // 
-            textBox6.Location = new Point(172, 21);
-            textBox6.Margin = new Padding(3, 2, 3, 2);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(576, 23);
-            textBox6.TabIndex = 3;
+            textEmail.Location = new Point(172, 21);
+            textEmail.Margin = new Padding(3, 2, 3, 2);
+            textEmail.Name = "textEmail";
+            textEmail.Size = new Size(576, 23);
+            textEmail.TabIndex = 3;
             // 
-            // textBox3
+            // textTelefone
             // 
-            textBox3.BackColor = SystemColors.ButtonHighlight;
-            textBox3.Location = new Point(171, 22);
-            textBox3.Margin = new Padding(3, 2, 3, 2);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(265, 23);
-            textBox3.TabIndex = 28;
+            textTelefone.BackColor = SystemColors.ButtonHighlight;
+            textTelefone.Location = new Point(171, 22);
+            textTelefone.Margin = new Padding(3, 2, 3, 2);
+            textTelefone.Name = "textTelefone";
+            textTelefone.Size = new Size(265, 23);
+            textTelefone.TabIndex = 28;
             // 
             // label4
             // 
@@ -141,9 +142,9 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox2);
+            groupBox1.Controls.Add(textDocumento);
             groupBox1.Controls.Add(groupBox3);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(textNome);
             groupBox1.Controls.Add(groupBox2);
             groupBox1.Location = new Point(2, 43);
             groupBox1.Margin = new Padding(3, 2, 3, 2);
@@ -153,14 +154,14 @@
             groupBox1.TabIndex = 17;
             groupBox1.TabStop = false;
             // 
-            // textBox2
+            // textDocumento
             // 
-            textBox2.Location = new Point(552, 24);
-            textBox2.Margin = new Padding(3, 2, 3, 2);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(196, 23);
-            textBox2.TabIndex = 4;
-            textBox2.TextChanged += textBox2_TextChanged;
+            textDocumento.Location = new Point(552, 24);
+            textDocumento.Margin = new Padding(3, 2, 3, 2);
+            textDocumento.Name = "textDocumento";
+            textDocumento.Size = new Size(196, 23);
+            textDocumento.TabIndex = 4;
+            textDocumento.TextChanged += textBox2_TextChanged;
             // 
             // groupBox3
             // 
@@ -183,13 +184,13 @@
             label3.TabIndex = 2;
             label3.Text = "CNPJ";
             // 
-            // textBox1
+            // textNome
             // 
-            textBox1.Location = new Point(171, 25);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(215, 23);
-            textBox1.TabIndex = 3;
+            textNome.Location = new Point(171, 25);
+            textNome.Margin = new Padding(3, 2, 3, 2);
+            textNome.Name = "textNome";
+            textNome.Size = new Size(215, 23);
+            textNome.TabIndex = 3;
             // 
             // groupBox2
             // 
@@ -225,7 +226,7 @@
             // 
             // groupBox4
             // 
-            groupBox4.Controls.Add(textBox3);
+            groupBox4.Controls.Add(textTelefone);
             groupBox4.Controls.Add(groupBox20);
             groupBox4.Location = new Point(2, 114);
             groupBox4.Name = "groupBox4";
@@ -239,7 +240,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(777, 347);
-            Controls.Add(button1);
+            Controls.Add(btSalvar);
             Controls.Add(groupBox7);
             Controls.Add(groupBox1);
             Controls.Add(label1);
@@ -249,6 +250,7 @@
             Name = "EditarFornecedorPage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EditarFornecedorPage";
+            Load += EditarFornecedorPage_Load;
             groupBox7.ResumeLayout(false);
             groupBox7.PerformLayout();
             groupBox8.ResumeLayout(false);
@@ -269,19 +271,19 @@
 
         #endregion
 
-        private Button button1;
+        private Button btSalvar;
         private GroupBox groupBox7;
         private GroupBox groupBox8;
         private Label label7;
-        private TextBox textBox6;
-        private TextBox textBox3;
+        private TextBox textEmail;
+        private TextBox textTelefone;
         private Label label4;
         private GroupBox groupBox20;
         private GroupBox groupBox1;
-        private TextBox textBox2;
+        private TextBox textDocumento;
         private GroupBox groupBox3;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox textNome;
         private GroupBox groupBox2;
         private Label label2;
         private Label label1;

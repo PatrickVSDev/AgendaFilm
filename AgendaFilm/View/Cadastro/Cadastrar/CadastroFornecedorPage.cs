@@ -23,6 +23,8 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
         DateTime dataAtual = DateTime.Today;
         int id;
 
+        public event Action RefreshGrid;
+
         public CadastroFornecedorPage()
         {
             ObterDados();
@@ -103,6 +105,9 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             textDocumento.Clear();
             textTelefone.Clear();
             textEmail.Clear();
+
+            RefreshGrid?.Invoke();
+            this.Close();
         }
     }
 }

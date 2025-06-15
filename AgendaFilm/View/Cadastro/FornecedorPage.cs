@@ -12,6 +12,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuestPDF.Fluent;
+using System.Globalization;
 
 namespace AgendaFilm.View.Cadastro
 {
@@ -50,9 +52,28 @@ namespace AgendaFilm.View.Cadastro
             id = repository.getHighestId() + 1;
         }
 
+        private void AtualizarDataGridView()
+        {
+            ObterDados();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = fornecedores;
+            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["nome"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["documento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["telefone"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["email"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["funcionario_fk"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             CadastroFornecedorPage novoFormulario = new CadastroFornecedorPage(); ;
+            novoFormulario.RefreshGrid += AtualizarDataGridView;
             novoFormulario.ShowDialog();
         }
 
@@ -63,8 +84,28 @@ namespace AgendaFilm.View.Cadastro
 
         private void button3_Click(object sender, EventArgs e)
         {
-            EditarFornecedorPage novoFormulario = new EditarFornecedorPage(); ;
-            novoFormulario.ShowDialog();
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                DataGridViewRow dataGridViewRow = dataGridView1.SelectedRows[0];
+                Fornecedor forncedorSelecionado = dataGridViewRow.DataBoundItem as Fornecedor;
+
+                EditarFornecedorPage editPage = new EditarFornecedorPage(forncedorSelecionado);
+                int index = fornecedores.IndexOf(forncedorSelecionado);
+                editPage.RefreshGrid += AtualizarDataGridView;
+                editPage.ShowDialog();
+
+
+                if (editPage.DialogResult == DialogResult.OK)
+                {
+                    fornecedores[index] = editPage.fornecedor;
+                }
+
+                dataGridView1.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("É possivel editar apenas um fornecedor por vez!", "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void FornecedorPage_Load(object sender, EventArgs e)
@@ -184,6 +225,90 @@ namespace AgendaFilm.View.Cadastro
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Fornecedor fornecedorSelecionado;
+            DataGridViewRow dataGridViewRow;
+
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                for (int i = dataGridView1.SelectedRows.Count - 1; i >= 0; i--)
+                {
+                    dataGridViewRow = dataGridView1.SelectedRows[i];
+                    fornecedorSelecionado = dataGridViewRow.DataBoundItem as Fornecedor;
+
+
+                    if (fornecedorSelecionado != null)
+                    {
+                        fornecedores.Remove(fornecedorSelecionado);
+                        buscaFornecedores.Remove(fornecedorSelecionado);
+                        repository.RemoveFornecedor(fornecedorSelecionado);
+                    }
+                }
+
+                dataGridView1.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Nenhum Fornecedor selecionado!", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("Você quer gerar o relatorio em PDF?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado == DialogResult.Yes)
+            {
+
+                bool fornecedorExiste = false;
+                List<Fornecedor> fornecedoresRelatorio = new List<Fornecedor>();
+
+                string pesquisa = RelatorioTextBox.Text.Trim();
+                if (string.IsNullOrWhiteSpace(pesquisa))
+                {
+                    foreach (var fornecedor in fornecedores)
+                    {
+                        fornecedoresRelatorio.Add(fornecedor);
+                        fornecedorExiste = true;
+                    }
+                }
+                else
+                {
+                    foreach (var fornecedor in fornecedores)
+                    {
+                        if (fornecedor.nome.Contains(pesquisa, StringComparison.OrdinalIgnoreCase))
+                        {
+                            fornecedoresRelatorio.Add(fornecedor);
+                            fornecedorExiste = true;
+                        }
+                    }
+                }
+
+                if (!fornecedorExiste)
+                {
+                    MessageBox.Show("Nenhum fornecedor com este nome!", "Error", MessageBoxButtons.OK);
+                }
+
+
+
+                QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+                string dataAtual = DateTime.Now.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+                string titulo = $"Relatório De Fornecedores Por Nome - {dataAtual}";
+
+                string diretorio = @"C:\Users\patri\OneDrive\Área de Trabalho\Relatórios";
+                if (!Directory.Exists(diretorio))
+                {
+                    MessageBox.Show("Diretorio Incorreto, verificar!", "Error", MessageBoxButtons.OK);
+                    return;
+                }
+
+                string nomeArquivo = Path.Combine(diretorio, $"relatorio-Fornecedores-Por-Nome-{dataAtual}.pdf");
+
+                var relatorio = new RelatorioFornecedores(fornecedoresRelatorio, titulo);
+                relatorio.GeneratePdf(nomeArquivo);
+            }
         }
     }
 }

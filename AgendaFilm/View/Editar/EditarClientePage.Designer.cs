@@ -55,9 +55,10 @@
             // 
             btSalvar.BackColor = Color.SpringGreen;
             btSalvar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            btSalvar.Location = new Point(634, 407);
+            btSalvar.Location = new Point(556, 305);
+            btSalvar.Margin = new Padding(3, 2, 3, 2);
             btSalvar.Name = "btSalvar";
-            btSalvar.Size = new Size(241, 44);
+            btSalvar.Size = new Size(211, 33);
             btSalvar.TabIndex = 24;
             btSalvar.Text = "Salvar";
             btSalvar.UseVisualStyleBackColor = false;
@@ -66,18 +67,19 @@
             // textDocumento
             // 
             textDocumento.BackColor = SystemColors.ButtonHighlight;
-            textDocumento.Location = new Point(603, 84);
+            textDocumento.Location = new Point(528, 63);
+            textDocumento.Margin = new Padding(3, 2, 3, 2);
             textDocumento.Name = "textDocumento";
-            textDocumento.Size = new Size(265, 27);
+            textDocumento.Size = new Size(232, 23);
             textDocumento.TabIndex = 18;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 11F);
-            label3.Location = new Point(425, 83);
+            label3.Location = new Point(372, 62);
             label3.Name = "label3";
-            label3.Size = new Size(128, 25);
+            label3.Size = new Size(100, 20);
             label3.TabIndex = 16;
             label3.Text = "CPF / CNPJ ...";
             // 
@@ -86,9 +88,10 @@
             comboTipoCliente.BackColor = SystemColors.ButtonHighlight;
             comboTipoCliente.FormattingEnabled = true;
             comboTipoCliente.Items.AddRange(new object[] { "Física", "Jurídica" });
-            comboTipoCliente.Location = new Point(222, 84);
+            comboTipoCliente.Location = new Point(194, 63);
+            comboTipoCliente.Margin = new Padding(3, 2, 3, 2);
             comboTipoCliente.Name = "comboTipoCliente";
-            comboTipoCliente.Size = new Size(159, 28);
+            comboTipoCliente.Size = new Size(140, 23);
             comboTipoCliente.TabIndex = 15;
             comboTipoCliente.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
@@ -97,17 +100,19 @@
             label1.AutoSize = true;
             label1.Font = new Font("Nirmala UI", 19.8000011F, FontStyle.Bold);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(7, 9);
+            label1.Location = new Point(6, 7);
             label1.Name = "label1";
-            label1.Size = new Size(234, 46);
+            label1.Size = new Size(190, 37);
             label1.TabIndex = 14;
             label1.Text = "Editar Cliente";
             // 
             // groupBox2
             // 
-            groupBox2.Location = new Point(402, 68);
+            groupBox2.Location = new Point(352, 51);
+            groupBox2.Margin = new Padding(3, 2, 3, 2);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(181, 48);
+            groupBox2.Padding = new Padding(3, 2, 3, 2);
+            groupBox2.Size = new Size(158, 36);
             groupBox2.TabIndex = 17;
             groupBox2.TabStop = false;
             // 
@@ -115,9 +120,11 @@
             // 
             groupBox3.Controls.Add(label2);
             groupBox3.Controls.Add(groupBox1);
-            groupBox3.Location = new Point(1, 47);
+            groupBox3.Location = new Point(1, 35);
+            groupBox3.Margin = new Padding(3, 2, 3, 2);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(874, 83);
+            groupBox3.Padding = new Padding(3, 2, 3, 2);
+            groupBox3.Size = new Size(765, 62);
             groupBox3.TabIndex = 19;
             groupBox3.TabStop = false;
             // 
@@ -125,26 +132,30 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 11F);
-            label2.Location = new Point(75, 36);
+            label2.Location = new Point(66, 27);
             label2.Name = "label2";
-            label2.Size = new Size(49, 25);
+            label2.Size = new Size(39, 20);
             label2.TabIndex = 1;
             label2.Text = "Tipo";
             // 
             // groupBox1
             // 
-            groupBox1.Location = new Point(11, 21);
+            groupBox1.Location = new Point(10, 16);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(179, 48);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(157, 36);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             // 
             // groupBox4
             // 
             groupBox4.Controls.Add(label4);
-            groupBox4.Location = new Point(11, 161);
+            groupBox4.Location = new Point(10, 121);
+            groupBox4.Margin = new Padding(3, 2, 3, 2);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(181, 48);
+            groupBox4.Padding = new Padding(3, 2, 3, 2);
+            groupBox4.Size = new Size(158, 36);
             groupBox4.TabIndex = 20;
             groupBox4.TabStop = false;
             // 
@@ -152,34 +163,39 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 11F);
-            label4.Location = new Point(55, 15);
+            label4.Location = new Point(48, 11);
             label4.Name = "label4";
-            label4.Size = new Size(65, 25);
+            label4.Size = new Size(51, 20);
             label4.TabIndex = 8;
             label4.Text = "Nome";
             // 
             // groupBox5
             // 
             groupBox5.Controls.Add(textNome);
-            groupBox5.Location = new Point(1, 140);
+            groupBox5.Location = new Point(1, 105);
+            groupBox5.Margin = new Padding(3, 2, 3, 2);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(874, 83);
+            groupBox5.Padding = new Padding(3, 2, 3, 2);
+            groupBox5.Size = new Size(765, 62);
             groupBox5.TabIndex = 21;
             groupBox5.TabStop = false;
             // 
             // textNome
             // 
             textNome.BackColor = SystemColors.ButtonHighlight;
-            textNome.Location = new Point(221, 35);
+            textNome.Location = new Point(193, 26);
+            textNome.Margin = new Padding(3, 2, 3, 2);
             textNome.Name = "textNome";
-            textNome.Size = new Size(642, 27);
+            textNome.Size = new Size(562, 23);
             textNome.TabIndex = 0;
             // 
             // groupBox12
             // 
-            groupBox12.Location = new Point(29, 26);
+            groupBox12.Location = new Point(25, 20);
+            groupBox12.Margin = new Padding(3, 2, 3, 2);
             groupBox12.Name = "groupBox12";
-            groupBox12.Size = new Size(160, 56);
+            groupBox12.Padding = new Padding(3, 2, 3, 2);
+            groupBox12.Size = new Size(140, 42);
             groupBox12.TabIndex = 27;
             groupBox12.TabStop = false;
             // 
@@ -187,18 +203,19 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI Semibold", 11F);
-            label10.Location = new Point(50, 41);
+            label10.Location = new Point(44, 31);
             label10.Name = "label10";
-            label10.Size = new Size(84, 25);
+            label10.Size = new Size(67, 20);
             label10.TabIndex = 26;
             label10.Text = "Telefone";
             // 
             // textTelefone
             // 
             textTelefone.BackColor = SystemColors.ButtonHighlight;
-            textTelefone.Location = new Point(220, 39);
+            textTelefone.Location = new Point(192, 29);
+            textTelefone.Margin = new Padding(3, 2, 3, 2);
             textTelefone.Name = "textTelefone";
-            textTelefone.Size = new Size(317, 27);
+            textTelefone.Size = new Size(278, 23);
             textTelefone.TabIndex = 28;
             textTelefone.TextChanged += textTelefone_TextChanged;
             // 
@@ -207,17 +224,19 @@
             groupBox6.Controls.Add(textTelefone);
             groupBox6.Controls.Add(label10);
             groupBox6.Controls.Add(groupBox12);
-            groupBox6.Location = new Point(2, 235);
+            groupBox6.Location = new Point(2, 176);
+            groupBox6.Margin = new Padding(3, 2, 3, 2);
             groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(874, 96);
+            groupBox6.Padding = new Padding(3, 2, 3, 2);
+            groupBox6.Size = new Size(765, 72);
             groupBox6.TabIndex = 23;
             groupBox6.TabStop = false;
             // 
             // EditarClientePage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(888, 463);
+            ClientSize = new Size(777, 347);
             Controls.Add(btSalvar);
             Controls.Add(textDocumento);
             Controls.Add(label3);
@@ -228,6 +247,7 @@
             Controls.Add(groupBox4);
             Controls.Add(groupBox5);
             Controls.Add(groupBox6);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "EditarClientePage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EditarClientePage";
