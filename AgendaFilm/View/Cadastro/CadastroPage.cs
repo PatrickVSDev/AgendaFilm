@@ -3,16 +3,9 @@ using AgendaFilm.Model.Repositories;
 using AgendaFilm.View;
 using AgendaFilm.View.Cadastro;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.DataFormats;
 
 namespace AgendaFilm
 {
@@ -30,10 +23,7 @@ namespace AgendaFilm
         {
             base.OnPaint(e);
 
-            // Define a espessura da borda
             int borderWidth = 4;
-
-            // Cor da borda
             Color borderColor = Color.Black;
 
             ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle,
@@ -43,10 +33,8 @@ namespace AgendaFilm
                 borderColor, borderWidth, ButtonBorderStyle.Solid);
         }
 
-
         public CadastroPage()
         {
-            InitializeComponent();
             InitializeComponent();
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(318, 180);
@@ -58,60 +46,61 @@ namespace AgendaFilm
             this.ControlBox = false;
 
             InicializarBotaoFechar();
-
-
-
         }
 
         private void pictureBox2_Click(object sender, EventArgs e) { }
-
         private void pictureBox4_Click(object sender, EventArgs e) { }
 
         private void button1_Click(object sender, EventArgs e)
         {
             SelecionarBotao((Button)sender);
             AbrirFormulario(new FuncionarioPage(),
-                new Point(this.Location.X + 237, this.Location.Y + 116));
+                new Point(this.Location.X + 218, this.Location.Y + 94));
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             SelecionarBotao((Button)sender);
             AbrirFormulario(new FornecedorPage(),
-                new Point(this.Location.X + 237, this.Location.Y + 116));
-
+                new Point(this.Location.X + 218, this.Location.Y + 94));
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             SelecionarBotao((Button)sender);
             AbrirFormulario(new ProdutoPage(),
-                new Point(this.Location.X + 237, this.Location.Y + 116));
+                new Point(this.Location.X + 218, this.Location.Y + 94));
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             SelecionarBotao((Button)sender);
             AbrirFormulario(new ClientePage(),
-                new Point(this.Location.X + 237, this.Location.Y + 116));
+                new Point(this.Location.X + 218, this.Location.Y + 94));
         }
 
         private void Veíc_Click(object sender, EventArgs e)
         {
             SelecionarBotao((Button)sender);
             AbrirFormulario(new VeiculoPage(),
-                new Point(this.Location.X + 237, this.Location.Y + 116));
+                new Point(this.Location.X + 218, this.Location.Y + 94));
         }
 
+        // ✅ Aqui é onde faz o botão ficar selecionado e desmarcar os outros
         private void SelecionarBotao(Button botao)
         {
             if (botaoSelecionado != null)
             {
-                botaoSelecionado.BackColor = SystemColors.ActiveCaption;
-                botaoSelecionado.ForeColor = SystemColors.ControlText;
+                // Voltar para a cor padrão do botão anterior
+                botaoSelecionado.BackColor = Color.DarkSlateGray;
+                botaoSelecionado.ForeColor = Color.Black;
             }
 
+            // Aplicar cor de botão selecionado
+            botao.BackColor = Color.LightSeaGreen;
+            botao.ForeColor = Color.Black;
 
+            botaoSelecionado = botao;
         }
 
         private void AbrirFormulario(Form novoFormulario, Point localizacao)
@@ -128,19 +117,10 @@ namespace AgendaFilm
             formularioAberto.Show();
         }
 
-        private void CadastroPage_Load(object sender, EventArgs e)
-        {
-
-
-
-
-        }
+        private void CadastroPage_Load(object sender, EventArgs e) { }
 
         private void CadastroPage_Shown(object sender, EventArgs e)
         {
-
-
-
             clientePage = new ClientePage();
             AbrirFormulario(clientePage, new Point(this.Location.X + 217, this.Location.Y + 92));
         }
@@ -152,33 +132,28 @@ namespace AgendaFilm
                 formularioAberto.Close();
             }
 
-
-
             if (clientePage != null && !clientePage.IsDisposed)
             {
                 clientePage.Close();
             }
         }
 
-
         private void InicializarBotaoFechar()
         {
             btnFechar = new Button();
-            btnFechar.Text = "✕"; // Um X mais estilizado
+            btnFechar.Text = "✕";
             btnFechar.Font = new Font("Segoe UI", 12, FontStyle.Bold);
             btnFechar.Size = new Size(35, 35);
             btnFechar.Location = new Point(this.Width - 40, 5);
-            btnFechar.BackColor = Color.FromArgb(220, 53, 69); // Vermelho Bootstrap
+            btnFechar.BackColor = Color.FromArgb(220, 53, 69);
             btnFechar.ForeColor = Color.White;
             btnFechar.FlatStyle = FlatStyle.Flat;
             btnFechar.FlatAppearance.BorderSize = 0;
             btnFechar.Cursor = Cursors.Hand;
             btnFechar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 
-            // Evento de clique para fechar
             btnFechar.Click += (s, e) => this.Close();
 
-            // Evento de hover para clarear
             btnFechar.MouseEnter += (s, e) =>
             {
                 btnFechar.BackColor = Color.FromArgb(255, 99, 117);
@@ -188,25 +163,18 @@ namespace AgendaFilm
                 btnFechar.BackColor = Color.FromArgb(220, 53, 69);
             };
 
-            // Cantos arredondados
             btnFechar.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnFechar.Width, btnFechar.Height, 10, 10));
 
             this.Controls.Add(btnFechar);
             btnFechar.BringToFront();
         }
 
-        // Importação para cantos arredondados
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(
             int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
             int nWidthEllipse, int nHeightEllipse);
 
-
         private void lbUsuarioLogado_Click(object sender, EventArgs e) { }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void pictureBox1_Click(object sender, EventArgs e) { }
     }
 }

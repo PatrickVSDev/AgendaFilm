@@ -61,28 +61,30 @@
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(textBoxPesquisar);
             groupBox2.Controls.Add(button4);
-            groupBox2.Location = new Point(23, 1);
+            groupBox2.Location = new Point(-13, 0);
+            groupBox2.Margin = new Padding(3, 2, 3, 2);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1040, 131);
+            groupBox2.Padding = new Padding(3, 2, 3, 2);
+            groupBox2.Size = new Size(1158, 117);
             groupBox2.TabIndex = 30;
             groupBox2.TabStop = false;
+            groupBox2.Paint += groupBox2_Paint;
+            groupBox2.Enter += groupBox2_Enter;
             // 
             // radioModelo
             // 
-            radioModelo.Location = new Point(246, 21);
-            radioModelo.Margin = new Padding(3, 4, 3, 4);
+            radioModelo.Location = new Point(215, 43);
             radioModelo.Name = "radioModelo";
-            radioModelo.Size = new Size(82, 32);
+            radioModelo.Size = new Size(72, 24);
             radioModelo.TabIndex = 42;
             radioModelo.Text = "Modelo";
             // 
             // radioTodos
             // 
             radioTodos.AutoSize = true;
-            radioTodos.Location = new Point(466, 25);
-            radioTodos.Margin = new Padding(3, 4, 3, 4);
+            radioTodos.Location = new Point(394, 45);
             radioTodos.Name = "radioTodos";
-            radioTodos.Size = new Size(70, 24);
+            radioTodos.Size = new Size(56, 19);
             radioTodos.TabIndex = 39;
             radioTodos.Text = "Todos";
             radioTodos.UseVisualStyleBackColor = true;
@@ -92,9 +94,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(774, 61);
+            label3.Location = new Point(793, 63);
             label3.Name = "label3";
-            label3.Size = new Size(230, 18);
+            label3.Size = new Size(188, 15);
             label3.TabIndex = 38;
             label3.Text = "Gerar Relatorio PDF Por Modelo:";
             label3.Click += label3_Click;
@@ -102,20 +104,19 @@
             // RelatorioTextBox
             // 
             RelatorioTextBox.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            RelatorioTextBox.Location = new Point(742, 89);
-            RelatorioTextBox.Margin = new Padding(3, 4, 3, 4);
+            RelatorioTextBox.Location = new Point(770, 81);
             RelatorioTextBox.Name = "RelatorioTextBox";
-            RelatorioTextBox.Size = new Size(274, 23);
+            RelatorioTextBox.Size = new Size(220, 20);
             RelatorioTextBox.TabIndex = 37;
             // 
             // button5
             // 
-            button5.BackColor = Color.SpringGreen;
+            button5.BackColor = Color.PowderBlue;
             button5.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            button5.Location = new Point(774, 17);
-            button5.Margin = new Padding(2, 3, 2, 3);
+            button5.Location = new Point(793, 28);
+            button5.Margin = new Padding(2);
             button5.Name = "button5";
-            button5.Size = new Size(219, 42);
+            button5.Size = new Size(175, 34);
             button5.TabIndex = 36;
             button5.Text = "Gerar Relatório";
             button5.UseVisualStyleBackColor = false;
@@ -123,20 +124,18 @@
             // 
             // radioId
             // 
-            radioId.Location = new Point(334, 21);
-            radioId.Margin = new Padding(3, 4, 3, 4);
+            radioId.Location = new Point(290, 43);
             radioId.Name = "radioId";
-            radioId.Size = new Size(54, 32);
+            radioId.Size = new Size(47, 24);
             radioId.TabIndex = 40;
             radioId.Text = "ID";
             radioId.CheckedChanged += radioId_CheckedChanged;
             // 
             // radioPlaca
             // 
-            radioPlaca.Location = new Point(394, 21);
-            radioPlaca.Margin = new Padding(3, 4, 3, 4);
+            radioPlaca.Location = new Point(337, 43);
             radioPlaca.Name = "radioPlaca";
-            radioPlaca.Size = new Size(96, 32);
+            radioPlaca.Size = new Size(84, 24);
             radioPlaca.TabIndex = 41;
             radioPlaca.Text = "Placa";
             // 
@@ -144,28 +143,29 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
-            label2.Location = new Point(8, 21);
+            label2.Location = new Point(25, 42);
             label2.Name = "label2";
-            label2.Size = new Size(229, 25);
+            label2.Size = new Size(186, 20);
             label2.TabIndex = 2;
             label2.Text = "Defina o tipo de pesquisa:";
             // 
             // textBoxPesquisar
             // 
-            textBoxPesquisar.Location = new Point(230, 69);
-            textBoxPesquisar.Margin = new Padding(3, 4, 3, 4);
+            textBoxPesquisar.Location = new Point(189, 76);
             textBoxPesquisar.Name = "textBoxPesquisar";
-            textBoxPesquisar.Size = new Size(350, 27);
+            textBoxPesquisar.Size = new Size(313, 23);
             textBoxPesquisar.TabIndex = 43;
             textBoxPesquisar.TextChanged += textBoxPesquisar_TextChanged;
             // 
             // button4
             // 
-            button4.BackColor = Color.SpringGreen;
+            button4.BackColor = Color.CadetBlue;
+            button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button4.Location = new Point(9, 61);
+            button4.Location = new Point(25, 72);
+            button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
-            button4.Size = new Size(200, 36);
+            button4.Size = new Size(160, 29);
             button4.TabIndex = 0;
             button4.Text = "Pesquisar";
             button4.UseVisualStyleBackColor = false;
@@ -174,10 +174,11 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(23, 137);
+            dataGridView1.Location = new Point(18, 135);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1040, 419);
+            dataGridView1.Size = new Size(1021, 310);
             dataGridView1.TabIndex = 31;
             // 
             // groupBox1
@@ -185,19 +186,27 @@
             groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(button3);
             groupBox1.Controls.Add(button2);
-            groupBox1.Location = new Point(23, 561);
+            groupBox1.Location = new Point(18, 459);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1048, 85);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(1021, 111);
             groupBox1.TabIndex = 32;
             groupBox1.TabStop = false;
+            groupBox1.Paint += a;
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // button1
             // 
-            button1.BackColor = Color.SpringGreen;
+            button1.BackColor = Color.PowderBlue;
+            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
+            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
+            button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            button1.Location = new Point(835, 21);
+            button1.Location = new Point(819, 29);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(209, 60);
+            button1.Size = new Size(167, 48);
             button1.TabIndex = 4;
             button1.Text = "Cadastrar";
             button1.UseVisualStyleBackColor = false;
@@ -205,11 +214,15 @@
             // 
             // button3
             // 
-            button3.BackColor = Color.SpringGreen;
+            button3.BackColor = Color.PowderBlue;
+            button3.FlatAppearance.MouseDownBackColor = Color.Teal;
+            button3.FlatAppearance.MouseOverBackColor = Color.Teal;
+            button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            button3.Location = new Point(408, 17);
+            button3.Location = new Point(411, 29);
+            button3.Margin = new Padding(3, 2, 3, 2);
             button3.Name = "button3";
-            button3.Size = new Size(209, 60);
+            button3.Size = new Size(167, 48);
             button3.TabIndex = 3;
             button3.Text = "Editar";
             button3.UseVisualStyleBackColor = false;
@@ -217,25 +230,31 @@
             // 
             // button2
             // 
-            button2.BackColor = Color.SpringGreen;
+            button2.BackColor = Color.PowderBlue;
+            button2.FlatAppearance.BorderColor = Color.Black;
+            button2.FlatAppearance.MouseDownBackColor = Color.Red;
+            button2.FlatAppearance.MouseOverBackColor = Color.Red;
+            button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            button2.Location = new Point(11, 17);
+            button2.Location = new Point(25, 29);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(209, 60);
+            button2.Size = new Size(167, 48);
             button2.TabIndex = 2;
             button2.Text = "Inativar";
             button2.UseVisualStyleBackColor = false;
             // 
             // VeiculoPage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(1072, 651);
+            ClientSize = new Size(1067, 581);
             Controls.Add(groupBox1);
             Controls.Add(dataGridView1);
             Controls.Add(groupBox2);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "VeiculoPage";
             StartPosition = FormStartPosition.Manual;
             Text = "VeiculoPage";

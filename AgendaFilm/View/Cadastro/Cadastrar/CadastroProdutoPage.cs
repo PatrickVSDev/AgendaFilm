@@ -11,7 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
-
+using AgendaFilm.View.Agendamento;
+using AgendaFilm.View.Cadastro;
 namespace AgendaFilm.View.Cadastro.Cadastrar
 {
     public partial class CadastroProdutoPage : Form
@@ -57,7 +58,6 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
         {
             textBoxes.Clear();
             textBoxes.Add(textNome.Text);
-            textBoxes.Add(comboBoxFornecedor.Text);
             textBoxes.Add(textMarca.Text);
             textBoxes.Add(textGarantia.Text);
 
@@ -77,7 +77,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
 
             int testeFornecedor_fk = 0;
 
-            Produto produto = new Produto(id, textNome.Text.Trim().ToUpper(), testeFornecedor_fk , textMarca.Text.Trim(), numGarantia, dataAtual, dataAtual, Global.funcionarioLogado);
+            Produto produto = new Produto(id, textNome.Text.Trim().ToUpper(), testeFornecedor_fk, textMarca.Text.Trim(), numGarantia, dataAtual, dataAtual, Global.funcionarioLogado);
             produtos.Add(produto);
             repository.Add(produto);
 
@@ -86,6 +86,13 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             textNome.Clear();
             textMarca.Clear();
             textGarantia.Clear();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Form1 novoFormulario = new Form1();
+            novoFormulario.ShowDialog();
+
         }
     }
 }
