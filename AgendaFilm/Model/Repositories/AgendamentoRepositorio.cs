@@ -22,35 +22,36 @@ namespace AgendaFilm.Model.Repositories
             return result == 1;
         }
 
-        public List<dynamic> getAll()
+        public List<AgendamentoDTO> getAll()
         {
             using var connection = new ConnectionDb();
 
             string query = @"SELECT 
-                                a.id, 
-                                c.nome AS nome_cliente, 
-                                v.placa AS placa_veiculo, 
-                                p.nome AS nome_produto, 
-                                a.dataHoraAgendamento, 
-                                a.observacoes, 
-                                a.dataCriacao, 
-                                a.dataAlteracao, 
-                                f.nome AS nome_funcionario
-                            FROM 
-                                agendamentos a
-                            JOIN 
-                                clientes c ON a.cliente_fk = c.id
-                            JOIN 
-                                veiculos v ON a.veiculo_fk = v.id
-                            JOIN 
-                                produtos p ON a.produto_fk = p.id
-                            JOIN 
-                                funcionarios f ON a.funcionario_fk = f.id;";
+                        a.id, 
+                        c.nome AS nome_cliente, 
+                        v.placa AS placa_veiculo, 
+                        p.nome AS nome_produto, 
+                        a.dataHoraAgendamento, 
+                        a.observacoes, 
+                        a.dataCriacao, 
+                        a.dataAlteracao, 
+                        f.nome AS nome_funcionario
+                    FROM 
+                        agendamentos a
+                    JOIN 
+                        clientes c ON a.cliente_fk = c.id
+                    JOIN 
+                        veiculos v ON a.veiculo_fk = v.id
+                    JOIN 
+                        produtos p ON a.produto_fk = p.id
+                    JOIN 
+                        funcionarios f ON a.funcionario_fk = f.id;";
 
-            var agendamentos = connection.Connection.Query(query);
+            var agendamentos = connection.Connection.Query<AgendamentoDTO>(query);
 
             return agendamentos.ToList();
         }
+
 
         public int getHighestId()
         {

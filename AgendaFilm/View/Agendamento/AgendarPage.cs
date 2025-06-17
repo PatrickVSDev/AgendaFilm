@@ -2,29 +2,18 @@
 using AgendaFilm.Model;
 using AgendaFilm.Model.Repositories;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AgendaFilm.View.Agendamento
 {
     public partial class AgendarPage : Form
     {
-        AgendamentoRepositorio repository = new AgendamentoRepositorio();
-        Actions actions = new Actions();
-        BindingList<dynamic> buscaAgendamentos = new BindingList<dynamic>();
-        BindingList<dynamic> agendamentos;
-        List<string> textBoxes = new List<string>();
-        DateTime dataAtual = DateTime.Today;
-        DateTime dataHoraAgendamento;
-        string observacoes;
-        int id;
+        private readonly AgendamentoRepositorio repository = new AgendamentoRepositorio();
+        private readonly Actions actions = new Actions();
+        private readonly DateTime dataAtual = DateTime.Today;
+        private DateTime dataHoraAgendamento;
+        private string observacoes;
+        private int id;
 
         public event Action RefreshGrid;
 
@@ -40,24 +29,12 @@ namespace AgendaFilm.View.Agendamento
 
         public void ObterDados()
         {
-            agendamentos = new BindingList<dynamic>(repository.getAll());
             id = repository.getHighestId() + 1;
         }
 
-        public void AtualizarIdCliente(int clienteId)
-        {
-            clienteIdRecebido = clienteId;
-        }
-
-        public void AtualizarIdProduto(int produtoId)
-        {
-            produtoIdRecebido = produtoId;
-        }
-
-        public void AtualizarIdVeiculo(int veiculoId)
-        {
-            veiculoIdRecebido = veiculoId;
-        }
+        public void AtualizarIdCliente(int clienteId) => clienteIdRecebido = clienteId;
+        public void AtualizarIdProduto(int produtoId) => produtoIdRecebido = produtoId;
+        public void AtualizarIdVeiculo(int veiculoId) => veiculoIdRecebido = veiculoId;
 
         private void AgendarPage_Load(object sender, EventArgs e)
         {
@@ -68,20 +45,20 @@ namespace AgendaFilm.View.Agendamento
 
         private void button3_Click(object sender, EventArgs e)
         {
-            SelecionarVeiculoAgenda novoFormulario = new SelecionarVeiculoAgenda(clienteIdRecebido, this);
-            novoFormulario.ShowDialog();
+            var form = new SelecionarVeiculoAgenda(clienteIdRecebido, this);
+            form.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SelecionarClienteAgenda novoFormulario = new SelecionarClienteAgenda(this);
-            novoFormulario.ShowDialog();
+            var form = new SelecionarClienteAgenda(this);
+            form.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            SelecionarProdutoAgenda novoFormulario = new SelecionarProdutoAgenda(this);
-            novoFormulario.ShowDialog();
+            var form = new SelecionarProdutoAgenda(this);
+            form.ShowDialog();
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -93,6 +70,7 @@ namespace AgendaFilm.View.Agendamento
         {
             observacoes = txtObservacoes.Text;
         }
+
         private void button4_Click(object sender, EventArgs e)
         {
             if (clienteIdRecebido == -1)
@@ -113,19 +91,29 @@ namespace AgendaFilm.View.Agendamento
                 return;
             }
 
-            lbIdCliente.Text = null;
-            lbNomeCliente.Text = null;
-            lbIdProduto.Text = null;
-            lbNomeProduto.Text = null;
-            lbIdVeiculo.Text = null;
-            lbPlacaVeiculo.Text = null;
+            var novoAgendamento = new Agendamentos(
+                id,
+                clienteIdRecebido,
+                veiculoIdRecebido,
+                produtoIdRecebido,
+                dataHoraAgendamento,
+                observacoes,
+                dataAtual,
+                dataAtual,
+                Global.funcionarioLogado
+            );
 
-            Agendamentos agendamento = new Agendamentos(id, clienteIdRecebido, veiculoIdRecebido, produtoIdRecebido, dataHoraAgendamento, observacoes, dataAtual, dataAtual, Global.funcionarioLogado);
-            agendamentos.Add(agendamento);
-            repository.Add(agendamento);
+            repository.Add(novoAgendamento);
+
+            lbIdCliente.Text = string.Empty;
+            lbNomeCliente.Text = string.Empty;
+            lbIdProduto.Text = string.Empty;
+            lbNomeProduto.Text = string.Empty;
+            lbIdVeiculo.Text = string.Empty;
+            lbPlacaVeiculo.Text = string.Empty;
+            txtObservacoes.Clear();
 
             id++;
-            txtObservacoes.Clear();
 
             RefreshGrid?.Invoke();
             this.Close();
@@ -133,7 +121,6 @@ namespace AgendaFilm.View.Agendamento
 
         private void lbPlacaVeiculo_Click(object sender, EventArgs e)
         {
-
         }
     }
 }
