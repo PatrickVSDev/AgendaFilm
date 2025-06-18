@@ -35,7 +35,6 @@
             label4 = new Label();
             textNome = new TextBox();
             groupBox1 = new GroupBox();
-            comboBoxFornecedor = new ComboBox();
             textMarca = new TextBox();
             groupBox7 = new GroupBox();
             label5 = new Label();
@@ -48,6 +47,7 @@
             timer1 = new System.Windows.Forms.Timer(components);
             timer2 = new System.Windows.Forms.Timer(components);
             button2 = new Button();
+            button1 = new Button();
             groupBox5.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -112,7 +112,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(comboBoxFornecedor);
+            groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(textMarca);
             groupBox1.Controls.Add(groupBox7);
             groupBox1.Controls.Add(groupBox3);
@@ -123,14 +123,6 @@
             groupBox1.Size = new Size(765, 124);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
-            // 
-            // comboBoxFornecedor
-            // 
-            comboBoxFornecedor.FormattingEnabled = true;
-            comboBoxFornecedor.Location = new Point(172, 17);
-            comboBoxFornecedor.Name = "comboBoxFornecedor";
-            comboBoxFornecedor.Size = new Size(210, 23);
-            comboBoxFornecedor.TabIndex = 16;
             // 
             // textMarca
             // 
@@ -236,6 +228,19 @@
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.SpringGreen;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            button1.Location = new Point(174, 23);
+            button1.Name = "button1";
+            button1.Size = new Size(208, 30);
+            button1.TabIndex = 4;
+            button1.Text = "Selecionar Fornecedor";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
+            // 
             // CadastroProdutoPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -289,6 +294,6 @@
         private System.Windows.Forms.Timer timer2;
         private Button button2;
         private TextBox textGarantia;
-        private ComboBox comboBoxFornecedor;
+        private Button button1;
     }
 }

@@ -113,6 +113,7 @@ namespace AgendaFilm
         {
             CadastroPage novoFormulario = new CadastroPage();
             novoFormulario.ShowDialog();
+            this.Close();
         }
 
         private void button3_Click(object sender, EventArgs e) { }
@@ -157,6 +158,12 @@ namespace AgendaFilm
         private void pictureBox3_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            PaginaLogin novoFormulario = new PaginaLogin();
+            novoFormulario.ShowDialog();
         }
     }
 }

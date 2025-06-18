@@ -276,6 +276,7 @@
             Controls.Add(groupBox1);
             Controls.Add(groupBox2);
             FormBorderStyle = FormBorderStyle.None;
+            Location = new Point(218, 94);
             Margin = new Padding(2);
             Name = "ClientePage";
             StartPosition = FormStartPosition.Manual;
