@@ -45,6 +45,7 @@
             groupBox1 = new GroupBox();
             label2 = new Label();
             button4 = new Button();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -121,7 +122,7 @@
             Relatorios.Name = "Relatorios";
             Relatorios.Size = new Size(200, 160);
             Relatorios.TabIndex = 3;
-            Relatorios.Text = "Relatórios";
+            Relatorios.Text = "Ordem de Serviço";
             Relatorios.TextAlign = ContentAlignment.BottomCenter;
             Relatorios.TextImageRelation = TextImageRelation.ImageAboveText;
             Relatorios.UseVisualStyleBackColor = false;
@@ -233,18 +234,31 @@
             // 
             // button4
             // 
-            button4.BackColor = Color.PowderBlue;
+            button4.BackColor = Color.DarkSlateGray;
             button4.BackgroundImageLayout = ImageLayout.None;
+            button4.FlatAppearance.BorderColor = Color.Black;
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatAppearance.MouseDownBackColor = Color.Teal;
             button4.FlatAppearance.MouseOverBackColor = Color.Teal;
             button4.FlatStyle = FlatStyle.Flat;
             button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(1162, 35);
+            button4.Location = new Point(4, 4);
             button4.Name = "button4";
-            button4.Size = new Size(104, 95);
+            button4.Size = new Size(63, 53);
             button4.TabIndex = 12;
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.DarkSlateGray;
+            label3.Font = new Font("Segoe UI Symbol", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(55, 605);
+            label3.Name = "label3";
+            label3.Size = new Size(78, 30);
+            label3.TabIndex = 13;
+            label3.Text = "HOME";
             // 
             // MenuPage
             // 
@@ -253,6 +267,7 @@
             BackColor = Color.WhiteSmoke;
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(1278, 645);
+            Controls.Add(label3);
             Controls.Add(button4);
             Controls.Add(lbUsuarioLogado);
             Controls.Add(label1);
@@ -293,5 +308,6 @@
         private GroupBox groupBox1;
         private Label label2;
         private Button button4;
+        private Label label3;
     }
 }

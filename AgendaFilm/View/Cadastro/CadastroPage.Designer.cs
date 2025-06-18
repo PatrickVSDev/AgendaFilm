@@ -38,6 +38,7 @@
             button4 = new Button();
             lbUsuarioLogado = new Label();
             button5 = new Button();
+            button6 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -169,7 +170,7 @@
             // button5
             // 
             button5.BackColor = Color.DarkSlateGray;
-            button5.FlatAppearance.BorderColor = Color.LightSeaGreen;
+            button5.FlatAppearance.BorderColor = Color.Teal;
             button5.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
             button5.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
             button5.FlatStyle = FlatStyle.Flat;
@@ -185,6 +186,21 @@
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
+            // button6
+            // 
+            button6.BackColor = Color.DarkSlateGray;
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatAppearance.MouseDownBackColor = Color.Teal;
+            button6.FlatAppearance.MouseOverBackColor = Color.Teal;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.Image = (Image)resources.GetObject("button6.Image");
+            button6.Location = new Point(4, 3);
+            button6.Name = "button6";
+            button6.Size = new Size(63, 53);
+            button6.TabIndex = 9;
+            button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
+            // 
             // CadastroPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -192,6 +208,7 @@
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(1288, 680);
             ControlBox = false;
+            Controls.Add(button6);
             Controls.Add(pictureBox2);
             Controls.Add(lbUsuarioLogado);
             Controls.Add(button5);
@@ -226,5 +243,6 @@
         private Button button4;
         private Label lbUsuarioLogado;
         private Button button5;
+        private Button button6;
     }
 }

@@ -33,6 +33,7 @@
             textBox1 = new TextBox();
             dataGridView1 = new DataGridView();
             groupBox1 = new GroupBox();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -71,9 +72,9 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(-1, 108);
+            dataGridView1.Location = new Point(2, 108);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(368, 417);
+            dataGridView1.Size = new Size(365, 384);
             dataGridView1.TabIndex = 3;
             dataGridView1.UseWaitCursor = true;
             // 
@@ -90,12 +91,28 @@
             groupBox1.Paint += groupBox1_Paint;
             groupBox1.Enter += groupBox1_Enter;
             // 
+            // button2
+            // 
+            button2.BackColor = Color.PowderBlue;
+            button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
+            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            button2.Location = new Point(125, 498);
+            button2.Name = "button2";
+            button2.Size = new Size(124, 31);
+            button2.TabIndex = 5;
+            button2.Text = "Confirmar";
+            button2.UseVisualStyleBackColor = false;
+            button2.UseWaitCursor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(368, 537);
+            ClientSize = new Size(372, 537);
             ControlBox = false;
+            Controls.Add(button2);
             Controls.Add(dataGridView1);
             Controls.Add(textBox1);
             Controls.Add(groupBox1);
@@ -117,5 +134,6 @@
         private TextBox textBox1;
         private DataGridView dataGridView1;
         private GroupBox groupBox1;
+        private Button button2;
     }
 }
