@@ -26,24 +26,45 @@ namespace AgendaFilm.View.Agendamento
         public AgendamentoPage()
         {
             InitializeComponent();
-            ObterDados();
+            ObterDados(DateTime.Today);
             ConfigurarDataGridView();
         }
 
-        public void ObterDados()
+
+        public void ObterDados(DateTime? dataFiltro = null)
         {
-            agendamentos = new BindingList<AgendamentoDTO>(repository.getAll());
+            var todos = repository.getAll();
+
+            if (dataFiltro.HasValue)
+            {
+                todos = todos
+                    .Where(a => a.dataHoraAgendamento.Date == dataFiltro.Value.Date)
+                    .ToList();
+            }
+
+            agendamentos = new BindingList<AgendamentoDTO>(todos);
             id = repository.getHighestId() + 1;
         }
 
-        private void AtualizarDataGridView()
+        private void AtualizarDataGridView(DateTime? dataFiltro = null)
         {
-            ObterDados();
+            ObterDados(dataFiltro);
+
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = agendamentos;
+
             ConfigurarColunas();
         }
+
+
+
+        private void AtualizarDataGridView()
+        {
+            AtualizarDataGridView(DateTime.Today);
+        }
+
+
 
         private void ConfigurarDataGridView()
         {
@@ -147,6 +168,11 @@ namespace AgendaFilm.View.Agendamento
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dateTimePickerFiltro_ValueChanged_1(object sender, EventArgs e)
+        {
+            AtualizarDataGridView(dateTimePickerFiltro.Value.Date);
         }
     }
 }
