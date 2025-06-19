@@ -63,7 +63,7 @@ namespace AgendaFilm.View.Agendamento
 
         private void btConfirmar_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            /* if (dataGridView1.SelectedRows.Count > 0)
             {
                 int produtoId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["id"].Value);
 
@@ -89,7 +89,7 @@ namespace AgendaFilm.View.Agendamento
             {
                 MessageBox.Show("Por favor, selecione um cliente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
+        */}
 
         private void button4_Click(object sender, EventArgs e)
         {

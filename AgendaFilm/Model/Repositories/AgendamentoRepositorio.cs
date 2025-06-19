@@ -14,8 +14,8 @@ namespace AgendaFilm.Model.Repositories
             using var connection = new ConnectionDb();
 
             string query = @"INSERT INTO public.agendamentos(
-	                            id, cliente_fk, veiculo_fk, produto_fk, dataHoraAgendamento, observacoes, dataAlteracao, dataCriacao, funcionario_fk)
-	                            VALUES (@id, @cliente_fk, @veiculo_fk, @produto_fk, @dataHoraAgendamento, @observacoes, @dataAlteracao, @dataCriacao, @funcionario_fk);";
+	                            id, cliente_fk, veiculo_fk, dataHoraAgendamento, observacoes, dataAlteracao, dataCriacao, funcionario_fk)
+	                            VALUES (@id, @cliente_fk, @veiculo_fk, @dataHoraAgendamento, @observacoes, @dataAlteracao, @dataCriacao, @funcionario_fk);";
 
             var result = connection.Connection.Execute(sql: query, param: agendamento);
 
@@ -29,8 +29,7 @@ namespace AgendaFilm.Model.Repositories
             string query = @"SELECT 
                         a.id, 
                         c.nome AS nome_cliente, 
-                        v.placa AS placa_veiculo, 
-                        p.nome AS nome_produto, 
+                        v.placa AS placa_veiculo,  
                         a.dataHoraAgendamento, 
                         a.observacoes, 
                         a.dataCriacao, 
@@ -42,8 +41,6 @@ namespace AgendaFilm.Model.Repositories
                         clientes c ON a.cliente_fk = c.id
                     JOIN 
                         veiculos v ON a.veiculo_fk = v.id
-                    JOIN 
-                        produtos p ON a.produto_fk = p.id
                     JOIN 
                         funcionarios f ON a.funcionario_fk = f.id;";
 

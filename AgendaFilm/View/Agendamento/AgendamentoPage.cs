@@ -87,9 +87,6 @@ namespace AgendaFilm.View.Agendamento
             if (dataGridView1.Columns.Contains("placa_veiculo"))
                 dataGridView1.Columns["placa_veiculo"].HeaderText = "Veículo";
 
-            if (dataGridView1.Columns.Contains("nome_produto"))
-                dataGridView1.Columns["nome_produto"].HeaderText = "Produto";
-
             if (dataGridView1.Columns.Contains("dataHoraAgendamento"))
                 dataGridView1.Columns["dataHoraAgendamento"].HeaderText = "Data/Hora";
 

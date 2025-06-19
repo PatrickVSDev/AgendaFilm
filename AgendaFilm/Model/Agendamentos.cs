@@ -12,7 +12,6 @@ namespace AgendaFilm.Model
         public int id { get; set; }
         public int cliente_fk { get; set; }
         public int veiculo_fk { get; set; }
-        public int produto_fk { get; set; }
         public DateTime dataHoraAgendamento { get; set; }
         public string observacoes { get; set; }
         public DateTime dataAlteracao { get; set; }
@@ -21,12 +20,11 @@ namespace AgendaFilm.Model
 
         public Agendamentos() { }
 
-        public Agendamentos(int id, int cliente_fk, int veiculo_fk, int produto_fk, DateTime dataHoraAgendamento, string observacoes, DateTime dataAlteracao, DateTime dataCriacao ,int funcionario_fk)
+        public Agendamentos(int id, int cliente_fk, int veiculo_fk, DateTime dataHoraAgendamento, string observacoes, DateTime dataAlteracao, DateTime dataCriacao ,int funcionario_fk)
         {
             this.id = id;
             this.cliente_fk = cliente_fk;
             this.veiculo_fk = veiculo_fk;
-            this.produto_fk = produto_fk;
             this.dataHoraAgendamento = dataHoraAgendamento;
             this.observacoes = observacoes;
             this.dataAlteracao = dataAlteracao;

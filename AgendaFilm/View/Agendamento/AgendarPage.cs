@@ -18,7 +18,6 @@ namespace AgendaFilm.View.Agendamento
         public event Action RefreshGrid;
 
         public int clienteIdRecebido { get; set; } = -1;
-        public int produtoIdRecebido { get; set; } = -1;
         public int veiculoIdRecebido { get; set; } = -1;
 
         public AgendarPage()
@@ -33,7 +32,6 @@ namespace AgendaFilm.View.Agendamento
         }
 
         public void AtualizarIdCliente(int clienteId) => clienteIdRecebido = clienteId;
-        public void AtualizarIdProduto(int produtoId) => produtoIdRecebido = produtoId;
         public void AtualizarIdVeiculo(int veiculoId) => veiculoIdRecebido = veiculoId;
 
         private void AgendarPage_Load(object sender, EventArgs e)
@@ -52,12 +50,6 @@ namespace AgendaFilm.View.Agendamento
         private void button1_Click(object sender, EventArgs e)
         {
             var form = new SelecionarClienteAgenda(this);
-            form.ShowDialog();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            var form = new SelecionarProdutoAgenda(this);
             form.ShowDialog();
         }
 
@@ -85,17 +77,10 @@ namespace AgendaFilm.View.Agendamento
                 return;
             }
 
-            if (produtoIdRecebido == -1)
-            {
-                MessageBox.Show("Por favor, selecione um produto antes de continuar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             var novoAgendamento = new Agendamentos(
                 id,
                 clienteIdRecebido,
                 veiculoIdRecebido,
-                produtoIdRecebido,
                 dataHoraAgendamento,
                 observacoes,
                 dataAtual,
@@ -107,8 +92,6 @@ namespace AgendaFilm.View.Agendamento
 
             lbIdCliente.Text = string.Empty;
             lbNomeCliente.Text = string.Empty;
-            lbIdProduto.Text = string.Empty;
-            lbNomeProduto.Text = string.Empty;
             lbIdVeiculo.Text = string.Empty;
             lbPlacaVeiculo.Text = string.Empty;
             txtObservacoes.Clear();
