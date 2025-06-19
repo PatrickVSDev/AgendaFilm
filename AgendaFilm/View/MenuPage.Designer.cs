@@ -46,6 +46,7 @@
             label2 = new Label();
             button4 = new Button();
             label3 = new Label();
+            groupBox2 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -193,7 +194,7 @@
             pictureBox4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             pictureBox4.BackColor = Color.PowderBlue;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(302, 323);
+            pictureBox4.Location = new Point(283, 323);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(302, 182);
             pictureBox4.TabIndex = 9;
@@ -253,12 +254,24 @@
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.DarkSlateGray;
-            label3.Font = new Font("Segoe UI Symbol", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(55, 605);
+            label3.Font = new Font("Tahoma", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ActiveCaptionText;
+            label3.Location = new Point(58, 619);
             label3.Name = "label3";
-            label3.Size = new Size(78, 30);
+            label3.Size = new Size(76, 25);
             label3.TabIndex = 13;
             label3.Text = "HOME";
+            label3.Click += label3_Click_1;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Location = new Point(283, 238);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(857, 79);
+            groupBox2.TabIndex = 14;
+            groupBox2.TabStop = false;
+            groupBox2.Paint += groupBox2_Paint;
+            groupBox2.Enter += groupBox2_Enter;
             // 
             // MenuPage
             // 
@@ -279,9 +292,9 @@
             Controls.Add(pictureBox1);
             Controls.Add(pictureBox3);
             Controls.Add(groupBox1);
+            Controls.Add(groupBox2);
             Name = "MenuPage";
             Text = "PaginaRestrita";
-            WindowState = FormWindowState.Maximized;
             Load += PaginaRestrita_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -309,5 +322,6 @@
         private Label label2;
         private Button button4;
         private Label label3;
+        private GroupBox groupBox2;
     }
 }

@@ -37,7 +37,7 @@ namespace AgendaFilm
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.Manual;
-            this.Location = new Point(318, 180);
+            this.Location = new Point(316, 180);
             this.Shown += CadastroPage_Shown;
             this.FormClosed += CadastroPage_FormClosed;
             this.FormBorderStyle = FormBorderStyle.None;

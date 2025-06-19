@@ -270,7 +270,7 @@
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1067, 581);
+            ClientSize = new Size(1062, 581);
             ControlBox = false;
             Controls.Add(dataGridView1);
             Controls.Add(groupBox1);

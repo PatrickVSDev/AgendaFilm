@@ -249,7 +249,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(1067, 581);
+            ClientSize = new Size(1062, 581);
             Controls.Add(groupBox1);
             Controls.Add(dataGridView1);
             Controls.Add(groupBox2);

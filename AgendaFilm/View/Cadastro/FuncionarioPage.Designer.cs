@@ -263,7 +263,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(1067, 581);
+            ClientSize = new Size(1062, 581);
             ControlBox = false;
             Controls.Add(groupBox1);
             Controls.Add(groupBox2);
