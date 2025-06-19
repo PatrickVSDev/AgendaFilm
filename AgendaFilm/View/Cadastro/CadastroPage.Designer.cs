@@ -39,6 +39,7 @@
             lbUsuarioLogado = new Label();
             button5 = new Button();
             button6 = new Button();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -49,7 +50,7 @@
             pictureBox1.Location = new Point(4, 3);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(213, 673);
+            pictureBox1.Size = new Size(212, 673);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
@@ -59,10 +60,10 @@
             pictureBox2.BackColor = Color.PowderBlue;
             pictureBox2.ErrorImage = (Image)resources.GetObject("pictureBox2.ErrorImage");
             pictureBox2.ImageLocation = "500";
-            pictureBox2.Location = new Point(217, 3);
+            pictureBox2.Location = new Point(215, 3);
             pictureBox2.Margin = new Padding(3, 2, 3, 2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(1068, 96);
+            pictureBox2.Size = new Size(1065, 96);
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             // 
@@ -77,10 +78,10 @@
             button1.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
             button1.Image = (Image)resources.GetObject("button1.Image");
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(4, 555);
+            button1.Location = new Point(4, 493);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(212, 120);
+            button1.Size = new Size(212, 100);
             button1.TabIndex = 2;
             button1.Text = "Funcionários";
             button1.TextAlign = ContentAlignment.MiddleRight;
@@ -98,10 +99,10 @@
             button2.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
             button2.Image = (Image)resources.GetObject("button2.Image");
             button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(4, 93);
+            button2.Location = new Point(4, 98);
             button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(212, 113);
+            button2.Size = new Size(212, 100);
             button2.TabIndex = 3;
             button2.Text = "Clientes";
             button2.UseVisualStyleBackColor = false;
@@ -118,10 +119,10 @@
             Veíc.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
             Veíc.Image = (Image)resources.GetObject("Veíc.Image");
             Veíc.ImageAlign = ContentAlignment.MiddleLeft;
-            Veíc.Location = new Point(4, 205);
+            Veíc.Location = new Point(4, 196);
             Veíc.Margin = new Padding(3, 2, 3, 2);
             Veíc.Name = "Veíc";
-            Veíc.Size = new Size(212, 115);
+            Veíc.Size = new Size(212, 100);
             Veíc.TabIndex = 4;
             Veíc.Text = " Veículos";
             Veíc.UseVisualStyleBackColor = false;
@@ -147,10 +148,10 @@
             button4.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
             button4.Image = (Image)resources.GetObject("button4.Image");
             button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(4, 319);
+            button4.Location = new Point(4, 295);
             button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
-            button4.Size = new Size(212, 111);
+            button4.Size = new Size(212, 100);
             button4.TabIndex = 6;
             button4.Text = "Produto";
             button4.UseVisualStyleBackColor = false;
@@ -177,10 +178,10 @@
             button5.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold);
             button5.Image = (Image)resources.GetObject("button5.Image");
             button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.Location = new Point(4, 429);
+            button5.Location = new Point(4, 394);
             button5.Margin = new Padding(3, 2, 3, 2);
             button5.Name = "button5";
-            button5.Size = new Size(213, 127);
+            button5.Size = new Size(212, 100);
             button5.TabIndex = 7;
             button5.Text = "     Fornecedor";
             button5.UseVisualStyleBackColor = false;
@@ -201,13 +202,26 @@
             button6.UseVisualStyleBackColor = false;
             button6.Click += button6_Click;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.DarkSlateGray;
+            label3.Font = new Font("Tahoma", 15.75F, FontStyle.Bold);
+            label3.ForeColor = SystemColors.ActiveCaptionText;
+            label3.Location = new Point(41, 630);
+            label3.Name = "label3";
+            label3.Size = new Size(127, 25);
+            label3.TabIndex = 14;
+            label3.Text = "CADASTRO";
+            // 
             // CadastroPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(1288, 680);
+            ClientSize = new Size(1283, 680);
             ControlBox = false;
+            Controls.Add(label3);
             Controls.Add(button6);
             Controls.Add(pictureBox2);
             Controls.Add(lbUsuarioLogado);
@@ -244,5 +258,6 @@
         private Label lbUsuarioLogado;
         private Button button5;
         private Button button6;
+        private Label label3;
     }
 }

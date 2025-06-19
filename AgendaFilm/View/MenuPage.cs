@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AgendaFilm.Model.Repositories;
 using AgendaFilm.View.Agendamento;
-
+using AgendaFilm.View.OrdemDeServiço;
+using System.Drawing.Drawing2D;
 namespace AgendaFilm
 {
     public partial class MenuPage : Form
@@ -96,15 +97,31 @@ namespace AgendaFilm
             int nWidthEllipse, int nHeightEllipse);
 
         // >>> MÉTODO PARA ARREDONDAR A PICTUREBOX
-        private void ArredondarPictureBox(PictureBox pic, int raio)
+        private void ArredondarPictureBox(PictureBox pic, int raio, Color corBorda, int espessuraBorda)
         {
-            pic.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pic.Width, pic.Height, raio, raio));
+            GraphicsPath gp = new GraphicsPath();
+            gp.AddArc(0, 0, raio, raio, 180, 90);
+            gp.AddArc(pic.Width - raio, 0, raio, raio, 270, 90);
+            gp.AddArc(pic.Width - raio, pic.Height - raio, raio, raio, 0, 90);
+            gp.AddArc(0, pic.Height - raio, raio, raio, 90, 90);
+            gp.CloseFigure();
+
+            pic.Region = new Region(gp);
+
+            pic.Paint += (sender, e) =>
+            {
+                using (Pen pen = new Pen(corBorda, espessuraBorda))
+                {
+                    e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                    e.Graphics.DrawPath(pen, gp);
+                }
+            };
         }
 
         // >>> CHAMAR ARREDONDAMENTO NO LOAD DO FORM
         private void MenuPage_Load(object sender, EventArgs e)
         {
-            ArredondarPictureBox(pictureBox4, 20);
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e) { }
@@ -118,7 +135,11 @@ namespace AgendaFilm
 
         private void button3_Click(object sender, EventArgs e) { }
 
-        private void PaginaRestrita_Load(object sender, EventArgs e) { }
+
+        private void PaginaRestrita_Load(object sender, EventArgs e) 
+        {
+            ArredondarPictureBox(pictureBox4, 30 ,Color.DarkSlateGray, 3);
+        }
 
         private void pictureBox2_Click(object sender, EventArgs e) { }
 
@@ -130,7 +151,12 @@ namespace AgendaFilm
 
         private void AplicarEstilo() { }
 
-        private void Relatorios_Click(object sender, EventArgs e) { }
+        private void Relatorios_Click(object sender, EventArgs e)
+        {
+            OrdemDeServiço novoFormulario = new OrdemDeServiço();
+            novoFormulario.ShowDialog();
+
+        }
 
         private void pictureBox2_Click_1(object sender, EventArgs e) { }
 
@@ -164,6 +190,47 @@ namespace AgendaFilm
         {
             PaginaLogin novoFormulario = new PaginaLogin();
             novoFormulario.ShowDialog();
+        }
+
+        private void label3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+        private void groupBox2_Paint(object sender, PaintEventArgs e)
+        {
+            GroupBox box = (GroupBox)sender;
+            Color corBorda = Color.DarkSlateGray;  // Cor da borda
+            int espessuraBorda = 3;
+
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            // Calcula espaço do texto
+            Size textSize = TextRenderer.MeasureText(box.Text, box.Font);
+            Rectangle rect = new Rectangle(0, textSize.Height / 2, box.Width - 1, box.Height - textSize.Height / 2 - 1);
+
+            // Limpa o fundo para remover a borda padrão
+            e.Graphics.Clear(box.BackColor);
+
+            using (Pen pen = new Pen(corBorda, espessuraBorda))
+            using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
+            {
+                // Adiciona um retângulo com cantos quadrados
+                path.AddRectangle(rect);
+
+                // Desenha a borda
+                e.Graphics.DrawPath(pen, path);
+            }
+
+            // Desenha o texto do GroupBox
+            using (SolidBrush brush = new SolidBrush(box.ForeColor))
+            {
+                e.Graphics.DrawString(box.Text, box.Font, brush, 10, 0);
+            }
         }
     }
 }
