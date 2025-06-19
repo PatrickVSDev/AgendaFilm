@@ -8,10 +8,22 @@ namespace AgendaFilm
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new PaginaLogin());
+
+            while (true)
+            {
+                var loginPage = new PaginaLogin();
+                var loginResult = loginPage.ShowDialog();
+
+                if (loginResult == DialogResult.OK)
+                {
+                    Application.Run(new MenuPage()); // só sai quando MenuPage fecha
+                }
+                else
+                {
+                    break; // login cancelado -> sair do loop e encerrar o app
+                }
+            }
         }
     }
 }

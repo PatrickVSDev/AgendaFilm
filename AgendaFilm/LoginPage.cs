@@ -1,7 +1,9 @@
 using AgendaFilm.Model;
 using AgendaFilm.Model.Repositories;
 using AgendaFilm.Controller;
-
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace AgendaFilm
 {
@@ -21,69 +23,35 @@ namespace AgendaFilm
             funcionarios = repository.GetAll();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void btAcessar_Click(object sender, EventArgs e)
         {
-            bool funcExiste = false;
-
             foreach (var funcionario in funcionarios)
             {
                 if (funcionario.login.Equals(txtUsuario.Text) && funcionario.senha.Equals(txtSenha.Text))
                 {
-                    funcExiste = true;
                     Global.funcionarioLogado = funcionario.id;
                     Global.loginLogado = funcionario.login;
                     Global.senhaLogado = funcionario.senha;
-                    this.Hide();
-                    MenuPage adminHomePage = new MenuPage();
-                    adminHomePage.Show();
-                    break;
+
+                    this.DialogResult = DialogResult.OK;
+                    return;
                 }
             }
 
-            if (!funcExiste)
-            {
-                MessageBox.Show("Usuário ou senha incorretos!", "Error", MessageBoxButtons.OK);
-            }
+            MessageBox.Show("Usuário ou senha incorretos!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btCancelar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.DialogResult = DialogResult.Cancel;
         }
 
-        private void pictureBox1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtUsuario_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtSenha_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void Form1_Load(object sender, EventArgs e) { }
+        private void pictureBox1_Click(object sender, EventArgs e) { }
+        private void pictureBox1_Click_1(object sender, EventArgs e) { }
+        private void label1_Click(object sender, EventArgs e) { }
+        private void label1_Click_1(object sender, EventArgs e) { }
+        private void txtUsuario_TextChanged(object sender, EventArgs e) { }
+        private void txtSenha_TextChanged(object sender, EventArgs e) { }
     }
 }

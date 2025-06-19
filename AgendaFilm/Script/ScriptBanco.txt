@@ -80,7 +80,6 @@ CREATE TABLE agendamentos (
     id SERIAL PRIMARY KEY,
     cliente_fk INT NOT NULL,
     veiculo_fk INT NOT NULL,
-    produto_fk INT NOT NULL,
     dataHoraAgendamento TIMESTAMP NOT NULL,
     observacoes TEXT,
     dataCriacao DATE NOT NULL DEFAULT CURRENT_DATE, 
@@ -88,7 +87,6 @@ CREATE TABLE agendamentos (
     funcionario_fk INT NOT NULL,
     CONSTRAINT fk_agendamentos_clientes FOREIGN KEY (cliente_fk) REFERENCES clientes(id),
     CONSTRAINT fk_agendamentos_veiculos FOREIGN KEY (veiculo_fk) REFERENCES veiculos(id),
-    CONSTRAINT fk_agendamentos_produtos FOREIGN KEY (produto_fk) REFERENCES produtos(id),
     CONSTRAINT fk_agendamentos_funcionarios FOREIGN KEY (funcionario_fk) REFERENCES funcionarios(id)
 );
 

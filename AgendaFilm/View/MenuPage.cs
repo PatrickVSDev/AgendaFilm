@@ -13,6 +13,7 @@ using AgendaFilm.Model.Repositories;
 using AgendaFilm.View.Agendamento;
 using AgendaFilm.View.OrdemDeServiço;
 using System.Drawing.Drawing2D;
+using AgendaFilm;
 namespace AgendaFilm
 {
     public partial class MenuPage : Form
@@ -39,7 +40,6 @@ namespace AgendaFilm
 
             InicializarBotaoFechar();
 
-            // >>> NÃO chamar o arredondamento aqui
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -96,7 +96,6 @@ namespace AgendaFilm
             int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
             int nWidthEllipse, int nHeightEllipse);
 
-        // >>> MÉTODO PARA ARREDONDAR A PICTUREBOX
         private void ArredondarPictureBox(PictureBox pic, int raio, Color corBorda, int espessuraBorda)
         {
             GraphicsPath gp = new GraphicsPath();
@@ -118,7 +117,6 @@ namespace AgendaFilm
             };
         }
 
-        // >>> CHAMAR ARREDONDAMENTO NO LOAD DO FORM
         private void MenuPage_Load(object sender, EventArgs e)
         {
             
@@ -168,8 +166,7 @@ namespace AgendaFilm
 
         private void MenuPage_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (Application.OpenForms.Count == 0)
-                Application.Exit();
+            Application.Exit();
         }
 
         private void lbUsuarioLogado_Click(object sender, EventArgs e) { }
@@ -190,9 +187,21 @@ namespace AgendaFilm
         private void button4_Click(object sender, EventArgs e)
         {
             Global.funcionarioLogado = 0;
-            PaginaLogin novoFormulario = new PaginaLogin();
-            novoFormulario.ShowDialog();
-            this.Close();
+
+            this.Hide();
+
+            var loginPage = new PaginaLogin();
+            var result = loginPage.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                lbUsuarioLogado.Text = new FuncionarioRepositorio().getNameById(Global.funcionarioLogado);
+                this.Show();
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
 
         private void label3_Click_1(object sender, EventArgs e)
@@ -207,29 +216,23 @@ namespace AgendaFilm
         private void groupBox2_Paint(object sender, PaintEventArgs e)
         {
             GroupBox box = (GroupBox)sender;
-            Color corBorda = Color.DarkSlateGray;  // Cor da borda
+            Color corBorda = Color.DarkSlateGray;
             int espessuraBorda = 3;
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-            // Calcula espaço do texto
             Size textSize = TextRenderer.MeasureText(box.Text, box.Font);
             Rectangle rect = new Rectangle(0, textSize.Height / 2, box.Width - 1, box.Height - textSize.Height / 2 - 1);
 
-            // Limpa o fundo para remover a borda padrão
             e.Graphics.Clear(box.BackColor);
 
             using (Pen pen = new Pen(corBorda, espessuraBorda))
             using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
             {
-                // Adiciona um retângulo com cantos quadrados
                 path.AddRectangle(rect);
-
-                // Desenha a borda
                 e.Graphics.DrawPath(pen, path);
             }
 
-            // Desenha o texto do GroupBox
             using (SolidBrush brush = new SolidBrush(box.ForeColor))
             {
                 e.Graphics.DrawString(box.Text, box.Font, brush, 10, 0);
