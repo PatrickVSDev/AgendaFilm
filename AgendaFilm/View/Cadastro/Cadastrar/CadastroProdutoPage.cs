@@ -27,6 +27,8 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
         DateTime dataAtual = DateTime.Today;
         int id;
 
+        public event Action RefreshGrid;
+
         public CadastroProdutoPage()
         {
             ObterDados();
@@ -95,6 +97,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             textMarca.Clear();
             textGarantia.Clear();
 
+            RefreshGrid?.Invoke();
             this.Close();
         }
 
