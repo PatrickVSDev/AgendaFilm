@@ -35,6 +35,7 @@
             label4 = new Label();
             textNome = new TextBox();
             groupBox1 = new GroupBox();
+            button1 = new Button();
             textMarca = new TextBox();
             groupBox7 = new GroupBox();
             label5 = new Label();
@@ -47,7 +48,7 @@
             timer1 = new System.Windows.Forms.Timer(components);
             timer2 = new System.Windows.Forms.Timer(components);
             button2 = new Button();
-            button1 = new Button();
+            labelFornecedorSelecionado = new Label();
             groupBox5.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -112,6 +113,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(labelFornecedorSelecionado);
             groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(textMarca);
             groupBox1.Controls.Add(groupBox7);
@@ -124,9 +126,22 @@
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.SpringGreen;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            button1.Location = new Point(174, 23);
+            button1.Name = "button1";
+            button1.Size = new Size(208, 30);
+            button1.TabIndex = 4;
+            button1.Text = "Selecionar Fornecedor";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
+            // 
             // textMarca
             // 
-            textMarca.Location = new Point(172, 84);
+            textMarca.Location = new Point(174, 83);
             textMarca.Margin = new Padding(3, 2, 3, 2);
             textMarca.Name = "textMarca";
             textMarca.Size = new Size(210, 23);
@@ -135,7 +150,7 @@
             // groupBox7
             // 
             groupBox7.Controls.Add(label5);
-            groupBox7.Location = new Point(3, 70);
+            groupBox7.Location = new Point(10, 70);
             groupBox7.Margin = new Padding(3, 2, 3, 2);
             groupBox7.Name = "groupBox7";
             groupBox7.Padding = new Padding(3, 2, 3, 2);
@@ -189,7 +204,7 @@
             // 
             // textGarantia
             // 
-            textGarantia.Location = new Point(173, 25);
+            textGarantia.Location = new Point(174, 24);
             textGarantia.Name = "textGarantia";
             textGarantia.Size = new Size(209, 23);
             textGarantia.TabIndex = 1;
@@ -209,11 +224,13 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 11F);
-            label7.Location = new Point(29, 12);
+            label7.Location = new Point(18, 11);
             label7.Name = "label7";
-            label7.Size = new Size(67, 20);
+            label7.Size = new Size(138, 20);
             label7.TabIndex = 0;
-            label7.Text = "Garantia";
+            label7.Text = "Garantia (em anos)";
+            label7.TextAlign = ContentAlignment.MiddleCenter;
+            label7.Click += label7_Click;
             // 
             // button2
             // 
@@ -228,18 +245,15 @@
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
-            // button1
+            // labelFornecedorSelecionado
             // 
-            button1.BackColor = Color.SpringGreen;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button1.Location = new Point(174, 23);
-            button1.Name = "button1";
-            button1.Size = new Size(208, 30);
-            button1.TabIndex = 4;
-            button1.Text = "Selecionar Fornecedor";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click_1;
+            labelFornecedorSelecionado.AutoSize = true;
+            labelFornecedorSelecionado.Location = new Point(400, 33);
+            labelFornecedorSelecionado.Name = "labelFornecedorSelecionado";
+            labelFornecedorSelecionado.Size = new Size(38, 15);
+            labelFornecedorSelecionado.TabIndex = 5;
+            labelFornecedorSelecionado.Text = "label2";
+            labelFornecedorSelecionado.Click += label2_Click;
             // 
             // CadastroProdutoPage
             // 
@@ -295,5 +309,6 @@
         private Button button2;
         private TextBox textGarantia;
         private Button button1;
+        private Label labelFornecedorSelecionado;
     }
 }

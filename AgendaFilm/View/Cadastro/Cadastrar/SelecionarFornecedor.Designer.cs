@@ -1,6 +1,6 @@
 ﻿namespace AgendaFilm.View.Cadastro.Cadastrar
 {
-    partial class Form1
+    partial class SelecionarFornecedor
     {
         /// <summary>
         /// Required designer variable.
@@ -105,8 +105,9 @@
             button2.Text = "Confirmar";
             button2.UseVisualStyleBackColor = false;
             button2.UseWaitCursor = true;
+            button2.Click += button2_Click;
             // 
-            // Form1
+            // SelecionarFornecedor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -117,7 +118,7 @@
             Controls.Add(textBox1);
             Controls.Add(groupBox1);
             Location = new Point(6, 38);
-            Name = "Form1";
+            Name = "SelecionarFornecedor";
             UseWaitCursor = true;
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

@@ -107,7 +107,7 @@
             radioTodos.Location = new Point(391, 43);
             radioTodos.Margin = new Padding(3, 2, 3, 2);
             radioTodos.Name = "radioTodos";
-            radioTodos.Size = new Size(56, 19);
+            radioTodos.Size = new Size(57, 19);
             radioTodos.TabIndex = 35;
             radioTodos.TabStop = true;
             radioTodos.Text = "Todos";
@@ -119,7 +119,7 @@
             radioTelefone.Location = new Point(317, 43);
             radioTelefone.Margin = new Padding(2);
             radioTelefone.Name = "radioTelefone";
-            radioTelefone.Size = new Size(69, 19);
+            radioTelefone.Size = new Size(70, 19);
             radioTelefone.TabIndex = 34;
             radioTelefone.TabStop = true;
             radioTelefone.Text = "Telefone";
@@ -190,6 +190,7 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(1021, 310);
             dataGridView1.TabIndex = 32;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // groupBox1
             // 
