@@ -79,6 +79,7 @@
             label3.Size = new Size(180, 15);
             label3.TabIndex = 38;
             label3.Text = "Gerar Relatorio PDF Por Nome:";
+            label3.Click += label3_Click;
             // 
             // RelatorioTextBox
             // 

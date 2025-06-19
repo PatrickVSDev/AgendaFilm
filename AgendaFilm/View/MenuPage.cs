@@ -168,7 +168,8 @@ namespace AgendaFilm
 
         private void MenuPage_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            if (Application.OpenForms.Count == 0)
+                Application.Exit();
         }
 
         private void lbUsuarioLogado_Click(object sender, EventArgs e) { }
@@ -188,8 +189,10 @@ namespace AgendaFilm
 
         private void button4_Click(object sender, EventArgs e)
         {
+            Global.funcionarioLogado = 0;
             PaginaLogin novoFormulario = new PaginaLogin();
             novoFormulario.ShowDialog();
+            this.Close();
         }
 
         private void label3_Click_1(object sender, EventArgs e)

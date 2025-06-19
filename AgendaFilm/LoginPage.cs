@@ -68,7 +68,7 @@ namespace AgendaFilm
 
         private void btCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
