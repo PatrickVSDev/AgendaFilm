@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AgendaFilm.Controller;
+using AgendaFilm.Model;
+using AgendaFilm.Model.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,12 +13,42 @@ using System.Windows.Forms;
 
 namespace AgendaFilm.View.Cadastro.Cadastrar
 {
-    public partial class Form1 : Form
+    public partial class SelecionarFornecedor : Form
     {
-        public Form1()
+        FornecedorRepositorio repository = new FornecedorRepositorio();
+        Actions actions = new Actions();
+        BindingList<Fornecedor> buscaFornecedores = new BindingList<Fornecedor>();
+        BindingList<Fornecedor> fornecedores;
+        List<string> textBoxes = new List<string>();
+        DateTime dataAtual = DateTime.Today;
+        int id;
+
+        public SelecionarFornecedor()
         {
             InitializeComponent();
+            ObterDados();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = fornecedores;
+            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["nome"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["documento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["telefone"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["email"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["funcionario_fk"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
+
+        public void ObterDados()
+        {
+            fornecedores = new BindingList<Fornecedor>(repository.GetAll());
+            id = repository.getHighestId() + 1;
+        }
+
+        public Fornecedor FornecedorSelecionado { get; private set; }
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -24,30 +57,26 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
         private void groupBox1_Paint(object sender, PaintEventArgs e)
         {
             GroupBox box = (GroupBox)sender;
-            Color corBorda = Color.DarkSlateGray;  // Cor da borda
+            Color corBorda = Color.DarkSlateGray;
             int espessuraBorda = 8;
-            int raio = 10;  // Raio do arredondamento
+            int raio = 10;
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-            // Calcula espaço do texto
             Size textSize = TextRenderer.MeasureText(box.Text, box.Font);
             Rectangle rect = new Rectangle(0, textSize.Height / 2, box.Width - 1, box.Height - textSize.Height / 2 - 1);
 
-            // Limpa o fundo para remover a borda padrão
             e.Graphics.Clear(box.BackColor);
 
             using (Pen pen = new Pen(corBorda, espessuraBorda))
             using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
             {
-                // Adiciona um retângulo com cantos arredondados ao caminho
                 path.AddArc(rect.Left, rect.Top, raio, raio, 180, 90);
                 path.AddArc(rect.Right - raio, rect.Top, raio, raio, 270, 90);
                 path.AddArc(rect.Right - raio, rect.Bottom - raio, raio, raio, 0, 90);
                 path.AddArc(rect.Left, rect.Bottom - raio, raio, raio, 90, 90);
                 path.CloseFigure();
 
-                // Desenha a borda
                 e.Graphics.DrawPath(pen, path);
             }
         }
@@ -55,6 +84,20 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                FornecedorSelecionado = (Fornecedor)dataGridView1.SelectedRows[0].DataBoundItem;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Selecione um fornecedor!");
+            }
         }
     }
 }

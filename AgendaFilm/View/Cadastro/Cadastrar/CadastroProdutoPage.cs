@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using AgendaFilm.View.Agendamento;
 using AgendaFilm.View.Cadastro;
+using static System.Windows.Forms.DataFormats;
 namespace AgendaFilm.View.Cadastro.Cadastrar
 {
     public partial class CadastroProdutoPage : Form
@@ -75,9 +76,16 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
                 }
             }
 
-            int testeFornecedor_fk = 0;
+            if (fornecedorSelecionado == null)
+            {
+                MessageBox.Show("Selecione um fornecedor!");
+                return;
+            }
 
-            Produto produto = new Produto(id, textNome.Text.Trim().ToUpper(), testeFornecedor_fk, textMarca.Text.Trim(), numGarantia, dataAtual, dataAtual, Global.funcionarioLogado);
+            int fornecedorId = fornecedorSelecionado.id;
+
+            Produto produto = new Produto(id, textNome.Text.Trim().ToUpper(), fornecedorId, textMarca.Text.Trim(), numGarantia, dataAtual, dataAtual, Global.funcionarioLogado);
+
             produtos.Add(produto);
             repository.Add(produto);
 
@@ -86,12 +94,29 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             textNome.Clear();
             textMarca.Clear();
             textGarantia.Clear();
+
+            this.Close();
         }
+
+        private Fornecedor fornecedorSelecionado = null;
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Form1 novoFormulario = new Form1();
-            novoFormulario.ShowDialog();
+            SelecionarFornecedor formSelecionar = new SelecionarFornecedor();
+            if (formSelecionar.ShowDialog() == DialogResult.OK)
+            {
+                fornecedorSelecionado = formSelecionar.FornecedorSelecionado;
+                labelFornecedorSelecionado.Text = fornecedorSelecionado.nome;
+            }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
 
         }
     }
