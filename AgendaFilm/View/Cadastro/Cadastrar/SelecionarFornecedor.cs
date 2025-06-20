@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,7 +23,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
         List<string> textBoxes = new List<string>();
         DateTime dataAtual = DateTime.Today;
         int id;
-
+        private Button btnFechar;
         public SelecionarFornecedor()
         {
             InitializeComponent();
@@ -40,8 +41,54 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-        }
 
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            InicializarBotaoFechar();
+
+
+        }
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn(
+        int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
+        int nWidthEllipse, int nHeightEllipse);
+
+        private void InicializarBotaoFechar()
+        {
+            btnFechar = new Button();
+            btnFechar.Text = "✕";
+            btnFechar.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnFechar.Size = new Size(35, 35);
+            btnFechar.Location = new Point(this.Width - 35, 4);
+            btnFechar.BackColor = Color.FromArgb(220, 53, 69); // Vermelho
+            btnFechar.ForeColor = Color.White;
+            btnFechar.FlatStyle = FlatStyle.Flat;
+            btnFechar.FlatAppearance.BorderSize = 0;
+            btnFechar.Cursor = Cursors.Hand;
+            btnFechar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+
+            btnFechar.Click += (s, e) => this.Close();
+            btnFechar.MouseEnter += (s, e) => btnFechar.BackColor = Color.FromArgb(255, 99, 117);
+            btnFechar.MouseLeave += (s, e) => btnFechar.BackColor = Color.FromArgb(220, 53, 69);
+
+            btnFechar.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnFechar.Width, btnFechar.Height, 10, 10));
+
+            this.Controls.Add(btnFechar);
+            btnFechar.BringToFront();
+        }
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+
+            int borderWidth = 4;
+            Color borderColor = Color.Black;
+
+            ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle,
+                borderColor, borderWidth, ButtonBorderStyle.Solid,
+                borderColor, borderWidth, ButtonBorderStyle.Solid,
+                borderColor, borderWidth, ButtonBorderStyle.Solid,
+                borderColor, borderWidth, ButtonBorderStyle.Solid);
+        }
         public void ObterDados()
         {
             fornecedores = new BindingList<Fornecedor>(repository.GetAll());
@@ -58,7 +105,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
         {
             GroupBox box = (GroupBox)sender;
             Color corBorda = Color.DarkSlateGray;
-            int espessuraBorda = 8;
+            int espessuraBorda = 5;
             int raio = 10;
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
@@ -101,3 +148,5 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
         }
     }
 }
+
+

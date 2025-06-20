@@ -75,6 +75,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(896, 356);
+            ControlBox = false;
             Controls.Add(btConfirmar);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
