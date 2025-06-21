@@ -40,7 +40,12 @@
             txtMarca = new TextBox();
             txtModelo = new TextBox();
             btSalvar = new Button();
+            label6 = new Label();
+            label7 = new Label();
+            groupBox2 = new GroupBox();
+            label8 = new Label();
             groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -60,6 +65,9 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(groupBox2);
+            groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(btEscolherCliente);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(txtAno);
@@ -83,13 +91,13 @@
             // 
             btEscolherCliente.BackColor = Color.Teal;
             btEscolherCliente.FlatStyle = FlatStyle.Flat;
-            btEscolherCliente.Font = new Font("Segoe UI Semibold", 11F);
-            btEscolherCliente.Location = new Point(289, 139);
+            btEscolherCliente.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btEscolherCliente.Location = new Point(123, 140);
             btEscolherCliente.Margin = new Padding(3, 2, 3, 2);
             btEscolherCliente.Name = "btEscolherCliente";
-            btEscolherCliente.Size = new Size(135, 26);
+            btEscolherCliente.Size = new Size(208, 30);
             btEscolherCliente.TabIndex = 0;
-            btEscolherCliente.Text = "Escolher cliente";
+            btEscolherCliente.Text = "Selecionar cliente";
             btEscolherCliente.UseVisualStyleBackColor = false;
             btEscolherCliente.Click += button2_Click;
             // 
@@ -179,6 +187,47 @@
             btSalvar.UseVisualStyleBackColor = false;
             btSalvar.Click += btSalvar_Click;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI Semibold", 11F);
+            label6.Location = new Point(30, 146);
+            label6.Name = "label6";
+            label6.Size = new Size(54, 20);
+            label6.TabIndex = 5;
+            label6.Text = "cliente";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.FlatStyle = FlatStyle.Flat;
+            label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label7.Location = new Point(372, 145);
+            label7.Name = "label7";
+            label7.Size = new Size(68, 21);
+            label7.TabIndex = 6;
+            label7.Text = "Cliente:";
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(label8);
+            groupBox2.Location = new Point(457, 135);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(207, 36);
+            groupBox2.TabIndex = 7;
+            groupBox2.TabStop = false;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            label8.ForeColor = Color.Blue;
+            label8.Location = new Point(6, 12);
+            label8.Name = "label8";
+            label8.Size = new Size(50, 19);
+            label8.TabIndex = 0;
+            label8.Text = "label8";
+            // 
             // CadastroVeiculoPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -195,6 +244,8 @@
             Load += CadastroVeiculoPage_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -213,5 +264,9 @@
         private Button btSalvar;
         private Button btEscolherCliente;
         private TextBox txtAno;
+        private Label label6;
+        private Label label7;
+        private GroupBox groupBox2;
+        private Label label8;
     }
 }

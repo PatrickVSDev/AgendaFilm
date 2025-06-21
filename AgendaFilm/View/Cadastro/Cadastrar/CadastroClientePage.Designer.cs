@@ -81,7 +81,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 11F);
-            label4.Location = new Point(23, 68);
+            label4.Location = new Point(24, 71);
             label4.Name = "label4";
             label4.Size = new Size(51, 20);
             label4.TabIndex = 8;
@@ -91,7 +91,7 @@
             // textNome
             // 
             textNome.BackColor = SystemColors.ButtonHighlight;
-            textNome.Location = new Point(109, 65);
+            textNome.Location = new Point(109, 72);
             textNome.Margin = new Padding(3, 2, 3, 2);
             textNome.Name = "textNome";
             textNome.Size = new Size(553, 23);
@@ -101,7 +101,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 11F);
-            label3.Location = new Point(277, 19);
+            label3.Location = new Point(277, 22);
             label3.Name = "label3";
             label3.Size = new Size(100, 20);
             label3.TabIndex = 4;
@@ -110,7 +110,7 @@
             // textDocumento
             // 
             textDocumento.BackColor = SystemColors.ButtonHighlight;
-            textDocumento.Location = new Point(383, 16);
+            textDocumento.Location = new Point(383, 23);
             textDocumento.Margin = new Padding(3, 2, 3, 2);
             textDocumento.Name = "textDocumento";
             textDocumento.Size = new Size(279, 23);
@@ -138,7 +138,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 11F);
-            label2.Location = new Point(26, 21);
+            label2.Location = new Point(30, 22);
             label2.Name = "label2";
             label2.Size = new Size(39, 20);
             label2.TabIndex = 1;
@@ -150,7 +150,7 @@
             comboTipoCliente.BackColor = SystemColors.ButtonHighlight;
             comboTipoCliente.FormattingEnabled = true;
             comboTipoCliente.Items.AddRange(new object[] { "Física", "Jurídica" });
-            comboTipoCliente.Location = new Point(109, 19);
+            comboTipoCliente.Location = new Point(109, 23);
             comboTipoCliente.Margin = new Padding(3, 2, 3, 2);
             comboTipoCliente.Name = "comboTipoCliente";
             comboTipoCliente.Size = new Size(140, 23);
