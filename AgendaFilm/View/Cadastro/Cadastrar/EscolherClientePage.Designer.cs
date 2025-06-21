@@ -42,11 +42,11 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(16, 125);
+            dataGridView1.Location = new Point(16, 123);
             dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(785, 217);
+            dataGridView1.Size = new Size(785, 214);
             dataGridView1.TabIndex = 0;
             // 
             // btConfirmar
@@ -54,7 +54,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             btConfirmar.BackColor = Color.PowderBlue;
             btConfirmar.FlatStyle = FlatStyle.Flat;
             btConfirmar.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btConfirmar.Location = new Point(384, 352);
+            btConfirmar.Location = new Point(346, 341);
             btConfirmar.Margin = new Padding(3, 2, 3, 2);
             btConfirmar.Name = "btConfirmar";
             btConfirmar.Size = new Size(124, 31);
