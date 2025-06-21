@@ -107,7 +107,7 @@
             // 
             txtAno.Location = new Point(457, 90);
             txtAno.Name = "txtAno";
-            txtAno.Size = new Size(100, 23);
+            txtAno.Size = new Size(110, 23);
             txtAno.TabIndex = 3;
             // 
             // txtPlaca
