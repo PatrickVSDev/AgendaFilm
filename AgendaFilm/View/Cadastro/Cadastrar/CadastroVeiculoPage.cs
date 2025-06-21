@@ -18,6 +18,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
     public partial class CadastroVeiculoPage : Form
     {
         public int clienteIdRecebido { get; set; }
+        private Cliente clienteSelecionado = null;
 
         VeiculoRepositorio repository = new VeiculoRepositorio();
         Actions actions = new Actions();
@@ -57,11 +58,23 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
 
         }
 
+        public void SetarNomeCliente(string nomeCliente)
+        {
+            lbNomeCliente.Text = nomeCliente.ToUpper();
+        }
+
+
         private void button2_Click(object sender, EventArgs e)
         {
-            EscolherClientePage novoFormulario = new EscolherClientePage(); ;
-            novoFormulario.Show();
+            EscolherClientePage formSelecionar = new EscolherClientePage();
+            if (formSelecionar.ShowDialog() == DialogResult.OK)
+            {
+                clienteSelecionado = formSelecionar.ClienteSelecionado;
+                clienteIdRecebido = clienteSelecionado.id;
+                lbNomeCliente.Text = clienteSelecionado.nome.ToUpper();
+            }
         }
+
 
         private void label4_Click(object sender, EventArgs e)
         {
@@ -228,6 +241,21 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
 
                 e.Graphics.DrawPath(pen, path);
             }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

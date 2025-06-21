@@ -30,7 +30,7 @@
         {
             button1 = new Button();
             label1 = new Label();
-            textBox1 = new TextBox();
+            txtPesquisaNome = new TextBox();
             dataGridView1 = new DataGridView();
             groupBox1 = new GroupBox();
             button2 = new Button();
@@ -48,6 +48,7 @@
             button1.TabIndex = 0;
             button1.Text = "Pesquisar";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // label1
             // 
@@ -59,12 +60,12 @@
             label1.TabIndex = 1;
             label1.Text = "Pesquisa: Nome";
             // 
-            // textBox1
+            // txtPesquisaNome
             // 
-            textBox1.Location = new Point(139, 41);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(222, 23);
-            textBox1.TabIndex = 2;
+            txtPesquisaNome.Location = new Point(139, 41);
+            txtPesquisaNome.Name = "txtPesquisaNome";
+            txtPesquisaNome.Size = new Size(222, 23);
+            txtPesquisaNome.TabIndex = 2;
             // 
             // dataGridView1
             // 
@@ -78,7 +79,7 @@
             // 
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(txtPesquisaNome);
             groupBox1.Location = new Point(16, 40);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(785, 78);
@@ -124,7 +125,7 @@
 
         private Button button1;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox txtPesquisaNome;
         private DataGridView dataGridView1;
         private GroupBox groupBox1;
         private Button button2;

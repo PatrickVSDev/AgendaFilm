@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices; // Necessário para a borda arredondada do botão X
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,7 +24,8 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
         DateTime dataAtual = DateTime.Today;
         int id;
 
-        private Button btnFechar; // Botão "X"
+        private Button btnFechar;
+        public Cliente ClienteSelecionado { get; private set; }
 
         public EscolherClientePage()
         {
@@ -61,12 +62,14 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 int clienteId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["id"].Value);
+                string clienteNome = dataGridView1.SelectedRows[0].Cells["nome"].Value.ToString();
 
                 CadastroVeiculoPage cadastroVeiculoPage = (CadastroVeiculoPage)Application.OpenForms["CadastroVeiculoPage"];
 
                 if (cadastroVeiculoPage != null)
                 {
                     cadastroVeiculoPage.clienteIdRecebido = clienteId;
+                    cadastroVeiculoPage.SetarNomeCliente(clienteNome);
                 }
                 else
                 {
@@ -81,6 +84,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             }
         }
 
+
         private void EscolherClientePage_Load(object sender, EventArgs e)
         {
         }
@@ -89,7 +93,6 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
         {
         }
 
-        // ======================== Borda Preta ========================
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -104,7 +107,6 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
                 borderColor, borderWidth, ButtonBorderStyle.Solid);
         }
 
-        // ======================== Botão "X" ========================
         private void InicializarBotaoFechar()
         {
             btnFechar = new Button();
@@ -163,5 +165,23 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
                 e.Graphics.DrawPath(pen, path);
             }
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string termo = txtPesquisaNome.Text.Trim().ToLower();
+
+            if (string.IsNullOrWhiteSpace(termo))
+            {
+                dataGridView1.DataSource = clientes;
+                return;
+            }
+
+            var resultado = clientes
+                .Where(c => c.nome != null && c.nome.ToLower().Contains(termo))
+                .ToList();
+
+            dataGridView1.DataSource = new BindingList<Cliente>(resultado);
+        }
+
     }
 }

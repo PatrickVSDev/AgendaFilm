@@ -147,6 +147,24 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
                 MessageBox.Show("Selecione um fornecedor!");
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string termo = txtPesquisaNome.Text.Trim().ToLower();
+
+            if (string.IsNullOrWhiteSpace(termo))
+            {
+                dataGridView1.DataSource = fornecedores;
+                return;
+            }
+
+            var resultado = fornecedores
+                .Where(f => f.nome != null && f.nome.ToLower().Contains(termo))
+                .ToList();
+
+            dataGridView1.DataSource = new BindingList<Fornecedor>(resultado);
+        }
+
     }
 }
 

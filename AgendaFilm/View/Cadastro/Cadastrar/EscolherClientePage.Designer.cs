@@ -34,7 +34,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             groupBox1 = new GroupBox();
             label1 = new Label();
             button1 = new Button();
-            textBox1 = new TextBox();
+            txtPesquisaNome = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -67,7 +67,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             // 
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(txtPesquisaNome);
             groupBox1.Location = new Point(16, 40);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(785, 78);
@@ -96,13 +96,14 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             button1.TabIndex = 0;
             button1.Text = "Pesquisar";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
             // 
-            // textBox1
+            // txtPesquisaNome
             // 
-            textBox1.Location = new Point(139, 41);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(222, 23);
-            textBox1.TabIndex = 2;
+            txtPesquisaNome.Location = new Point(139, 41);
+            txtPesquisaNome.Name = "txtPesquisaNome";
+            txtPesquisaNome.Size = new Size(222, 23);
+            txtPesquisaNome.TabIndex = 2;
             // 
             // EscolherClientePage
             // 
@@ -131,6 +132,6 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
         private GroupBox groupBox1;
         private Label label1;
         private Button button1;
-        private TextBox textBox1;
+        private TextBox txtPesquisaNome;
     }
 }
