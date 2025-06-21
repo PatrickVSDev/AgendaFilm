@@ -90,3 +90,26 @@ CREATE TABLE agendamentos (
     CONSTRAINT fk_agendamentos_funcionarios FOREIGN KEY (funcionario_fk) REFERENCES funcionarios(id)
 );
 
+CREATE TABLE ordens_servico (
+    id SERIAL PRIMARY KEY,
+    agendamento_fk INT NOT NULL,
+    observacoes TEXT,
+    status VARCHAR(20) NOT NULL CHECK (status IN ('a fazer', 'em andamento', 'finalizado')),
+    dataCriacao DATE NOT NULL DEFAULT CURRENT_DATE,
+    dataAlteracao DATE NOT NULL,
+    funcionario_fk INT NOT NULL,
+
+    CONSTRAINT fk_ordem_agendamento FOREIGN KEY (agendamento_fk) REFERENCES agendamentos(id) ON DELETE CASCADE,
+    CONSTRAINT fk_ordem_funcionario FOREIGN KEY (funcionario_fk) REFERENCES funcionarios(id) ON DELETE SET NULL
+);
+
+CREATE TABLE ordem_produtos (
+    id SERIAL PRIMARY KEY,
+    ordem_servico_fk INT NOT NULL,
+    produto_fk INT NOT NULL,
+    preco_unitario NUMERIC(10,2) NOT NULL,
+    quantidade INT NOT NULL DEFAULT 1 CHECK (quantidade > 0),
+
+    CONSTRAINT fk_ordem_produto_ordem FOREIGN KEY (ordem_servico_fk) REFERENCES ordens_servico(id) ON DELETE CASCADE,
+    CONSTRAINT fk_ordem_produto_produto FOREIGN KEY (produto_fk) REFERENCES produtos(id) ON DELETE SET NULL
+);

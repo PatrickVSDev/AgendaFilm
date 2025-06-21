@@ -35,10 +35,10 @@
             radioId = new RadioButton();
             radioNome = new RadioButton();
             label1 = new Label();
-            dataGridView1 = new DataGridView();
+            dgvProdutos = new DataGridView();
             btConfirmar = new Button();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -86,7 +86,7 @@
             radioTodos.Location = new Point(304, 18);
             radioTodos.Margin = new Padding(3, 2, 3, 2);
             radioTodos.Name = "radioTodos";
-            radioTodos.Size = new Size(56, 19);
+            radioTodos.Size = new Size(57, 19);
             radioTodos.TabIndex = 6;
             radioTodos.TabStop = true;
             radioTodos.Text = "Todos";
@@ -115,7 +115,6 @@
             radioNome.TabStop = true;
             radioNome.Text = "Nome";
             radioNome.UseVisualStyleBackColor = true;
-            radioNome.CheckedChanged += radioNome_CheckedChanged;
             // 
             // label1
             // 
@@ -126,17 +125,16 @@
             label1.Size = new Size(186, 20);
             label1.TabIndex = 1;
             label1.Text = "Defina o tipo de pesquisa:";
-            label1.Click += label1_Click;
             // 
-            // dataGridView1
+            // dgvProdutos
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(17, 110);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(785, 207);
-            dataGridView1.TabIndex = 33;
+            dgvProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProdutos.Location = new Point(17, 110);
+            dgvProdutos.Margin = new Padding(3, 2, 3, 2);
+            dgvProdutos.Name = "dgvProdutos";
+            dgvProdutos.RowHeadersWidth = 51;
+            dgvProdutos.Size = new Size(785, 207);
+            dgvProdutos.TabIndex = 33;
             // 
             // btConfirmar
             // 
@@ -152,6 +150,7 @@
             btConfirmar.TabIndex = 35;
             btConfirmar.Text = "Confirmar";
             btConfirmar.UseVisualStyleBackColor = false;
+            btConfirmar.Click += btConfirmar_Click;
             // 
             // SelecionarProduto
             // 
@@ -160,14 +159,13 @@
             ClientSize = new Size(818, 379);
             ControlBox = false;
             Controls.Add(btConfirmar);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvProdutos);
             Controls.Add(groupBox1);
             Name = "SelecionarProduto";
             StartPosition = FormStartPosition.CenterScreen;
-            Load += SelecionarProduto_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProdutos).EndInit();
             ResumeLayout(false);
         }
 
@@ -180,7 +178,7 @@
         private RadioButton radioTodos;
         private Button button4;
         private TextBox textBoxPesquisar;
-        private DataGridView dataGridView1;
+        private DataGridView dgvProdutos;
         private Button btConfirmar;
     }
 }

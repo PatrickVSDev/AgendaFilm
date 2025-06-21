@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AgendaFilm.Controller;
+using AgendaFilm.Model;
+using AgendaFilm.Model.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,12 +18,110 @@ namespace AgendaFilm.View.OrdemDeServiço
     {
         private Button btnFechar; // Botão "X"
 
+        AgendamentoRepositorio repository = new AgendamentoRepositorio();
+        Actions actions = new Actions();
+        BindingList<dynamic> buscaAgendamentos = new BindingList<dynamic>();
+        BindingList<AgendamentoDTO> agendamentos;
+        List<string> textBoxes = new List<string>();
+        DateTime dataAtual = DateTime.Today;
+        int id;
+
         public SelecionarAgendamento()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
             InicializarBotaoFechar();
+            ObterDados(DateTime.Today);
+            ConfigurarDataGridView();
+        }
+
+        public void ObterDados(DateTime? dataFiltro = null)
+        {
+            var todos = repository.getAll();
+
+            if (dataFiltro.HasValue)
+            {
+                todos = todos
+                    .Where(a => a.dataHoraAgendamento.Date == dataFiltro.Value.Date)
+                    .ToList();
+            }
+
+            agendamentos = new BindingList<AgendamentoDTO>(todos);
+            id = repository.getHighestId() + 1;
+        }
+
+        private void AtualizarDataGridView(DateTime? dataFiltro = null)
+        {
+            ObterDados(dataFiltro);
+
+            dataGridView1.Columns.Clear();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = agendamentos;
+
+            ConfigurarColunas();
+        }
+
+
+
+        private void AtualizarDataGridView()
+        {
+            AtualizarDataGridView(DateTime.Today);
+        }
+
+
+
+        private void ConfigurarDataGridView()
+        {
+
+            dataGridView1.Columns.Clear();
+            dataGridView1.DataSource = agendamentos;
+
+            ConfigurarColunas();
+
+        }
+
+        private void ConfigurarColunas()
+        {
+            if (dataGridView1.Columns.Contains("id"))
+                dataGridView1.Columns["id"].HeaderText = "ID";
+
+            if (dataGridView1.Columns.Contains("nome_cliente"))
+                dataGridView1.Columns["nome_cliente"].HeaderText = "Cliente";
+
+            if (dataGridView1.Columns.Contains("placa_veiculo"))
+                dataGridView1.Columns["placa_veiculo"].HeaderText = "Veículo";
+
+            if (dataGridView1.Columns.Contains("dataHoraAgendamento"))
+                dataGridView1.Columns["dataHoraAgendamento"].HeaderText = "Data/Hora";
+
+            if (dataGridView1.Columns.Contains("observacoes"))
+                dataGridView1.Columns["observacoes"].HeaderText = "Observações";
+
+            if (dataGridView1.Columns.Contains("dataCriacao"))
+            {
+                dataGridView1.Columns["dataCriacao"].HeaderText = "Data Criação";
+                dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            }
+
+            if (dataGridView1.Columns.Contains("dataAlteracao"))
+            {
+                dataGridView1.Columns["dataAlteracao"].HeaderText = "Última Alteração";
+                dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            }
+
+            if (dataGridView1.Columns.Contains("nome_funcionario"))
+                dataGridView1.Columns["nome_funcionario"].HeaderText = "Funcionário";
+
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                if (column.ValueType == typeof(string))
+                    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                else
+                    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
 
         private void SelecionarAgendamento_Load(object sender, EventArgs e)
@@ -60,7 +161,6 @@ namespace AgendaFilm.View.OrdemDeServiço
             }
         }
 
-        // ========== Borda Preta ==========
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -75,7 +175,6 @@ namespace AgendaFilm.View.OrdemDeServiço
                 borderColor, borderWidth, ButtonBorderStyle.Solid);
         }
 
-        // ========== Botão "X" ==========
         private void InicializarBotaoFechar()
         {
             btnFechar = new Button();
@@ -103,5 +202,42 @@ namespace AgendaFilm.View.OrdemDeServiço
         private static extern IntPtr CreateRoundRectRgn(
             int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
             int nWidthEllipse, int nHeightEllipse);
+
+        public AgendamentoDTO AgendamentoSelecionado { get; private set; }
+
+
+        private void btConfirmar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                int idSelecionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells["id"].Value);
+                AgendamentoSelecionado = agendamentos.FirstOrDefault(a => a.id == idSelecionado);
+
+                if (AgendamentoSelecionado != null)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Agendamento não encontrado.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecione um agendamento.");
+            }
+        }
+
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePickerFiltro_ValueChanged(object sender, EventArgs e)
+        {
+            AtualizarDataGridView(dateTimePickerFiltro.Value.Date);
+        }
     }
 }

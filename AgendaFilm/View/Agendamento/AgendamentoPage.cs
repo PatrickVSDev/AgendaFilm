@@ -171,5 +171,10 @@ namespace AgendaFilm.View.Agendamento
         {
             AtualizarDataGridView(dateTimePickerFiltro.Value.Date);
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AgendaFilm.Controller;
+using AgendaFilm.Model.Repositories;
+using AgendaFilm.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,32 +16,120 @@ namespace AgendaFilm.View.OrdemDeServiço
 {
     public partial class SelecionarProduto : Form
     {
-        private Button btnFechar; // Botão "X"
+        ProdutoRepositorio repository = new ProdutoRepositorio();
+        BindingList<Produto> produtos;
+        public List<OrdemProduto> ProdutosSelecionados { get; private set; } = new List<OrdemProduto>();
+
+        private Button btnFechar;
 
         public SelecionarProduto()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
+
             InicializarBotaoFechar();
+            ObterDados();
+            InicializarDataGridView();
         }
 
-        private void SelecionarProduto_Load(object sender, EventArgs e)
+        private void ObterDados()
         {
-
+            produtos = new BindingList<Produto>(repository.GetAll());
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void InicializarDataGridView()
         {
+            dgvProdutos.AutoGenerateColumns = false;
+            dgvProdutos.Columns.Clear();
 
+            // Colunas fixas do Produto
+            dgvProdutos.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "id",
+                HeaderText = "ID",
+                Name = "ProdutoId",
+                ReadOnly = true,
+                Width = 50,
+                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleRight }
+            });
+
+            dgvProdutos.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "nome",
+                HeaderText = "Nome",
+                Name = "Nome",
+                ReadOnly = true,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            });
+
+            // Colunas adicionais para preenchimento manual
+            dgvProdutos.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Preço Unitário",
+                Name = "PrecoUnitario",
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "C2", Alignment = DataGridViewContentAlignment.MiddleRight }
+            });
+
+            dgvProdutos.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Quantidade",
+                Name = "Quantidade",
+                DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleCenter }
+            });
+
+            dgvProdutos.DataSource = produtos;
+
+            // Inicializar valores default
+            foreach (DataGridViewRow row in dgvProdutos.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    row.Cells["PrecoUnitario"].Value = 0.00m;
+                    row.Cells["Quantidade"].Value = 1;
+                }
+            }
         }
 
-        private void radioNome_CheckedChanged(object sender, EventArgs e)
+        private void btConfirmar_Click(object sender, EventArgs e)
         {
+            ProdutosSelecionados.Clear();
 
+            foreach (DataGridViewRow row in dgvProdutos.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                var isPrecoOk = decimal.TryParse(row.Cells["PrecoUnitario"].Value?.ToString(), out decimal preco);
+                var isQtdOk = int.TryParse(row.Cells["Quantidade"].Value?.ToString(), out int qtd);
+
+                if (isPrecoOk && isQtdOk && preco > 0 && qtd > 0)
+                {
+                    var produtoId = Convert.ToInt32(row.Cells["ProdutoId"].Value);
+
+                    ProdutosSelecionados.Add(new OrdemProduto
+                    {
+                        ProdutoId = produtoId,
+                        PrecoUnitario = preco,
+                        Quantidade = qtd
+                    });
+                }
+                else if (isPrecoOk || isQtdOk)
+                {
+                    MessageBox.Show("Preencha corretamente o preço unitário e a quantidade para todos os produtos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
+            if (ProdutosSelecionados.Count == 0)
+            {
+                MessageBox.Show("Informe ao menos um produto com preço e quantidade válidos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
-        // ========== Borda Preta ==========
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -53,7 +144,6 @@ namespace AgendaFilm.View.OrdemDeServiço
                 borderColor, borderWidth, ButtonBorderStyle.Solid);
         }
 
-        // ========== Botão "X" ==========
         private void InicializarBotaoFechar()
         {
             btnFechar = new Button();
@@ -82,10 +172,7 @@ namespace AgendaFilm.View.OrdemDeServiço
             int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
             int nWidthEllipse, int nHeightEllipse);
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
+        private void groupBox1_Enter(object sender, EventArgs e) { }
         private void groupBox1_Paint(object sender, PaintEventArgs e)
         {
             GroupBox box = (GroupBox)sender;
@@ -94,7 +181,6 @@ namespace AgendaFilm.View.OrdemDeServiço
             int raio = 10;
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-
             Size textSize = TextRenderer.MeasureText(box.Text, box.Font);
             Rectangle rect = new Rectangle(0, textSize.Height / 2, box.Width - 1, box.Height - textSize.Height / 2 - 1);
 

@@ -31,8 +31,7 @@
             btConfirmar = new Button();
             dataGridView1 = new DataGridView();
             groupBox1 = new GroupBox();
-            textBoxPesquisar = new TextBox();
-            button4 = new Button();
+            dateTimePickerFiltro = new DateTimePicker();
             label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
@@ -52,6 +51,7 @@
             btConfirmar.TabIndex = 38;
             btConfirmar.Text = "Confirmar";
             btConfirmar.UseVisualStyleBackColor = false;
+            btConfirmar.Click += btConfirmar_Click;
             // 
             // dataGridView1
             // 
@@ -65,8 +65,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBoxPesquisar);
-            groupBox1.Controls.Add(button4);
+            groupBox1.Controls.Add(dateTimePickerFiltro);
             groupBox1.Controls.Add(label1);
             groupBox1.Location = new Point(17, 25);
             groupBox1.Name = "groupBox1";
@@ -76,28 +75,13 @@
             groupBox1.Paint += groupBox1_Paint;
             groupBox1.Enter += groupBox1_Enter;
             // 
-            // textBoxPesquisar
+            // dateTimePickerFiltro
             // 
-            textBoxPesquisar.BackColor = SystemColors.ButtonHighlight;
-            textBoxPesquisar.Location = new Point(139, 41);
-            textBoxPesquisar.Margin = new Padding(3, 2, 3, 2);
-            textBoxPesquisar.Name = "textBoxPesquisar";
-            textBoxPesquisar.Size = new Size(222, 23);
-            textBoxPesquisar.TabIndex = 8;
-            // 
-            // button4
-            // 
-            button4.BackColor = Color.CadetBlue;
-            button4.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
-            button4.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
-            button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button4.Location = new Point(10, 37);
-            button4.Margin = new Padding(3, 2, 3, 2);
-            button4.Name = "button4";
-            button4.Size = new Size(123, 30);
-            button4.TabIndex = 7;
-            button4.Text = "Pesquisar";
-            button4.UseVisualStyleBackColor = false;
+            dateTimePickerFiltro.Location = new Point(6, 49);
+            dateTimePickerFiltro.Name = "dateTimePickerFiltro";
+            dateTimePickerFiltro.Size = new Size(244, 23);
+            dateTimePickerFiltro.TabIndex = 11;
+            dateTimePickerFiltro.ValueChanged += dateTimePickerFiltro_ValueChanged;
             // 
             // label1
             // 
@@ -108,6 +92,7 @@
             label1.Size = new Size(186, 20);
             label1.TabIndex = 1;
             label1.Text = "Defina o tipo de pesquisa:";
+            label1.Click += label1_Click;
             // 
             // SelecionarAgendamento
             // 
@@ -132,8 +117,7 @@
         private Button btConfirmar;
         private DataGridView dataGridView1;
         private GroupBox groupBox1;
-        private TextBox textBoxPesquisar;
-        private Button button4;
         private Label label1;
+        private DateTimePicker dateTimePickerFiltro;
     }
 }
