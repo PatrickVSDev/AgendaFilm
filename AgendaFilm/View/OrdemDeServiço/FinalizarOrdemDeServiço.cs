@@ -89,9 +89,75 @@ namespace AgendaFilm.View.OrdemDeServiço
             }
         }
 
+
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+        private void groupBox3_Paint(object sender, PaintEventArgs e)
+        {
+            GroupBox box = (GroupBox)sender;
+            Color corBorda = Color.Black;  // Cor da borda
+            int espessuraBorda = 5;
+            int raio = 10;  // Raio do arredondamento
+
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            // Calcula espaço do texto
+            Size textSize = TextRenderer.MeasureText(box.Text, box.Font);
+            Rectangle rect = new Rectangle(0, textSize.Height / 2, box.Width - 1, box.Height - textSize.Height / 2 - 1);
+
+            // Limpa o fundo para remover a borda padrão
+            e.Graphics.Clear(box.BackColor);
+
+            using (Pen pen = new Pen(corBorda, espessuraBorda))
+            using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
+            {
+                // Adiciona um retângulo com cantos arredondados ao caminho
+                path.AddArc(rect.Left, rect.Top, raio, raio, 180, 90);
+                path.AddArc(rect.Right - raio, rect.Top, raio, raio, 270, 90);
+                path.AddArc(rect.Right - raio, rect.Bottom - raio, raio, raio, 0, 90);
+                path.AddArc(rect.Left, rect.Bottom - raio, raio, raio, 90, 90);
+                path.CloseFigure();
+
+                // Desenha a borda
+                e.Graphics.DrawPath(pen, path);
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+        private void label2_Paint(object sender, PaintEventArgs e)
+        {
+            Label label = sender as Label;
+
+            Color corBorda = Color.Black;
+            int espessuraBorda = 2;
+            int raio = 8;
+
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            Rectangle rect = new Rectangle(0, 0, label.Width - 1, label.Height - 1);
+
+            using (Pen pen = new Pen(corBorda, espessuraBorda))
+            using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
+            {
+                path.AddArc(rect.Left, rect.Top, raio, raio, 180, 90);
+                path.AddArc(rect.Right - raio, rect.Top, raio, raio, 270, 90);
+                path.AddArc(rect.Right - raio, rect.Bottom - raio, raio, raio, 0, 90);
+                path.AddArc(rect.Left, rect.Bottom - raio, raio, raio, 90, 90);
+                path.CloseFigure();
+
+                e.Graphics.DrawPath(pen, path);
+            }
         }
     }
 }

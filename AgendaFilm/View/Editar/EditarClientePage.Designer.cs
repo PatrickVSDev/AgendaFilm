@@ -90,13 +90,17 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.PowderBlue;
+            label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Nirmala UI", 19.8000011F, FontStyle.Bold);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(6, 7);
+            label1.Location = new Point(4, 4);
             label1.Name = "label1";
             label1.Size = new Size(190, 37);
             label1.TabIndex = 14;
             label1.Text = "Editar Cliente";
+            label1.Click += label1_Click;
+            label1.Paint += label1_Paint;
             // 
             // label2
             // 
@@ -135,11 +139,13 @@
             groupBox5.Size = new Size(696, 180);
             groupBox5.TabIndex = 21;
             groupBox5.TabStop = false;
+            groupBox5.Paint += groupBox1_Paint;
+            groupBox5.Enter += groupBox5_Enter;
             // 
             // textTelefone
             // 
             textTelefone.BackColor = SystemColors.ButtonHighlight;
-            textTelefone.Location = new Point(149, 127);
+            textTelefone.Location = new Point(109, 127);
             textTelefone.Margin = new Padding(3, 2, 3, 2);
             textTelefone.Name = "textTelefone";
             textTelefone.Size = new Size(278, 23);
@@ -152,7 +158,7 @@
             textNome.Location = new Point(109, 72);
             textNome.Margin = new Padding(3, 2, 3, 2);
             textNome.Name = "textNome";
-            textNome.Size = new Size(551, 23);
+            textNome.Size = new Size(553, 23);
             textNome.TabIndex = 0;
             // 
             // label10
@@ -170,7 +176,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(777, 476);
+            ClientSize = new Size(707, 318);
             Controls.Add(btSalvar);
             Controls.Add(label1);
             Controls.Add(groupBox5);

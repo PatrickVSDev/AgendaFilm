@@ -1,78 +1,44 @@
-﻿using AgendaFilm.Controller;
-using AgendaFilm.Model.Repositories;
-using AgendaFilm.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices; // Adicionado para o botão "X" arredondado
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
-namespace AgendaFilm.View.Editar
+namespace AgendaFilm.View.OrdemDeServiço
 {
-    public partial class EditarClientePage : Form
+    public partial class SelecionarAgendamento : Form
     {
-        ClienteRepositorio repository = new ClienteRepositorio();
-        public Cliente cliente { get; set; }
-        Actions actions = new Actions();
         private Button btnFechar; // Botão "X"
 
-        public event Action RefreshGrid;
-
-        public EditarClientePage(Cliente cliente)
+        public SelecionarAgendamento()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
             InicializarBotaoFechar();
-
-            this.cliente = cliente;
-            comboTipoCliente.SelectedItem = cliente.tipo_cliente.Trim();
-            textDocumento.Text = cliente.documento.Trim();
-            textNome.Text = cliente.nome.Trim();
-            textTelefone.Text = cliente.telefone.Trim();
         }
 
-        private void EditarClientePage_Load(object sender, EventArgs e)
+        private void SelecionarAgendamento_Load(object sender, EventArgs e)
         {
+
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
-        }
 
-        private void btSalvar_Click(object sender, EventArgs e)
-        {
-            this.cliente.tipo_cliente = comboTipoCliente.Text.Trim();
-            this.cliente.documento = textDocumento.Text.Trim();
-            this.cliente.nome = textNome.Text.Trim();
-            this.cliente.telefone = textTelefone.Text.Trim();
-            this.cliente.dataAlteracao = DateTime.Today;
-            this.cliente.funcionario_fk = Global.funcionarioLogado;
-            repository.UpdateCliente(cliente);
-
-            RefreshGrid?.Invoke();
-            this.Close();
-        }
-
-        private void textTelefone_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void groupBox5_Enter(object sender, EventArgs e)
-        {
         }
 
         private void groupBox1_Paint(object sender, PaintEventArgs e)
         {
             GroupBox box = (GroupBox)sender;
-            Color corBorda = Color.Black;
-            int espessuraBorda = 3;
+            Color corBorda = Color.DarkSlateGray;
+            int espessuraBorda = 5;
+            int raio = 10;
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
@@ -80,35 +46,6 @@ namespace AgendaFilm.View.Editar
             Rectangle rect = new Rectangle(0, textSize.Height / 2, box.Width - 1, box.Height - textSize.Height / 2 - 1);
 
             e.Graphics.Clear(box.BackColor);
-
-            using (Pen pen = new Pen(corBorda, espessuraBorda))
-            using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
-            {
-                path.AddRectangle(rect);
-                e.Graphics.DrawPath(pen, path);
-            }
-
-            using (SolidBrush brush = new SolidBrush(box.ForeColor))
-            {
-                e.Graphics.DrawString(box.Text, box.Font, brush, 10, 0);
-            }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label1_Paint(object sender, PaintEventArgs e)
-        {
-            Label label = sender as Label;
-
-            Color corBorda = Color.Black;
-            int espessuraBorda = 2;
-            int raio = 8;
-
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-
-            Rectangle rect = new Rectangle(0, 0, label.Width - 1, label.Height - 1);
 
             using (Pen pen = new Pen(corBorda, espessuraBorda))
             using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
