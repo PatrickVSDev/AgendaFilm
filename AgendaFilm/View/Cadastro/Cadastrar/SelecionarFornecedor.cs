@@ -101,6 +101,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
         {
 
         }
+
         private void groupBox1_Paint(object sender, PaintEventArgs e)
         {
             GroupBox box = (GroupBox)sender;
