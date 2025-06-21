@@ -36,9 +36,9 @@
             label2 = new Label();
             label4 = new Label();
             groupBox5 = new GroupBox();
+            textTelefone = new TextBox();
             textNome = new TextBox();
             label10 = new Label();
-            textTelefone = new TextBox();
             groupBox5.SuspendLayout();
             SuspendLayout();
             // 
@@ -136,6 +136,16 @@
             groupBox5.TabIndex = 21;
             groupBox5.TabStop = false;
             // 
+            // textTelefone
+            // 
+            textTelefone.BackColor = SystemColors.ButtonHighlight;
+            textTelefone.Location = new Point(149, 127);
+            textTelefone.Margin = new Padding(3, 2, 3, 2);
+            textTelefone.Name = "textTelefone";
+            textTelefone.Size = new Size(278, 23);
+            textTelefone.TabIndex = 28;
+            textTelefone.TextChanged += textTelefone_TextChanged;
+            // 
             // textNome
             // 
             textNome.BackColor = SystemColors.ButtonHighlight;
@@ -154,16 +164,6 @@
             label10.Size = new Size(67, 20);
             label10.TabIndex = 26;
             label10.Text = "Telefone";
-            // 
-            // textTelefone
-            // 
-            textTelefone.BackColor = SystemColors.ButtonHighlight;
-            textTelefone.Location = new Point(109, 127);
-            textTelefone.Margin = new Padding(3, 2, 3, 2);
-            textTelefone.Name = "textTelefone";
-            textTelefone.Size = new Size(278, 23);
-            textTelefone.TabIndex = 28;
-            textTelefone.TextChanged += textTelefone_TextChanged;
             // 
             // EditarClientePage
             // 
