@@ -115,3 +115,11 @@ CREATE TABLE ordem_produtos (
     CONSTRAINT fk_ordem_produto_ordem FOREIGN KEY (ordem_servico_fk) REFERENCES ordens_servico(id) ON DELETE CASCADE,
     CONSTRAINT fk_ordem_produto_produto FOREIGN KEY (produto_fk) REFERENCES produtos(id) ON DELETE SET NULL
 );
+
+CREATE TABLE logs (
+    id SERIAL PRIMARY KEY,
+    timestamp TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    nivel TEXT NOT NULL,
+    mensagem TEXT NOT NULL,
+    usuario TEXT
+);

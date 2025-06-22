@@ -17,11 +17,11 @@ namespace AgendaFilm
 
                 if (loginResult == DialogResult.OK)
                 {
-                    Application.Run(new MenuPage()); // só sai quando MenuPage fecha
+                    Application.Run(new MenuPage());
                 }
                 else
                 {
-                    break; // login cancelado -> sair do loop e encerrar o app
+                    break;
                 }
             }
         }

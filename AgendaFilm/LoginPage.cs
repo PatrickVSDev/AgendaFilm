@@ -33,13 +33,17 @@ namespace AgendaFilm
                     Global.loginLogado = funcionario.login;
                     Global.senhaLogado = funcionario.senha;
 
+                    Logger.Log($"Login realizado com sucesso para o usuário {funcionario.login}", "INFO", funcionario.login);
+
                     this.DialogResult = DialogResult.OK;
                     return;
                 }
             }
 
+            Logger.Log($"Tentativa de login inválida para o usuário {txtUsuario.Text}", "WARNING", txtUsuario.Text);
             MessageBox.Show("Usuário ou senha incorretos!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
 
         private void btCancelar_Click(object sender, EventArgs e)
         {
