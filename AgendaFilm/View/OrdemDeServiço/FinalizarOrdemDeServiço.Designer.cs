@@ -32,11 +32,14 @@
             button2 = new Button();
             dataGridView1 = new DataGridView();
             groupBox3 = new GroupBox();
+            btnBuscar = new Button();
+            label3 = new Label();
+            dtInicio = new DateTimePicker();
             label2 = new Label();
-            radioTodos = new RadioButton();
-            radioId = new RadioButton();
+            rbFinalizado = new RadioButton();
+            rbEmAndamento = new RadioButton();
             label1 = new Label();
-            radioNome = new RadioButton();
+            rbAFazer = new RadioButton();
             npgsqlDataAdapter1 = new Npgsql.NpgsqlDataAdapter();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -70,6 +73,7 @@
             button2.TabIndex = 3;
             button2.Text = "Imprimir";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // dataGridView1
             // 
@@ -78,14 +82,18 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(948, 366);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(btnBuscar);
+            groupBox3.Controls.Add(label3);
+            groupBox3.Controls.Add(dtInicio);
             groupBox3.Controls.Add(label2);
-            groupBox3.Controls.Add(radioTodos);
-            groupBox3.Controls.Add(radioId);
+            groupBox3.Controls.Add(rbFinalizado);
+            groupBox3.Controls.Add(rbEmAndamento);
             groupBox3.Controls.Add(label1);
-            groupBox3.Controls.Add(radioNome);
+            groupBox3.Controls.Add(rbAFazer);
             groupBox3.Location = new Point(40, 22);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(948, 92);
@@ -93,6 +101,40 @@
             groupBox3.TabStop = false;
             groupBox3.Paint += groupBox3_Paint;
             groupBox3.Enter += groupBox3_Enter;
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.BackColor = Color.CadetBlue;
+            btnBuscar.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
+            btnBuscar.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
+            btnBuscar.FlatStyle = FlatStyle.Flat;
+            btnBuscar.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnBuscar.Location = new Point(652, 56);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(119, 33);
+            btnBuscar.TabIndex = 34;
+            btnBuscar.Text = "Pesquisar";
+            btnBuscar.UseVisualStyleBackColor = false;
+            btnBuscar.Click += btnBuscar_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
+            label3.Location = new Point(472, 61);
+            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(45, 20);
+            label3.TabIndex = 36;
+            label3.Text = "Data:";
+            label3.Click += label3_Click;
+            // 
+            // dtInicio
+            // 
+            dtInicio.Location = new Point(522, 61);
+            dtInicio.Name = "dtInicio";
+            dtInicio.Size = new Size(114, 23);
+            dtInicio.TabIndex = 34;
             // 
             // label2
             // 
@@ -107,42 +149,42 @@
             label2.Click += label2_Click;
             label2.Paint += label2_Paint;
             // 
-            // radioTodos
+            // rbFinalizado
             // 
-            radioTodos.AutoSize = true;
-            radioTodos.FlatAppearance.CheckedBackColor = Color.Navy;
-            radioTodos.FlatAppearance.MouseDownBackColor = Color.Cyan;
-            radioTodos.FlatAppearance.MouseOverBackColor = Color.Cyan;
-            radioTodos.Location = new Point(373, 63);
-            radioTodos.Margin = new Padding(3, 2, 3, 2);
-            radioTodos.Name = "radioTodos";
-            radioTodos.Size = new Size(77, 19);
-            radioTodos.TabIndex = 31;
-            radioTodos.TabStop = true;
-            radioTodos.Text = "Finalizada";
-            radioTodos.UseVisualStyleBackColor = true;
+            rbFinalizado.AutoSize = true;
+            rbFinalizado.FlatAppearance.CheckedBackColor = Color.Navy;
+            rbFinalizado.FlatAppearance.MouseDownBackColor = Color.Cyan;
+            rbFinalizado.FlatAppearance.MouseOverBackColor = Color.Cyan;
+            rbFinalizado.Location = new Point(386, 62);
+            rbFinalizado.Margin = new Padding(3, 2, 3, 2);
+            rbFinalizado.Name = "rbFinalizado";
+            rbFinalizado.Size = new Size(78, 19);
+            rbFinalizado.TabIndex = 31;
+            rbFinalizado.TabStop = true;
+            rbFinalizado.Text = "Finalizado";
+            rbFinalizado.UseVisualStyleBackColor = true;
             // 
-            // radioId
+            // rbEmAndamento
             // 
-            radioId.AutoSize = true;
-            radioId.FlatAppearance.BorderColor = Color.Black;
-            radioId.FlatAppearance.CheckedBackColor = Color.Navy;
-            radioId.FlatAppearance.MouseDownBackColor = Color.Cyan;
-            radioId.FlatAppearance.MouseOverBackColor = Color.Cyan;
-            radioId.Location = new Point(262, 63);
-            radioId.Margin = new Padding(2);
-            radioId.Name = "radioId";
-            radioId.Size = new Size(106, 19);
-            radioId.TabIndex = 9;
-            radioId.TabStop = true;
-            radioId.Text = "Em andamento";
-            radioId.UseVisualStyleBackColor = true;
+            rbEmAndamento.AutoSize = true;
+            rbEmAndamento.FlatAppearance.BorderColor = Color.Black;
+            rbEmAndamento.FlatAppearance.CheckedBackColor = Color.Navy;
+            rbEmAndamento.FlatAppearance.MouseDownBackColor = Color.Cyan;
+            rbEmAndamento.FlatAppearance.MouseOverBackColor = Color.Cyan;
+            rbEmAndamento.Location = new Point(275, 62);
+            rbEmAndamento.Margin = new Padding(2);
+            rbEmAndamento.Name = "rbEmAndamento";
+            rbEmAndamento.Size = new Size(106, 19);
+            rbEmAndamento.TabIndex = 9;
+            rbEmAndamento.TabStop = true;
+            rbEmAndamento.Text = "Em andamento";
+            rbEmAndamento.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold);
-            label1.Location = new Point(5, 62);
+            label1.Location = new Point(18, 61);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(186, 20);
@@ -150,21 +192,21 @@
             label1.Text = "Defina o tipo de pesquisa:";
             label1.Click += label1_Click;
             // 
-            // radioNome
+            // rbAFazer
             // 
-            radioNome.AutoSize = true;
-            radioNome.FlatAppearance.CheckedBackColor = Color.Navy;
-            radioNome.FlatAppearance.MouseDownBackColor = Color.Cyan;
-            radioNome.FlatAppearance.MouseOverBackColor = Color.Cyan;
-            radioNome.ForeColor = SystemColors.ActiveCaptionText;
-            radioNome.Location = new Point(195, 63);
-            radioNome.Margin = new Padding(2);
-            radioNome.Name = "radioNome";
-            radioNome.Size = new Size(63, 19);
-            radioNome.TabIndex = 8;
-            radioNome.TabStop = true;
-            radioNome.Text = "A Fazer";
-            radioNome.UseVisualStyleBackColor = true;
+            rbAFazer.AutoSize = true;
+            rbAFazer.FlatAppearance.CheckedBackColor = Color.Navy;
+            rbAFazer.FlatAppearance.MouseDownBackColor = Color.Cyan;
+            rbAFazer.FlatAppearance.MouseOverBackColor = Color.Cyan;
+            rbAFazer.ForeColor = SystemColors.ActiveCaptionText;
+            rbAFazer.Location = new Point(208, 62);
+            rbAFazer.Margin = new Padding(2);
+            rbAFazer.Name = "rbAFazer";
+            rbAFazer.Size = new Size(63, 19);
+            rbAFazer.TabIndex = 8;
+            rbAFazer.TabStop = true;
+            rbAFazer.Text = "A Fazer";
+            rbAFazer.UseVisualStyleBackColor = true;
             // 
             // npgsqlDataAdapter1
             // 
@@ -185,6 +227,7 @@
             Name = "FinalizarOrdemDeServiço";
             StartPosition = FormStartPosition.Manual;
             Text = "FinalizarOrdemDeServiço";
+            Load += FinalizarOrdemDeServiço_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox3.ResumeLayout(false);
@@ -198,11 +241,14 @@
         private Button button2;
         private DataGridView dataGridView1;
         private Label label1;
-        private RadioButton radioNome;
-        private RadioButton radioId;
-        private RadioButton radioTodos;
+        private RadioButton rbAFazer;
+        private RadioButton rbEmAndamento;
+        private RadioButton rbFinalizado;
         private GroupBox groupBox3;
         private Label label2;
         private Npgsql.NpgsqlDataAdapter npgsqlDataAdapter1;
+        private Label label3;
+        private DateTimePicker dtInicio;
+        private Button btnBuscar;
     }
 }

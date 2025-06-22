@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AgendaFilm.Model.Repositories;
+using AgendaFilm.Model;
+using AgendaFilm.Controller;
 
 namespace AgendaFilm.View.OrdemDeServiço
 {
@@ -15,7 +18,48 @@ namespace AgendaFilm.View.OrdemDeServiço
         public FinalizarOrdemDeServiço()
         {
             InitializeComponent();
+            ObterDados();
+            AdicionarColunaEditarStatus();
+
         }
+
+        private void ObterDados()
+        {
+            var repositorio = new OrdemServicoRepositorio();
+            DateTime hoje = DateTime.Today;
+
+            var ordens = repositorio.GetByDataCriacao(hoje);
+            dataGridView1.DataSource = ordens;
+
+            dataGridView1.Columns["Id"].Visible = false;
+            dataGridView1.Columns["ClienteNome"].HeaderText = "Cliente";
+            dataGridView1.Columns["VeiculoModelo"].HeaderText = "Modelo";
+            dataGridView1.Columns["VeiculoPlaca"].HeaderText = "Placa";
+            dataGridView1.Columns["Status"].HeaderText = "Status";
+            dataGridView1.Columns["DataHoraAgendada"].HeaderText = "Data/Hora Agendada";
+            dataGridView1.Columns["FuncionarioNome"].HeaderText = "Funcionário";
+            dataGridView1.Columns["Produtos"].HeaderText = "Produtos";
+            dataGridView1.Columns["ValorTotal"].HeaderText = "Total";
+            dataGridView1.Columns["ValorTotal"].DefaultCellStyle.Format = "C2";
+        }
+
+
+        private void AdicionarColunaEditarStatus()
+        {
+            if (!dataGridView1.Columns.Contains("EditarStatus"))
+            {
+                DataGridViewButtonColumn btnEditar = new DataGridViewButtonColumn
+                {
+                    HeaderText = "Editar",
+                    Name = "EditarStatus",
+                    Text = "Editar",
+                    UseColumnTextForButtonValue = true,
+                    Width = 70
+                };
+                dataGridView1.Columns.Insert(0, btnEditar);
+            }
+        }
+
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -24,30 +68,26 @@ namespace AgendaFilm.View.OrdemDeServiço
         private void groupBox1_Paint(object sender, PaintEventArgs e)
         {
             GroupBox box = (GroupBox)sender;
-            Color corBorda = Color.DarkSlateGray;  // Cor da borda
+            Color corBorda = Color.DarkSlateGray;
             int espessuraBorda = 8;
-            int raio = 10;  // Raio do arredondamento
+            int raio = 10;
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-            // Calcula espaço do texto
             Size textSize = TextRenderer.MeasureText(box.Text, box.Font);
             Rectangle rect = new Rectangle(0, textSize.Height / 2, box.Width - 1, box.Height - textSize.Height / 2 - 1);
 
-            // Limpa o fundo para remover a borda padrão
             e.Graphics.Clear(box.BackColor);
 
             using (Pen pen = new Pen(corBorda, espessuraBorda))
             using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
             {
-                // Adiciona um retângulo com cantos arredondados ao caminho
                 path.AddArc(rect.Left, rect.Top, raio, raio, 180, 90);
                 path.AddArc(rect.Right - raio, rect.Top, raio, raio, 270, 90);
                 path.AddArc(rect.Right - raio, rect.Bottom - raio, raio, raio, 0, 90);
                 path.AddArc(rect.Left, rect.Bottom - raio, raio, raio, 90, 90);
                 path.CloseFigure();
 
-                // Desenha a borda
                 e.Graphics.DrawPath(pen, path);
             }
         }
@@ -60,29 +100,24 @@ namespace AgendaFilm.View.OrdemDeServiço
         private void groupBox2_Paint(object sender, PaintEventArgs e)
         {
             GroupBox box = (GroupBox)sender;
-            Color corBorda = Color.DarkSlateGray;  // Cor da borda
+            Color corBorda = Color.DarkSlateGray;
             int espessuraBorda = 3;
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-            // Calcula espaço do texto
             Size textSize = TextRenderer.MeasureText(box.Text, box.Font);
             Rectangle rect = new Rectangle(0, textSize.Height / 2, box.Width - 1, box.Height - textSize.Height / 2 - 1);
 
-            // Limpa o fundo para remover a borda padrão
             e.Graphics.Clear(box.BackColor);
 
             using (Pen pen = new Pen(corBorda, espessuraBorda))
             using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
             {
-                // Adiciona um retângulo com cantos quadrados
                 path.AddRectangle(rect);
 
-                // Desenha a borda
                 e.Graphics.DrawPath(pen, path);
             }
 
-            // Desenha o texto do GroupBox
             using (SolidBrush brush = new SolidBrush(box.ForeColor))
             {
                 e.Graphics.DrawString(box.Text, box.Font, brush, 10, 0);
@@ -98,30 +133,26 @@ namespace AgendaFilm.View.OrdemDeServiço
         private void groupBox3_Paint(object sender, PaintEventArgs e)
         {
             GroupBox box = (GroupBox)sender;
-            Color corBorda = Color.Black;  // Cor da borda
+            Color corBorda = Color.Black;
             int espessuraBorda = 5;
-            int raio = 10;  // Raio do arredondamento
+            int raio = 10;
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-            // Calcula espaço do texto
             Size textSize = TextRenderer.MeasureText(box.Text, box.Font);
             Rectangle rect = new Rectangle(0, textSize.Height / 2, box.Width - 1, box.Height - textSize.Height / 2 - 1);
 
-            // Limpa o fundo para remover a borda padrão
             e.Graphics.Clear(box.BackColor);
 
             using (Pen pen = new Pen(corBorda, espessuraBorda))
             using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
             {
-                // Adiciona um retângulo com cantos arredondados ao caminho
                 path.AddArc(rect.Left, rect.Top, raio, raio, 180, 90);
                 path.AddArc(rect.Right - raio, rect.Top, raio, raio, 270, 90);
                 path.AddArc(rect.Right - raio, rect.Bottom - raio, raio, raio, 0, 90);
                 path.AddArc(rect.Left, rect.Bottom - raio, raio, raio, 90, 90);
                 path.CloseFigure();
 
-                // Desenha a borda
                 e.Graphics.DrawPath(pen, path);
             }
         }
@@ -158,6 +189,110 @@ namespace AgendaFilm.View.OrdemDeServiço
 
                 e.Graphics.DrawPath(pen, path);
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && dataGridView1.Columns[e.ColumnIndex].Name == "EditarStatus")
+            {
+                int ordemId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Id"].Value);
+                string statusAtual = dataGridView1.Rows[e.RowIndex].Cells["Status"].Value.ToString();
+
+                using var form = new EditarStatusOrdemForm(statusAtual);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    string novoStatus = form.NovoStatus;
+
+                    var repo = new OrdemServicoRepositorio();
+                    var ordem = repo.GetById(ordemId);
+                    ordem.Status = novoStatus;
+                    ordem.DataAlteracao = DateTime.Now;
+
+                    repo.Update(ordem);
+
+                    MessageBox.Show("Status atualizado com sucesso.");
+                    ObterDados();
+                }
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            var repositorio = new OrdemServicoRepositorio();
+
+            string statusSelecionado = null;
+
+            if (rbAFazer.Checked)
+                statusSelecionado = "A FAZER";
+            else if (rbEmAndamento.Checked)
+                statusSelecionado = "EM ANDAMENTO";
+            else if (rbFinalizado.Checked)
+                statusSelecionado = "FINALIZADO";
+
+            DateTime dataSelecionada = dtInicio.Value.Date;
+
+            var ordens = repositorio.GetByStatusEData(statusSelecionado, dataSelecionada);
+
+            dataGridView1.DataSource = ordens;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecione uma ordem de serviço para imprimir.");
+                return;
+            }
+
+            int ordemId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["Id"].Value);
+            var ordemRepo = new OrdemServicoRepositorio();
+            var agendamentoRepo = new AgendamentoRepositorio();
+
+            try
+            {
+                var ordem = ordemRepo.GetById(ordemId);
+                if (ordem == null)
+                {
+                    MessageBox.Show("Ordem de serviço não encontrada.");
+                    return;
+                }
+
+                var agendamento = agendamentoRepo.GetDTOById(ordem.AgendamentoId);
+                if (agendamento == null)
+                {
+                    MessageBox.Show("Agendamento vinculado à ordem não encontrado.");
+                    return;
+                }
+
+                var produtos = ordemRepo.GetProdutosByOrdemId(ordemId);
+                if (produtos == null || produtos.Count == 0)
+                {
+                    MessageBox.Show("Nenhum produto vinculado à ordem de serviço.");
+                    return;
+                }
+
+                string caminhoPdf = PdfOrdemServico.GerarPdfOrdemServico(ordem, agendamento, produtos);
+
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = caminhoPdf,
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao gerar PDF: " + ex.Message);
+            }
+        }
+
+        private void FinalizarOrdemDeServiço_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

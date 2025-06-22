@@ -118,5 +118,30 @@ namespace AgendaFilm.Model.Repositories
 
             return agendamentoRetornado;
         }
+
+        public AgendamentoDTO GetDTOById(int id)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"
+                SELECT 
+                    a.id,
+                    c.nome AS nome_cliente,
+                    v.modelo AS modelo_veiculo,
+                    v.placa AS placa_veiculo,
+                    a.dataHoraAgendamento,
+                    a.observacoes,
+                    a.dataCriacao,
+                    a.dataAlteracao,
+                    f.nome AS nome_funcionario
+                FROM agendamentos a
+                JOIN clientes c ON a.cliente_fk = c.id
+                JOIN veiculos v ON a.veiculo_fk = v.id
+                JOIN funcionarios f ON a.funcionario_fk = f.id
+                WHERE a.id = @id;";
+
+            return connection.Connection.QuerySingleOrDefault<AgendamentoDTO>(query, new { id });
+        }
+
     }
 }
