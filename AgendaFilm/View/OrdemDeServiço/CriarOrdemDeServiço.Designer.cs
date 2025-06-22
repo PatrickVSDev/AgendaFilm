@@ -82,9 +82,9 @@
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label4.Location = new Point(232, 127);
             label4.Name = "label4";
-            label4.Size = new Size(57, 21);
+            label4.Size = new Size(186, 21);
             label4.TabIndex = 11;
-            label4.Text = "label4";
+            label4.Text = "Produtos selecionados:";
             // 
             // label2
             // 
@@ -92,9 +92,9 @@
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label2.Location = new Point(232, 14);
             label2.Name = "label2";
-            label2.Size = new Size(57, 21);
+            label2.Size = new Size(219, 21);
             label2.TabIndex = 10;
-            label2.Text = "label2";
+            label2.Text = "Agendamento selecionado:";
             // 
             // groupBox2
             // 

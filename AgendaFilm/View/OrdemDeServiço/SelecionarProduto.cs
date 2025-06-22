@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices; // Necessário para borda arredondada do botão X
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -43,7 +43,6 @@ namespace AgendaFilm.View.OrdemDeServiço
             dgvProdutos.AutoGenerateColumns = false;
             dgvProdutos.Columns.Clear();
 
-            // Colunas fixas do Produto
             dgvProdutos.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "id",
@@ -63,7 +62,6 @@ namespace AgendaFilm.View.OrdemDeServiço
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             });
 
-            // Colunas adicionais para preenchimento manual
             dgvProdutos.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "Preço Unitário",
@@ -80,7 +78,6 @@ namespace AgendaFilm.View.OrdemDeServiço
 
             dgvProdutos.DataSource = produtos;
 
-            // Inicializar valores default
             foreach (DataGridViewRow row in dgvProdutos.Rows)
             {
                 if (!row.IsNewRow)
@@ -198,5 +195,63 @@ namespace AgendaFilm.View.OrdemDeServiço
                 e.Graphics.DrawPath(pen, path);
             }
         }
+
+        private void btnPesquisar_Click_1(object sender, EventArgs e)
+        {
+            string termo = textBoxPesquisar.Text.Trim().ToUpper();
+            List<Produto> todos = repository.GetAll();
+
+            var valoresManuais = new Dictionary<int, (decimal preco, int qtd)>();
+
+            foreach (DataGridViewRow row in dgvProdutos.Rows)
+            {
+                if (!row.IsNewRow &&
+                    int.TryParse(row.Cells["ProdutoId"].Value?.ToString(), out int produtoId) &&
+                    decimal.TryParse(row.Cells["PrecoUnitario"].Value?.ToString(), out decimal preco) &&
+                    int.TryParse(row.Cells["Quantidade"].Value?.ToString(), out int qtd))
+                {
+                    valoresManuais[produtoId] = (preco, qtd);
+                }
+            }
+
+            List<Produto> listaFiltrada;
+
+            if (radioTodos.Checked)
+            {
+                listaFiltrada = todos;
+            }
+            else if (radioNome.Checked)
+            {
+                listaFiltrada = todos
+                    .Where(p => p.nome != null && p.nome.ToUpper().Contains(termo))
+                    .ToList();
+            }
+            else if (radioId.Checked && int.TryParse(termo, out int id))
+            {
+                listaFiltrada = todos
+                    .Where(p => p.id == id)
+                    .ToList();
+            }
+            else
+            {
+                MessageBox.Show("Informe um valor válido para a pesquisa.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            produtos = new BindingList<Produto>(listaFiltrada);
+            dgvProdutos.DataSource = produtos;
+
+            foreach (DataGridViewRow row in dgvProdutos.Rows)
+            {
+                if (!row.IsNewRow &&
+                    int.TryParse(row.Cells["ProdutoId"].Value?.ToString(), out int produtoId) &&
+                    valoresManuais.ContainsKey(produtoId))
+                {
+                    row.Cells["PrecoUnitario"].Value = valoresManuais[produtoId].preco;
+                    row.Cells["Quantidade"].Value = valoresManuais[produtoId].qtd;
+                }
+            }
+        }
+
     }
 }

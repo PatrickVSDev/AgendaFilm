@@ -16,7 +16,7 @@ namespace AgendaFilm.View.OrdemDeServiço
 {
     public partial class SelecionarAgendamento : Form
     {
-        private Button btnFechar; // Botão "X"
+        private Button btnFechar;
 
         AgendamentoRepositorio repository = new AgendamentoRepositorio();
         Actions actions = new Actions();
@@ -90,7 +90,10 @@ namespace AgendaFilm.View.OrdemDeServiço
                 dataGridView1.Columns["nome_cliente"].HeaderText = "Cliente";
 
             if (dataGridView1.Columns.Contains("placa_veiculo"))
-                dataGridView1.Columns["placa_veiculo"].HeaderText = "Veículo";
+                dataGridView1.Columns["placa_veiculo"].HeaderText = "Placa";
+
+            if (dataGridView1.Columns.Contains("modelo_veiculo"))
+                dataGridView1.Columns["modelo_veiculo"].HeaderText = "Veículo";
 
             if (dataGridView1.Columns.Contains("dataHoraAgendamento"))
                 dataGridView1.Columns["dataHoraAgendamento"].HeaderText = "Data/Hora";
@@ -238,6 +241,11 @@ namespace AgendaFilm.View.OrdemDeServiço
         private void dateTimePickerFiltro_ValueChanged(object sender, EventArgs e)
         {
             AtualizarDataGridView(dateTimePickerFiltro.Value.Date);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

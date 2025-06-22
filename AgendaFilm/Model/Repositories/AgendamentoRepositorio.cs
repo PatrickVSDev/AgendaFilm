@@ -13,6 +13,7 @@ namespace AgendaFilm.Model.Repositories
         {
             using var connection = new ConnectionDb();
 
+            agendamento.observacoes = agendamento.observacoes?.ToUpper();
             string query = @"INSERT INTO public.agendamentos(
 	                            id, cliente_fk, veiculo_fk, dataHoraAgendamento, observacoes, dataAlteracao, dataCriacao, funcionario_fk)
 	                            VALUES (@id, @cliente_fk, @veiculo_fk, @dataHoraAgendamento, @observacoes, @dataAlteracao, @dataCriacao, @funcionario_fk);";
@@ -29,7 +30,8 @@ namespace AgendaFilm.Model.Repositories
             string query = @"SELECT 
                         a.id, 
                         c.nome AS nome_cliente, 
-                        v.placa AS placa_veiculo,  
+                        v.placa AS placa_veiculo,
+                        v.modelo AS modelo_veiculo, -- <<< Adicionado aqui
                         a.dataHoraAgendamento, 
                         a.observacoes, 
                         a.dataCriacao, 
@@ -85,6 +87,7 @@ namespace AgendaFilm.Model.Repositories
         {
             using var connection = new ConnectionDb();
 
+            agendamento.observacoes = agendamento.observacoes?.ToUpper();
             string query = @"UPDATE public.agendamentos
 	                        SET id= @id, tipo_cliente= @tipo_cliente, documento= @documento, nome= @nome, telefone= @telefone, funcionario_fk= @funcionario_fk, dataAlteracao= @dataAlteracao, dataCriacao= @dataCriacao
 	                        WHERE id= @id;";

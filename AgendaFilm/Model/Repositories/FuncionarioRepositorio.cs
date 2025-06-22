@@ -14,6 +14,8 @@ namespace AgendaFilm.Model.Repositories
         {
             using var connection = new ConnectionDb();
 
+            funcionario.nome = funcionario.nome?.ToUpper();
+            funcionario.cargo = funcionario.cargo?.ToUpper();
             string query = @"INSERT INTO public.funcionarios(
 	                        id, nome, telefone, login, senha, cargo, nivelAcesso, funcionarioAlteracao, dataAlteracao, dataCriacao)
 	                        VALUES (@id, @nome, @telefone, @login, @senha, @cargo, @nivelAcesso, @funcionarioAlteracao, @dataAlteracao, @dataAlteracao);";
@@ -60,6 +62,8 @@ namespace AgendaFilm.Model.Repositories
         {
             using var connection = new ConnectionDb();
 
+            funcionario.nome = funcionario.nome?.ToUpper();
+            funcionario.cargo = funcionario.cargo?.ToUpper();
             string query = @"UPDATE public.funcionarios SET nome= @nome, cargo= @cargo, nivelAcesso= @nivelAcesso, funcionarioAlteracao= @funcionarioAlteracao, dataAlteracao= @dataAlteracao
 	WHERE id = @id;";
 

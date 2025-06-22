@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,6 +14,8 @@ namespace AgendaFilm.Model.Repositories
         {
             using var connection = new ConnectionDb();
 
+            produto.nome = produto.nome?.ToUpper();
+            produto.marca = produto.marca?.ToUpper();
             string query = @"INSERT INTO public.produtos(
 	                            id, nome, fornecedor_fk, marca, garantia, funcionario_fk, dataAlteracao, dataCriacao)
 	                            VALUES (@id, @nome, @fornecedor_fk, @marca, @garantia, @funcionario_fk, @dataAlteracao, @dataCriacao);";
@@ -68,6 +71,8 @@ namespace AgendaFilm.Model.Repositories
         {
             using var connection = new ConnectionDb();
 
+            produto.nome = produto.nome?.ToUpper();
+            produto.marca = produto.marca?.ToUpper();
             string query = @"UPDATE public.produtos
 	                        SET id= @id, nome= @nome, fornecedor_fk= @fornecedor_fk, marca= @marca, garantia= @garantia, funcionario_fk= @funcionario_fk, dataAlteracao= @dataAlteracao, dataCriacao= @dataCriacao
 	                        WHERE id= @id;";

@@ -15,6 +15,8 @@ namespace AgendaFilm.Model.Repositories
 
             try
             {
+                ordem.Observacoes = ordem.Observacoes?.ToUpper();
+                ordem.Status = ordem.Status?.ToUpper();
                 string queryOrdem = @"
                     INSERT INTO ordens_servico (
                         agendamento_fk, observacoes, status, dataCriacao, dataAlteracao, funcionario_fk
@@ -22,10 +24,8 @@ namespace AgendaFilm.Model.Repositories
                         @AgendamentoId, @Observacoes, @Status, @DataCriacao, @DataAlteracao, @FuncionarioId
                     ) RETURNING id;";
 
-                // Insere ordem e obtém ID gerado
                 int ordemId = connection.Connection.ExecuteScalar<int>(queryOrdem, ordem, transaction);
 
-                // Insere os produtos da ordem
                 foreach (var produto in produtos)
                 {
                     produto.OrdemServicoId = ordemId;

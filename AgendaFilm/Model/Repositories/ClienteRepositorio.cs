@@ -13,6 +13,8 @@ namespace AgendaFilm.Model.Repositories
         {
             using var connection = new ConnectionDb();
 
+            cliente.tipo_cliente = cliente.tipo_cliente?.ToUpper();
+            cliente.nome = cliente.nome?.ToUpper();
             string query = @"INSERT INTO public.clientes(
 	                            id, tipo_cliente, documento, nome, telefone, funcionario_fk, dataAlteracao, dataCriacao)
 	                            VALUES (@id, @tipo_cliente, @documento, @nome, @telefone, @funcionario_fk, @dataAlteracao, @dataCriacao);";
@@ -68,6 +70,8 @@ namespace AgendaFilm.Model.Repositories
         {
             using var connection = new ConnectionDb();
 
+            cliente.tipo_cliente = cliente.tipo_cliente?.ToUpper();
+            cliente.nome = cliente.nome?.ToUpper();
             string query = @"UPDATE public.clientes
 	                        SET id= @id, tipo_cliente= @tipo_cliente, documento= @documento, nome= @nome, telefone= @telefone, funcionario_fk= @funcionario_fk, dataAlteracao= @dataAlteracao, dataCriacao= @dataCriacao
 	                        WHERE id= @id;";

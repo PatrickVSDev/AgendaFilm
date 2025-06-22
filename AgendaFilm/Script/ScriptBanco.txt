@@ -94,7 +94,9 @@ CREATE TABLE ordens_servico (
     id SERIAL PRIMARY KEY,
     agendamento_fk INT NOT NULL,
     observacoes TEXT,
-    status VARCHAR(20) NOT NULL CHECK (status IN ('a fazer', 'em andamento', 'finalizado')),
+    status VARCHAR(20) NOT NULL CHECK (
+        status IN ('A FAZER', 'EM ANDAMENTO', 'FINALIZADO')
+    ),
     dataCriacao DATE NOT NULL DEFAULT CURRENT_DATE,
     dataAlteracao DATE NOT NULL,
     funcionario_fk INT NOT NULL,

@@ -30,7 +30,7 @@
         {
             groupBox1 = new GroupBox();
             textBoxPesquisar = new TextBox();
-            button4 = new Button();
+            btnPesquisar = new Button();
             radioTodos = new RadioButton();
             radioId = new RadioButton();
             radioNome = new RadioButton();
@@ -44,7 +44,7 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(textBoxPesquisar);
-            groupBox1.Controls.Add(button4);
+            groupBox1.Controls.Add(btnPesquisar);
             groupBox1.Controls.Add(radioTodos);
             groupBox1.Controls.Add(radioId);
             groupBox1.Controls.Add(radioNome);
@@ -66,19 +66,20 @@
             textBoxPesquisar.Size = new Size(222, 23);
             textBoxPesquisar.TabIndex = 8;
             // 
-            // button4
+            // btnPesquisar
             // 
-            button4.BackColor = Color.CadetBlue;
-            button4.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
-            button4.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
-            button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button4.Location = new Point(10, 37);
-            button4.Margin = new Padding(3, 2, 3, 2);
-            button4.Name = "button4";
-            button4.Size = new Size(123, 30);
-            button4.TabIndex = 7;
-            button4.Text = "Pesquisar";
-            button4.UseVisualStyleBackColor = false;
+            btnPesquisar.BackColor = Color.CadetBlue;
+            btnPesquisar.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
+            btnPesquisar.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
+            btnPesquisar.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnPesquisar.Location = new Point(10, 37);
+            btnPesquisar.Margin = new Padding(3, 2, 3, 2);
+            btnPesquisar.Name = "btnPesquisar";
+            btnPesquisar.Size = new Size(123, 30);
+            btnPesquisar.TabIndex = 7;
+            btnPesquisar.Text = "Pesquisar";
+            btnPesquisar.UseVisualStyleBackColor = false;
+            btnPesquisar.Click += btnPesquisar_Click_1;
             // 
             // radioTodos
             // 
@@ -176,7 +177,7 @@
         private RadioButton radioNome;
         private RadioButton radioId;
         private RadioButton radioTodos;
-        private Button button4;
+        private Button btnPesquisar;
         private TextBox textBoxPesquisar;
         private DataGridView dgvProdutos;
         private Button btConfirmar;

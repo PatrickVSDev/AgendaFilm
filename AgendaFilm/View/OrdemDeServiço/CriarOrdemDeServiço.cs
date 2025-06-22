@@ -31,15 +31,18 @@ namespace AgendaFilm.View.OrdemDeServiço
             {
                 dgvAgendamento.Columns.Add("Id", "ID");
                 dgvAgendamento.Columns.Add("Cliente", "Cliente");
-                dgvAgendamento.Columns.Add("Veiculo", "Veículo");
+                dgvAgendamento.Columns.Add("Modelo", "Veículo");
+                dgvAgendamento.Columns.Add("Placa", "Placa");     
                 dgvAgendamento.Columns.Add("DataHora", "Data/Hora");
                 dgvAgendamento.Columns.Add("Observacoes", "Observações");
                 dgvAgendamento.Columns.Add("Funcionario", "Funcionário");
             }
 
+
             dgvAgendamento.Columns["Id"].Width = 50;
             dgvAgendamento.Columns["Cliente"].Width = 150;
-            dgvAgendamento.Columns["Veiculo"].Width = 120;
+            dgvAgendamento.Columns["Modelo"].Width = 120;
+            dgvAgendamento.Columns["Placa"].Width = 100;
             dgvAgendamento.Columns["DataHora"].Width = 130;
             dgvAgendamento.Columns["Observacoes"].Width = 180;
             dgvAgendamento.Columns["Funcionario"].Width = 150;
@@ -222,11 +225,13 @@ namespace AgendaFilm.View.OrdemDeServiço
                     dgvAgendamento.Rows.Add(
                         agendamentoSelecionado.id,
                         agendamentoSelecionado.nome_cliente,
+                        agendamentoSelecionado.modelo_veiculo,
                         agendamentoSelecionado.placa_veiculo,
                         agendamentoSelecionado.dataHoraAgendamento.ToString("dd/MM/yyyy HH:mm"),
                         agendamentoSelecionado.observacoes,
                         agendamentoSelecionado.nome_funcionario
                     );
+
                 }
             }
         }
@@ -245,7 +250,7 @@ namespace AgendaFilm.View.OrdemDeServiço
                 AgendamentoId = agendamentoSelecionado.id,
                 Observacoes = txtObservacoes.Text,
                 Status = "a fazer",
-                FuncionarioId = Global.funcionarioLogado, // se estiver usando controle de login
+                FuncionarioId = Global.funcionarioLogado,
                 DataCriacao = DateTime.Now,
                 DataAlteracao = DateTime.Now
             };
@@ -255,14 +260,31 @@ namespace AgendaFilm.View.OrdemDeServiço
 
             if (sucesso)
             {
-                MessageBox.Show("Ordem de serviço criada com sucesso!");
+                string caminhoPdf = PdfOrdemServico.GerarPdfOrdemServico(ordem, agendamentoSelecionado, produtosSelecionados);
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
+                {
+                    FileName = caminhoPdf,
+                    UseShellExecute = true
+                });
+
+                MessageBox.Show("Ordem de serviço criada e PDF gerado com sucesso!");
                 this.DialogResult = DialogResult.OK;
-                this.Close();
+
+                agendamentoSelecionado = null;
+                produtosSelecionados.Clear();
+
+                dgvAgendamento.Rows.Clear();
+                dgvProdutos.Rows.Clear();
+
+                txtObservacoes.Clear();
+                txtValor.Text = string.Empty;
+
             }
             else
             {
                 MessageBox.Show("Erro ao criar a ordem de serviço.");
             }
         }
+
     }
 }

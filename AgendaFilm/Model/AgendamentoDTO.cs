@@ -11,6 +11,7 @@ namespace AgendaFilm.Model
     {
         public int id { get; set; }
         public string nome_cliente { get; set; }
+        public string modelo_veiculo { get; set; }
         public string placa_veiculo { get; set; }
         public DateTime dataHoraAgendamento { get; set; }
         public string observacoes { get; set; }
