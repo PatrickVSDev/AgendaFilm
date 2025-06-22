@@ -20,6 +20,8 @@ namespace AgendaFilm.View.OrdemDeServiço
             InitializeComponent();
             ObterDados();
             AdicionarColunaEditarStatus();
+            dataGridView1.CellPainting += dataGridView1_CellPainting;
+
 
         }
 
@@ -32,6 +34,7 @@ namespace AgendaFilm.View.OrdemDeServiço
             dataGridView1.DataSource = ordens;
 
             dataGridView1.Columns["Id"].Visible = false;
+            dataGridView1.Columns["DataAlteracao"].Visible = false;
             dataGridView1.Columns["ClienteNome"].HeaderText = "Cliente";
             dataGridView1.Columns["VeiculoModelo"].HeaderText = "Modelo";
             dataGridView1.Columns["VeiculoPlaca"].HeaderText = "Placa";
@@ -216,6 +219,39 @@ namespace AgendaFilm.View.OrdemDeServiço
             }
         }
 
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && dataGridView1.Columns[e.ColumnIndex].Name == "EditarStatus")
+            {
+                e.PaintBackground(e.CellBounds, true);
+
+                Color corFundo = Color.DarkOrange;
+                Color corTexto = Color.White;
+                Color corBorda = Color.Chocolate;
+
+                Rectangle rect = new Rectangle(e.CellBounds.X + 2, e.CellBounds.Y + 2,
+                                               e.CellBounds.Width - 4, e.CellBounds.Height - 4);
+
+                using (SolidBrush brush = new SolidBrush(corFundo))
+                using (Pen pen = new Pen(corBorda, 2))
+                using (StringFormat sf = new StringFormat
+                {
+                    Alignment = StringAlignment.Center,
+                    LineAlignment = StringAlignment.Center
+                })
+                {
+                    e.Graphics.FillRectangle(brush, rect);
+
+                    e.Graphics.DrawRectangle(pen, rect);
+
+                    e.Graphics.DrawString("Editar", dataGridView1.Font, Brushes.White, rect, sf);
+                }
+
+                e.Handled = true;
+            }
+        }
+
+
         private void label3_Click(object sender, EventArgs e)
         {
 
@@ -239,6 +275,7 @@ namespace AgendaFilm.View.OrdemDeServiço
             var ordens = repositorio.GetByStatusEData(statusSelecionado, dataSelecionada);
 
             dataGridView1.DataSource = ordens;
+            dataGridView1.Columns["DataAlteracao"].Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
