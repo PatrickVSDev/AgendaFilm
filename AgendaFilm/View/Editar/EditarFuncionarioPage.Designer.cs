@@ -36,6 +36,7 @@
             label8 = new Label();
             label6 = new Label();
             groupBox5 = new GroupBox();
+            label7 = new Label();
             txtSenha = new TextBox();
             label2 = new Label();
             label3 = new Label();
@@ -44,7 +45,6 @@
             label5 = new Label();
             groupBox1 = new GroupBox();
             label1 = new Label();
-            label7 = new Label();
             groupBox5.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -52,6 +52,8 @@
             // btnSalvar
             // 
             btnSalvar.BackColor = Color.CadetBlue;
+            btnSalvar.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
+            btnSalvar.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
             btnSalvar.FlatStyle = FlatStyle.Flat;
             btnSalvar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             btnSalvar.Location = new Point(491, 411);
@@ -135,6 +137,17 @@
             groupBox5.TabStop = false;
             groupBox5.Paint += groupBox5_Paint;
             groupBox5.Enter += groupBox5_Enter;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.Teal;
+            label7.Location = new Point(153, 18);
+            label7.Name = "label7";
+            label7.Size = new Size(393, 32);
+            label7.TabIndex = 21;
+            label7.Text = "Confirme seus dados para salvar!";
             // 
             // txtSenha
             // 
@@ -225,17 +238,6 @@
             label1.Text = "Editar Funcionário";
             label1.Click += label1_Click;
             label1.Paint += label1_Paint;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.Teal;
-            label7.Location = new Point(153, 18);
-            label7.Name = "label7";
-            label7.Size = new Size(393, 32);
-            label7.TabIndex = 21;
-            label7.Text = "Confirme seus dados para salvar!";
             // 
             // EditarFuncionarioPage
             // 

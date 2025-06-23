@@ -45,6 +45,8 @@
             // btSalvar
             // 
             btSalvar.BackColor = Color.CadetBlue;
+            btSalvar.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
+            btSalvar.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
             btSalvar.FlatStyle = FlatStyle.Flat;
             btSalvar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             btSalvar.Location = new Point(491, 273);
