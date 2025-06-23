@@ -52,6 +52,8 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             // btConfirmar
             // 
             btConfirmar.BackColor = Color.PowderBlue;
+            btConfirmar.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
+            btConfirmar.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
             btConfirmar.FlatStyle = FlatStyle.Flat;
             btConfirmar.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btConfirmar.Location = new Point(346, 341);

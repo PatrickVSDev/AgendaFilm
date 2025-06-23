@@ -45,6 +45,8 @@
             // button2
             // 
             button2.BackColor = Color.CadetBlue;
+            button2.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
+            button2.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             button2.Location = new Point(491, 322);
