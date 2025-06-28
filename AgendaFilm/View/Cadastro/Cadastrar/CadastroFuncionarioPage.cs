@@ -96,17 +96,54 @@ namespace AgendaFilm
 
             actions.verifyBlanksTextboxes(textBoxes);
 
-            int numNivelAcesso;
-            if (int.TryParse(txtNivelAcesso.Text, out numNivelAcesso))
+            if (string.IsNullOrWhiteSpace(txtLogin.Text) ||
+                string.IsNullOrWhiteSpace(txtNome.Text) ||
+                string.IsNullOrWhiteSpace(txtSenha.Text) ||
+                string.IsNullOrWhiteSpace(txtTelefone.Text) ||
+                string.IsNullOrWhiteSpace(txtCargo.Text) ||
+                string.IsNullOrWhiteSpace(txtNivelAcesso.Text))
             {
-
+                MessageBox.Show("Todos os campos devem ser preenchidos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
+
+            long numTel;
+
+            try
             {
-                MessageBox.Show("Para o nivel de acesso esse número não é válido.");
+                numTel = long.Parse(txtTelefone.Text.Trim());
+                if (numTel.ToString().Length != 11)
+                {
+                    MessageBox.Show("O campo de telefone precisa ter 11 numeros, incluindo DDD!");
+                    return;
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Você tem que digitar apenas numeros no campo de Telefone", "Error", MessageBoxButtons.OK);
+                return;
+            }
+            numTel = long.Parse(txtTelefone.Text.Trim());
+
+            if (!int.TryParse(txtNivelAcesso.Text, out int numNivelAcesso) || (numNivelAcesso != 1 && numNivelAcesso != 2))
+            {
+                MessageBox.Show("Nível de acesso deve ser 1 (Administrador) ou 2 (Funcionário).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            Funcionario funcionario = new Funcionario(id, txtNome.Text.Trim(), txtTelefone.Text.Trim(), txtLogin.Text.Trim(), txtSenha.Text.Trim(), txtCargo.Text.Trim(), numNivelAcesso, dataAtual, dataAtual, Global.funcionarioLogado);
+            Funcionario funcionario = new Funcionario(
+                id,
+                txtNome.Text.Trim(),
+                txtTelefone.Text.Trim(),
+                txtLogin.Text.Trim(),
+                txtSenha.Text.Trim(),
+                txtCargo.Text.Trim(),
+                numNivelAcesso,
+                dataAtual,
+                dataAtual,
+                Global.funcionarioLogado
+            );
+
             funcionarios.Add(funcionario);
             repository.Add(funcionario);
 
@@ -122,6 +159,7 @@ namespace AgendaFilm
             RefreshGrid?.Invoke();
             this.Close();
         }
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -243,6 +281,11 @@ namespace AgendaFilm
             {
                 e.Graphics.DrawString(box.Text, box.Font, brush, 10, 0);
             }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -153,7 +153,7 @@
             button4.Name = "button4";
             button4.Size = new Size(212, 100);
             button4.TabIndex = 6;
-            button4.Text = "Produto";
+            button4.Text = "Produtos";
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
@@ -183,7 +183,8 @@
             button5.Name = "button5";
             button5.Size = new Size(212, 100);
             button5.TabIndex = 7;
-            button5.Text = "     Fornecedor";
+            button5.Text = "     Fornecedores";
+            button5.TextAlign = ContentAlignment.MiddleRight;
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
@@ -210,9 +211,9 @@
             label3.ForeColor = SystemColors.ActiveCaptionText;
             label3.Location = new Point(41, 630);
             label3.Name = "label3";
-            label3.Size = new Size(127, 25);
+            label3.Size = new Size(140, 25);
             label3.TabIndex = 14;
-            label3.Text = "CADASTRO";
+            label3.Text = "CADASTROS";
             // 
             // CadastroPage
             // 

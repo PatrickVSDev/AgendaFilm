@@ -44,6 +44,8 @@
             txtNome = new TextBox();
             label5 = new Label();
             groupBox1 = new GroupBox();
+            label9 = new Label();
+            label10 = new Label();
             label1 = new Label();
             groupBox5.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -86,7 +88,7 @@
             // 
             // txtNivelAcesso
             // 
-            txtNivelAcesso.Location = new Point(477, 79);
+            txtNivelAcesso.Location = new Point(457, 79);
             txtNivelAcesso.Name = "txtNivelAcesso";
             txtNivelAcesso.Size = new Size(113, 23);
             txtNivelAcesso.TabIndex = 6;
@@ -114,7 +116,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI Semibold", 11F);
-            label6.Location = new Point(357, 82);
+            label6.Location = new Point(337, 82);
             label6.Name = "label6";
             label6.Size = new Size(114, 20);
             label6.TabIndex = 15;
@@ -156,6 +158,7 @@
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(212, 23);
             txtSenha.TabIndex = 4;
+            txtSenha.UseSystemPasswordChar = true;
             txtSenha.TextChanged += txtSenha_TextChanged;
             // 
             // label2
@@ -208,7 +211,9 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label9);
             groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(label10);
             groupBox1.Controls.Add(txtNome);
             groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(txtNivelAcesso);
@@ -225,6 +230,24 @@
             groupBox1.TabStop = false;
             groupBox1.Paint += groupBox1_Paint;
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(576, 90);
+            label9.Name = "label9";
+            label9.Size = new Size(103, 15);
+            label9.TabIndex = 22;
+            label9.Text = "2 - FUNCIONÁRIO";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(576, 75);
+            label10.Name = "label10";
+            label10.Size = new Size(118, 15);
+            label10.TabIndex = 21;
+            label10.Text = "1 - ADMINISTRADOR";
             // 
             // label1
             // 
@@ -281,5 +304,7 @@
         private Label label2;
         private Label label1;
         private Label label7;
+        private Label label9;
+        private Label label10;
     }
 }

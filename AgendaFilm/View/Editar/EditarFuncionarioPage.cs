@@ -85,6 +85,24 @@ namespace AgendaFilm.View.Editar
                     MessageBox.Show("Para o nivel de acesso esse número não é válido.");
                 }
 
+                long numTel;
+
+                try
+                {
+                    numTel = long.Parse(txtTelefone.Text.Trim());
+                    if (numTel.ToString().Length != 11)
+                    {
+                        MessageBox.Show("O campo de telefone precisa ter 11 numeros, incluindo DDD!");
+                        return;
+                    }
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Você tem que digitar apenas numeros no campo de Telefone", "Error", MessageBoxButtons.OK);
+                    return;
+                }
+                numTel = long.Parse(txtTelefone.Text.Trim());
+
                 this.funcionario.nivelAcesso = (numNivelAcesso);
                 repository.UpdateFuncionario(funcionario);
 

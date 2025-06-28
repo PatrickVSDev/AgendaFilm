@@ -80,10 +80,34 @@ namespace AgendaFilm.View
 
         private void button3_Click(object sender, EventArgs e)
         {
-            EditarProdutoPage novoFormulario = new EditarProdutoPage(); ;
-            novoFormulario.ShowDialog();
-        }
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                Produto produtoSelecionado = selectedRow.DataBoundItem as Produto;
 
+                if (produtoSelecionado == null)
+                {
+                    MessageBox.Show("Erro ao tentar recuperar o produto selecionado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                EditarProdutoPage editarPage = new EditarProdutoPage(produtoSelecionado);
+                editarPage.RefreshGrid += () =>
+                {
+                    int index = produtos.IndexOf(produtoSelecionado);
+
+                    produtos[index] = repository.getById(produtoSelecionado.id);
+
+                    dataGridView1.Refresh();
+                };
+
+                editarPage.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("É possível editar apenas um produto por vez!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 

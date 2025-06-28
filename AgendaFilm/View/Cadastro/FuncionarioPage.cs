@@ -41,9 +41,16 @@ namespace AgendaFilm
 
         public void ObterDados()
         {
-            funcionarios = new BindingList<Funcionario>(repository.GetAll());
+            var todos = repository.GetAll();
+
+            var filtrados = todos
+                .Where(f => !f.nome.Equals("ADMINISTRADOR", StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            funcionarios = new BindingList<Funcionario>(filtrados);
             id = repository.getHighestId() + 1;
         }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -160,30 +167,26 @@ namespace AgendaFilm
         private void groupBox2_Paint(object sender, PaintEventArgs e)
         {
             GroupBox box = (GroupBox)sender;
-            Color corBorda = Color.DarkSlateGray;  // Cor da borda
+            Color corBorda = Color.DarkSlateGray;
             int espessuraBorda = 8;
-            int raio = 10;  // Raio do arredondamento
+            int raio = 10; 
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-            // Calcula espaço do texto
             Size textSize = TextRenderer.MeasureText(box.Text, box.Font);
             Rectangle rect = new Rectangle(0, textSize.Height / 2, box.Width - 1, box.Height - textSize.Height / 2 - 1);
 
-            // Limpa o fundo para remover a borda padrão
             e.Graphics.Clear(box.BackColor);
 
             using (Pen pen = new Pen(corBorda, espessuraBorda))
             using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
             {
-                // Adiciona um retângulo com cantos arredondados ao caminho
                 path.AddArc(rect.Left, rect.Top, raio, raio, 180, 90);
                 path.AddArc(rect.Right - raio, rect.Top, raio, raio, 270, 90);
                 path.AddArc(rect.Right - raio, rect.Bottom - raio, raio, raio, 0, 90);
                 path.AddArc(rect.Left, rect.Bottom - raio, raio, raio, 90, 90);
                 path.CloseFigure();
 
-                // Desenha a borda
                 e.Graphics.DrawPath(pen, path);
             }
         }

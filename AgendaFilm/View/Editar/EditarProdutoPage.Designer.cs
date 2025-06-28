@@ -28,45 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button2 = new Button();
-            textBox3 = new TextBox();
+            btSalvar = new Button();
+            textGarantia = new TextBox();
             label7 = new Label();
-            textBox5 = new TextBox();
+            textMarca = new TextBox();
             label5 = new Label();
             groupBox5 = new GroupBox();
-            label4 = new Label();
-            textBox2 = new TextBox();
-            label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            button1 = new Button();
+            label4 = new Label();
+            btSelecionarFornecedor = new Button();
             groupBox1 = new GroupBox();
             labelFornecedorSelecionado = new Label();
+            textNome = new TextBox();
+            label1 = new Label();
             groupBox5.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
-            // button2
+            // btSalvar
             // 
-            button2.BackColor = Color.CadetBlue;
-            button2.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
-            button2.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            button2.Location = new Point(491, 322);
-            button2.Margin = new Padding(3, 2, 3, 2);
-            button2.Name = "button2";
-            button2.Size = new Size(211, 33);
-            button2.TabIndex = 19;
-            button2.Text = "Salvar";
-            button2.UseVisualStyleBackColor = false;
+            btSalvar.BackColor = Color.CadetBlue;
+            btSalvar.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
+            btSalvar.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
+            btSalvar.FlatStyle = FlatStyle.Flat;
+            btSalvar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            btSalvar.Location = new Point(491, 322);
+            btSalvar.Margin = new Padding(3, 2, 3, 2);
+            btSalvar.Name = "btSalvar";
+            btSalvar.Size = new Size(211, 33);
+            btSalvar.TabIndex = 19;
+            btSalvar.Text = "Salvar";
+            btSalvar.UseVisualStyleBackColor = false;
+            btSalvar.Click += btSalvar_Click_1;
             // 
-            // textBox3
+            // textGarantia
             // 
-            textBox3.Location = new Point(163, 182);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(236, 23);
-            textBox3.TabIndex = 16;
+            textGarantia.Location = new Point(163, 182);
+            textGarantia.Name = "textGarantia";
+            textGarantia.Size = new Size(236, 23);
+            textGarantia.TabIndex = 16;
             // 
             // label7
             // 
@@ -78,13 +79,13 @@
             label7.TabIndex = 0;
             label7.Text = "Garantia";
             // 
-            // textBox5
+            // textMarca
             // 
-            textBox5.Location = new Point(163, 134);
-            textBox5.Margin = new Padding(3, 2, 3, 2);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(236, 23);
-            textBox5.TabIndex = 3;
+            textMarca.Location = new Point(163, 134);
+            textMarca.Margin = new Padding(3, 2, 3, 2);
+            textMarca.Name = "textMarca";
+            textMarca.Size = new Size(236, 23);
+            textMarca.TabIndex = 3;
             // 
             // label5
             // 
@@ -99,14 +100,14 @@
             // groupBox5
             // 
             groupBox5.Controls.Add(label2);
-            groupBox5.Controls.Add(textBox3);
+            groupBox5.Controls.Add(textGarantia);
             groupBox5.Controls.Add(label3);
             groupBox5.Controls.Add(label4);
-            groupBox5.Controls.Add(button1);
+            groupBox5.Controls.Add(btSelecionarFornecedor);
             groupBox5.Controls.Add(groupBox1);
-            groupBox5.Controls.Add(textBox5);
+            groupBox5.Controls.Add(textMarca);
             groupBox5.Controls.Add(label7);
-            groupBox5.Controls.Add(textBox2);
+            groupBox5.Controls.Add(textNome);
             groupBox5.Controls.Add(label5);
             groupBox5.Location = new Point(6, 60);
             groupBox5.Margin = new Padding(3, 2, 3, 2);
@@ -117,39 +118,6 @@
             groupBox5.TabStop = false;
             groupBox5.Paint += groupBox5_Paint;
             groupBox5.Enter += groupBox5_Enter;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 11F);
-            label4.Location = new Point(42, 30);
-            label4.Name = "label4";
-            label4.Size = new Size(51, 20);
-            label4.TabIndex = 8;
-            label4.Text = "Nome";
-            // 
-            // textBox2
-            // 
-            textBox2.BackColor = SystemColors.ButtonHighlight;
-            textBox2.Location = new Point(163, 30);
-            textBox2.Margin = new Padding(3, 2, 3, 2);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(433, 23);
-            textBox2.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.PowderBlue;
-            label1.Font = new Font("Nirmala UI", 19.8000011F, FontStyle.Bold);
-            label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(4, 4);
-            label1.Name = "label1";
-            label1.Size = new Size(206, 37);
-            label1.TabIndex = 15;
-            label1.Text = "Editar Produto";
-            label1.Click += label1_Click;
-            label1.Paint += label1_Paint;
             // 
             // label2
             // 
@@ -171,17 +139,28 @@
             label3.TabIndex = 20;
             label3.Text = "Fornecedor";
             // 
-            // button1
+            // label4
             // 
-            button1.BackColor = Color.Teal;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button1.Location = new Point(165, 75);
-            button1.Name = "button1";
-            button1.Size = new Size(208, 30);
-            button1.TabIndex = 21;
-            button1.Text = "Selecionar Fornecedor";
-            button1.UseVisualStyleBackColor = false;
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 11F);
+            label4.Location = new Point(42, 30);
+            label4.Name = "label4";
+            label4.Size = new Size(51, 20);
+            label4.TabIndex = 8;
+            label4.Text = "Nome";
+            // 
+            // btSelecionarFornecedor
+            // 
+            btSelecionarFornecedor.BackColor = Color.Teal;
+            btSelecionarFornecedor.FlatStyle = FlatStyle.Flat;
+            btSelecionarFornecedor.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btSelecionarFornecedor.Location = new Point(165, 75);
+            btSelecionarFornecedor.Name = "btSelecionarFornecedor";
+            btSelecionarFornecedor.Size = new Size(208, 30);
+            btSelecionarFornecedor.TabIndex = 21;
+            btSelecionarFornecedor.Text = "Selecionar Fornecedor";
+            btSelecionarFornecedor.UseVisualStyleBackColor = false;
+            btSelecionarFornecedor.Click += btSelecionarFornecedor_Click_1;
             // 
             // groupBox1
             // 
@@ -202,12 +181,35 @@
             labelFornecedorSelecionado.Size = new Size(0, 19);
             labelFornecedorSelecionado.TabIndex = 5;
             // 
+            // textNome
+            // 
+            textNome.BackColor = SystemColors.ButtonHighlight;
+            textNome.Location = new Point(163, 30);
+            textNome.Margin = new Padding(3, 2, 3, 2);
+            textNome.Name = "textNome";
+            textNome.Size = new Size(433, 23);
+            textNome.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.PowderBlue;
+            label1.Font = new Font("Nirmala UI", 19.8000011F, FontStyle.Bold);
+            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.Location = new Point(4, 4);
+            label1.Name = "label1";
+            label1.Size = new Size(206, 37);
+            label1.TabIndex = 15;
+            label1.Text = "Editar Produto";
+            label1.Click += label1_Click;
+            label1.Paint += label1_Paint;
+            // 
             // EditarProdutoPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(707, 369);
-            Controls.Add(button2);
+            Controls.Add(btSalvar);
             Controls.Add(groupBox5);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
@@ -226,18 +228,18 @@
 
         #endregion
 
-        private Button button2;
+        private Button btSalvar;
         private Label label7;
-        private TextBox textBox5;
+        private TextBox textMarca;
         private Label label5;
         private GroupBox groupBox5;
         private Label label4;
-        private TextBox textBox2;
+        private TextBox textNome;
         private Label label1;
-        private TextBox textBox3;
+        private TextBox textGarantia;
         private Label label2;
         private Label label3;
-        private Button button1;
+        private Button btSelecionarFornecedor;
         private GroupBox groupBox1;
         private Label labelFornecedorSelecionado;
     }

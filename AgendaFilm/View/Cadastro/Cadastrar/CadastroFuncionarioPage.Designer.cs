@@ -30,6 +30,8 @@
         {
             label1 = new Label();
             groupBox1 = new GroupBox();
+            label9 = new Label();
+            label7 = new Label();
             txtNivelAcesso = new TextBox();
             txtTelefone = new TextBox();
             label6 = new Label();
@@ -62,6 +64,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label9);
+            groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(txtNivelAcesso);
             groupBox1.Controls.Add(txtTelefone);
             groupBox1.Controls.Add(label6);
@@ -83,6 +87,25 @@
             groupBox1.TabStop = false;
             groupBox1.Paint += groupBox1_Paint;
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(559, 148);
+            label9.Name = "label9";
+            label9.Size = new Size(103, 15);
+            label9.TabIndex = 17;
+            label9.Text = "2 - FUNCIONÁRIO";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(559, 133);
+            label7.Name = "label7";
+            label7.Size = new Size(118, 15);
+            label7.TabIndex = 16;
+            label7.Text = "1 - ADMINISTRADOR";
+            label7.Click += label7_Click;
             // 
             // txtNivelAcesso
             // 
@@ -129,6 +152,7 @@
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(268, 23);
             txtSenha.TabIndex = 4;
+            txtSenha.UseSystemPasswordChar = true;
             txtSenha.TextChanged += textSenha_TextChanged;
             // 
             // label5
@@ -252,5 +276,7 @@
         private Button btnSalvar;
         private TextBox txtCargo;
         private TextBox txtNivelAcesso;
+        private Label label7;
+        private Label label9;
     }
 }
