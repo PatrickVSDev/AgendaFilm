@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using AgendaFilm.Controller;
+using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,11 @@ namespace AgendaFilm.Model.Repositories
 	                            VALUES (@id, @nome, @documento, @telefone, @email, @funcionario_fk, @dataAlteracao, @dataCriacao);";
 
             var result = connection.Connection.Execute(sql: query, param: fornecedor);
+
+            if (result == 1)
+            {
+                Logger.Log($"Fornecedor '{fornecedor.nome}' cadastrado com sucesso.", "INFO", Global.loginLogado);
+            }
 
             return result == 1;
         }
@@ -63,6 +69,11 @@ namespace AgendaFilm.Model.Repositories
 
             var result = connection.Connection.Execute(sql: query, param: fornecedor);
 
+            if (result == 1)
+            {
+                Logger.Log($"Fornecedor '{fornecedor.nome}' (ID: {fornecedor.id}) foi removido.", "WARNING", Global.loginLogado);
+            }
+
             return result == 1;
         }
 
@@ -77,6 +88,11 @@ namespace AgendaFilm.Model.Repositories
 	                        WHERE id= @id;";
 
             var result = connection.Connection.Execute(sql: query, param: fornecedor);
+
+            if (result == 1)
+            {
+                Logger.Log($"Fornecedor '{fornecedor.nome}' (ID: {fornecedor.id}) foi atualizado.", "INFO", Global.loginLogado);
+            }
 
             return result == 1;
         }

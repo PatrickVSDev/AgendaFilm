@@ -1,4 +1,5 @@
-﻿using AgendaFilm.Model;
+﻿using AgendaFilm.Controller;
+using AgendaFilm.Model;
 using Dapper;
 using System;
 using System.Collections.Generic;
@@ -18,11 +19,11 @@ namespace AgendaFilm.Model.Repositories
                 ordem.Observacoes = ordem.Observacoes?.ToUpper();
                 ordem.Status = ordem.Status?.ToUpper();
                 string queryOrdem = @"
-                    INSERT INTO ordens_servico (
-                        agendamento_fk, observacoes, status, dataCriacao, dataAlteracao, funcionario_fk
-                    ) VALUES (
-                        @AgendamentoId, @Observacoes, @Status, @DataCriacao, @DataAlteracao, @FuncionarioId
-                    ) RETURNING id;";
+                INSERT INTO ordens_servico (
+                    agendamento_fk, observacoes, status, dataCriacao, dataAlteracao, funcionario_fk
+                ) VALUES (
+                    @AgendamentoId, @Observacoes, @Status, @DataCriacao, @DataAlteracao, @FuncionarioId
+                ) RETURNING id;";
 
                 int ordemId = connection.Connection.ExecuteScalar<int>(queryOrdem, ordem, transaction);
 
@@ -31,21 +32,24 @@ namespace AgendaFilm.Model.Repositories
                     produto.OrdemServicoId = ordemId;
 
                     string queryProduto = @"
-                        INSERT INTO ordem_produtos (
-                            ordem_servico_fk, produto_fk, preco_unitario, quantidade
-                        ) VALUES (
-                            @OrdemServicoId, @ProdutoId, @PrecoUnitario, @Quantidade
-                        );";
+                    INSERT INTO ordem_produtos (
+                        ordem_servico_fk, produto_fk, preco_unitario, quantidade
+                    ) VALUES (
+                        @OrdemServicoId, @ProdutoId, @PrecoUnitario, @Quantidade
+                    );";
 
                     connection.Connection.Execute(queryProduto, produto, transaction);
                 }
 
                 transaction.Commit();
+
+                Logger.Log($"Ordem de serviço #{ordemId} criada com {produtos.Count} produtos.", "INFO", Global.loginLogado);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
                 transaction.Rollback();
+                Logger.Log($"Erro ao criar ordem de serviço: {ex.Message}", "ERROR", Global.loginLogado);
                 return false;
             }
         }
@@ -136,11 +140,14 @@ namespace AgendaFilm.Model.Repositories
                 connection.Connection.Execute("DELETE FROM ordens_servico WHERE id = @Id", new { Id = id }, transaction);
 
                 transaction.Commit();
+
+                Logger.Log($"Ordem de serviço #{id} e seus produtos foram removidos.", "WARNING", Global.loginLogado);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
                 transaction.Rollback();
+                Logger.Log($"Erro ao remover ordem de serviço #{id}: {ex.Message}", "ERROR", Global.loginLogado);
                 return false;
             }
         }
@@ -184,11 +191,17 @@ namespace AgendaFilm.Model.Repositories
             using var connection = new ConnectionDb();
 
             string query = @"
-                UPDATE ordens_servico
-                SET status = @Status, dataAlteracao = @DataAlteracao
-                WHERE id = @Id";
+            UPDATE ordens_servico
+            SET status = @Status, dataAlteracao = @DataAlteracao
+            WHERE id = @Id";
 
             int linhasAfetadas = connection.Connection.Execute(query, ordem);
+
+            if (linhasAfetadas > 0)
+            {
+                Logger.Log($"Ordem de serviço #{ordem.Id} atualizada para status '{ordem.Status}'.", "INFO", Global.loginLogado);
+            }
+
             return linhasAfetadas > 0;
         }
 

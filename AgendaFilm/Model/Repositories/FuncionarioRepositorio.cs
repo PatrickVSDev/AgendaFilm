@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using AgendaFilm.Controller;
+using Dapper;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,6 +22,11 @@ namespace AgendaFilm.Model.Repositories
 	                        VALUES (@id, @nome, @telefone, @login, @senha, @cargo, @nivelAcesso, @funcionarioAlteracao, @dataAlteracao, @dataAlteracao);";
 
             var result = connection.Connection.Execute(sql: query, param: funcionario);
+
+            if (result == 1)
+            {
+                Logger.Log($"Funcionário '{funcionario.nome}' cadastrado com sucesso.", "INFO", Global.loginLogado);
+            }
 
             return result == 1; 
         }
@@ -55,6 +61,11 @@ namespace AgendaFilm.Model.Repositories
 
             var result = connection.Connection.Execute(sql: query, param: funcionario);
 
+            if (result == 1)
+            {
+                Logger.Log($"Funcionário '{funcionario.nome}' (ID: {funcionario.id}) removido do sistema.", "WARNING", Global.loginLogado);
+            }
+
             return result == 1;
         }
 
@@ -68,6 +79,11 @@ namespace AgendaFilm.Model.Repositories
 	WHERE id = @id;";
 
             var result = connection.Connection.Execute(sql: query, param: funcionario);
+
+            if (result == 1)
+            {
+                Logger.Log($"Funcionário '{funcionario.nome}' (ID: {funcionario.id}) atualizado com sucesso.", "INFO", Global.loginLogado);
+            }
 
             return result == 1; 
         }

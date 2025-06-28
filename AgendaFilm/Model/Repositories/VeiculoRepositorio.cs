@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using AgendaFilm.Controller;
+using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,11 @@ namespace AgendaFilm.Model.Repositories
 	                            VALUES (@id, @placa, @modelo, @ano, @marca, @dataAlteracao, @dataCriacao, @funcionario_fk, @cliente_fk);";
 
             var result = connection.Connection.Execute(sql: query, param: veiculo);
+
+            if (result == 1)
+                Logger.Log($"Veículo cadastrado: {veiculo.placa} - {veiculo.modelo} (ID: {veiculo.id})", "INFO", Global.loginLogado);
+            else
+                Logger.Log($"Falha ao cadastrar veículo: {veiculo.placa} (ID: {veiculo.id})", "ERROR", Global.loginLogado);
 
             return result == 1;
         }
@@ -63,6 +69,11 @@ namespace AgendaFilm.Model.Repositories
 
             var result = connection.Connection.Execute(sql: query, param: veiculo);
 
+            if (result == 1)
+                Logger.Log($"Veículo removido: {veiculo.placa} - {veiculo.modelo} (ID: {veiculo.id})", "WARNING", Global.loginLogado);
+            else
+                Logger.Log($"Falha ao remover veículo: {veiculo.placa} (ID: {veiculo.id})", "ERROR", Global.loginLogado);
+
             return result == 1;
         }
 
@@ -77,6 +88,11 @@ namespace AgendaFilm.Model.Repositories
 	                        WHERE id= @id;";
 
             var result = connection.Connection.Execute(sql: query, param: veiculo);
+
+            if (result == 1)
+                Logger.Log($"Veículo atualizado: {veiculo.placa} - {veiculo.modelo} (ID: {veiculo.id})", "INFO", Global.loginLogado);
+            else
+                Logger.Log($"Falha ao atualizar veículo: {veiculo.placa} (ID: {veiculo.id})", "ERROR", Global.loginLogado);
 
             return result == 1;
         }

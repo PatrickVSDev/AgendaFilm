@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using AgendaFilm.Controller;
+using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,15 @@ namespace AgendaFilm.Model.Repositories
 	                            VALUES (@id, @nome, @fornecedor_fk, @marca, @garantia, @funcionario_fk, @dataAlteracao, @dataCriacao);";
 
             var result = connection.Connection.Execute(sql: query, param: produto);
+
+            if (result == 1)
+            {
+                Logger.Log($"Produto cadastrado: {produto.nome} (ID: {produto.id})", "INFO", Global.loginLogado);
+            }
+            else
+            {
+                Logger.Log($"Falha ao cadastrar produto: {produto.nome} (ID: {produto.id})", "ERROR", Global.loginLogado);
+            }
 
             return result == 1;
         }
@@ -64,6 +74,15 @@ namespace AgendaFilm.Model.Repositories
 
             var result = connection.Connection.Execute(sql: query, param: produto);
 
+            if (result == 1)
+            {
+                Logger.Log($"Produto removido: {produto.nome} (ID: {produto.id})", "WARNING", Global.loginLogado);
+            }
+            else
+            {
+                Logger.Log($"Falha ao remover produto: {produto.nome} (ID: {produto.id})", "ERROR", Global.loginLogado);
+            }
+
             return result == 1;
         }
 
@@ -78,6 +97,15 @@ namespace AgendaFilm.Model.Repositories
 	                        WHERE id= @id;";
 
             var result = connection.Connection.Execute(sql: query, param: produto);
+
+            if (result == 1)
+            {
+                Logger.Log($"Produto atualizado: {produto.nome} (ID: {produto.id})", "INFO", Global.loginLogado);
+            }
+            else
+            {
+                Logger.Log($"Falha ao atualizar produto: {produto.nome} (ID: {produto.id})", "ERROR", Global.loginLogado);
+            }
 
             return result == 1;
         }

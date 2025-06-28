@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using AgendaFilm.Controller;
+using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,11 @@ namespace AgendaFilm.Model.Repositories
 	                            VALUES (@id, @cliente_fk, @veiculo_fk, @dataHoraAgendamento, @observacoes, @dataAlteracao, @dataCriacao, @funcionario_fk);";
 
             var result = connection.Connection.Execute(sql: query, param: agendamento);
+
+            if (result == 1)
+            {
+                Logger.Log($"Agendamento criado com ID {agendamento.id} para cliente {agendamento.cliente_fk}, veículo {agendamento.veiculo_fk} em {agendamento.dataHoraAgendamento}.", "INFO", Global.loginLogado);
+            }
 
             return result == 1;
         }
@@ -80,6 +86,11 @@ namespace AgendaFilm.Model.Repositories
 
             var result = connection.Connection.Execute(sql: query, param: new { Id = id });
 
+            if (result == 1)
+            {
+                Logger.Log($"Agendamento com ID {id} foi removido.", "WARNING", Global.loginLogado);
+            }
+
             return result == 1;
         }
 
@@ -93,6 +104,11 @@ namespace AgendaFilm.Model.Repositories
 	                        WHERE id= @id;";
 
             var result = connection.Connection.Execute(sql: query, param: agendamento);
+
+            if (result == 1)
+            {
+                Logger.Log($"Agendamento com ID {agendamento.id} foi atualizado.", "INFO", Global.loginLogado);
+            }
 
             return result == 1;
         }
