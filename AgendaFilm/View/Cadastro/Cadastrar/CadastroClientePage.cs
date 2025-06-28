@@ -9,8 +9,10 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static AgendaFilm.Controller.Actions;
 
 namespace AgendaFilm
 {
@@ -36,6 +38,10 @@ namespace AgendaFilm
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
             InicializarBotaoFechar();
+
+            comboTipoCliente.Items.Clear();
+            comboTipoCliente.Items.Add("FÍSICA");
+            comboTipoCliente.Items.Add("JURÍDICA");
         }
 
         public void ObterDados()
@@ -97,11 +103,12 @@ namespace AgendaFilm
 
             actions.verifyBlanksTextboxes(textBoxes);
 
-            foreach (var text in clientes)
+            string documento = new string(textDocumento.Text.Trim().Where(char.IsDigit).ToArray());
+            foreach (var c in clientes)
             {
-                if (text.nome.Equals(textNome.Text))
+                if (c.documento == documento)
                 {
-                    MessageBox.Show("Este cliente já esta cadastrado!", "Erro", MessageBoxButtons.OK);
+                    MessageBox.Show("Este CPF ou CNPJ já está cadastrado no sistema!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }
@@ -123,15 +130,16 @@ namespace AgendaFilm
                 MessageBox.Show("Você tem que digitar apenas numeros no campo de Telefone", "Error", MessageBoxButtons.OK);
                 return;
             }
+            numTel = long.Parse(textTelefone.Text.Trim());
+            string tipo = comboTipoCliente.Text.Trim().ToUpperInvariant();
 
-            try
+            bool documentoValido = tipo.Contains("FÍSICA")
+                ? DocumentoUtils.ValidarCPF(documento)
+                : DocumentoUtils.ValidarCNPJ(documento);
+
+            if (!documentoValido)
             {
-                numCPF = long.Parse(textDocumento.Text.Trim());
-                numTel = long.Parse(textTelefone.Text.Trim());
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Você tem que digitar apenas numeros no campo de CPF", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("Documento inválido. Verifique o CPF ou CNPJ digitado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

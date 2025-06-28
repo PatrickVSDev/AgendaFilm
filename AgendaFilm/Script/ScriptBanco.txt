@@ -16,7 +16,7 @@ ADD COLUMN funcionarioAlteracao INT NOT NULL;
 
 
 INSERT INTO funcionarios (login, senha, nome, telefone, nivelAcesso, cargo, dataCriacao, dataAlteracao, funcionarioAlteracao)
-VALUES ('admin', 'admin', 'Administrador', NULL, 1, 'SEM CARGO', CURRENT_DATE, CURRENT_DATE, 1);
+VALUES ('admin', 'admin', 'ADMINISTRADOR', NULL, 1, 'SEM CARGO', CURRENT_DATE, CURRENT_DATE, 1);
 
 
 

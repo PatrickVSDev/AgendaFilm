@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static AgendaFilm.Controller.Actions;
 
 namespace AgendaFilm.View.Cadastro.Cadastrar
 {
@@ -67,6 +68,15 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
                 }
             }
 
+            foreach (var f in fornecedores)
+            {
+                if (f.documento == textDocumento.Text.Trim())
+                {
+                    MessageBox.Show("Este CNPJ já está cadastrado no sistema!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
             long numCnpj;
             long numTel;
 
@@ -87,12 +97,23 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
 
             try
             {
-                numCnpj = long.Parse(textDocumento.Text.Trim());
                 numTel = long.Parse(textTelefone.Text.Trim());
+                if (numTel.ToString().Length != 11)
+                {
+                    MessageBox.Show("O campo de telefone precisa ter 11 números, incluindo DDD!");
+                    return;
+                }
             }
-            catch (FormatException ex)
+            catch (FormatException)
             {
-                MessageBox.Show("Você tem que digitar apenas numeros no campo de Documento", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("Você tem que digitar apenas números no campo de Telefone", "Erro", MessageBoxButtons.OK);
+                return;
+            }
+
+            bool cnpjValido = DocumentoUtils.ValidarCNPJ(textDocumento.Text.Trim());
+            if (!cnpjValido)
+            {
+                MessageBox.Show("CNPJ inválido. Verifique o número informado.", "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

@@ -82,7 +82,7 @@ namespace AgendaFilm.Model.Repositories
             using var connection = new ConnectionDb();
 
             fornecedor.nome = fornecedor.nome?.ToUpper();
-            fornecedor.nome = fornecedor.email?.ToUpper();
+            fornecedor.email = fornecedor.email?.ToUpper();
             string query = @"UPDATE public.fornecedores
 	                        SET id= @id, nome= @nome, documento= @documento, telefone= @telefone, email= @email, funcionario_fk= @funcionario_fk, dataAlteracao= @dataAlteracao, dataCriacao= @dataCriacao
 	                        WHERE id= @id;";

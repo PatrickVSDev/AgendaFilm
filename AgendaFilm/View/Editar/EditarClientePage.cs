@@ -11,6 +11,7 @@ using System.Runtime.InteropServices; // Adicionado para o botão "X" arredondad
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static AgendaFilm.Controller.Actions;
 
 
 namespace AgendaFilm.View.Editar
@@ -20,7 +21,9 @@ namespace AgendaFilm.View.Editar
         ClienteRepositorio repository = new ClienteRepositorio();
         public Cliente cliente { get; set; }
         Actions actions = new Actions();
-        private Button btnFechar; // Botão "X"
+        BindingList<Cliente> buscaClientes = new BindingList<Cliente>();
+        BindingList<Cliente> clientes;
+        private Button btnFechar; 
 
         public event Action RefreshGrid;
 
@@ -32,10 +35,17 @@ namespace AgendaFilm.View.Editar
             InicializarBotaoFechar();
 
             this.cliente = cliente;
-            comboTipoCliente.SelectedItem = cliente.tipo_cliente.Trim();
-            textDocumento.Text = cliente.documento.Trim();
-            textNome.Text = cliente.nome.Trim();
-            textTelefone.Text = cliente.telefone.Trim();
+
+            comboTipoCliente.Items.Clear();
+            comboTipoCliente.Items.Add("FÍSICA");
+            comboTipoCliente.Items.Add("JURÍDICA");
+
+            string tipoFormatado = cliente.tipo_cliente?.Trim().ToUpper();
+            comboTipoCliente.SelectedItem = comboTipoCliente.Items.Contains(tipoFormatado) ? tipoFormatado : null;
+
+            textDocumento.Text = cliente.documento?.Trim();
+            textNome.Text = cliente.nome?.Trim();
+            textTelefone.Text = cliente.telefone?.Trim();
         }
 
         private void EditarClientePage_Load(object sender, EventArgs e)
@@ -48,12 +58,37 @@ namespace AgendaFilm.View.Editar
 
         private void btSalvar_Click(object sender, EventArgs e)
         {
-            this.cliente.tipo_cliente = comboTipoCliente.Text.Trim();
-            this.cliente.documento = textDocumento.Text.Trim();
+            string tipo = comboTipoCliente.Text.Trim().ToUpper();
+            string documento = textDocumento.Text.Trim();
+
+            clientes = new BindingList<Cliente>(repository.GetAll());
+
+            foreach (var c in clientes)
+            {
+                if (c.documento == documento && c.id != cliente.id)
+                {
+                    MessageBox.Show("Este CPF ou CNPJ já está cadastrado no sistema!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
+            bool documentoValido = tipo == "FISICA"
+                ? DocumentoUtils.ValidarCPF(documento)
+                : DocumentoUtils.ValidarCNPJ(documento);
+
+            if (!documentoValido)
+            {
+                MessageBox.Show("Documento inválido. Verifique o CPF ou CNPJ informado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            this.cliente.tipo_cliente = tipo;
+            this.cliente.documento = documento;
             this.cliente.nome = textNome.Text.Trim();
             this.cliente.telefone = textTelefone.Text.Trim();
             this.cliente.dataAlteracao = DateTime.Today;
             this.cliente.funcionario_fk = Global.funcionarioLogado;
+
             repository.UpdateCliente(cliente);
 
             RefreshGrid?.Invoke();

@@ -33,13 +33,17 @@
             label7 = new Label();
             textBox5 = new TextBox();
             label5 = new Label();
-            textBox1 = new TextBox();
-            label3 = new Label();
             groupBox5 = new GroupBox();
             label4 = new Label();
             textBox2 = new TextBox();
             label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            button1 = new Button();
+            groupBox1 = new GroupBox();
+            labelFornecedorSelecionado = new Label();
             groupBox5.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // button2
@@ -92,31 +96,15 @@
             label5.TabIndex = 2;
             label5.Text = "Marca";
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(163, 77);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(236, 23);
-            textBox1.TabIndex = 4;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 11F);
-            label3.Location = new Point(26, 80);
-            label3.Name = "label3";
-            label3.Size = new Size(88, 20);
-            label3.TabIndex = 2;
-            label3.Text = "Fornecedor";
-            // 
             // groupBox5
             // 
+            groupBox5.Controls.Add(label2);
             groupBox5.Controls.Add(textBox3);
-            groupBox5.Controls.Add(label4);
-            groupBox5.Controls.Add(textBox5);
             groupBox5.Controls.Add(label3);
-            groupBox5.Controls.Add(textBox1);
+            groupBox5.Controls.Add(label4);
+            groupBox5.Controls.Add(button1);
+            groupBox5.Controls.Add(groupBox1);
+            groupBox5.Controls.Add(textBox5);
             groupBox5.Controls.Add(label7);
             groupBox5.Controls.Add(textBox2);
             groupBox5.Controls.Add(label5);
@@ -163,6 +151,57 @@
             label1.Click += label1_Click;
             label1.Paint += label1_Paint;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label2.Location = new Point(392, 80);
+            label2.Name = "label2";
+            label2.Size = new Size(104, 21);
+            label2.TabIndex = 22;
+            label2.Text = "Fornecedor :";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 11F);
+            label3.Location = new Point(31, 81);
+            label3.Name = "label3";
+            label3.Size = new Size(88, 20);
+            label3.TabIndex = 20;
+            label3.Text = "Fornecedor";
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Teal;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            button1.Location = new Point(165, 75);
+            button1.Name = "button1";
+            button1.Size = new Size(208, 30);
+            button1.TabIndex = 21;
+            button1.Text = "Selecionar Fornecedor";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(labelFornecedorSelecionado);
+            groupBox1.Location = new Point(502, 69);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(166, 36);
+            groupBox1.TabIndex = 23;
+            groupBox1.TabStop = false;
+            // 
+            // labelFornecedorSelecionado
+            // 
+            labelFornecedorSelecionado.AutoSize = true;
+            labelFornecedorSelecionado.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            labelFornecedorSelecionado.ForeColor = Color.Blue;
+            labelFornecedorSelecionado.Location = new Point(6, 11);
+            labelFornecedorSelecionado.Name = "labelFornecedorSelecionado";
+            labelFornecedorSelecionado.Size = new Size(0, 19);
+            labelFornecedorSelecionado.TabIndex = 5;
+            // 
             // EditarProdutoPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -179,6 +218,8 @@
             Load += EditarProdutoPage_Load;
             groupBox5.ResumeLayout(false);
             groupBox5.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -189,12 +230,15 @@
         private Label label7;
         private TextBox textBox5;
         private Label label5;
-        private TextBox textBox1;
-        private Label label3;
         private GroupBox groupBox5;
         private Label label4;
         private TextBox textBox2;
         private Label label1;
         private TextBox textBox3;
+        private Label label2;
+        private Label label3;
+        private Button button1;
+        private GroupBox groupBox1;
+        private Label labelFornecedorSelecionado;
     }
 }

@@ -149,7 +149,6 @@
             // 
             comboTipoCliente.BackColor = SystemColors.ButtonHighlight;
             comboTipoCliente.FormattingEnabled = true;
-            comboTipoCliente.Items.AddRange(new object[] { "Física", "Jurídica" });
             comboTipoCliente.Location = new Point(109, 23);
             comboTipoCliente.Margin = new Padding(3, 2, 3, 2);
             comboTipoCliente.Name = "comboTipoCliente";

@@ -74,7 +74,11 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             actions.verifyBlanksTextboxes(textBoxes);
 
             int numGarantia;
-            numGarantia = int.Parse(textGarantia.Text.Trim());
+            if (!int.TryParse(textGarantia.Text.Trim(), out numGarantia) || numGarantia < 0)
+            {
+                MessageBox.Show("Informe um valor numérico válido para a garantia (número inteiro positivo).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             foreach (var text in produtos)
             {

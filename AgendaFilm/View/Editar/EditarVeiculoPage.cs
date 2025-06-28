@@ -45,7 +45,25 @@ namespace AgendaFilm.View.Editar
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.veiculo.placa = textPlaca.Text.Trim();
+            try
+            {
+                string placa = textPlaca.Text.Trim();
+                string padraoPlaca = @"^[A-Z]{3}[0-9][A-Z0-9][0-9]{2}$";
+
+                if (!System.Text.RegularExpressions.Regex.IsMatch(placa, padraoPlaca))
+                {
+                    MessageBox.Show("A placa não está no formato válido (AAA0A00 ou AAA0000).");
+                    return;
+                }
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show(ex.Message, "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro inesperado: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             this.veiculo.modelo = textModelo.Text.Trim();
 
             if (int.TryParse(textAno.Text.Trim(), out int valor))
@@ -56,7 +74,7 @@ namespace AgendaFilm.View.Editar
             {
                 MessageBox.Show("Por favor, insira um número válido para o ano.", "Erro de Entrada", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            this.veiculo.placa = textPlaca.Text.Trim();
             this.veiculo.marca = textMarca.Text.Trim();
             this.veiculo.dataAlteracao = DateTime.Today;
             this.veiculo.funcionario_fk = Global.funcionarioLogado;

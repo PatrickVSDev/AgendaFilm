@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static AgendaFilm.Controller.Actions;
 
 namespace AgendaFilm.View.Editar
 {
@@ -51,17 +52,45 @@ namespace AgendaFilm.View.Editar
 
         private void btSalvar_Click(object sender, EventArgs e)
         {
-            this.fornecedor.documento = textDocumento.Text.Trim();
-            this.fornecedor.nome = textNome.Text.Trim();
-            this.fornecedor.telefone = textTelefone.Text.Trim();
-            this.fornecedor.email = textEmail.Text.Trim();
-            this.fornecedor.dataAlteracao = DateTime.Today;
-            this.fornecedor.funcionario_fk = Global.funcionarioLogado;
-            repository.UpdateFornecedor(fornecedor);
+            string documento = textDocumento.Text.Trim();
+            string nome = textNome.Text.Trim();
+            string telefone = textTelefone.Text.Trim();
+            string email = textEmail.Text.Trim();
 
+            var fornecedores = repository.GetAll();
+            foreach (var f in fornecedores)
+            {
+                if (f.documento == documento && f.id != fornecedor.id)
+                {
+                    MessageBox.Show("Este CNPJ já está cadastrado no sistema!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
+            if (!DocumentoUtils.ValidarCNPJ(documento))
+            {
+                MessageBox.Show("CNPJ inválido. Verifique o valor informado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!long.TryParse(telefone, out long telefoneNumerico) || telefone.Length != 11)
+            {
+                MessageBox.Show("O telefone deve conter apenas números e ter 11 dígitos (incluindo DDD).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            fornecedor.documento = documento;
+            fornecedor.nome = nome;
+            fornecedor.telefone = telefone;
+            fornecedor.email = email;
+            fornecedor.dataAlteracao = DateTime.Today;
+            fornecedor.funcionario_fk = Global.funcionarioLogado;
+
+            repository.UpdateFornecedor(fornecedor);
             RefreshGrid?.Invoke();
             this.Close();
         }
+
 
         private void groupBox1_Enter(object sender, EventArgs e) { }
 
@@ -118,7 +147,6 @@ namespace AgendaFilm.View.Editar
             }
         }
 
-        // ====================== BORDA E BOTÃO X =========================
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -162,6 +190,5 @@ namespace AgendaFilm.View.Editar
             int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
             int nWidthEllipse, int nHeightEllipse);
 
-        // ==================================================================
     }
 }

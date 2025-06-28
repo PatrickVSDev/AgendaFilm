@@ -83,6 +83,13 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
 
         private void btSalvar_Click(object sender, EventArgs e)
         {
+
+            if (string.IsNullOrWhiteSpace(lbNomeCliente.Text) || clienteIdRecebido < 0)
+            {
+                MessageBox.Show("Selecione um cliente antes de salvar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             textBoxes.Clear();
             textBoxes.Add(txtMarca.Text);
             textBoxes.Add(txtModelo.Text);
@@ -106,7 +113,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
 
                 if (!System.Text.RegularExpressions.Regex.IsMatch(placa, padraoPlaca))
                 {
-                    MessageBox.Show("A placa não está no formato válido (AAA0A00).");
+                    MessageBox.Show("A placa não está no formato válido (AAA0A00 ou AAA0000).");
                     return;
                 }
             }
