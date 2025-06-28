@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
-            button2 = new Button();
-            dataGridView1 = new DataGridView();
+            npgsqlDataAdapter1 = new Npgsql.NpgsqlDataAdapter();
             groupBox3 = new GroupBox();
             btnBuscar = new Button();
             label3 = new Label();
@@ -40,49 +38,21 @@
             rbEmAndamento = new RadioButton();
             label1 = new Label();
             rbAFazer = new RadioButton();
-            npgsqlDataAdapter1 = new Npgsql.NpgsqlDataAdapter();
-            groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            dataGridView1 = new DataGridView();
+            button2 = new Button();
+            button1 = new Button();
+            groupBox1 = new GroupBox();
             groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
-            // groupBox1
+            // npgsqlDataAdapter1
             // 
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(dataGridView1);
-            groupBox1.Controls.Add(groupBox3);
-            groupBox1.FlatStyle = FlatStyle.Flat;
-            groupBox1.Location = new Point(12, 4);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1038, 561);
-            groupBox1.TabIndex = 2;
-            groupBox1.TabStop = false;
-            groupBox1.Paint += groupBox1_Paint;
-            groupBox1.Enter += groupBox1_Enter;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.CadetBlue;
-            button2.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
-            button2.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button2.Location = new Point(869, 522);
-            button2.Name = "button2";
-            button2.Size = new Size(119, 33);
-            button2.TabIndex = 3;
-            button2.Text = "Imprimir";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(40, 120);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(948, 366);
-            dataGridView1.TabIndex = 0;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            npgsqlDataAdapter1.DeleteCommand = null;
+            npgsqlDataAdapter1.InsertCommand = null;
+            npgsqlDataAdapter1.SelectCommand = null;
+            npgsqlDataAdapter1.UpdateCommand = null;
             // 
             // groupBox3
             // 
@@ -141,7 +111,7 @@
             label2.AutoSize = true;
             label2.BackColor = Color.LightSeaGreen;
             label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(2, 9);
+            label2.Location = new Point(2, 2);
             label2.Name = "label2";
             label2.Size = new Size(202, 30);
             label2.TabIndex = 32;
@@ -208,12 +178,59 @@
             rbAFazer.Text = "A Fazer";
             rbAFazer.UseVisualStyleBackColor = true;
             // 
-            // npgsqlDataAdapter1
+            // dataGridView1
             // 
-            npgsqlDataAdapter1.DeleteCommand = null;
-            npgsqlDataAdapter1.InsertCommand = null;
-            npgsqlDataAdapter1.SelectCommand = null;
-            npgsqlDataAdapter1.UpdateCommand = null;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(24, 129);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(948, 366);
+            dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.CadetBlue;
+            button2.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
+            button2.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            button2.Location = new Point(853, 522);
+            button2.Name = "button2";
+            button2.Size = new Size(119, 33);
+            button2.TabIndex = 3;
+            button2.Text = "Imprimir";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.PowderBlue;
+            button1.FlatAppearance.MouseDownBackColor = Color.Teal;
+            button1.FlatAppearance.MouseOverBackColor = Color.Teal;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            button1.Location = new Point(24, 522);
+            button1.Name = "button1";
+            button1.Size = new Size(153, 33);
+            button1.TabIndex = 34;
+            button1.Text = "Editar Status";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(dataGridView1);
+            groupBox1.Controls.Add(groupBox3);
+            groupBox1.FlatStyle = FlatStyle.Flat;
+            groupBox1.Location = new Point(12, 4);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(1038, 561);
+            groupBox1.TabIndex = 2;
+            groupBox1.TabStop = false;
+            groupBox1.Paint += groupBox1_Paint;
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // FinalizarOrdemDeServiço
             // 
@@ -228,27 +245,27 @@
             StartPosition = FormStartPosition.Manual;
             Text = "FinalizarOrdemDeServiço";
             Load += FinalizarOrdemDeServiço_Load;
-            groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-
-        private GroupBox groupBox1;
-        private Button button2;
-        private DataGridView dataGridView1;
-        private Label label1;
-        private RadioButton rbAFazer;
-        private RadioButton rbEmAndamento;
-        private RadioButton rbFinalizado;
-        private GroupBox groupBox3;
-        private Label label2;
         private Npgsql.NpgsqlDataAdapter npgsqlDataAdapter1;
+        private GroupBox groupBox3;
+        private Button btnBuscar;
         private Label label3;
         private DateTimePicker dtInicio;
-        private Button btnBuscar;
+        private Label label2;
+        private RadioButton rbFinalizado;
+        private RadioButton rbEmAndamento;
+        private Label label1;
+        private RadioButton rbAFazer;
+        private DataGridView dataGridView1;
+        private Button button2;
+        private Button button1;
+        private GroupBox groupBox1;
     }
 }

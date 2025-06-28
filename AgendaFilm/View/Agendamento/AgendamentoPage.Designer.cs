@@ -42,29 +42,32 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.BackColor = SystemColors.ActiveCaption;
+            pictureBox2.BackColor = Color.PowderBlue;
             pictureBox2.ErrorImage = (Image)resources.GetObject("pictureBox2.ErrorImage");
             pictureBox2.ImageLocation = "500";
-            pictureBox2.Location = new Point(-4, 0);
+            pictureBox2.Location = new Point(4, 4);
             pictureBox2.Margin = new Padding(3, 2, 3, 2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(871, 53);
+            pictureBox2.Size = new Size(867, 53);
             pictureBox2.TabIndex = 2;
             pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = SystemColors.ActiveCaption;
-            pictureBox1.Location = new Point(-4, 365);
+            pictureBox1.BackColor = Color.DarkSlateGray;
+            pictureBox1.Location = new Point(4, 356);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(871, 91);
+            pictureBox1.Size = new Size(867, 91);
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             // 
             // button4
             // 
-            button4.BackColor = Color.SpringGreen;
+            button4.BackColor = Color.CadetBlue;
+            button4.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
+            button4.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
+            button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button4.Location = new Point(663, 394);
             button4.Margin = new Padding(2);
@@ -87,7 +90,11 @@
             // 
             // button3
             // 
-            button3.BackColor = Color.SpringGreen;
+            button3.BackColor = Color.CadetBlue;
+            button3.FlatAppearance.BorderColor = Color.Black;
+            button3.FlatAppearance.MouseDownBackColor = Color.Red;
+            button3.FlatAppearance.MouseOverBackColor = Color.Red;
+            button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button3.Location = new Point(11, 394);
             button3.Margin = new Padding(2);
@@ -100,7 +107,7 @@
             // 
             // dateTimePickerFiltro
             // 
-            dateTimePickerFiltro.Location = new Point(5, 58);
+            dateTimePickerFiltro.Location = new Point(5, 64);
             dateTimePickerFiltro.Name = "dateTimePickerFiltro";
             dateTimePickerFiltro.Size = new Size(244, 23);
             dateTimePickerFiltro.TabIndex = 10;
@@ -117,8 +124,10 @@
             Controls.Add(button4);
             Controls.Add(pictureBox1);
             Controls.Add(pictureBox2);
+            FormBorderStyle = FormBorderStyle.None;
+            Location = new Point(875, 550);
             Name = "AgendamentoPage";
-            StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.Manual;
             Text = "Pagina de Agendamento";
             Load += AgendamentoPage_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
