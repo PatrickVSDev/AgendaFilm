@@ -15,7 +15,7 @@ namespace AgendaFilm.Model.Repositories
             using var connection = new ConnectionDb();
 
             fornecedor.nome = fornecedor.nome?.ToUpper();
-            fornecedor.nome = fornecedor.email?.ToUpper();
+            fornecedor.email = fornecedor.email?.ToUpper();
             string query = @"INSERT INTO public.fornecedores(
 	                            id, nome, documento, telefone, email, funcionario_fk, dataAlteracao, dataCriacao)
 	                            VALUES (@id, @nome, @documento, @telefone, @email, @funcionario_fk, @dataAlteracao, @dataCriacao);";
