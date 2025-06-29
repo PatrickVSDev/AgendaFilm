@@ -388,18 +388,14 @@ namespace AgendaFilm
             DialogResult resultado = MessageBox.Show("Você quer gerar o relatorio em PDF?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
-
                 bool funcionarioExiste = false;
                 List<Funcionario> funcionariosRelatorio = new List<Funcionario>();
 
                 string pesquisa = RelatorioTextBox.Text.Trim();
                 if (string.IsNullOrWhiteSpace(pesquisa))
                 {
-                    foreach (var funcionario in funcionarios)
-                    {
-                        funcionariosRelatorio.Add(funcionario);
-                        funcionarioExiste = true;
-                    }
+                    funcionariosRelatorio.AddRange(funcionarios);
+                    funcionarioExiste = funcionariosRelatorio.Count > 0;
                 }
                 else
                 {
@@ -415,26 +411,33 @@ namespace AgendaFilm
 
                 if (!funcionarioExiste)
                 {
-                    MessageBox.Show("Nenhum funcionario com este nome!", "Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Nenhum funcionário com este nome!", "Erro", MessageBoxButtons.OK);
+                    return;
                 }
-
-
 
                 QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
                 string dataAtual = DateTime.Now.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
                 string titulo = $"Relatório De Funcionários Por Nome - {dataAtual}";
+                string nomeArquivo = $"relatorio-Funcionarios-Por-Nome-{dataAtual}.pdf";
 
-                string diretorio = @"C:\Users\patri\OneDrive\Área de Trabalho\Relatórios";
-                if (!Directory.Exists(diretorio))
-                {
-                    MessageBox.Show("Diretorio Incorreto, verificar!", "Error", MessageBoxButtons.OK);
-                    return;
-                }
-
-                string nomeArquivo = Path.Combine(diretorio, $"relatorio-Funcionrios-Por-Nome-{dataAtual}.pdf");
+                string tempFolder = Path.GetTempPath();
+                string caminhoCompleto = Path.Combine(tempFolder, nomeArquivo);
 
                 var relatorio = new RelatorioFuncionarios(funcionariosRelatorio, titulo);
-                relatorio.GeneratePdf(nomeArquivo);
+                relatorio.GeneratePdf(caminhoCompleto);
+
+                try
+                {
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
+                    {
+                        FileName = caminhoCompleto,
+                        UseShellExecute = true
+                    });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Relatório gerado, mas não foi possível abrir automaticamente.\n{ex.Message}", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 

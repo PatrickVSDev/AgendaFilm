@@ -110,56 +110,57 @@ namespace AgendaFilm.View
 
         private void button5_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("Você quer gerar o relatorio em PDF?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (resultado == DialogResult.Yes)
+            DialogResult resultado = MessageBox.Show("Você quer gerar o relatório em PDF?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resultado != DialogResult.Yes)
+                return;
+            bool veiculoExiste = false;
+            List<Veiculo> veiculosRelatorio = new List<Veiculo>();
+
+            string pesquisa = RelatorioTextBox.Text.Trim();
+            if (string.IsNullOrWhiteSpace(pesquisa))
             {
-
-                bool veiculoExiste = false;
-                List<Veiculo> veiculosRelatorio = new List<Veiculo>();
-
-                string pesquisa = RelatorioTextBox.Text.Trim();
-                if (string.IsNullOrWhiteSpace(pesquisa))
+                veiculosRelatorio.AddRange(veiculos);
+                veiculoExiste = veiculosRelatorio.Count > 0;
+            }
+            else
+            {
+                foreach (var veiculo in veiculos)
                 {
-                    foreach (var veiculo in veiculos)
+                    if (veiculo.modelo.Contains(pesquisa, StringComparison.OrdinalIgnoreCase))
                     {
                         veiculosRelatorio.Add(veiculo);
                         veiculoExiste = true;
                     }
                 }
-                else
+            }
+
+            if (!veiculoExiste)
+            {
+                MessageBox.Show("Nenhum veículo encontrado com este modelo!", "Erro", MessageBoxButtons.OK);
+                return;
+            }
+
+            QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+            string dataAtual = DateTime.Now.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+            string titulo = $"Relatório De Veículo Por Modelo - {dataAtual}";
+            string nomeArquivo = $"relatorio-Veiculos-Por-Modelo-{dataAtual}.pdf";
+
+            string caminhoCompleto = Path.Combine(Path.GetTempPath(), nomeArquivo);
+            var relatorio = new RelatorioVeiculos(veiculosRelatorio, titulo);
+
+            relatorio.GeneratePdf(caminhoCompleto);
+
+            try
+            {
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
                 {
-                    foreach (var veiculo in veiculos)
-                    {
-                        if (veiculo.modelo.Contains(pesquisa, StringComparison.OrdinalIgnoreCase))
-                        {
-                            veiculosRelatorio.Add(veiculo);
-                            veiculoExiste = true;
-                        }
-                    }
-                }
-
-                if (!veiculoExiste)
-                {
-                    MessageBox.Show("Nenhum produto com este nome!", "Error", MessageBoxButtons.OK);
-                }
-
-
-
-                QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
-                string dataAtual = DateTime.Now.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
-                string titulo = $"Relatório De Veículo Por Modelo - {dataAtual}";
-
-                string diretorio = @"C:\Users\patri\OneDrive\Área de Trabalho\Relatórios";
-                if (!Directory.Exists(diretorio))
-                {
-                    MessageBox.Show("Diretorio Incorreto, verificar!", "Error", MessageBoxButtons.OK);
-                    return;
-                }
-
-                string nomeArquivo = Path.Combine(diretorio, $"relatorio-Veiculos-Por-Modelo-{dataAtual}.pdf");
-
-                var relatorio = new RelatorioVeiculos(veiculosRelatorio, titulo);
-                relatorio.GeneratePdf(nomeArquivo);
+                    FileName = caminhoCompleto,
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Relatório gerado, mas não foi possível abrir automaticamente.\n{ex.Message}", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

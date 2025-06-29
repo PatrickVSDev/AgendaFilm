@@ -331,18 +331,14 @@ namespace AgendaFilm.View.Cadastro
             DialogResult resultado = MessageBox.Show("Você quer gerar o relatorio em PDF?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
-
                 bool fornecedorExiste = false;
                 List<Fornecedor> fornecedoresRelatorio = new List<Fornecedor>();
 
                 string pesquisa = RelatorioTextBox.Text.Trim();
                 if (string.IsNullOrWhiteSpace(pesquisa))
                 {
-                    foreach (var fornecedor in fornecedores)
-                    {
-                        fornecedoresRelatorio.Add(fornecedor);
-                        fornecedorExiste = true;
-                    }
+                    fornecedoresRelatorio.AddRange(fornecedores);
+                    fornecedorExiste = fornecedoresRelatorio.Count > 0;
                 }
                 else
                 {
@@ -359,25 +355,32 @@ namespace AgendaFilm.View.Cadastro
                 if (!fornecedorExiste)
                 {
                     MessageBox.Show("Nenhum fornecedor com este nome!", "Error", MessageBoxButtons.OK);
+                    return;
                 }
-
-
 
                 QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
                 string dataAtual = DateTime.Now.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
                 string titulo = $"Relatório De Fornecedores Por Nome - {dataAtual}";
+                string nomeArquivo = $"relatorio-Fornecedores-Por-Nome-{dataAtual}.pdf";
 
-                string diretorio = @"C:\Users\patri\OneDrive\Área de Trabalho\Relatórios";
-                if (!Directory.Exists(diretorio))
-                {
-                    MessageBox.Show("Diretorio Incorreto, verificar!", "Error", MessageBoxButtons.OK);
-                    return;
-                }
-
-                string nomeArquivo = Path.Combine(diretorio, $"relatorio-Fornecedores-Por-Nome-{dataAtual}.pdf");
+                string tempFolder = Path.GetTempPath();
+                string caminhoCompleto = Path.Combine(tempFolder, nomeArquivo);
 
                 var relatorio = new RelatorioFornecedores(fornecedoresRelatorio, titulo);
-                relatorio.GeneratePdf(nomeArquivo);
+                relatorio.GeneratePdf(caminhoCompleto);
+
+                try
+                {
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
+                    {
+                        FileName = caminhoCompleto,
+                        UseShellExecute = true
+                    });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Relatório gerado, mas não foi possível abrir automaticamente.\n{ex.Message}", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 

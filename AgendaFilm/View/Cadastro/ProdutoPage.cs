@@ -176,27 +176,20 @@ namespace AgendaFilm.View
 
         private void button5_Click(object sender, EventArgs e)
         {
-
             FornecedorRepositorio repository = new FornecedorRepositorio();
-            Actions actions = new Actions();
-            BindingList<Fornecedor> buscaFornecedores = new BindingList<Fornecedor>();
             var fornecedores = repository.GetAll();
 
-            DialogResult resultado = MessageBox.Show("Você quer gerar o relatorio em PDF?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show("Você quer gerar o relatório em PDF?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
-
                 bool produtoExiste = false;
                 List<Produto> produtosRelatorio = new List<Produto>();
-
                 string pesquisa = RelatorioTextBox.Text.Trim();
+
                 if (string.IsNullOrWhiteSpace(pesquisa))
                 {
-                    foreach (var produto in produtos)
-                    {
-                        produtosRelatorio.Add(produto);
-                        produtoExiste = true;
-                    }
+                    produtosRelatorio.AddRange(produtos);
+                    produtoExiste = produtosRelatorio.Count > 0;
                 }
                 else
                 {
@@ -213,26 +206,31 @@ namespace AgendaFilm.View
 
                 if (!produtoExiste)
                 {
-                    MessageBox.Show("Nenhum produto que tenha fornecedor com este nome!", "Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Nenhum produto que tenha fornecedor com este nome!", "Erro", MessageBoxButtons.OK);
+                    return;
                 }
-
-
 
                 QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
                 string dataAtual = DateTime.Now.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
                 string titulo = $"Relatório De Produtos Por Nome Do Fornecedor - {dataAtual}";
+                string nomeArquivo = $"relatorio-Produtos-Por-Nome-Do-Fornecedor-{dataAtual}.pdf";
 
-                string diretorio = @"C:\Users\patri\OneDrive\Área de Trabalho\Relatórios";
-                if (!Directory.Exists(diretorio))
-                {
-                    MessageBox.Show("Diretorio Incorreto, verificar!", "Error", MessageBoxButtons.OK);
-                    return;
-                }
-
-                string nomeArquivo = Path.Combine(diretorio, $"relatorio-Produtos-Por-Nome-Do-Fornecedor{dataAtual}.pdf");
-
+                string caminhoCompleto = Path.Combine(Path.GetTempPath(), nomeArquivo);
                 var relatorio = new RelatorioProdutos(produtosRelatorio, titulo, fornecedores);
-                relatorio.GeneratePdf(nomeArquivo);
+                relatorio.GeneratePdf(caminhoCompleto);
+
+                try
+                {
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
+                    {
+                        FileName = caminhoCompleto,
+                        UseShellExecute = true
+                    });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Relatório gerado, mas não foi possível abrir automaticamente.\n{ex.Message}", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 

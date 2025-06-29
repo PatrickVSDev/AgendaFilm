@@ -322,55 +322,53 @@ namespace AgendaFilm
         private void button2_Click_1(object sender, EventArgs e)
         {
             DialogResult resultado = MessageBox.Show("Você quer gerar o relatorio em PDF?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (resultado == DialogResult.Yes)
+            if (resultado != DialogResult.Yes)
+                return;
+
+            bool clienteExiste = false;
+            List<Cliente> clientesRelatorio = new List<Cliente>();
+
+            string pesquisa = RelatorioTextBox.Text.Trim();
+            if (string.IsNullOrWhiteSpace(pesquisa))
             {
+                clientesRelatorio.AddRange(clientes);
+                clienteExiste = clientesRelatorio.Count > 0;
+            }
+            else
+            {
+                clientesRelatorio = clientes
+                    .Where(c => c.nome.Contains(pesquisa, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+                clienteExiste = clientesRelatorio.Count > 0;
+            }
 
-                bool clienteExiste = false;
-                List<Cliente> clientesRelatorio = new List<Cliente>();
+            if (!clienteExiste)
+            {
+                MessageBox.Show("Nenhum cliente com este nome!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-                string pesquisa = RelatorioTextBox.Text.Trim();
-                if (string.IsNullOrWhiteSpace(pesquisa))
+            QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+            string dataAtual = DateTime.Now.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+            string nomeArquivo = $"relatorio-Clientes-Por-Nome-{dataAtual}.pdf";
+
+            string tempFolder = Path.GetTempPath();
+            string caminhoCompleto = Path.Combine(tempFolder, nomeArquivo);
+
+            var relatorio = new RelatorioClientes(clientesRelatorio, $"Relatório De Clientes Por Nome - {dataAtual}");
+            relatorio.GeneratePdf(caminhoCompleto);
+
+            try
+            {
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
                 {
-                    foreach (var cliente in clientes)
-                    {
-                        clientesRelatorio.Add(cliente);
-                        clienteExiste = true;
-                    }
-                }
-                else
-                {
-                    foreach (var cliente in clientes)
-                    {
-                        if (cliente.nome.Contains(pesquisa, StringComparison.OrdinalIgnoreCase))
-                        {
-                            clientesRelatorio.Add(cliente);
-                            clienteExiste = true;
-                        }
-                    }
-                }
-
-                if (!clienteExiste)
-                {
-                    MessageBox.Show("Nenhum cliente com este nome!", "Error", MessageBoxButtons.OK);
-                }
-
-
-
-                QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
-                string dataAtual = DateTime.Now.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
-                string titulo = $"Relatório De Clientes Por Nome - {dataAtual}";
-
-                string diretorio = @"C:\Users\patri\OneDrive\Área de Trabalho\Relatórios";
-                if (!Directory.Exists(diretorio))
-                {
-                    MessageBox.Show("Diretorio Incorreto, verificar!", "Error", MessageBoxButtons.OK);
-                    return;
-                }
-
-                string nomeArquivo = Path.Combine(diretorio, $"relatorio-Clientes-Por-Nome-{dataAtual}.pdf");
-
-                var relatorio = new RelatorioClientes(clientesRelatorio, titulo);
-                relatorio.GeneratePdf(nomeArquivo);
+                    FileName = caminhoCompleto,
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Relatório gerado, mas não foi possível abrir automaticamente.\n{ex.Message}", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
