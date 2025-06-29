@@ -115,7 +115,7 @@
             // radioTodos
             // 
             radioTodos.AutoSize = true;
-            radioTodos.Location = new Point(377, 43);
+            radioTodos.Location = new Point(380, 43);
             radioTodos.Margin = new Padding(3, 2, 3, 2);
             radioTodos.Name = "radioTodos";
             radioTodos.Size = new Size(56, 19);
