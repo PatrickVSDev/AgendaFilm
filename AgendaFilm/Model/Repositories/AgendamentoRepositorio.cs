@@ -158,6 +158,14 @@ namespace AgendaFilm.Model.Repositories
 
             return connection.Connection.QuerySingleOrDefault<AgendamentoDTO>(query, new { id });
         }
+        public bool AgendamentoTemOrdemServico(int agendamentoId)
+        {
+            using var connection = new ConnectionDb();
 
+            string query = @"SELECT COUNT(*) FROM ordens_servico WHERE agendamento_fk = @agendamentoId;";
+            int count = connection.Connection.QuerySingleOrDefault<int>(query, new { agendamentoId });
+
+            return count > 0;
+        }
     }
 }

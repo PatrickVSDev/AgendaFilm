@@ -180,10 +180,20 @@ namespace AgendaFilm.View.Agendamento
                 for (int i = dataGridView1.SelectedRows.Count - 1; i >= 0; i--)
                 {
                     var dataGridViewRow = dataGridView1.SelectedRows[i];
-                    var agendamentoSelecionado = dataGridViewRow.DataBoundItem as dynamic;
-
+                    var agendamentoSelecionado = dataGridViewRow.DataBoundItem as AgendamentoDTO;
                     if (agendamentoSelecionado != null)
                     {
+                        if (repository.AgendamentoTemOrdemServico(agendamentoSelecionado.id))
+                        {
+                            MessageBox.Show(
+                                $"O agendamento com o cliente '{agendamentoSelecionado.nome_cliente}' está vinculado a uma ordem de serviço e não pode ser excluído.",
+                                "Aviso",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning
+                            );
+                            continue;
+                        }
+
                         agendamentos.Remove(agendamentoSelecionado);
                         buscaAgendamentos.Remove(agendamentoSelecionado);
                         repository.RemoveAgendamento(agendamentoSelecionado.id);
@@ -194,7 +204,7 @@ namespace AgendaFilm.View.Agendamento
             }
             else
             {
-                MessageBox.Show("Nenhum agendamento selecionado", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("Nenhum agendamento selecionado", "Erro", MessageBoxButtons.OK);
             }
         }
 

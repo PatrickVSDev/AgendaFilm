@@ -67,10 +67,10 @@
             button1.BackColor = Color.SpringGreen;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button1.Location = new Point(6, 38);
-            button1.Margin = new Padding(2, 2, 2, 2);
+            button1.Margin = new Padding(2);
             button1.Name = "button1";
             button1.Size = new Size(189, 30);
-            button1.TabIndex = 3;
+            button1.TabIndex = 1;
             button1.Text = "Selecionar Cliente";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
@@ -80,10 +80,10 @@
             button4.BackColor = Color.SpringGreen;
             button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button4.Location = new Point(212, 602);
-            button4.Margin = new Padding(2, 2, 2, 2);
+            button4.Margin = new Padding(2);
             button4.Name = "button4";
             button4.Size = new Size(239, 35);
-            button4.TabIndex = 12;
+            button4.TabIndex = 5;
             button4.Text = "Concluir Agendamento";
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
@@ -188,10 +188,10 @@
             button3.BackColor = Color.SpringGreen;
             button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button3.Location = new Point(6, 43);
-            button3.Margin = new Padding(2, 2, 2, 2);
+            button3.Margin = new Padding(2);
             button3.Name = "button3";
             button3.Size = new Size(189, 30);
-            button3.TabIndex = 3;
+            button3.TabIndex = 2;
             button3.Text = "Selecionar Veículo";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
@@ -234,7 +234,7 @@
             dateTimePicker1.Location = new Point(177, 382);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(315, 23);
-            dateTimePicker1.TabIndex = 24;
+            dateTimePicker1.TabIndex = 3;
             dateTimePicker1.Value = new DateTime(2024, 12, 14, 0, 0, 0, 0);
             dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
@@ -244,7 +244,7 @@
             txtObservacoes.Multiline = true;
             txtObservacoes.Name = "txtObservacoes";
             txtObservacoes.Size = new Size(646, 120);
-            txtObservacoes.TabIndex = 25;
+            txtObservacoes.TabIndex = 4;
             txtObservacoes.TextChanged += textBox2_TextChanged;
             // 
             // label2

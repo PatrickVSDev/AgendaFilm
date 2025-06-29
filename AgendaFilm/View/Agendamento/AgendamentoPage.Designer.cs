@@ -73,7 +73,7 @@
             button4.Margin = new Padding(2);
             button4.Name = "button4";
             button4.Size = new Size(183, 45);
-            button4.TabIndex = 5;
+            button4.TabIndex = 2;
             button4.Text = "Agendar";
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
@@ -100,8 +100,8 @@
             button3.Margin = new Padding(2);
             button3.Name = "button3";
             button3.Size = new Size(183, 45);
-            button3.TabIndex = 9;
-            button3.Text = "Cancelar";
+            button3.TabIndex = 3;
+            button3.Text = "Excluir";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
@@ -110,7 +110,7 @@
             dateTimePickerFiltro.Location = new Point(5, 64);
             dateTimePickerFiltro.Name = "dateTimePickerFiltro";
             dateTimePickerFiltro.Size = new Size(244, 23);
-            dateTimePickerFiltro.TabIndex = 10;
+            dateTimePickerFiltro.TabIndex = 1;
             dateTimePickerFiltro.ValueChanged += dateTimePickerFiltro_ValueChanged_1;
             // 
             // AgendamentoPage
