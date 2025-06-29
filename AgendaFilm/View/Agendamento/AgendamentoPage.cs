@@ -223,5 +223,12 @@ namespace AgendaFilm.View.Agendamento
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+
+        private void btEditar_Click(object sender, EventArgs e)
+        {
+            EditarAgendamentoPage novoFormulario = new EditarAgendamentoPage();
+            
+            novoFormulario.ShowDialog();
+        }
     }
 }

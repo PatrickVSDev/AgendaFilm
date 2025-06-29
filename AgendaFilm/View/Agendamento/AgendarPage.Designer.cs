@@ -69,6 +69,8 @@
             // button1
             // 
             button1.BackColor = Color.CadetBlue;
+            button1.FlatAppearance.MouseDownBackColor = Color.Teal;
+            button1.FlatAppearance.MouseOverBackColor = Color.Teal;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button1.Location = new Point(132, 44);
@@ -83,9 +85,11 @@
             // button4
             // 
             button4.BackColor = Color.PowderBlue;
+            button4.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
+            button4.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button4.Location = new Point(380, 494);
+            button4.Location = new Point(429, 513);
             button4.Margin = new Padding(2);
             button4.Name = "button4";
             button4.Size = new Size(239, 35);
@@ -207,6 +211,8 @@
             // button3
             // 
             button3.BackColor = Color.CadetBlue;
+            button3.FlatAppearance.MouseDownBackColor = Color.Teal;
+            button3.FlatAppearance.MouseOverBackColor = Color.Teal;
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button3.Location = new Point(132, 44);
@@ -266,7 +272,7 @@
             // dateTimePicker1
             // 
             dateTimePicker1.CustomFormat = "\"dd/MM/yyyy HH:mm\"";
-            dateTimePicker1.Location = new Point(364, 298);
+            dateTimePicker1.Location = new Point(48, 295);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(315, 23);
             dateTimePicker1.TabIndex = 3;
