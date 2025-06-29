@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static AgendaFilm.Controller.Actions;
 
 
 namespace AgendaFilm.View.Editar
@@ -68,7 +69,9 @@ namespace AgendaFilm.View.Editar
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (txtSenha.Text.Equals(Global.senhaLogado) && txtLogin.Text.Equals(Global.loginLogado))
+            string senhaHashDigitada = PasswordHasher.GerarHashSenha(txtSenha.Text.Trim());
+
+            if (senhaHashDigitada == Global.senhaLogado && txtLogin.Text.Trim() == Global.loginLogado)
             {
                 this.funcionario.nome = txtNome.Text.Trim();
                 this.funcionario.cargo = txtCargo.Text.Trim();

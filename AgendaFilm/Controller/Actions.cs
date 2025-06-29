@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AgendaFilm.View;
+using System.Security.Cryptography;
 
 namespace AgendaFilm.Controller
 {
@@ -119,6 +120,22 @@ namespace AgendaFilm.Controller
                 digito += resto.ToString();
 
                 return cnpj.EndsWith(digito);
+            }
+        }
+
+        public class PasswordHasher
+        {
+            public static string GerarHashSenha(string senha)
+            {
+                string salt = "Ag3nd@F1lm";
+                string senhaComSalt = senha + salt;
+
+                using (SHA256 sha256 = SHA256.Create())
+                {
+                    byte[] inputBytes = Encoding.UTF8.GetBytes(senhaComSalt);
+                    byte[] hashBytes = sha256.ComputeHash(inputBytes);
+                    return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+                }
             }
         }
     }

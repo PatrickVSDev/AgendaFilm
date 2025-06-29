@@ -98,5 +98,16 @@ namespace AgendaFilm.Model.Repositories
 
             return nomeRetornado;
         }
+        public Funcionario GetById(int id)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"SELECT * FROM funcionarios WHERE id = @Id;";
+
+            var funcionario = connection.Connection.QuerySingleOrDefault<Funcionario>(query, new { Id = id });
+
+            return funcionario;
+        }
+
     }
 }

@@ -14,11 +14,8 @@ ADD COLUMN dataAlteracao DATE NOT NULL,
 ADD COLUMN funcionarioAlteracao INT NOT NULL;
 ;
 
-
 INSERT INTO funcionarios (login, senha, nome, telefone, nivelAcesso, cargo, dataCriacao, dataAlteracao, funcionarioAlteracao)
-VALUES ('admin', 'admin', 'ADMINISTRADOR', NULL, 1, 'SEM CARGO', CURRENT_DATE, CURRENT_DATE, 1);
-
-
+VALUES ('admin', '15e194d3499f6b8594e538f207672c3616f955f1f1622aba984c971d0a502bcd', 'ADMINISTRADOR', NULL, 1, 'SEM CARGO', CURRENT_DATE, CURRENT_DATE, 1);
 
 CREATE TABLE clientes (
     id SERIAL PRIMARY KEY,                

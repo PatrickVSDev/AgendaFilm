@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static AgendaFilm.Controller.Actions;
 
 namespace AgendaFilm
 {
@@ -131,12 +132,14 @@ namespace AgendaFilm
                 return;
             }
 
+            string senhaHash = PasswordHasher.GerarHashSenha(txtSenha.Text.Trim());
+
             Funcionario funcionario = new Funcionario(
                 id,
                 txtNome.Text.Trim(),
                 txtTelefone.Text.Trim(),
                 txtLogin.Text.Trim(),
-                txtSenha.Text.Trim(),
+                senhaHash,
                 txtCargo.Text.Trim(),
                 numNivelAcesso,
                 dataAtual,

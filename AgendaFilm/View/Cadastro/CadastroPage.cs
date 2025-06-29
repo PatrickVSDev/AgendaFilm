@@ -123,6 +123,17 @@ namespace AgendaFilm
         {
             clientePage = new ClientePage();
             AbrirFormulario(clientePage, new Point(this.Location.X + 217, this.Location.Y + 92));
+
+            if (Global.funcionarioLogado > 0)
+            {
+                var funcionarioLogado = repositoryFuncionario.GetById(Global.funcionarioLogado);
+                if (funcionarioLogado.nivelAcesso != 1)
+                {
+                    button1.Enabled = false;
+                    button1.Cursor = Cursors.No;
+                    button1.BackColor = Color.Gray;
+                }
+            }
         }
 
         private void CadastroPage_FormClosed(object sender, FormClosedEventArgs e)

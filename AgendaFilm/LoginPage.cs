@@ -4,6 +4,7 @@ using AgendaFilm.Controller;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using static AgendaFilm.Controller.Actions;
 
 namespace AgendaFilm
 {
@@ -27,7 +28,9 @@ namespace AgendaFilm
         {
             foreach (var funcionario in funcionarios)
             {
-                if (funcionario.login.Equals(txtUsuario.Text) && funcionario.senha.Equals(txtSenha.Text))
+                string senhaDigitadaHash = Actions.PasswordHasher.GerarHashSenha(txtSenha.Text.Trim());
+
+                if (funcionario.login.Equals(txtUsuario.Text.Trim()) && funcionario.senha.Equals(senhaDigitadaHash))
                 {
                     Global.funcionarioLogado = funcionario.id;
                     Global.loginLogado = funcionario.login;
