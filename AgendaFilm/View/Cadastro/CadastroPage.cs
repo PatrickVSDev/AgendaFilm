@@ -117,7 +117,11 @@ namespace AgendaFilm
             formularioAberto.Show();
         }
 
-        private void CadastroPage_Load(object sender, EventArgs e) { }
+
+        private void CadastroPage_Load(object sender, EventArgs e)
+        {
+            SelecionarBotao(button2);
+        }
 
         private void CadastroPage_Shown(object sender, EventArgs e)
         {
