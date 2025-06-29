@@ -112,7 +112,7 @@
             txtNivelAcesso.Location = new Point(477, 137);
             txtNivelAcesso.Name = "txtNivelAcesso";
             txtNivelAcesso.Size = new Size(76, 23);
-            txtNivelAcesso.TabIndex = 0;
+            txtNivelAcesso.TabIndex = 5;
             txtNivelAcesso.TextChanged += txtNivelAcesso_TextChanged;
             // 
             // txtTelefone
@@ -121,7 +121,7 @@
             txtTelefone.Margin = new Padding(3, 2, 3, 2);
             txtTelefone.Name = "txtTelefone";
             txtTelefone.Size = new Size(212, 23);
-            txtTelefone.TabIndex = 3;
+            txtTelefone.TabIndex = 6;
             txtTelefone.TextChanged += txtTelefone_TextChanged;
             // 
             // label6
@@ -151,7 +151,7 @@
             txtSenha.Margin = new Padding(3, 2, 3, 2);
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(268, 23);
-            txtSenha.TabIndex = 4;
+            txtSenha.TabIndex = 2;
             txtSenha.UseSystemPasswordChar = true;
             txtSenha.TextChanged += textSenha_TextChanged;
             // 
@@ -191,7 +191,7 @@
             txtCargo.Location = new Point(111, 137);
             txtCargo.Name = "txtCargo";
             txtCargo.Size = new Size(139, 23);
-            txtCargo.TabIndex = 5;
+            txtCargo.TabIndex = 4;
             txtCargo.TextChanged += textBox1_TextChanged;
             // 
             // txtNome
@@ -219,7 +219,7 @@
             txtLogin.Margin = new Padding(3, 2, 3, 2);
             txtLogin.Name = "txtLogin";
             txtLogin.Size = new Size(212, 23);
-            txtLogin.TabIndex = 3;
+            txtLogin.TabIndex = 1;
             txtLogin.TextChanged += textLogin_TextChanged;
             // 
             // btnSalvar
@@ -234,7 +234,7 @@
             btnSalvar.Margin = new Padding(3, 2, 3, 2);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(211, 33);
-            btnSalvar.TabIndex = 14;
+            btnSalvar.TabIndex = 7;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = false;
             btnSalvar.Click += btnSalvar_Click;

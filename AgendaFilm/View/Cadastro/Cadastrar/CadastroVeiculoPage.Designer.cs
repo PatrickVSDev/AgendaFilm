@@ -139,7 +139,7 @@
             btEscolherCliente.Margin = new Padding(3, 2, 3, 2);
             btEscolherCliente.Name = "btEscolherCliente";
             btEscolherCliente.Size = new Size(208, 30);
-            btEscolherCliente.TabIndex = 0;
+            btEscolherCliente.TabIndex = 5;
             btEscolherCliente.Text = "Selecionar cliente";
             btEscolherCliente.UseVisualStyleBackColor = false;
             btEscolherCliente.Click += button2_Click;
@@ -159,7 +159,7 @@
             txtAno.Location = new Point(457, 90);
             txtAno.Name = "txtAno";
             txtAno.Size = new Size(110, 23);
-            txtAno.TabIndex = 3;
+            txtAno.TabIndex = 4;
             // 
             // txtPlaca
             // 
@@ -167,7 +167,7 @@
             txtPlaca.Margin = new Padding(3, 2, 3, 2);
             txtPlaca.Name = "txtPlaca";
             txtPlaca.Size = new Size(151, 23);
-            txtPlaca.TabIndex = 3;
+            txtPlaca.TabIndex = 1;
             // 
             // label4
             // 
@@ -206,7 +206,7 @@
             txtMarca.Margin = new Padding(3, 2, 3, 2);
             txtMarca.Name = "txtMarca";
             txtMarca.Size = new Size(207, 23);
-            txtMarca.TabIndex = 4;
+            txtMarca.TabIndex = 2;
             // 
             // txtModelo
             // 
@@ -227,7 +227,7 @@
             btSalvar.Margin = new Padding(3, 2, 3, 2);
             btSalvar.Name = "btSalvar";
             btSalvar.Size = new Size(211, 33);
-            btSalvar.TabIndex = 23;
+            btSalvar.TabIndex = 6;
             btSalvar.Text = "Salvar";
             btSalvar.UseVisualStyleBackColor = false;
             btSalvar.Click += btSalvar_Click;

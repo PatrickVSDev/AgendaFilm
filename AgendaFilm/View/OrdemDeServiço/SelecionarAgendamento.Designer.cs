@@ -48,7 +48,7 @@
             btConfirmar.Margin = new Padding(3, 2, 3, 2);
             btConfirmar.Name = "btConfirmar";
             btConfirmar.Size = new Size(124, 32);
-            btConfirmar.TabIndex = 38;
+            btConfirmar.TabIndex = 2;
             btConfirmar.Text = "Confirmar";
             btConfirmar.UseVisualStyleBackColor = false;
             btConfirmar.Click += btConfirmar_Click;
@@ -81,7 +81,7 @@
             dateTimePickerFiltro.Location = new Point(6, 49);
             dateTimePickerFiltro.Name = "dateTimePickerFiltro";
             dateTimePickerFiltro.Size = new Size(244, 23);
-            dateTimePickerFiltro.TabIndex = 11;
+            dateTimePickerFiltro.TabIndex = 1;
             dateTimePickerFiltro.ValueChanged += dateTimePickerFiltro_ValueChanged;
             // 
             // label1

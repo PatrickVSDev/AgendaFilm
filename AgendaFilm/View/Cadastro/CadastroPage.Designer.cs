@@ -82,7 +82,7 @@
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new Size(212, 100);
-            button1.TabIndex = 2;
+            button1.TabIndex = 5;
             button1.Text = "Funcionários";
             button1.TextAlign = ContentAlignment.MiddleRight;
             button1.UseVisualStyleBackColor = false;
@@ -103,7 +103,7 @@
             button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
             button2.Size = new Size(212, 100);
-            button2.TabIndex = 3;
+            button2.TabIndex = 1;
             button2.Text = "Clientes";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
@@ -123,7 +123,7 @@
             Veíc.Margin = new Padding(3, 2, 3, 2);
             Veíc.Name = "Veíc";
             Veíc.Size = new Size(212, 100);
-            Veíc.TabIndex = 4;
+            Veíc.TabIndex = 2;
             Veíc.Text = " Veículos";
             Veíc.UseVisualStyleBackColor = false;
             Veíc.Click += Veíc_Click;
@@ -152,7 +152,7 @@
             button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
             button4.Size = new Size(212, 100);
-            button4.TabIndex = 6;
+            button4.TabIndex = 3;
             button4.Text = "Produtos";
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
@@ -182,7 +182,7 @@
             button5.Margin = new Padding(3, 2, 3, 2);
             button5.Name = "button5";
             button5.Size = new Size(212, 100);
-            button5.TabIndex = 7;
+            button5.TabIndex = 4;
             button5.Text = "     Fornecedores";
             button5.TextAlign = ContentAlignment.MiddleRight;
             button5.UseVisualStyleBackColor = false;
@@ -199,7 +199,7 @@
             button6.Location = new Point(4, 3);
             button6.Name = "button6";
             button6.Size = new Size(63, 53);
-            button6.TabIndex = 9;
+            button6.TabIndex = 6;
             button6.UseVisualStyleBackColor = false;
             button6.Click += button6_Click;
             // 

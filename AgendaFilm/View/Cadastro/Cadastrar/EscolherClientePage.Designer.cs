@@ -60,7 +60,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             btConfirmar.Margin = new Padding(3, 2, 3, 2);
             btConfirmar.Name = "btConfirmar";
             btConfirmar.Size = new Size(124, 31);
-            btConfirmar.TabIndex = 2;
+            btConfirmar.TabIndex = 3;
             btConfirmar.Text = "Confirmar";
             btConfirmar.UseVisualStyleBackColor = false;
             btConfirmar.Click += btConfirmar_Click;
@@ -95,7 +95,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             button1.Location = new Point(10, 37);
             button1.Name = "button1";
             button1.Size = new Size(123, 30);
-            button1.TabIndex = 0;
+            button1.TabIndex = 2;
             button1.Text = "Pesquisar";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click_1;
@@ -105,7 +105,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             txtPesquisaNome.Location = new Point(139, 41);
             txtPesquisaNome.Name = "txtPesquisaNome";
             txtPesquisaNome.Size = new Size(222, 23);
-            txtPesquisaNome.TabIndex = 2;
+            txtPesquisaNome.TabIndex = 1;
             // 
             // EscolherClientePage
             // 

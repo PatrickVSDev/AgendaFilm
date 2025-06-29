@@ -132,7 +132,7 @@
             button3.Location = new Point(18, 38);
             button3.Name = "button3";
             button3.Size = new Size(188, 46);
-            button3.TabIndex = 7;
+            button3.TabIndex = 1;
             button3.Text = "Selecionar Agendamento";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
@@ -147,7 +147,7 @@
             btnImprimir.Location = new Point(869, 522);
             btnImprimir.Name = "btnImprimir";
             btnImprimir.Size = new Size(119, 33);
-            btnImprimir.TabIndex = 3;
+            btnImprimir.TabIndex = 4;
             btnImprimir.Text = "Imprimir";
             btnImprimir.UseVisualStyleBackColor = false;
             btnImprimir.Click += btnImprimir_Click_1;
@@ -182,7 +182,7 @@
             txtObservacoes.Multiline = true;
             txtObservacoes.Name = "txtObservacoes";
             txtObservacoes.Size = new Size(756, 122);
-            txtObservacoes.TabIndex = 0;
+            txtObservacoes.TabIndex = 3;
             // 
             // button1
             // 

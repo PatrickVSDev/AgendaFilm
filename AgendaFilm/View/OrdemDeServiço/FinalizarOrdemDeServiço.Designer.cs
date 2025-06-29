@@ -40,7 +40,6 @@
             rbAFazer = new RadioButton();
             dataGridView1 = new DataGridView();
             button2 = new Button();
-            button1 = new Button();
             groupBox1 = new GroupBox();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -82,7 +81,7 @@
             btnBuscar.Location = new Point(652, 56);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(119, 33);
-            btnBuscar.TabIndex = 34;
+            btnBuscar.TabIndex = 5;
             btnBuscar.Text = "Pesquisar";
             btnBuscar.UseVisualStyleBackColor = false;
             btnBuscar.Click += btnBuscar_Click;
@@ -104,7 +103,7 @@
             dtInicio.Location = new Point(522, 61);
             dtInicio.Name = "dtInicio";
             dtInicio.Size = new Size(114, 23);
-            dtInicio.TabIndex = 34;
+            dtInicio.TabIndex = 4;
             // 
             // label2
             // 
@@ -129,7 +128,7 @@
             rbFinalizado.Margin = new Padding(3, 2, 3, 2);
             rbFinalizado.Name = "rbFinalizado";
             rbFinalizado.Size = new Size(78, 19);
-            rbFinalizado.TabIndex = 31;
+            rbFinalizado.TabIndex = 3;
             rbFinalizado.TabStop = true;
             rbFinalizado.Text = "Finalizado";
             rbFinalizado.UseVisualStyleBackColor = true;
@@ -145,7 +144,7 @@
             rbEmAndamento.Margin = new Padding(2);
             rbEmAndamento.Name = "rbEmAndamento";
             rbEmAndamento.Size = new Size(106, 19);
-            rbEmAndamento.TabIndex = 9;
+            rbEmAndamento.TabIndex = 2;
             rbEmAndamento.TabStop = true;
             rbEmAndamento.Text = "Em andamento";
             rbEmAndamento.UseVisualStyleBackColor = true;
@@ -173,7 +172,7 @@
             rbAFazer.Margin = new Padding(2);
             rbAFazer.Name = "rbAFazer";
             rbAFazer.Size = new Size(63, 19);
-            rbAFazer.TabIndex = 8;
+            rbAFazer.TabIndex = 1;
             rbAFazer.TabStop = true;
             rbAFazer.Text = "A Fazer";
             rbAFazer.UseVisualStyleBackColor = true;
@@ -197,29 +196,13 @@
             button2.Location = new Point(853, 522);
             button2.Name = "button2";
             button2.Size = new Size(119, 33);
-            button2.TabIndex = 3;
+            button2.TabIndex = 6;
             button2.Text = "Imprimir";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
-            // button1
-            // 
-            button1.BackColor = Color.PowderBlue;
-            button1.FlatAppearance.MouseDownBackColor = Color.Teal;
-            button1.FlatAppearance.MouseOverBackColor = Color.Teal;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button1.Location = new Point(24, 522);
-            button1.Name = "button1";
-            button1.Size = new Size(153, 33);
-            button1.TabIndex = 34;
-            button1.Text = "Editar Status";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
-            // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(button2);
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.Controls.Add(groupBox3);
@@ -265,7 +248,6 @@
         private RadioButton rbAFazer;
         private DataGridView dataGridView1;
         private Button button2;
-        private Button button1;
         private GroupBox groupBox1;
     }
 }

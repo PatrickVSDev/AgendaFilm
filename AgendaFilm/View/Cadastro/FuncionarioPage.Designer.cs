@@ -67,7 +67,7 @@
             radioCargo.Margin = new Padding(3, 2, 3, 2);
             radioCargo.Name = "radioCargo";
             radioCargo.Size = new Size(57, 19);
-            radioCargo.TabIndex = 28;
+            radioCargo.TabIndex = 3;
             radioCargo.TabStop = true;
             radioCargo.Text = "Cargo";
             radioCargo.UseVisualStyleBackColor = true;
@@ -110,7 +110,7 @@
             RelatorioTextBox.Location = new Point(770, 81);
             RelatorioTextBox.Name = "RelatorioTextBox";
             RelatorioTextBox.Size = new Size(220, 20);
-            RelatorioTextBox.TabIndex = 37;
+            RelatorioTextBox.TabIndex = 10;
             // 
             // radioTodos
             // 
@@ -119,7 +119,7 @@
             radioTodos.Margin = new Padding(3, 2, 3, 2);
             radioTodos.Name = "radioTodos";
             radioTodos.Size = new Size(57, 19);
-            radioTodos.TabIndex = 29;
+            radioTodos.TabIndex = 4;
             radioTodos.TabStop = true;
             radioTodos.Text = "Todos";
             radioTodos.UseVisualStyleBackColor = true;
@@ -133,7 +133,7 @@
             button2.Margin = new Padding(2);
             button2.Name = "button2";
             button2.Size = new Size(175, 34);
-            button2.TabIndex = 36;
+            button2.TabIndex = 11;
             button2.Text = "Gerar Relatório";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click_1;
@@ -157,7 +157,7 @@
             radioNome.Margin = new Padding(3, 2, 3, 2);
             radioNome.Name = "radioNome";
             radioNome.Size = new Size(58, 19);
-            radioNome.TabIndex = 3;
+            radioNome.TabIndex = 1;
             radioNome.TabStop = true;
             radioNome.Text = "Nome";
             radioNome.UseVisualStyleBackColor = true;
@@ -179,7 +179,7 @@
             textBoxPesquisar.Margin = new Padding(3, 2, 3, 2);
             textBoxPesquisar.Name = "textBoxPesquisar";
             textBoxPesquisar.Size = new Size(313, 23);
-            textBoxPesquisar.TabIndex = 1;
+            textBoxPesquisar.TabIndex = 5;
             // 
             // btPesquisar
             // 
@@ -191,7 +191,7 @@
             btPesquisar.Margin = new Padding(3, 2, 3, 2);
             btPesquisar.Name = "btPesquisar";
             btPesquisar.Size = new Size(160, 29);
-            btPesquisar.TabIndex = 0;
+            btPesquisar.TabIndex = 6;
             btPesquisar.Text = "Pesquisar";
             btPesquisar.UseVisualStyleBackColor = false;
             btPesquisar.Click += button4_Click_1;
@@ -223,7 +223,7 @@
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new Size(167, 48);
-            button1.TabIndex = 4;
+            button1.TabIndex = 7;
             button1.Text = "Cadastrar";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click_1;
@@ -239,7 +239,7 @@
             btEditar.Margin = new Padding(3, 2, 3, 2);
             btEditar.Name = "btEditar";
             btEditar.Size = new Size(167, 48);
-            btEditar.TabIndex = 3;
+            btEditar.TabIndex = 8;
             btEditar.Text = "Editar";
             btEditar.UseVisualStyleBackColor = false;
             btEditar.Click += btEditar_Click;
@@ -253,7 +253,7 @@
             btInativar.Margin = new Padding(3, 2, 3, 2);
             btInativar.Name = "btInativar";
             btInativar.Size = new Size(167, 48);
-            btInativar.TabIndex = 2;
+            btInativar.TabIndex = 9;
             btInativar.Text = "Excluir";
             btInativar.UseVisualStyleBackColor = false;
             btInativar.Click += button2_Click;

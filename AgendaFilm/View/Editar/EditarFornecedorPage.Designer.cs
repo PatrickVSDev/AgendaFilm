@@ -53,7 +53,7 @@
             btSalvar.Margin = new Padding(3, 2, 3, 2);
             btSalvar.Name = "btSalvar";
             btSalvar.Size = new Size(211, 33);
-            btSalvar.TabIndex = 20;
+            btSalvar.TabIndex = 5;
             btSalvar.Text = "Salvar";
             btSalvar.UseVisualStyleBackColor = false;
             btSalvar.Click += btSalvar_Click;
@@ -74,7 +74,7 @@
             textEmail.Margin = new Padding(3, 2, 3, 2);
             textEmail.Name = "textEmail";
             textEmail.Size = new Size(494, 23);
-            textEmail.TabIndex = 3;
+            textEmail.TabIndex = 4;
             // 
             // textTelefone
             // 
@@ -83,7 +83,7 @@
             textTelefone.Margin = new Padding(3, 2, 3, 2);
             textTelefone.Name = "textTelefone";
             textTelefone.Size = new Size(215, 23);
-            textTelefone.TabIndex = 28;
+            textTelefone.TabIndex = 3;
             // 
             // label4
             // 
@@ -133,7 +133,7 @@
             textDocumento.Margin = new Padding(3, 2, 3, 2);
             textDocumento.Name = "textDocumento";
             textDocumento.Size = new Size(191, 23);
-            textDocumento.TabIndex = 4;
+            textDocumento.TabIndex = 2;
             textDocumento.TextChanged += textBox2_TextChanged;
             // 
             // label3
@@ -152,7 +152,7 @@
             textNome.Margin = new Padding(3, 2, 3, 2);
             textNome.Name = "textNome";
             textNome.Size = new Size(215, 23);
-            textNome.TabIndex = 3;
+            textNome.TabIndex = 1;
             // 
             // label1
             // 

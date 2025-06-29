@@ -57,7 +57,7 @@
             btSalvar.Margin = new Padding(3, 2, 3, 2);
             btSalvar.Name = "btSalvar";
             btSalvar.Size = new Size(211, 33);
-            btSalvar.TabIndex = 19;
+            btSalvar.TabIndex = 5;
             btSalvar.Text = "Salvar";
             btSalvar.UseVisualStyleBackColor = false;
             btSalvar.Click += btSalvar_Click_1;
@@ -67,7 +67,7 @@
             textGarantia.Location = new Point(163, 182);
             textGarantia.Name = "textGarantia";
             textGarantia.Size = new Size(236, 23);
-            textGarantia.TabIndex = 16;
+            textGarantia.TabIndex = 4;
             // 
             // label7
             // 
@@ -157,7 +157,7 @@
             btSelecionarFornecedor.Location = new Point(165, 75);
             btSelecionarFornecedor.Name = "btSelecionarFornecedor";
             btSelecionarFornecedor.Size = new Size(208, 30);
-            btSelecionarFornecedor.TabIndex = 21;
+            btSelecionarFornecedor.TabIndex = 2;
             btSelecionarFornecedor.Text = "Selecionar Fornecedor";
             btSelecionarFornecedor.UseVisualStyleBackColor = false;
             btSelecionarFornecedor.Click += btSelecionarFornecedor_Click_1;
@@ -188,7 +188,7 @@
             textNome.Margin = new Padding(3, 2, 3, 2);
             textNome.Name = "textNome";
             textNome.Size = new Size(433, 23);
-            textNome.TabIndex = 0;
+            textNome.TabIndex = 1;
             // 
             // label1
             // 

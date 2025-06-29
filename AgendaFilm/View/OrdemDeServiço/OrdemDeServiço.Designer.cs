@@ -60,7 +60,7 @@
             button1.Location = new Point(4, 98);
             button1.Name = "button1";
             button1.Size = new Size(212, 113);
-            button1.TabIndex = 2;
+            button1.TabIndex = 1;
             button1.Text = "          Criar Ordem \r\n           de Serviço";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
@@ -78,7 +78,7 @@
             button2.Location = new Point(5, 209);
             button2.Name = "button2";
             button2.Size = new Size(211, 113);
-            button2.TabIndex = 3;
+            button2.TabIndex = 2;
             button2.Text = "        Ordens \r\n        Serviço\r\n";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;

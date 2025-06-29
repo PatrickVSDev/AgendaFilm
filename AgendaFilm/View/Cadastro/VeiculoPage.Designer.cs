@@ -76,7 +76,7 @@
             radioModelo.Location = new Point(215, 43);
             radioModelo.Name = "radioModelo";
             radioModelo.Size = new Size(72, 24);
-            radioModelo.TabIndex = 42;
+            radioModelo.TabIndex = 1;
             radioModelo.Text = "Modelo";
             // 
             // radioTodos
@@ -85,7 +85,7 @@
             radioTodos.Location = new Point(394, 45);
             radioTodos.Name = "radioTodos";
             radioTodos.Size = new Size(57, 19);
-            radioTodos.TabIndex = 39;
+            radioTodos.TabIndex = 4;
             radioTodos.Text = "Todos";
             radioTodos.UseVisualStyleBackColor = true;
             radioTodos.CheckedChanged += radioTodos_CheckedChanged;
@@ -107,7 +107,7 @@
             RelatorioTextBox.Location = new Point(770, 81);
             RelatorioTextBox.Name = "RelatorioTextBox";
             RelatorioTextBox.Size = new Size(220, 20);
-            RelatorioTextBox.TabIndex = 37;
+            RelatorioTextBox.TabIndex = 10;
             // 
             // button5
             // 
@@ -117,7 +117,7 @@
             button5.Margin = new Padding(2);
             button5.Name = "button5";
             button5.Size = new Size(175, 34);
-            button5.TabIndex = 36;
+            button5.TabIndex = 11;
             button5.Text = "Gerar Relatório";
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
@@ -127,7 +127,7 @@
             radioId.Location = new Point(290, 43);
             radioId.Name = "radioId";
             radioId.Size = new Size(47, 24);
-            radioId.TabIndex = 40;
+            radioId.TabIndex = 2;
             radioId.Text = "ID";
             radioId.CheckedChanged += radioId_CheckedChanged;
             // 
@@ -136,7 +136,7 @@
             radioPlaca.Location = new Point(337, 43);
             radioPlaca.Name = "radioPlaca";
             radioPlaca.Size = new Size(84, 24);
-            radioPlaca.TabIndex = 41;
+            radioPlaca.TabIndex = 3;
             radioPlaca.Text = "Placa";
             // 
             // label2
@@ -154,7 +154,7 @@
             textBoxPesquisar.Location = new Point(189, 76);
             textBoxPesquisar.Name = "textBoxPesquisar";
             textBoxPesquisar.Size = new Size(313, 23);
-            textBoxPesquisar.TabIndex = 43;
+            textBoxPesquisar.TabIndex = 5;
             textBoxPesquisar.TextChanged += textBoxPesquisar_TextChanged;
             // 
             // button4
@@ -166,7 +166,7 @@
             button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
             button4.Size = new Size(160, 29);
-            button4.TabIndex = 0;
+            button4.TabIndex = 6;
             button4.Text = "Pesquisar";
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
@@ -207,7 +207,7 @@
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new Size(167, 48);
-            button1.TabIndex = 4;
+            button1.TabIndex = 7;
             button1.Text = "Cadastrar";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
@@ -223,7 +223,7 @@
             button3.Margin = new Padding(3, 2, 3, 2);
             button3.Name = "button3";
             button3.Size = new Size(167, 48);
-            button3.TabIndex = 3;
+            button3.TabIndex = 8;
             button3.Text = "Editar";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
@@ -240,7 +240,7 @@
             button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
             button2.Size = new Size(167, 48);
-            button2.TabIndex = 2;
+            button2.TabIndex = 9;
             button2.Text = "Excluir";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;

@@ -62,7 +62,7 @@
             btnSalvar.Margin = new Padding(3, 2, 3, 2);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(211, 33);
-            btnSalvar.TabIndex = 20;
+            btnSalvar.TabIndex = 7;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = false;
             btnSalvar.Click += btnSalvar_Click;
@@ -73,7 +73,7 @@
             txtTelefone.Margin = new Padding(3, 2, 3, 2);
             txtTelefone.Name = "txtTelefone";
             txtTelefone.Size = new Size(212, 23);
-            txtTelefone.TabIndex = 3;
+            txtTelefone.TabIndex = 4;
             txtTelefone.TextChanged += txtTelefone_TextChanged;
             // 
             // label4
@@ -91,7 +91,7 @@
             txtNivelAcesso.Location = new Point(457, 79);
             txtNivelAcesso.Name = "txtNivelAcesso";
             txtNivelAcesso.Size = new Size(113, 23);
-            txtNivelAcesso.TabIndex = 6;
+            txtNivelAcesso.TabIndex = 3;
             txtNivelAcesso.TextChanged += txtNivelAcesso_TextChanged;
             // 
             // txtCargo
@@ -99,7 +99,7 @@
             txtCargo.Location = new Point(122, 79);
             txtCargo.Name = "txtCargo";
             txtCargo.Size = new Size(139, 23);
-            txtCargo.TabIndex = 5;
+            txtCargo.TabIndex = 2;
             txtCargo.TextChanged += txtCargo_TextChanged;
             // 
             // label8
@@ -157,7 +157,7 @@
             txtSenha.Margin = new Padding(3, 2, 3, 2);
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(212, 23);
-            txtSenha.TabIndex = 4;
+            txtSenha.TabIndex = 6;
             txtSenha.UseSystemPasswordChar = true;
             txtSenha.TextChanged += txtSenha_TextChanged;
             // 
@@ -187,7 +187,7 @@
             txtLogin.Margin = new Padding(3, 2, 3, 2);
             txtLogin.Name = "txtLogin";
             txtLogin.Size = new Size(212, 23);
-            txtLogin.TabIndex = 3;
+            txtLogin.TabIndex = 5;
             txtLogin.TextChanged += txtLogin_TextChanged;
             // 
             // txtNome
@@ -196,7 +196,7 @@
             txtNome.Margin = new Padding(3, 2, 3, 2);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(212, 23);
-            txtNome.TabIndex = 3;
+            txtNome.TabIndex = 1;
             txtNome.TextChanged += txtNome_TextChanged;
             // 
             // label5

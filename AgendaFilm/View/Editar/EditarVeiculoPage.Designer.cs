@@ -53,7 +53,7 @@
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new Size(211, 33);
-            button1.TabIndex = 28;
+            button1.TabIndex = 5;
             button1.Text = "Salvar";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
@@ -127,7 +127,7 @@
             textPlaca.Margin = new Padding(3, 2, 3, 2);
             textPlaca.Name = "textPlaca";
             textPlaca.Size = new Size(151, 23);
-            textPlaca.TabIndex = 3;
+            textPlaca.TabIndex = 1;
             // 
             // label3
             // 
@@ -145,7 +145,7 @@
             textMarca.Margin = new Padding(3, 2, 3, 2);
             textMarca.Name = "textMarca";
             textMarca.Size = new Size(207, 23);
-            textMarca.TabIndex = 4;
+            textMarca.TabIndex = 2;
             // 
             // label1
             // 

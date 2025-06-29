@@ -101,7 +101,7 @@
             textGarantia.Location = new Point(179, 205);
             textGarantia.Name = "textGarantia";
             textGarantia.Size = new Size(209, 23);
-            textGarantia.TabIndex = 1;
+            textGarantia.TabIndex = 4;
             // 
             // label4
             // 
@@ -152,7 +152,7 @@
             button1.Location = new Point(176, 78);
             button1.Name = "button1";
             button1.Size = new Size(208, 30);
-            button1.TabIndex = 4;
+            button1.TabIndex = 2;
             button1.Text = "Selecionar Fornecedor";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click_1;
@@ -174,7 +174,7 @@
             textNome.Margin = new Padding(3, 2, 3, 2);
             textNome.Name = "textNome";
             textNome.Size = new Size(442, 23);
-            textNome.TabIndex = 0;
+            textNome.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -210,7 +210,7 @@
             button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
             button2.Size = new Size(211, 33);
-            button2.TabIndex = 14;
+            button2.TabIndex = 5;
             button2.Text = "Salvar";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;

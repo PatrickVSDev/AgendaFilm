@@ -39,17 +39,17 @@
             comboBoxStatus.Location = new Point(125, 91);
             comboBoxStatus.Name = "comboBoxStatus";
             comboBoxStatus.Size = new Size(121, 23);
-            comboBoxStatus.TabIndex = 0;
+            comboBoxStatus.TabIndex = 1;
             // 
             // btnConfirmar
             // 
             btnConfirmar.BackColor = Color.CadetBlue;
             btnConfirmar.FlatStyle = FlatStyle.Flat;
             btnConfirmar.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnConfirmar.Location = new Point(134, 139);
+            btnConfirmar.Location = new Point(125, 137);
             btnConfirmar.Name = "btnConfirmar";
-            btnConfirmar.Size = new Size(96, 33);
-            btnConfirmar.TabIndex = 1;
+            btnConfirmar.Size = new Size(121, 33);
+            btnConfirmar.TabIndex = 2;
             btnConfirmar.Text = "Confirmar";
             btnConfirmar.UseVisualStyleBackColor = false;
             btnConfirmar.Click += btnConfirmar_Click_1;

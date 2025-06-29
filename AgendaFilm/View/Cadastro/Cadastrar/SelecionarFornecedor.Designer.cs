@@ -45,7 +45,7 @@
             button1.Location = new Point(10, 37);
             button1.Name = "button1";
             button1.Size = new Size(123, 30);
-            button1.TabIndex = 0;
+            button1.TabIndex = 2;
             button1.Text = "Pesquisar";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
@@ -65,7 +65,7 @@
             txtPesquisaNome.Location = new Point(139, 41);
             txtPesquisaNome.Name = "txtPesquisaNome";
             txtPesquisaNome.Size = new Size(222, 23);
-            txtPesquisaNome.TabIndex = 2;
+            txtPesquisaNome.TabIndex = 1;
             // 
             // dataGridView1
             // 
@@ -95,10 +95,10 @@
             button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button2.Location = new Point(384, 352);
+            button2.Location = new Point(384, 348);
             button2.Name = "button2";
             button2.Size = new Size(124, 31);
-            button2.TabIndex = 5;
+            button2.TabIndex = 3;
             button2.Text = "Confirmar";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;

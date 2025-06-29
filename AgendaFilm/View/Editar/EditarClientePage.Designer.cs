@@ -53,7 +53,7 @@
             btSalvar.Margin = new Padding(3, 2, 3, 2);
             btSalvar.Name = "btSalvar";
             btSalvar.Size = new Size(211, 33);
-            btSalvar.TabIndex = 24;
+            btSalvar.TabIndex = 5;
             btSalvar.Text = "Salvar";
             btSalvar.UseVisualStyleBackColor = false;
             btSalvar.Click += btSalvar_Click;
@@ -65,7 +65,7 @@
             textDocumento.Margin = new Padding(3, 2, 3, 2);
             textDocumento.Name = "textDocumento";
             textDocumento.Size = new Size(279, 23);
-            textDocumento.TabIndex = 18;
+            textDocumento.TabIndex = 2;
             // 
             // label3
             // 
@@ -86,7 +86,7 @@
             comboTipoCliente.Margin = new Padding(3, 2, 3, 2);
             comboTipoCliente.Name = "comboTipoCliente";
             comboTipoCliente.Size = new Size(140, 23);
-            comboTipoCliente.TabIndex = 15;
+            comboTipoCliente.TabIndex = 1;
             comboTipoCliente.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // label1
@@ -151,7 +151,7 @@
             textTelefone.Margin = new Padding(3, 2, 3, 2);
             textTelefone.Name = "textTelefone";
             textTelefone.Size = new Size(278, 23);
-            textTelefone.TabIndex = 28;
+            textTelefone.TabIndex = 4;
             textTelefone.TextChanged += textTelefone_TextChanged;
             // 
             // textNome
@@ -161,7 +161,7 @@
             textNome.Margin = new Padding(3, 2, 3, 2);
             textNome.Name = "textNome";
             textNome.Size = new Size(553, 23);
-            textNome.TabIndex = 0;
+            textNome.TabIndex = 3;
             // 
             // label10
             // 

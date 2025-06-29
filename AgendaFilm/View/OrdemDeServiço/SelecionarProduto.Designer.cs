@@ -64,7 +64,7 @@
             textBoxPesquisar.Margin = new Padding(3, 2, 3, 2);
             textBoxPesquisar.Name = "textBoxPesquisar";
             textBoxPesquisar.Size = new Size(222, 23);
-            textBoxPesquisar.TabIndex = 8;
+            textBoxPesquisar.TabIndex = 4;
             // 
             // btnPesquisar
             // 
@@ -76,7 +76,7 @@
             btnPesquisar.Margin = new Padding(3, 2, 3, 2);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.Size = new Size(123, 30);
-            btnPesquisar.TabIndex = 7;
+            btnPesquisar.TabIndex = 5;
             btnPesquisar.Text = "Pesquisar";
             btnPesquisar.UseVisualStyleBackColor = false;
             btnPesquisar.Click += btnPesquisar_Click_1;
@@ -84,11 +84,11 @@
             // radioTodos
             // 
             radioTodos.AutoSize = true;
-            radioTodos.Location = new Point(304, 18);
+            radioTodos.Location = new Point(245, 18);
             radioTodos.Margin = new Padding(3, 2, 3, 2);
             radioTodos.Name = "radioTodos";
             radioTodos.Size = new Size(57, 19);
-            radioTodos.TabIndex = 6;
+            radioTodos.TabIndex = 3;
             radioTodos.TabStop = true;
             radioTodos.Text = "Todos";
             radioTodos.UseVisualStyleBackColor = true;
@@ -96,11 +96,11 @@
             // radioId
             // 
             radioId.AutoSize = true;
-            radioId.Location = new Point(260, 18);
+            radioId.Location = new Point(201, 18);
             radioId.Margin = new Padding(3, 2, 3, 2);
             radioId.Name = "radioId";
             radioId.Size = new Size(36, 19);
-            radioId.TabIndex = 5;
+            radioId.TabIndex = 2;
             radioId.TabStop = true;
             radioId.Text = "ID";
             radioId.UseVisualStyleBackColor = true;
@@ -108,11 +108,11 @@
             // radioNome
             // 
             radioNome.AutoSize = true;
-            radioNome.Location = new Point(198, 18);
+            radioNome.Location = new Point(139, 18);
             radioNome.Margin = new Padding(3, 2, 3, 2);
             radioNome.Name = "radioNome";
             radioNome.Size = new Size(58, 19);
-            radioNome.TabIndex = 4;
+            radioNome.TabIndex = 1;
             radioNome.TabStop = true;
             radioNome.Text = "Nome";
             radioNome.UseVisualStyleBackColor = true;
@@ -148,7 +148,7 @@
             btConfirmar.Margin = new Padding(3, 2, 3, 2);
             btConfirmar.Name = "btConfirmar";
             btConfirmar.Size = new Size(124, 32);
-            btConfirmar.TabIndex = 35;
+            btConfirmar.TabIndex = 6;
             btConfirmar.Text = "Confirmar";
             btConfirmar.UseVisualStyleBackColor = false;
             btConfirmar.Click += btConfirmar_Click;

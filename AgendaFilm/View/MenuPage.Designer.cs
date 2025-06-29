@@ -69,7 +69,7 @@
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new Size(200, 160);
-            button1.TabIndex = 0;
+            button1.TabIndex = 1;
             button1.Text = "Cadastros";
             button1.TextAlign = ContentAlignment.BottomCenter;
             button1.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -248,7 +248,7 @@
             button4.Location = new Point(4, 4);
             button4.Name = "button4";
             button4.Size = new Size(63, 53);
-            button4.TabIndex = 12;
+            button4.TabIndex = 4;
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
             // 
