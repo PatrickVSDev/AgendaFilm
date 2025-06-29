@@ -1,6 +1,6 @@
 ﻿namespace AgendaFilm.View.OrdemDeServiço
 {
-    partial class OrdemDeServiço
+    partial class OrdemDeServico
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrdemDeServiço));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrdemDeServico));
             pictureBox1 = new PictureBox();
             button1 = new Button();
             button2 = new Button();

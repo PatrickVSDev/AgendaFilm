@@ -14,6 +14,7 @@ using AgendaFilm.View.Agendamento;
 using AgendaFilm.View.OrdemDeServiço;
 using System.Drawing.Drawing2D;
 using AgendaFilm;
+using AgendaFilm.Model;
 namespace AgendaFilm
 {
     public partial class MenuPage : Form
@@ -126,9 +127,11 @@ namespace AgendaFilm
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            this.Hide(); // Esconde a tela atual (ex: Menu ou PaginaRestrita)
+
             CadastroPage novoFormulario = new CadastroPage();
-            novoFormulario.ShowDialog();
-            this.Close();
+            novoFormulario.FormClosed += (s, args) => this.Show(); // Mostra o menu de volta ao fechar o Agendamento
+            novoFormulario.Show();
         }
 
         private void button3_Click(object sender, EventArgs e) { }
@@ -143,16 +146,22 @@ namespace AgendaFilm
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Hide(); // Esconde a tela atual (ex: Menu ou PaginaRestrita)
+
             AgendamentoPage novoFormulario = new AgendamentoPage();
-            novoFormulario.ShowDialog();
+            novoFormulario.FormClosed += (s, args) => this.Show(); // Mostra o menu de volta ao fechar o Agendamento
+            novoFormulario.Show();
         }
 
         private void AplicarEstilo() { }
 
         private void Relatorios_Click(object sender, EventArgs e)
         {
-            OrdemDeServiço novoFormulario = new OrdemDeServiço();
-            novoFormulario.ShowDialog();
+            this.Hide(); // Esconde a tela atual (ex: Menu ou PaginaRestrita)
+
+            OrdemDeServico novoFormulario = new OrdemDeServico();
+            novoFormulario.FormClosed += (s, args) => this.Show(); // Mostra o menu de volta ao fechar o Agendamento
+            novoFormulario.Show();
 
         }
 

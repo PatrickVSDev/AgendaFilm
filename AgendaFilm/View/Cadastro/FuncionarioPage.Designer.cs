@@ -118,7 +118,7 @@
             radioTodos.Location = new Point(377, 43);
             radioTodos.Margin = new Padding(3, 2, 3, 2);
             radioTodos.Name = "radioTodos";
-            radioTodos.Size = new Size(57, 19);
+            radioTodos.Size = new Size(56, 19);
             radioTodos.TabIndex = 4;
             radioTodos.TabStop = true;
             radioTodos.Text = "Todos";
@@ -247,6 +247,9 @@
             // btInativar
             // 
             btInativar.BackColor = Color.PowderBlue;
+            btInativar.FlatAppearance.BorderColor = Color.Black;
+            btInativar.FlatAppearance.MouseDownBackColor = Color.Red;
+            btInativar.FlatAppearance.MouseOverBackColor = Color.Red;
             btInativar.FlatStyle = FlatStyle.Flat;
             btInativar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             btInativar.Location = new Point(25, 29);
