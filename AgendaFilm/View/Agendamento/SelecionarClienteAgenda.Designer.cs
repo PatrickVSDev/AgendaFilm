@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             btConfirmar = new Button();
-            button1 = new Button();
             dataGridView1 = new DataGridView();
             groupBox2 = new GroupBox();
             radioTodos = new RadioButton();
@@ -44,9 +43,12 @@
             // 
             // btConfirmar
             // 
-            btConfirmar.BackColor = Color.SpringGreen;
+            btConfirmar.BackColor = Color.PowderBlue;
+            btConfirmar.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
+            btConfirmar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
+            btConfirmar.FlatStyle = FlatStyle.Flat;
             btConfirmar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            btConfirmar.Location = new Point(623, 410);
+            btConfirmar.Location = new Point(623, 437);
             btConfirmar.Margin = new Padding(3, 2, 3, 2);
             btConfirmar.Name = "btConfirmar";
             btConfirmar.Size = new Size(165, 32);
@@ -55,27 +57,14 @@
             btConfirmar.UseVisualStyleBackColor = false;
             btConfirmar.Click += btConfirmar_Click;
             // 
-            // button1
-            // 
-            button1.BackColor = Color.SpringGreen;
-            button1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            button1.Location = new Point(12, 410);
-            button1.Margin = new Padding(3, 2, 3, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(160, 32);
-            button1.TabIndex = 7;
-            button1.Text = "Voltar";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
-            // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 79);
+            dataGridView1.Location = new Point(12, 136);
             dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(776, 314);
+            dataGridView1.Size = new Size(776, 285);
             dataGridView1.TabIndex = 3;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -87,21 +76,23 @@
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(textBoxPesquisar);
             groupBox2.Controls.Add(button4);
-            groupBox2.Location = new Point(12, 11);
+            groupBox2.Location = new Point(12, 51);
             groupBox2.Margin = new Padding(3, 2, 3, 2);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 2, 3, 2);
-            groupBox2.Size = new Size(776, 64);
+            groupBox2.Size = new Size(776, 81);
             groupBox2.TabIndex = 31;
             groupBox2.TabStop = false;
+            groupBox2.Paint += groupBox2_Paint;
+            groupBox2.Enter += groupBox2_Enter;
             // 
             // radioTodos
             // 
             radioTodos.AutoSize = true;
-            radioTodos.Location = new Point(342, 11);
+            radioTodos.Location = new Point(322, 11);
             radioTodos.Margin = new Padding(3, 2, 3, 2);
             radioTodos.Name = "radioTodos";
-            radioTodos.Size = new Size(57, 19);
+            radioTodos.Size = new Size(56, 19);
             radioTodos.TabIndex = 3;
             radioTodos.TabStop = true;
             radioTodos.Text = "Todos";
@@ -111,7 +102,7 @@
             // radioId
             // 
             radioId.AutoSize = true;
-            radioId.Location = new Point(290, 11);
+            radioId.Location = new Point(280, 11);
             radioId.Margin = new Padding(3, 2, 3, 2);
             radioId.Name = "radioId";
             radioId.Size = new Size(36, 19);
@@ -124,7 +115,7 @@
             // radioNome
             // 
             radioNome.AutoSize = true;
-            radioNome.Location = new Point(216, 12);
+            radioNome.Location = new Point(216, 11);
             radioNome.Margin = new Padding(3, 2, 3, 2);
             radioNome.Name = "radioNome";
             radioNome.Size = new Size(58, 19);
@@ -147,7 +138,7 @@
             // textBoxPesquisar
             // 
             textBoxPesquisar.BackColor = SystemColors.ButtonHighlight;
-            textBoxPesquisar.Location = new Point(216, 35);
+            textBoxPesquisar.Location = new Point(216, 43);
             textBoxPesquisar.Margin = new Padding(3, 2, 3, 2);
             textBoxPesquisar.Name = "textBoxPesquisar";
             textBoxPesquisar.Size = new Size(528, 23);
@@ -156,12 +147,13 @@
             // 
             // button4
             // 
-            button4.BackColor = Color.SpringGreen;
+            button4.BackColor = Color.CadetBlue;
+            button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button4.Location = new Point(5, 32);
+            button4.Location = new Point(8, 35);
             button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
-            button4.Size = new Size(192, 26);
+            button4.Size = new Size(192, 31);
             button4.TabIndex = 5;
             button4.Text = "Pesquisar";
             button4.UseVisualStyleBackColor = false;
@@ -171,11 +163,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(806, 450);
+            ClientSize = new Size(800, 480);
             Controls.Add(groupBox2);
             Controls.Add(btConfirmar);
-            Controls.Add(button1);
             Controls.Add(dataGridView1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "SelecionarClienteAgenda";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Selecionar Cliente";
@@ -189,7 +181,6 @@
         #endregion
 
         private Button btConfirmar;
-        private Button button1;
         private DataGridView dataGridView1;
         private GroupBox groupBox2;
         private RadioButton radioId;
