@@ -63,7 +63,7 @@
             groupBox3.Controls.Add(rbEmAndamento);
             groupBox3.Controls.Add(label1);
             groupBox3.Controls.Add(rbAFazer);
-            groupBox3.Location = new Point(40, 22);
+            groupBox3.Location = new Point(44, 22);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(948, 92);
             groupBox3.TabIndex = 33;
@@ -180,7 +180,7 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(24, 129);
+            dataGridView1.Location = new Point(45, 129);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(948, 366);
             dataGridView1.TabIndex = 0;
@@ -193,7 +193,7 @@
             button2.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button2.Location = new Point(853, 522);
+            button2.Location = new Point(874, 522);
             button2.Name = "button2";
             button2.Size = new Size(119, 33);
             button2.TabIndex = 6;
