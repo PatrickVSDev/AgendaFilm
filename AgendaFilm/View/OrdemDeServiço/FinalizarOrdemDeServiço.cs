@@ -332,18 +332,6 @@ namespace AgendaFilm.View.OrdemDeServiço
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string statusAtual = "EM ANDAMENTO"; // ou "A FAZER", ou "FINALIZADO"
-            EditarStatusOrdemForm novoFormulario = new EditarStatusOrdemForm(statusAtual);
-
-            if (novoFormulario.ShowDialog() == DialogResult.OK)
-            {
-                string novoStatus = novoFormulario.NovoStatus;
-                MessageBox.Show("Novo status selecionado: " + novoStatus);
-            }
-
-
-        }
+        
     }
 }

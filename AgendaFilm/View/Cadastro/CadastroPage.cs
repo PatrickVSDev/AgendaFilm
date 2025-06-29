@@ -150,8 +150,7 @@ namespace AgendaFilm
 
         private void button6_Click(object sender, EventArgs e)
         {
-            MenuPage novoFormulario = new MenuPage();
-            novoFormulario.ShowDialog();
+            
             this.Close();
         }
     }

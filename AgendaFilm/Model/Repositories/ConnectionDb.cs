@@ -14,7 +14,7 @@ namespace AgendaFilm.Model.Repositories
 
         public ConnectionDb()
         {
-            Connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=agendafilmdb;User Id = postgres;Password=2746;");
+            Connection = new NpgsqlConnection("Server=localhost;Port=5432;Database=agendafilmdb;User Id = postgres;Password=12345678;");
             Connection.Open();
         }
 

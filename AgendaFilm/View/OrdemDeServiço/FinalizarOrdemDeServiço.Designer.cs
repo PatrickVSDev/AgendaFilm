@@ -40,7 +40,6 @@
             rbAFazer = new RadioButton();
             dataGridView1 = new DataGridView();
             button2 = new Button();
-            button1 = new Button();
             groupBox1 = new GroupBox();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -202,24 +201,8 @@
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
-            // button1
-            // 
-            button1.BackColor = Color.PowderBlue;
-            button1.FlatAppearance.MouseDownBackColor = Color.Teal;
-            button1.FlatAppearance.MouseOverBackColor = Color.Teal;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button1.Location = new Point(24, 522);
-            button1.Name = "button1";
-            button1.Size = new Size(153, 33);
-            button1.TabIndex = 34;
-            button1.Text = "Editar Status";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
-            // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(button2);
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.Controls.Add(groupBox3);
@@ -265,7 +248,6 @@
         private RadioButton rbAFazer;
         private DataGridView dataGridView1;
         private Button button2;
-        private Button button1;
         private GroupBox groupBox1;
     }
 }
