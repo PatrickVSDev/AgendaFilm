@@ -117,5 +117,24 @@ namespace AgendaFilm.Model.Repositories
 
             return clienteRetornado;
         }
+
+        public bool ClienteTemRelacionamentos(int clienteId)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"
+                SELECT EXISTS (
+                    SELECT 1 FROM veiculos WHERE cliente_fk = @Id
+                    UNION
+                    SELECT 1 FROM agendamentos WHERE cliente_fk = @Id
+                    UNION
+                    SELECT 1 FROM ordens_servico os 
+                        INNER JOIN agendamentos a ON os.agendamento_fk = a.id 
+                        WHERE a.cliente_fk = @Id
+                );";
+
+            return connection.Connection.ExecuteScalar<bool>(query, new { Id = clienteId });
+        }
+
     }
 }

@@ -84,7 +84,7 @@
             radioTodos.AutoSize = true;
             radioTodos.Location = new Point(394, 45);
             radioTodos.Name = "radioTodos";
-            radioTodos.Size = new Size(56, 19);
+            radioTodos.Size = new Size(57, 19);
             radioTodos.TabIndex = 39;
             radioTodos.Text = "Todos";
             radioTodos.UseVisualStyleBackColor = true;
@@ -241,8 +241,9 @@
             button2.Name = "button2";
             button2.Size = new Size(167, 48);
             button2.TabIndex = 2;
-            button2.Text = "Inativar";
+            button2.Text = "Excluir";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // VeiculoPage
             // 

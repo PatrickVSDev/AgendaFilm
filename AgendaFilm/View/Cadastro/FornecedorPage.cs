@@ -279,16 +279,36 @@ namespace AgendaFilm.View.Cadastro
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            Fornecedor fornecedorSelecionado;
-            DataGridViewRow dataGridViewRow;
-
             if (dataGridView1.SelectedRows.Count > 0)
             {
+                DataGridViewRow dataGridViewRow = dataGridView1.SelectedRows[0];
+                Fornecedor fornecedorSelecionado = dataGridViewRow.DataBoundItem as Fornecedor;
+
+                if (fornecedorSelecionado == null)
+                {
+                    MessageBox.Show("Erro ao tentar recuperar o fornecedor selecionado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (repository.FornecedorTemRelacionamentos(fornecedorSelecionado.id))
+                {
+                    MessageBox.Show("Este fornecedor possui produtos vinculados e não pode ser excluído.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                DialogResult confirmacao = MessageBox.Show(
+                    $"Tem certeza que deseja excluir o fornecedor '{fornecedorSelecionado.nome}'?",
+                    "Confirmação de Exclusão",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirmacao == DialogResult.No)
+                    return;
+
                 for (int i = dataGridView1.SelectedRows.Count - 1; i >= 0; i--)
                 {
                     dataGridViewRow = dataGridView1.SelectedRows[i];
                     fornecedorSelecionado = dataGridViewRow.DataBoundItem as Fornecedor;
-
 
                     if (fornecedorSelecionado != null)
                     {
@@ -302,7 +322,7 @@ namespace AgendaFilm.View.Cadastro
             }
             else
             {
-                MessageBox.Show("Nenhum Fornecedor selecionado!", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("Nenhum fornecedor selecionado!", "Erro", MessageBoxButtons.OK);
             }
         }
 

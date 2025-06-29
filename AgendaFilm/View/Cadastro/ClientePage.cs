@@ -131,16 +131,37 @@ namespace AgendaFilm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Cliente clienteSelecionado;
+            Cliente clienteSelecionado = null;
             DataGridViewRow dataGridViewRow;
 
             if (dataGridView1.SelectedRows.Count > 0)
             {
+                dataGridViewRow = dataGridView1.SelectedRows[0];
+                clienteSelecionado = dataGridViewRow.DataBoundItem as Cliente;
+
+                var clienteRepositorio = new ClienteRepositorio();
+
+                if (clienteSelecionado != null && clienteRepositorio.ClienteTemRelacionamentos(clienteSelecionado.id))
+                {
+                    MessageBox.Show("Este cliente possui registros vinculados e não pode ser excluído.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                DialogResult confirmacao = MessageBox.Show(
+                    $"Tem certeza que deseja excluir o cliente '{clienteSelecionado.nome}'?",
+                    "Confirmação de Exclusão",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirmacao == DialogResult.No)
+                {
+                    return;
+                }
+
                 for (int i = dataGridView1.SelectedRows.Count - 1; i >= 0; i--)
                 {
                     dataGridViewRow = dataGridView1.SelectedRows[i];
                     clienteSelecionado = dataGridViewRow.DataBoundItem as Cliente;
-
 
                     if (clienteSelecionado != null)
                     {
@@ -154,9 +175,10 @@ namespace AgendaFilm
             }
             else
             {
-                MessageBox.Show("Nenhum Cliente selecionado!", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("Nenhum Cliente selecionado!", "Erro", MessageBoxButtons.OK);
             }
         }
+
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -165,30 +187,26 @@ namespace AgendaFilm
         private void groupBox1_Paint(object sender, PaintEventArgs e)
         {
             GroupBox box = (GroupBox)sender;
-            Color corBorda = Color.DarkSlateGray;  // Cor da borda
+            Color corBorda = Color.DarkSlateGray;
             int espessuraBorda = 8;
-            int raio = 10;  // Raio do arredondamento
+            int raio = 10;
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-            // Calcula espaço do texto
             Size textSize = TextRenderer.MeasureText(box.Text, box.Font);
             Rectangle rect = new Rectangle(0, textSize.Height / 2, box.Width - 1, box.Height - textSize.Height / 2 - 1);
 
-            // Limpa o fundo para remover a borda padrão
             e.Graphics.Clear(box.BackColor);
 
             using (Pen pen = new Pen(corBorda, espessuraBorda))
             using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
             {
-                // Adiciona um retângulo com cantos arredondados ao caminho
                 path.AddArc(rect.Left, rect.Top, raio, raio, 180, 90);
                 path.AddArc(rect.Right - raio, rect.Top, raio, raio, 270, 90);
                 path.AddArc(rect.Right - raio, rect.Bottom - raio, raio, raio, 0, 90);
                 path.AddArc(rect.Left, rect.Bottom - raio, raio, raio, 90, 90);
                 path.CloseFigure();
 
-                // Desenha a borda
                 e.Graphics.DrawPath(pen, path);
             }
         }
@@ -378,34 +396,29 @@ namespace AgendaFilm
         private void groupBox2_Paint(object sender, PaintEventArgs e)
         {
             GroupBox box = (GroupBox)sender;
-            Color corBorda = Color.DarkSlateGray;  // Cor da borda
+            Color corBorda = Color.DarkSlateGray;
             int espessuraBorda = 8;
-            int raio = 10;  // Raio do arredondamento
+            int raio = 10;
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-            // Calcula espaço do texto
             Size textSize = TextRenderer.MeasureText(box.Text, box.Font);
             Rectangle rect = new Rectangle(0, textSize.Height / 2, box.Width - 1, box.Height - textSize.Height / 2 - 1);
 
-            // Limpa o fundo para remover a borda padrão
             e.Graphics.Clear(box.BackColor);
 
             using (Pen pen = new Pen(corBorda, espessuraBorda))
             using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
             {
-                // Adiciona um retângulo com cantos arredondados ao caminho
                 path.AddArc(rect.Left, rect.Top, raio, raio, 180, 90);
                 path.AddArc(rect.Right - raio, rect.Top, raio, raio, 270, 90);
                 path.AddArc(rect.Right - raio, rect.Bottom - raio, raio, raio, 0, 90);
                 path.AddArc(rect.Left, rect.Bottom - raio, raio, raio, 90, 90);
                 path.CloseFigure();
 
-                // Desenha a borda
                 e.Graphics.DrawPath(pen, path);
             }
 
-            // Desenha o texto do GroupBox
             using (SolidBrush brush = new SolidBrush(box.ForeColor))
             {
                 e.Graphics.DrawString(box.Text, box.Font, brush, 10, 0);

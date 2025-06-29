@@ -118,7 +118,7 @@
             radioTodos.Location = new Point(377, 43);
             radioTodos.Margin = new Padding(3, 2, 3, 2);
             radioTodos.Name = "radioTodos";
-            radioTodos.Size = new Size(56, 19);
+            radioTodos.Size = new Size(57, 19);
             radioTodos.TabIndex = 29;
             radioTodos.TabStop = true;
             radioTodos.Text = "Todos";
@@ -254,7 +254,7 @@
             btInativar.Name = "btInativar";
             btInativar.Size = new Size(167, 48);
             btInativar.TabIndex = 2;
-            btInativar.Text = "Inativar";
+            btInativar.Text = "Excluir";
             btInativar.UseVisualStyleBackColor = false;
             btInativar.Click += button2_Click;
             // 

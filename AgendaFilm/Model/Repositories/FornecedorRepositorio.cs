@@ -118,5 +118,20 @@ namespace AgendaFilm.Model.Repositories
 
             return fornecedorRetornado;
         }
+
+        public bool FornecedorTemRelacionamentos(int fornecedorId)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"
+                SELECT COUNT(*) 
+                FROM produtos 
+                WHERE fornecedor_fk = @FornecedorId;";
+
+            int count = connection.Connection.ExecuteScalar<int>(query, new { FornecedorId = fornecedorId });
+
+            return count > 0;
+        }
+
     }
 }

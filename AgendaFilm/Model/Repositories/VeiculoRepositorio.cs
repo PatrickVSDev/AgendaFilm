@@ -129,5 +129,20 @@ namespace AgendaFilm.Model.Repositories
 
             return veiculoRetornado;
         }
+
+        public bool VeiculoTemRelacionamentos(int veiculoId)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"
+                SELECT COUNT(*) 
+                FROM agendamentos 
+                WHERE veiculo_fk = @Id";
+
+            int total = connection.Connection.QuerySingleOrDefault<int>(query, new { Id = veiculoId });
+
+            return total > 0;
+        }
+
     }
 }

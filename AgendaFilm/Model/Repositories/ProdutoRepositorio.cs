@@ -131,5 +131,19 @@ namespace AgendaFilm.Model.Repositories
 
             return produtoRetornado;
         }
+
+        public bool ProdutoTemRelacionamentos(int produtoId)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"
+                SELECT COUNT(*) 
+                FROM ordem_produtos 
+                WHERE produto_fk = @ProdutoId;";
+
+            int count = connection.Connection.ExecuteScalar<int>(query, new { ProdutoId = produtoId });
+
+            return count > 0;
+        }
     }
 }

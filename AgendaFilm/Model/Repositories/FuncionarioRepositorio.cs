@@ -109,5 +109,20 @@ namespace AgendaFilm.Model.Repositories
             return funcionario;
         }
 
+        public bool FuncionarioTemRelacionamentos(int funcionarioId)
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"
+                SELECT EXISTS (
+                    SELECT 1 FROM ordens_servico WHERE funcionario_fk = @Id
+                    UNION
+                    SELECT 1 FROM agendamentos WHERE funcionario_fk = @Id
+                    UNION
+                    SELECT 1 FROM funcionarios WHERE funcionarioAlteracao = @Id
+                );";
+
+            return connection.Connection.ExecuteScalar<bool>(query, new { Id = funcionarioId });
+        }
     }
 }

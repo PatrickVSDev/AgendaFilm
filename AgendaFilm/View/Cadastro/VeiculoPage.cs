@@ -366,5 +366,35 @@ namespace AgendaFilm.View
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                DataGridViewRow linhaSelecionada = dataGridView1.SelectedRows[0];
+                Veiculo veiculoSelecionado = linhaSelecionada.DataBoundItem as Veiculo;
+
+                if (veiculoSelecionado != null)
+                {
+                    if (repository.VeiculoTemRelacionamentos(veiculoSelecionado.id))
+                    {
+                        MessageBox.Show("Este veículo está vinculado a registros e não pode ser excluído.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    DialogResult resultado = MessageBox.Show("Deseja realmente excluir este veículo?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (resultado == DialogResult.Yes)
+                    {
+                        repository.RemoveVeiculo(veiculoSelecionado);
+                        AtualizarDataGridView();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecione um veículo para excluir.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

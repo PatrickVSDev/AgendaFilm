@@ -197,18 +197,35 @@ namespace AgendaFilm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Funcionario funcionarioSelecionado;
-            DataGridViewRow dataGridViewRow;
-
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 for (int i = dataGridView1.SelectedRows.Count - 1; i >= 0; i--)
                 {
-                    dataGridViewRow = dataGridView1.SelectedRows[i];
-                    funcionarioSelecionado = dataGridViewRow.DataBoundItem as Funcionario;
+                    DataGridViewRow row = dataGridView1.SelectedRows[i];
+                    Funcionario funcionarioSelecionado = row.DataBoundItem as Funcionario;
 
+                    if (funcionarioSelecionado == null)
+                        continue;
 
-                    if (funcionarioSelecionado != null)
+                    if (funcionarioSelecionado.id == Global.funcionarioLogado)
+                    {
+                        MessageBox.Show("Você não pode excluir o próprio usuário logado.", "Operação não permitida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        continue;
+                    }
+
+                    if (repository.FuncionarioTemRelacionamentos(funcionarioSelecionado.id))
+                    {
+                        MessageBox.Show($"Não é possível excluir o funcionário '{funcionarioSelecionado.nome}' pois ele está vinculado a registros no sistema.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        continue;
+                    }
+
+                    DialogResult confirmacao = MessageBox.Show(
+                        $"Tem certeza que deseja excluir o funcionário '{funcionarioSelecionado.nome}'?",
+                        "Confirmação de Exclusão",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+
+                    if (confirmacao == DialogResult.Yes)
                     {
                         funcionarios.Remove(funcionarioSelecionado);
                         buscaFuncionarios.Remove(funcionarioSelecionado);
@@ -220,7 +237,7 @@ namespace AgendaFilm
             }
             else
             {
-                MessageBox.Show("Nenhum Funcionário selecionado", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("Nenhum funcionário selecionado", "Erro", MessageBoxButtons.OK);
             }
         }
 

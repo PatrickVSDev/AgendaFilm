@@ -357,5 +357,55 @@ namespace AgendaFilm.View
             }
             textBoxPesquisar.Clear();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                Produto produtoSelecionado = selectedRow.DataBoundItem as Produto;
+
+                if (produtoSelecionado == null)
+                {
+                    MessageBox.Show("Erro ao tentar recuperar o produto selecionado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (repository.ProdutoTemRelacionamentos(produtoSelecionado.id))
+                {
+                    MessageBox.Show("Este produto está vinculado a uma ou mais ordens de serviço e não pode ser excluído.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                DialogResult confirmacao = MessageBox.Show(
+                    $"Tem certeza que deseja excluir o produto '{produtoSelecionado.nome}'?",
+                    "Confirmação de Exclusão",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirmacao == DialogResult.No)
+                    return;
+
+                for (int i = dataGridView1.SelectedRows.Count - 1; i >= 0; i--)
+                {
+                    selectedRow = dataGridView1.SelectedRows[i];
+                    produtoSelecionado = selectedRow.DataBoundItem as Produto;
+
+                    if (produtoSelecionado != null)
+                    {
+                        produtos.Remove(produtoSelecionado);
+                        buscaProdutos.Remove(produtoSelecionado);
+                        repository.RemoveProduto(produtoSelecionado);
+                    }
+                }
+
+                dataGridView1.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Nenhum produto selecionado!", "Erro", MessageBoxButtons.OK);
+            }
+        }
+
     }
 }

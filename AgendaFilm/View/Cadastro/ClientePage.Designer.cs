@@ -40,10 +40,10 @@
             textBoxPesquisar = new TextBox();
             button1 = new Button();
             dataGridView1 = new DataGridView();
-            btInativar = new Button();
             btEditar = new Button();
             button4 = new Button();
             groupBox2 = new GroupBox();
+            btInativar = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox2.SuspendLayout();
@@ -111,7 +111,7 @@
             radioTodos.Location = new Point(391, 43);
             radioTodos.Margin = new Padding(3, 2, 3, 2);
             radioTodos.Name = "radioTodos";
-            radioTodos.Size = new Size(56, 19);
+            radioTodos.Size = new Size(57, 19);
             radioTodos.TabIndex = 30;
             radioTodos.TabStop = true;
             radioTodos.Text = "Todos";
@@ -123,7 +123,7 @@
             radioTelefone.Location = new Point(317, 43);
             radioTelefone.Margin = new Padding(2);
             radioTelefone.Name = "radioTelefone";
-            radioTelefone.Size = new Size(69, 19);
+            radioTelefone.Size = new Size(70, 19);
             radioTelefone.TabIndex = 2;
             radioTelefone.TabStop = true;
             radioTelefone.Text = "Telefone";
@@ -201,23 +201,6 @@
             dataGridView1.TabIndex = 21;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // btInativar
-            // 
-            btInativar.BackColor = Color.PowderBlue;
-            btInativar.FlatAppearance.BorderColor = Color.Black;
-            btInativar.FlatAppearance.MouseDownBackColor = Color.Red;
-            btInativar.FlatAppearance.MouseOverBackColor = Color.Red;
-            btInativar.FlatStyle = FlatStyle.Flat;
-            btInativar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            btInativar.Location = new Point(25, 29);
-            btInativar.Margin = new Padding(2);
-            btInativar.Name = "btInativar";
-            btInativar.Size = new Size(167, 48);
-            btInativar.TabIndex = 2;
-            btInativar.Text = "Inativar";
-            btInativar.UseVisualStyleBackColor = false;
-            btInativar.Click += button2_Click;
-            // 
             // btEditar
             // 
             btEditar.BackColor = Color.PowderBlue;
@@ -265,6 +248,23 @@
             groupBox2.TabStop = false;
             groupBox2.Enter += groupBox2_Enter;
             // 
+            // btInativar
+            // 
+            btInativar.BackColor = Color.PowderBlue;
+            btInativar.FlatAppearance.BorderColor = Color.Black;
+            btInativar.FlatAppearance.MouseDownBackColor = Color.Red;
+            btInativar.FlatAppearance.MouseOverBackColor = Color.Red;
+            btInativar.FlatStyle = FlatStyle.Flat;
+            btInativar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            btInativar.Location = new Point(25, 29);
+            btInativar.Margin = new Padding(2);
+            btInativar.Name = "btInativar";
+            btInativar.Size = new Size(167, 48);
+            btInativar.TabIndex = 2;
+            btInativar.Text = "Excluir";
+            btInativar.UseVisualStyleBackColor = false;
+            btInativar.Click += button2_Click;
+            // 
             // ClientePage
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
@@ -302,9 +302,9 @@
         private Label label3;
         private TextBox RelatorioTextBox;
         private Button button2;
-        private Button btInativar;
         private Button btEditar;
         private Button button4;
         private GroupBox groupBox2;
+        private Button btInativar;
     }
 }
