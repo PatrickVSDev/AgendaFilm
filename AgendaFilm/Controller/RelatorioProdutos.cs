@@ -43,7 +43,7 @@ namespace AgendaFilm.Controller
             {
                 column.Item().Row(row =>
                 {
-                    row.RelativeColumn().AlignCenter().Height(40).Image("C:\\Users\\patri\\OneDrive\\Área de Trabalho\\Relatórios\\LogoAgendaFilm.png", ImageScaling.FitHeight);
+                    row.RelativeColumn().AlignCenter().Height(40).Image("C:\\Users\\patri\\source\\repos\\AgendaFilm\\AgendaFilm\\AgendaFilm\\Resources\\LogoAgendaFilm.png", ImageScaling.FitHeight);
                 });
 
                 column.Item().Height(30);

@@ -25,7 +25,7 @@ namespace AgendaFilm.Controller
                 var fontHeader = iTextSharp.text.FontFactory.GetFont("Arial", 10, iTextSharp.text.Font.BOLD);
                 var fontCell = iTextSharp.text.FontFactory.GetFont("Arial", 9, iTextSharp.text.Font.NORMAL);
 
-                string logoPath = "C:\\Users\\patri\\OneDrive\\Área de Trabalho\\Relatórios\\LogoAgendaFilm.png";
+                string logoPath = "C:\\Users\\patri\\source\\repos\\AgendaFilm\\AgendaFilm\\AgendaFilm\\Resources\\LogoAgendaFilm.png";
                 if (File.Exists(logoPath))
                 {
                     iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(logoPath);
