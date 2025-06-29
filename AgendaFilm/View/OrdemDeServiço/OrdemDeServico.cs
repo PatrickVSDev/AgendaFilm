@@ -4,12 +4,12 @@ using System.Windows.Forms;
 
 namespace AgendaFilm.View.OrdemDeServiço
 {
-    public partial class OrdemDeServiço : Form
+    public partial class OrdemDeServico : Form
     {
         private Form formularioAberto;
         private Button botaoSelecionado = null;
 
-        public OrdemDeServiço()
+        public OrdemDeServico()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.Manual;
@@ -145,8 +145,7 @@ namespace AgendaFilm.View.OrdemDeServiço
 
         private void button6_Click(object sender, EventArgs e)
         {
-            MenuPage novoFormulario = new MenuPage();
-            novoFormulario.ShowDialog();
+           
             this.Close();
         }
     }
