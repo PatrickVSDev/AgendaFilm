@@ -15,6 +15,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using AgendaFilm.View.Agendamento;
 using AgendaFilm.View.Cadastro;
 using static System.Windows.Forms.DataFormats;
+using static AgendaFilm.Utils.EstiloDataGridView;
 
 namespace AgendaFilm.View.Cadastro.Cadastrar
 {
@@ -39,7 +40,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
 
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
-            InicializarBotaoFechar();
+            BotaoFecharUtils.AplicarBotaoFechar(this);
         }
 
         public void ObterDados()
@@ -144,34 +145,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
         }
 
         // ============== Botão "X" ==============
-        private void InicializarBotaoFechar()
-        {
-            btnFechar = new Button();
-            btnFechar.Text = "✕";
-            btnFechar.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-            btnFechar.Size = new Size(35, 35);
-            btnFechar.Location = new Point(this.Width - 45, 5);
-            btnFechar.BackColor = Color.FromArgb(220, 53, 69);
-            btnFechar.ForeColor = Color.White;
-            btnFechar.FlatStyle = FlatStyle.Flat;
-            btnFechar.FlatAppearance.BorderSize = 0;
-            btnFechar.Cursor = Cursors.Hand;
-            btnFechar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-
-            btnFechar.Click += (s, e) => this.Close();
-            btnFechar.MouseEnter += (s, e) => btnFechar.BackColor = Color.FromArgb(255, 99, 117);
-            btnFechar.MouseLeave += (s, e) => btnFechar.BackColor = Color.FromArgb(220, 53, 69);
-
-            btnFechar.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnFechar.Width, btnFechar.Height, 10, 10));
-            this.Controls.Add(btnFechar);
-            btnFechar.BringToFront();
-        }
-
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn(
-            int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
-            int nWidthEllipse, int nHeightEllipse);
-
+        
         private void label1_Click(object sender, EventArgs e)
         {
 

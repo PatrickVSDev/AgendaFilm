@@ -27,6 +27,7 @@ namespace AgendaFilm.View.OrdemDeServiço
             criarOrdem.Location = new Point(this.Location.X + 218, this.Location.Y + 98);  // 👉 Aqui você define onde ele vai abrir na tela
             criarOrdem.Owner = this;
             criarOrdem.Show();
+
         }
        
         // ✅ Função para selecionar botão (fica colorido)

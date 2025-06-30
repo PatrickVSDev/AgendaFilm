@@ -11,6 +11,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AgendaFilm.Utils;
+using static AgendaFilm.Utils.EstiloDataGridView;
 
 namespace AgendaFilm.View.Agendamento
 {
@@ -32,10 +34,12 @@ namespace AgendaFilm.View.Agendamento
 
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
-            InicializarBotaoFechar();
+            
 
             ObterDados(DateTime.Today);
             ConfigurarDataGridView();
+            EstiloDataGridView.AplicarEstiloPadrao(dataGridView1);
+            BotaoFecharUtils.AplicarBotaoFechar(this);
         }
 
         // ============== BORDA E BOTÃO FECHAR ==============
@@ -54,33 +58,7 @@ namespace AgendaFilm.View.Agendamento
                 borderColor, borderWidth, ButtonBorderStyle.Solid);
         }
 
-        private void InicializarBotaoFechar()
-        {
-            btnFechar = new Button();
-            btnFechar.Text = "✕";
-            btnFechar.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-            btnFechar.Size = new Size(35, 35);
-            btnFechar.Location = new Point(this.Width - 45, 5);
-            btnFechar.BackColor = Color.FromArgb(220, 53, 69);
-            btnFechar.ForeColor = Color.White;
-            btnFechar.FlatStyle = FlatStyle.Flat;
-            btnFechar.FlatAppearance.BorderSize = 0;
-            btnFechar.Cursor = Cursors.Hand;
-            btnFechar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-
-            btnFechar.Click += (s, e) => this.Close();
-            btnFechar.MouseEnter += (s, e) => btnFechar.BackColor = Color.FromArgb(255, 99, 117);
-            btnFechar.MouseLeave += (s, e) => btnFechar.BackColor = Color.FromArgb(220, 53, 69);
-
-            btnFechar.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnFechar.Width, btnFechar.Height, 10, 10));
-            this.Controls.Add(btnFechar);
-            btnFechar.BringToFront();
-        }
-
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn(
-            int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
-            int nWidthEllipse, int nHeightEllipse);
+        
 
         // ====================================================
 
@@ -128,14 +106,18 @@ namespace AgendaFilm.View.Agendamento
             if (dataGridView1.Columns.Contains("id"))
                 dataGridView1.Columns["id"].HeaderText = "ID";
 
+
             if (dataGridView1.Columns.Contains("nome_cliente"))
                 dataGridView1.Columns["nome_cliente"].HeaderText = "Cliente";
+    
 
             if (dataGridView1.Columns.Contains("modelo_veiculo"))
                 dataGridView1.Columns["modelo_veiculo"].HeaderText = "Modelo Veículo";
+   
 
             if (dataGridView1.Columns.Contains("placa_veiculo"))
                 dataGridView1.Columns["placa_veiculo"].HeaderText = "Veículo";
+             
 
             if (dataGridView1.Columns.Contains("dataHoraAgendamento"))
                 dataGridView1.Columns["dataHoraAgendamento"].HeaderText = "Data/Hora";
@@ -165,7 +147,7 @@ namespace AgendaFilm.View.Agendamento
                 else
                     column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
 
