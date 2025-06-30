@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuestPDF.Fluent;
 using System.Globalization;
+using AgendaFilm.View;
+using AgendaFilm.Utils;
 
 namespace AgendaFilm
 {
@@ -32,6 +34,7 @@ namespace AgendaFilm
             ObterDados();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = clientes;
+            EstiloDataGridView.AplicarEstiloPadrao(dataGridView1);
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -57,6 +60,7 @@ namespace AgendaFilm
             ObterDados();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = clientes;
+            EstiloDataGridView.AplicarEstiloPadrao(dataGridView1);
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;

@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AgendaFilm.Utils;
 
 namespace AgendaFilm.View.OrdemDeServiço
 {
@@ -31,6 +32,7 @@ namespace AgendaFilm.View.OrdemDeServiço
             InicializarBotaoFechar();
             ObterDados();
             InicializarDataGridView();
+            EstiloDataGridView.AplicarEstiloPadrao(dgvProdutos);
         }
 
         private void ObterDados()
@@ -253,5 +255,9 @@ namespace AgendaFilm.View.OrdemDeServiço
             }
         }
 
+        private void dgvProdutos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

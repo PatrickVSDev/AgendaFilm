@@ -203,6 +203,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.WhiteSmoke;
             groupBox1.Controls.Add(button2);
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.Controls.Add(groupBox3);
@@ -219,6 +220,7 @@
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1062, 577);
             ControlBox = false;
             Controls.Add(groupBox1);

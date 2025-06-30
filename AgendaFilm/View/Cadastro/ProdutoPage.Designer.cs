@@ -89,7 +89,7 @@
             radioTodos.Location = new Point(401, 43);
             radioTodos.Margin = new Padding(3, 2, 3, 2);
             radioTodos.Name = "radioTodos";
-            radioTodos.Size = new Size(57, 19);
+            radioTodos.Size = new Size(56, 19);
             radioTodos.TabIndex = 4;
             radioTodos.TabStop = true;
             radioTodos.Text = "Todos";
@@ -194,6 +194,7 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(1021, 310);
             dataGridView1.TabIndex = 31;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // groupBox1
             // 
@@ -263,6 +264,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1062, 581);
             Controls.Add(groupBox1);
             Controls.Add(dataGridView1);
