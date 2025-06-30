@@ -219,6 +219,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.WhiteSmoke;
             BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(1283, 680);
             ControlBox = false;

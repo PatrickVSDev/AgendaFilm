@@ -1,6 +1,7 @@
 ﻿using AgendaFilm.Controller;
 using AgendaFilm.Model;
 using AgendaFilm.Model.Repositories;
+using AgendaFilm.Utils;
 using AgendaFilm.View.Editar;
 using QuestPDF.Fluent;
 using System;
@@ -33,6 +34,7 @@ namespace AgendaFilm
             ObterDados();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = funcionarios;
+            EstiloDataGridView.AplicarEstiloPadrao(dataGridView1);
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["senha"].Visible = false;

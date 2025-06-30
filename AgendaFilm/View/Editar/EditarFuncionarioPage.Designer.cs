@@ -124,7 +124,7 @@
             // 
             // groupBox5
             // 
-            groupBox5.BackColor = SystemColors.Control;
+            groupBox5.BackColor = Color.WhiteSmoke;
             groupBox5.Controls.Add(label7);
             groupBox5.Controls.Add(txtSenha);
             groupBox5.Controls.Add(label2);
@@ -245,7 +245,7 @@
             label10.AutoSize = true;
             label10.Location = new Point(576, 75);
             label10.Name = "label10";
-            label10.Size = new Size(118, 15);
+            label10.Size = new Size(117, 15);
             label10.TabIndex = 21;
             label10.Text = "1 - ADMINISTRADOR";
             // 
@@ -266,6 +266,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(707, 455);
             Controls.Add(btnSalvar);
             Controls.Add(groupBox5);

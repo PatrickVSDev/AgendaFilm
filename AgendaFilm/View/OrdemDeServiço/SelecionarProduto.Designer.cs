@@ -87,7 +87,7 @@
             radioTodos.Location = new Point(245, 18);
             radioTodos.Margin = new Padding(3, 2, 3, 2);
             radioTodos.Name = "radioTodos";
-            radioTodos.Size = new Size(57, 19);
+            radioTodos.Size = new Size(56, 19);
             radioTodos.TabIndex = 3;
             radioTodos.TabStop = true;
             radioTodos.Text = "Todos";
@@ -136,6 +136,7 @@
             dgvProdutos.RowHeadersWidth = 51;
             dgvProdutos.Size = new Size(785, 207);
             dgvProdutos.TabIndex = 33;
+            dgvProdutos.CellContentClick += dgvProdutos_CellContentClick;
             // 
             // btConfirmar
             // 
@@ -144,7 +145,7 @@
             btConfirmar.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
             btConfirmar.FlatStyle = FlatStyle.Flat;
             btConfirmar.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btConfirmar.Location = new Point(342, 321);
+            btConfirmar.Location = new Point(352, 336);
             btConfirmar.Margin = new Padding(3, 2, 3, 2);
             btConfirmar.Name = "btConfirmar";
             btConfirmar.Size = new Size(124, 32);
@@ -157,6 +158,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(818, 379);
             ControlBox = false;
             Controls.Add(btConfirmar);

@@ -1,6 +1,7 @@
 ﻿using AgendaFilm.Controller;
 using AgendaFilm.Model;
 using AgendaFilm.Model.Repositories;
+using AgendaFilm.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,9 @@ namespace AgendaFilm.View.OrdemDeServiço
         {
             this.StartPosition = FormStartPosition.Manual;
             InitializeComponent();
+            EstiloDataGridView.AplicarEstiloPadrao(dgvAgendamento);
+            EstiloDataGridView.AplicarEstiloPadrao(dgvProdutos);
+            
         }
 
         private AgendamentoDTO agendamentoSelecionado;
@@ -32,7 +36,7 @@ namespace AgendaFilm.View.OrdemDeServiço
                 dgvAgendamento.Columns.Add("Id", "ID");
                 dgvAgendamento.Columns.Add("Cliente", "Cliente");
                 dgvAgendamento.Columns.Add("Modelo", "Veículo");
-                dgvAgendamento.Columns.Add("Placa", "Placa");     
+                dgvAgendamento.Columns.Add("Placa", "Placa");
                 dgvAgendamento.Columns.Add("DataHora", "Data/Hora");
                 dgvAgendamento.Columns.Add("Observacoes", "Observações");
                 dgvAgendamento.Columns.Add("Funcionario", "Funcionário");
@@ -286,5 +290,14 @@ namespace AgendaFilm.View.OrdemDeServiço
             }
         }
 
+        private void dgvAgendamento_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvProdutos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

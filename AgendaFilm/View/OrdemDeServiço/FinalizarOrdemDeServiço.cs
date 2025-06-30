@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using AgendaFilm.Model.Repositories;
 using AgendaFilm.Model;
 using AgendaFilm.Controller;
+using AgendaFilm.Utils;
 
 namespace AgendaFilm.View.OrdemDeServiço
 {
@@ -21,7 +22,8 @@ namespace AgendaFilm.View.OrdemDeServiço
             ObterDados();
             AdicionarColunaEditarStatus();
             dataGridView1.CellPainting += dataGridView1_CellPainting;
-
+            EstiloDataGridView.AplicarEstiloPadrao(dataGridView1);
+           
 
         }
 

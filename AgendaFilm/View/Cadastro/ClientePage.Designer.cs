@@ -111,7 +111,7 @@
             radioTodos.Location = new Point(391, 43);
             radioTodos.Margin = new Padding(3, 2, 3, 2);
             radioTodos.Name = "radioTodos";
-            radioTodos.Size = new Size(57, 19);
+            radioTodos.Size = new Size(56, 19);
             radioTodos.TabIndex = 4;
             radioTodos.TabStop = true;
             radioTodos.Text = "Todos";
@@ -123,7 +123,7 @@
             radioTelefone.Location = new Point(317, 43);
             radioTelefone.Margin = new Padding(2);
             radioTelefone.Name = "radioTelefone";
-            radioTelefone.Size = new Size(70, 19);
+            radioTelefone.Size = new Size(69, 19);
             radioTelefone.TabIndex = 3;
             radioTelefone.TabStop = true;
             radioTelefone.Text = "Telefone";
@@ -192,7 +192,10 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.BackgroundColor = Color.WhiteSmoke;
+            dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.Location = new Point(18, 135);
             dataGridView1.Margin = new Padding(2);
             dataGridView1.Name = "dataGridView1";
@@ -269,7 +272,7 @@
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            BackColor = SystemColors.Control;
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1062, 581);
             ControlBox = false;
             Controls.Add(dataGridView1);

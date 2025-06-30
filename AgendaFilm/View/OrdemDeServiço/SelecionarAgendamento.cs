@@ -1,6 +1,7 @@
 ﻿using AgendaFilm.Controller;
 using AgendaFilm.Model;
 using AgendaFilm.Model.Repositories;
+using AgendaFilm.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,6 +35,7 @@ namespace AgendaFilm.View.OrdemDeServiço
             InicializarBotaoFechar();
             ObterDados(DateTime.Today);
             ConfigurarDataGridView();
+            EstiloDataGridView.AplicarEstiloPadrao(dataGridView1);
         }
 
         public void ObterDados(DateTime? dataFiltro = null)

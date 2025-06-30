@@ -54,6 +54,7 @@
             dgvAgendamento.Name = "dgvAgendamento";
             dgvAgendamento.Size = new Size(756, 86);
             dgvAgendamento.TabIndex = 0;
+            dgvAgendamento.CellContentClick += dgvAgendamento_CellContentClick;
             // 
             // groupBox1
             // 
@@ -99,7 +100,7 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(txtValor);
-            groupBox2.Location = new Point(77, 292);
+            groupBox2.Location = new Point(77, 287);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(129, 43);
             groupBox2.TabIndex = 9;
@@ -109,7 +110,7 @@
             // 
             // txtValor
             // 
-            txtValor.Location = new Point(16, 14);
+            txtValor.Location = new Point(13, 14);
             txtValor.Name = "txtValor";
             txtValor.Size = new Size(100, 23);
             txtValor.TabIndex = 12;
@@ -121,6 +122,7 @@
             dgvProdutos.Name = "dgvProdutos";
             dgvProdutos.Size = new Size(756, 171);
             dgvProdutos.TabIndex = 8;
+            dgvProdutos.CellContentClick += dgvProdutos_CellContentClick;
             // 
             // button3
             // 
@@ -203,6 +205,7 @@
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1062, 577);
             ControlBox = false;
             Controls.Add(groupBox1);

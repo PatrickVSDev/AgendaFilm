@@ -110,10 +110,11 @@
             pictureBox3.TabIndex = 11;
             pictureBox3.TabStop = false;
             // 
-            // OrdemDeServiço
+            // OrdemDeServico
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1283, 680);
             ControlBox = false;
             Controls.Add(pictureBox3);
@@ -124,7 +125,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Location = new Point(10, 400);
             MinimizeBox = false;
-            Name = "OrdemDeServiço";
+            Name = "OrdemDeServico";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "OrdemDeServiço";
             Load += OrdemDeServiço_Load;

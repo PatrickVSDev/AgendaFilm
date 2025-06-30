@@ -110,6 +110,8 @@
             groupBox1.Size = new Size(696, 180);
             groupBox1.TabIndex = 25;
             groupBox1.TabStop = false;
+            groupBox1.Paint += groupBox1_Paint;
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // label2
             // 
@@ -150,6 +152,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.PowderBlue;
             label1.Font = new Font("Nirmala UI", 19.8000011F, FontStyle.Bold);
             label1.ForeColor = SystemColors.ActiveCaptionText;
             label1.Location = new Point(4, 4);
@@ -157,11 +160,14 @@
             label1.Size = new Size(205, 37);
             label1.TabIndex = 24;
             label1.Text = "Editar Veículos";
+            label1.Click += label1_Click;
+            label1.Paint += label1_Paint;
             // 
             // EditarVeiculoPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(707, 318);
             Controls.Add(button1);
             Controls.Add(groupBox1);

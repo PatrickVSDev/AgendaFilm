@@ -108,7 +108,7 @@
             radioTodos.Location = new Point(391, 43);
             radioTodos.Margin = new Padding(3, 2, 3, 2);
             radioTodos.Name = "radioTodos";
-            radioTodos.Size = new Size(57, 19);
+            radioTodos.Size = new Size(56, 19);
             radioTodos.TabIndex = 4;
             radioTodos.TabStop = true;
             radioTodos.Text = "Todos";
@@ -120,7 +120,7 @@
             radioTelefone.Location = new Point(317, 43);
             radioTelefone.Margin = new Padding(2);
             radioTelefone.Name = "radioTelefone";
-            radioTelefone.Size = new Size(70, 19);
+            radioTelefone.Size = new Size(69, 19);
             radioTelefone.TabIndex = 3;
             radioTelefone.TabStop = true;
             radioTelefone.Text = "Telefone";
@@ -262,6 +262,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1062, 581);
             Controls.Add(groupBox1);
             Controls.Add(dataGridView1);
