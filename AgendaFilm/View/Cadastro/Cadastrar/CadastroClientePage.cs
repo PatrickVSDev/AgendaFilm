@@ -13,6 +13,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static AgendaFilm.Controller.Actions;
+using static AgendaFilm.Utils.EstiloDataGridView;
 
 namespace AgendaFilm
 {
@@ -37,7 +38,7 @@ namespace AgendaFilm
 
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
-            InicializarBotaoFechar();
+            BotaoFecharUtils.AplicarBotaoFechar(this);
 
             comboTipoCliente.Items.Clear();
             comboTipoCliente.Items.Add("FÍSICA");
@@ -64,34 +65,7 @@ namespace AgendaFilm
                 borderColor, borderWidth, ButtonBorderStyle.Solid);
         }
 
-        private void InicializarBotaoFechar()
-        {
-            btnFechar = new Button();
-            btnFechar.Text = "✕";
-            btnFechar.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-            btnFechar.Size = new Size(35, 35);
-            btnFechar.Location = new Point(this.Width - 45, 5);
-            btnFechar.BackColor = Color.FromArgb(220, 53, 69);
-            btnFechar.ForeColor = Color.White;
-            btnFechar.FlatStyle = FlatStyle.Flat;
-            btnFechar.FlatAppearance.BorderSize = 0;
-            btnFechar.Cursor = Cursors.Hand;
-            btnFechar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-
-            btnFechar.Click += (s, e) => this.Close();
-            btnFechar.MouseEnter += (s, e) => btnFechar.BackColor = Color.FromArgb(255, 99, 117);
-            btnFechar.MouseLeave += (s, e) => btnFechar.BackColor = Color.FromArgb(220, 53, 69);
-
-            btnFechar.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnFechar.Width, btnFechar.Height, 10, 10));
-            this.label1.Paint += new System.Windows.Forms.PaintEventHandler(this.label1_Paint);
-            this.Controls.Add(btnFechar);
-            btnFechar.BringToFront();
-        }
-
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern IntPtr CreateRoundRectRgn(
-            int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
-            int nWidthEllipse, int nHeightEllipse);
+        
 
         private void button1_Click(object sender, EventArgs e)
         {

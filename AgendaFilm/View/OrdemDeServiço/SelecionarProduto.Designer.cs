@@ -166,6 +166,7 @@
             Controls.Add(groupBox1);
             Name = "SelecionarProduto";
             StartPosition = FormStartPosition.CenterScreen;
+            Load += SelecionarProduto_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).EndInit();

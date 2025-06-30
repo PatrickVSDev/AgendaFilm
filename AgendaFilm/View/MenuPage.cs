@@ -15,6 +15,7 @@ using AgendaFilm.View.OrdemDeServiço;
 using System.Drawing.Drawing2D;
 using AgendaFilm;
 using AgendaFilm.Model;
+using static AgendaFilm.Utils.EstiloDataGridView;
 namespace AgendaFilm
 {
     public partial class MenuPage : Form
@@ -38,8 +39,8 @@ namespace AgendaFilm
             this.FormClosed += MenuPage_FormClosed;
 
             lbUsuarioLogado.Text = repositoryFuncionario.getNameById(Global.funcionarioLogado);
+            BotaoFecharUtils.AplicarBotaoFechar(this);
 
-            InicializarBotaoFechar();
 
         }
 
@@ -57,29 +58,7 @@ namespace AgendaFilm
                 borderColor, borderWidth, ButtonBorderStyle.Solid);
         }
 
-        private void InicializarBotaoFechar()
-        {
-            btnFechar = new Button();
-            btnFechar.Text = "✕";
-            btnFechar.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-            btnFechar.Size = new Size(35, 35);
-            btnFechar.Location = new Point(this.Width - 45, 5);
-            btnFechar.BackColor = Color.FromArgb(220, 53, 69);
-            btnFechar.ForeColor = Color.White;
-            btnFechar.FlatStyle = FlatStyle.Flat;
-            btnFechar.FlatAppearance.BorderSize = 0;
-            btnFechar.Cursor = Cursors.Hand;
-            btnFechar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-
-            btnFechar.Click += (s, e) => this.Close();
-            btnFechar.MouseEnter += (s, e) => btnFechar.BackColor = Color.FromArgb(255, 99, 117);
-            btnFechar.MouseLeave += (s, e) => btnFechar.BackColor = Color.FromArgb(220, 53, 69);
-
-            btnFechar.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnFechar.Width, btnFechar.Height, 10, 10));
-
-            this.Controls.Add(btnFechar);
-            btnFechar.BringToFront();
-        }
+       
 
         protected override void WndProc(ref Message m)
         {

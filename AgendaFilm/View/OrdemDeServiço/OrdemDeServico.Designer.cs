@@ -34,6 +34,7 @@
             button2 = new Button();
             button6 = new Button();
             pictureBox3 = new PictureBox();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
@@ -110,6 +111,18 @@
             pictureBox3.TabIndex = 11;
             pictureBox3.TabStop = false;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.DarkSlateGray;
+            label3.Font = new Font("Tahoma", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ActiveCaptionText;
+            label3.Location = new Point(50, 578);
+            label3.Name = "label3";
+            label3.Size = new Size(121, 75);
+            label3.TabIndex = 14;
+            label3.Text = "  ORDEM   \r\n      DE\r\n SERVIÇO";
+            // 
             // OrdemDeServico
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -117,6 +130,7 @@
             BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1283, 680);
             ControlBox = false;
+            Controls.Add(label3);
             Controls.Add(pictureBox3);
             Controls.Add(button6);
             Controls.Add(button2);
@@ -132,6 +146,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -141,5 +156,6 @@
         private Button button2;
         private Button button6;
         private PictureBox pictureBox3;
+        private Label label3;
     }
 }

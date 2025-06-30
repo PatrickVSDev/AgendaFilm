@@ -139,6 +139,7 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(776, 285);
             dataGridView1.TabIndex = 32;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // SelecionarVeiculoAgenda
             // 
