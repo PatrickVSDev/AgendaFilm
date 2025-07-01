@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using static AgendaFilm.Controller.Actions;
+using static AgendaFilm.Utils.EstiloDataGridView;
 
 namespace AgendaFilm
 {
@@ -16,6 +17,7 @@ namespace AgendaFilm
         {
             InitializeComponent();
             ObterFuncionarios();
+            BotaoFecharUtils.AplicarBotaoFechar(this);
         }
 
         private void ObterFuncionarios()
@@ -60,5 +62,49 @@ namespace AgendaFilm
         private void label1_Click_1(object sender, EventArgs e) { }
         private void txtUsuario_TextChanged(object sender, EventArgs e) { }
         private void txtSenha_TextChanged(object sender, EventArgs e) { }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+
+            int borderWidth = 4;
+            Color borderColor = Color.Black;
+
+            ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle,
+                borderColor, borderWidth, ButtonBorderStyle.Solid,
+                borderColor, borderWidth, ButtonBorderStyle.Solid,
+                borderColor, borderWidth, ButtonBorderStyle.Solid,
+                borderColor, borderWidth, ButtonBorderStyle.Solid);
+        }
+
+        private void groupBox1_Paint(object sender, PaintEventArgs e)
+        {
+            GroupBox box = (GroupBox)sender;
+            Color corBorda = Color.Black;
+            int espessuraBorda = 3;
+
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            Size textSize = TextRenderer.MeasureText(box.Text, box.Font);
+            Rectangle rect = new Rectangle(0, textSize.Height / 2, box.Width - 1, box.Height - textSize.Height / 2 - 1);
+
+            e.Graphics.Clear(box.BackColor);
+
+            using (Pen pen = new Pen(corBorda, espessuraBorda))
+            using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
+            {
+                path.AddRectangle(rect);
+                e.Graphics.DrawPath(pen, path);
+            }
+
+            using (SolidBrush brush = new SolidBrush(box.ForeColor))
+            {
+                e.Graphics.DrawString(box.Text, box.Font, brush, 10, 0);
+            }
+        }
     }
 }

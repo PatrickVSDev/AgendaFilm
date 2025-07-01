@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -36,6 +37,72 @@ namespace AgendaFilm.Utils // <- esse namespace TEM que bater com o using da tel
             dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.Gainsboro;
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+        public static void AplicarBordaArredondada(TextBox textBox, int radius = 15)
+        {
+            Rectangle bounds = new Rectangle(0, 0, textBox.Width, textBox.Height);
+            using (GraphicsPath path = new GraphicsPath())
+            {
+                float r = radius * 2f;
+                path.AddArc(bounds.X, bounds.Y, r, r, 180, 90);
+                path.AddArc(bounds.Right - r, bounds.Y, r, r, 270, 90);
+                path.AddArc(bounds.Right - r, bounds.Bottom - r, r, r, 0, 90);
+                path.AddArc(bounds.X, bounds.Bottom - r, r, r, 90, 90);
+                path.CloseFigure();
+
+                textBox.Region = new Region(path);
+            }
+
+            textBox.BorderStyle = BorderStyle.None;
+            textBox.BackColor = Color.White;
+            textBox.ForeColor = Color.Black;
+            textBox.Font = new Font("Segoe UI", 11);
+        }
+
+        public static void AplicarTextBoxArredondadoComBorda(TextBox textBox, Form parentForm, int radius = 15)
+        {
+            Rectangle bounds = new Rectangle(0, 0, textBox.Width, textBox.Height);
+
+            using (GraphicsPath path = new GraphicsPath())
+            {
+                float r = radius * 2f;
+                path.AddArc(bounds.X, bounds.Y, r, r, 180, 90);
+                path.AddArc(bounds.Right - r, bounds.Y, r, r, 270, 90);
+                path.AddArc(bounds.Right - r, bounds.Bottom - r, r, r, 0, 90);
+                path.AddArc(bounds.X, bounds.Bottom - r, r, r, 90, 90);
+                path.CloseFigure();
+
+                textBox.Region = new Region(path);
+            }
+
+            textBox.BorderStyle = BorderStyle.None;
+            textBox.Multiline = true; // obrigatório para Region funcionar corretamente
+            textBox.BackColor = Color.White;
+            textBox.ForeColor = Color.Black;
+            textBox.Font = new Font("Segoe UI", 11);
+
+            // Redesenhar a borda no evento Paint do formulário
+            parentForm.Paint += (s, e) =>
+            {
+                using (GraphicsPath path = new GraphicsPath())
+                {
+                    Rectangle bounds = textBox.Bounds;
+                    float r = radius * 2f;
+
+                    path.AddArc(bounds.X, bounds.Y, r, r, 180, 90);
+                    path.AddArc(bounds.Right - r, bounds.Y, r, r, 270, 90);
+                    path.AddArc(bounds.Right - r, bounds.Bottom - r, r, r, 0, 90);
+                    path.AddArc(bounds.X, bounds.Bottom - r, r, r, 90, 90);
+                    path.CloseFigure();
+
+                    using (Pen pen = new Pen(Color.Gray, 1.5f))
+                    {
+                        e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                        e.Graphics.DrawPath(pen, path);
+                    }
+                }
+            };
+        }
+
         public static class BotaoFecharUtils
         {
             [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -79,6 +146,7 @@ namespace AgendaFilm.Utils // <- esse namespace TEM que bater com o using da tel
                 form.Controls.Add(botaoFechar);
                 botaoFechar.BringToFront();
             }
+           
         }
     }
 }
