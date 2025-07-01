@@ -35,7 +35,6 @@
             dataGridView1 = new DataGridView();
             button3 = new Button();
             dateTimePickerFiltro = new DateTimePicker();
-            btEditar = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -114,28 +113,11 @@
             dateTimePickerFiltro.TabIndex = 1;
             dateTimePickerFiltro.ValueChanged += dateTimePickerFiltro_ValueChanged_1;
             // 
-            // btEditar
-            // 
-            btEditar.BackColor = Color.CadetBlue;
-            btEditar.FlatAppearance.MouseDownBackColor = Color.Teal;
-            btEditar.FlatAppearance.MouseOverBackColor = Color.Teal;
-            btEditar.FlatStyle = FlatStyle.Flat;
-            btEditar.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            btEditar.Location = new Point(336, 394);
-            btEditar.Margin = new Padding(2);
-            btEditar.Name = "btEditar";
-            btEditar.Size = new Size(183, 45);
-            btEditar.TabIndex = 9;
-            btEditar.Text = "Editar";
-            btEditar.UseVisualStyleBackColor = false;
-            btEditar.Click += btEditar_Click;
-            // 
             // AgendamentoPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(875, 450);
-            Controls.Add(btEditar);
             Controls.Add(dateTimePickerFiltro);
             Controls.Add(button3);
             Controls.Add(dataGridView1);
@@ -162,6 +144,5 @@
         private DataGridView dataGridView1;
         private Button button3;
         private DateTimePicker dateTimePickerFiltro;
-        private Button btEditar;
     }
 }

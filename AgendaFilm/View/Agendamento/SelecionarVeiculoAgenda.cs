@@ -30,7 +30,7 @@ namespace AgendaFilm.View.Agendamento
         DateTime dataAtual = DateTime.Today;
         int id;
 
-        private Button btnFechar; // Botão "X"
+        private Button btnFechar;
 
         public SelecionarVeiculoAgenda(int clienteId, AgendarPage mainform)
         {
@@ -42,12 +42,66 @@ namespace AgendaFilm.View.Agendamento
             this.StartPosition = FormStartPosition.CenterScreen;
             BotaoFecharUtils.AplicarBotaoFechar(this);
             EstiloDataGridView.AplicarEstiloPadrao(dataGridView1);
+            ConfigurarColunasDataGridView();
         }
 
         public void ObterDados()
         {
             veiculos = new BindingList<Veiculo>(repository.GetAll());
             id = repository.getHighestId() + 1;
+        }
+
+        private void ConfigurarColunasDataGridView()
+        {
+            var colunas = dataGridView1.Columns;
+
+            if (colunas.Contains("id"))
+            {
+                colunas["id"].HeaderText = "ID";
+                colunas["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                colunas["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+
+            if (colunas.Contains("placa"))
+            {
+                colunas["placa"].HeaderText = "Placa";
+                colunas["placa"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                colunas["placa"].DisplayIndex = colunas["id"].DisplayIndex + 1;
+            }
+
+            if (colunas.Contains("modelo"))
+            {
+                colunas["modelo"].HeaderText = "Modelo";
+                colunas["modelo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            }
+
+            if (colunas.Contains("ano"))
+            {
+                colunas["ano"].HeaderText = "Ano";
+                colunas["ano"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+
+            if (colunas.Contains("marca"))
+            {
+                colunas["marca"].HeaderText = "Marca";
+                colunas["marca"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            }
+
+            if (colunas.Contains("dataAlteracao"))
+            {
+                colunas["dataAlteracao"].HeaderText = "Última Alteração";
+                colunas["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+                colunas["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+
+            if (colunas.Contains("dataCriacao"))
+                colunas["dataCriacao"].Visible = false;
+            if (colunas.Contains("dataAlteracao"))
+                colunas["dataAlteracao"].Visible = false;
+            if (colunas.Contains("funcionario_fk"))
+                colunas["funcionario_fk"].Visible = false;
+            if (colunas.Contains("cliente_fk"))
+                colunas["cliente_fk"].Visible = false;
         }
 
         private void SelecionarVeiculoAgenda_Load(object sender, EventArgs e)
@@ -57,6 +111,7 @@ namespace AgendaFilm.View.Agendamento
                 .ToList();
 
             dataGridView1.DataSource = veiculosFiltrados;
+            ConfigurarColunasDataGridView();
         }
 
         private void btConfirmar_Click(object sender, EventArgs e)
@@ -102,7 +157,7 @@ namespace AgendaFilm.View.Agendamento
                 borderColor, borderWidth, ButtonBorderStyle.Solid);
         }
 
-        
+
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
@@ -137,6 +192,87 @@ namespace AgendaFilm.View.Agendamento
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void RealizarBuscaVeiculo()
+        {
+            buscaVeiculos.Clear();
+            dataGridView1.DataSource = null;
+
+            if (radioTodos.Checked)
+            {
+                var todos = veiculoRepositorio.GetAll().Where(v => v.cliente_fk == clienteId).ToList();
+                dataGridView1.DataSource = new BindingList<Veiculo>(todos);
+                ConfigurarColunasDataGridView();
+                return;
+            }
+
+            string termoBusca = textBoxPesquisar.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(termoBusca))
+            {
+                MessageBox.Show("Você não digitou nenhum termo para ser pesquisado!", "Erro", MessageBoxButtons.OK);
+                return;
+            }
+
+            bool veiculoExiste = false;
+
+            var veiculosCliente = veiculoRepositorio.GetAll().Where(v => v.cliente_fk == clienteId).ToList();
+
+            if (radioModelo.Checked)
+            {
+                foreach (var veiculo in veiculosCliente)
+                {
+                    if (veiculo.modelo.Contains(termoBusca, StringComparison.OrdinalIgnoreCase))
+                    {
+                        buscaVeiculos.Add(veiculo);
+                        veiculoExiste = true;
+                    }
+                }
+
+                if (!veiculoExiste)
+                {
+                    MessageBox.Show("Nenhum veículo encontrado com este modelo!", "Erro", MessageBoxButtons.OK);
+                }
+            }
+            else if (radioId.Checked)
+            {
+                if (!int.TryParse(termoBusca, out int numId))
+                {
+                    MessageBox.Show("Você tem que digitar apenas números para pesquisar por ID", "Erro", MessageBoxButtons.OK);
+                    return;
+                }
+
+                foreach (var veiculo in veiculosCliente)
+                {
+                    if (veiculo.id == numId)
+                    {
+                        buscaVeiculos.Add(veiculo);
+                        veiculoExiste = true;
+                        break;
+                    }
+                }
+
+                if (!veiculoExiste)
+                {
+                    MessageBox.Show("Veículo não cadastrado com esse ID", "Erro", MessageBoxButtons.OK);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Marque uma das opções de busca!", "Erro", MessageBoxButtons.OK);
+                return;
+            }
+
+            dataGridView1.DataSource = veiculoExiste ? buscaVeiculos : null;
+            dataGridView1.Refresh();
+            ConfigurarColunasDataGridView();
+            textBoxPesquisar.Clear();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            RealizarBuscaVeiculo();
         }
     }
 }

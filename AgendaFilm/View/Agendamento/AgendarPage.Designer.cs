@@ -154,7 +154,7 @@
             groupBox5.ImeMode = ImeMode.Off;
             groupBox5.Location = new Point(497, 28);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(223, 53);
+            groupBox5.Size = new Size(439, 53);
             groupBox5.TabIndex = 22;
             groupBox5.TabStop = false;
             // 
@@ -252,7 +252,7 @@
             groupBox7.ImeMode = ImeMode.Off;
             groupBox7.Location = new Point(497, 28);
             groupBox7.Name = "groupBox7";
-            groupBox7.Size = new Size(223, 53);
+            groupBox7.Size = new Size(439, 53);
             groupBox7.TabIndex = 23;
             groupBox7.TabStop = false;
             // 

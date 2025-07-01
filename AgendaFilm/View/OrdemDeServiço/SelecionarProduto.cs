@@ -52,7 +52,7 @@ namespace AgendaFilm.View.OrdemDeServiço
                 HeaderText = "ID",
                 Name = "ProdutoId",
                 ReadOnly = true,
-                Width = 50,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
                 DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleRight }
             });
 

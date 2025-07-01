@@ -42,18 +42,71 @@ namespace AgendaFilm.View.Agendamento
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = clientes;
             EstiloDataGridView.AplicarEstiloPadrao(dataGridView1);
-            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["tipo_cliente"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["documento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["nome"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["telefone"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["funcionario_fk"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            ConfigurarColunasDataGridView();
             agendaPage = mainform;
+        }
+
+        private void ConfigurarColunasDataGridView()
+        {
+            var colunas = dataGridView1.Columns;
+
+            if (colunas.Contains("id"))
+            {
+                colunas["id"].HeaderText = "ID";
+                colunas["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                colunas["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+
+            if (colunas.Contains("nome"))
+            {
+                colunas["nome"].HeaderText = "Nome";
+                colunas["nome"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                colunas["nome"].DisplayIndex = colunas["id"].DisplayIndex + 1;
+            }
+
+            if (colunas.Contains("tipo_cliente"))
+            {
+                colunas["tipo_cliente"].HeaderText = "Tipo de Cliente";
+                colunas["tipo_cliente"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            }
+
+            if (colunas.Contains("documento"))
+            {
+                colunas["documento"].HeaderText = "Documento";
+                colunas["documento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+
+            if (colunas.Contains("telefone"))
+            {
+                colunas["telefone"].HeaderText = "Telefone";
+                colunas["telefone"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+
+            if (colunas.Contains("funcionario_fk"))
+            {
+                colunas["funcionario_fk"].HeaderText = "Funcionário";
+                colunas["funcionario_fk"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+
+            if (colunas.Contains("dataCriacao"))
+            {
+                colunas["dataCriacao"].HeaderText = "Data de Criação";
+                colunas["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+                colunas["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+
+            if (colunas.Contains("dataAlteracao"))
+            {
+                colunas["dataAlteracao"].HeaderText = "Última Alteração";
+                colunas["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+                colunas["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+            if (colunas.Contains("funcionario_fk"))
+                colunas["funcionario_fk"].Visible = false;
+            if (colunas.Contains("dataCriacao"))
+                colunas["dataCriacao"].Visible = false;
+            if (colunas.Contains("dataAlteracao"))
+                colunas["dataAlteracao"].Visible = false;
         }
 
         public void ObterDados()
@@ -113,11 +166,13 @@ namespace AgendaFilm.View.Agendamento
             buscaClientes.Clear();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = buscaClientes;
+            ConfigurarColunasDataGridView();
 
             if (radioTodos.Checked)
             {
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = clientes;
+                ConfigurarColunasDataGridView();
             }
             else
             {
@@ -187,6 +242,7 @@ namespace AgendaFilm.View.Agendamento
                 }
             }
             textBoxPesquisar.Clear();
+            ConfigurarColunasDataGridView();
         }
 
         private void groupBox2_Enter(object sender, EventArgs e) { }

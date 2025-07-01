@@ -87,6 +87,21 @@ namespace AgendaFilm.View.Agendamento
                 return;
             }
 
+            dataHoraAgendamento = dateTimePicker1.Value;
+
+            if (dataHoraAgendamento < DateTime.Now)
+            {
+                MessageBox.Show("Não é possível agendar para uma data e hora no passado.", "Data inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (dataHoraAgendamento.Hour < 8 || dataHoraAgendamento.Hour > 18)
+            {
+                DialogResult resultado = MessageBox.Show("O horário selecionado está fora do horário comercial (08:00 às 18:00). Deseja continuar?", "Horário fora do expediente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resultado == DialogResult.No)
+                    return;
+            }
+
             var novoAgendamento = new Agendamentos(
                 id,
                 clienteIdRecebido,
@@ -111,6 +126,7 @@ namespace AgendaFilm.View.Agendamento
             RefreshGrid?.Invoke();
             this.Close();
         }
+
 
         private void lbPlacaVeiculo_Click(object sender, EventArgs e) { }
 

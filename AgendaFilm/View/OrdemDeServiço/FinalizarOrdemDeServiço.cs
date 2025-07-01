@@ -23,7 +23,7 @@ namespace AgendaFilm.View.OrdemDeServiço
             AdicionarColunaEditarStatus();
             dataGridView1.CellPainting += dataGridView1_CellPainting;
             EstiloDataGridView.AplicarEstiloPadrao(dataGridView1);
-           
+
 
         }
 
@@ -38,12 +38,17 @@ namespace AgendaFilm.View.OrdemDeServiço
             dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.Columns["DataAlteracao"].Visible = false;
             dataGridView1.Columns["ClienteNome"].HeaderText = "Cliente";
+            dataGridView1.Columns["ClienteNome"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns["VeiculoModelo"].HeaderText = "Modelo";
+            dataGridView1.Columns["VeiculoModelo"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns["VeiculoPlaca"].HeaderText = "Placa";
+            dataGridView1.Columns["VeiculoPlaca"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns["Status"].HeaderText = "Status";
             dataGridView1.Columns["DataHoraAgendada"].HeaderText = "Data/Hora Agendada";
+            dataGridView1.Columns["DataCriacao"].HeaderText = "Data Criação OS";
             dataGridView1.Columns["FuncionarioNome"].HeaderText = "Funcionário";
             dataGridView1.Columns["Produtos"].HeaderText = "Produtos";
+            dataGridView1.Columns["Produtos"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns["ValorTotal"].HeaderText = "Total";
             dataGridView1.Columns["ValorTotal"].DefaultCellStyle.Format = "C2";
         }
@@ -59,7 +64,7 @@ namespace AgendaFilm.View.OrdemDeServiço
                     Name = "EditarStatus",
                     Text = "Editar",
                     UseColumnTextForButtonValue = true,
-                    Width = 70
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
                 };
                 dataGridView1.Columns.Insert(0, btnEditar);
             }
@@ -336,7 +341,7 @@ namespace AgendaFilm.View.OrdemDeServiço
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string statusAtual = "EM ANDAMENTO"; // ou "A FAZER", ou "FINALIZADO"
+            string statusAtual = "EM ANDAMENTO";
             EditarStatusOrdemForm novoFormulario = new EditarStatusOrdemForm(statusAtual);
 
             if (novoFormulario.ShowDialog() == DialogResult.OK)
@@ -347,5 +352,47 @@ namespace AgendaFilm.View.OrdemDeServiço
 
 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecione uma ordem de serviço para excluir.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            int ordemId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["Id"].Value);
+            string status = dataGridView1.SelectedRows[0].Cells["Status"].Value.ToString();
+
+            if (status.ToUpper() == "FINALIZADO")
+            {
+                MessageBox.Show("Não é possível excluir uma ordem de serviço com status FINALIZADO.", "Operação não permitida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            DialogResult resultado = MessageBox.Show("Tem certeza que deseja excluir esta ordem de serviço?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                try
+                {
+                    var repo = new OrdemServicoRepositorio();
+                    bool sucesso = repo.Delete(ordemId);
+
+                    if (sucesso)
+                    {
+                        MessageBox.Show("Ordem de serviço excluída com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ObterDados();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro ao excluir ordem de serviço.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
-}
+    }

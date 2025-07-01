@@ -41,6 +41,7 @@
             dataGridView1 = new DataGridView();
             button2 = new Button();
             groupBox1 = new GroupBox();
+            button1 = new Button();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
@@ -78,7 +79,7 @@
             btnBuscar.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
             btnBuscar.FlatStyle = FlatStyle.Flat;
             btnBuscar.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnBuscar.Location = new Point(652, 56);
+            btnBuscar.Location = new Point(726, 56);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(119, 33);
             btnBuscar.TabIndex = 5;
@@ -93,14 +94,14 @@
             label3.Location = new Point(472, 61);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(45, 20);
+            label3.Size = new Size(123, 20);
             label3.TabIndex = 36;
-            label3.Text = "Data:";
+            label3.Text = "Data Criação OS:";
             label3.Click += label3_Click;
             // 
             // dtInicio
             // 
-            dtInicio.Location = new Point(522, 61);
+            dtInicio.Location = new Point(596, 61);
             dtInicio.Name = "dtInicio";
             dtInicio.Size = new Size(114, 23);
             dtInicio.TabIndex = 4;
@@ -204,6 +205,7 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.WhiteSmoke;
+            groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(button2);
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.Controls.Add(groupBox3);
@@ -215,6 +217,21 @@
             groupBox1.TabStop = false;
             groupBox1.Paint += groupBox1_Paint;
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.CadetBlue;
+            button1.FlatAppearance.MouseDownBackColor = Color.CornflowerBlue;
+            button1.FlatAppearance.MouseOverBackColor = Color.CornflowerBlue;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            button1.Location = new Point(44, 522);
+            button1.Name = "button1";
+            button1.Size = new Size(119, 33);
+            button1.TabIndex = 34;
+            button1.Text = "Excluir";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
             // 
             // FinalizarOrdemDeServiço
             // 
@@ -251,5 +268,6 @@
         private DataGridView dataGridView1;
         private Button button2;
         private GroupBox groupBox1;
+        private Button button1;
     }
 }

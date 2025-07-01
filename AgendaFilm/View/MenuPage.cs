@@ -174,8 +174,17 @@ namespace AgendaFilm
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Global.funcionarioLogado = 0;
+            DialogResult confirmacao = MessageBox.Show(
+                "Tem certeza que deseja sair do sistema?",
+                "Confirmar Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
 
+            if (confirmacao != DialogResult.Yes)
+                return;
+
+            Global.funcionarioLogado = 0;
             this.Hide();
 
             var loginPage = new PaginaLogin();
@@ -191,6 +200,7 @@ namespace AgendaFilm
                 Application.Exit();
             }
         }
+
 
         private void label3_Click_1(object sender, EventArgs e)
         {
