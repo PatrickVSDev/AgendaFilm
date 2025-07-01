@@ -42,7 +42,7 @@ namespace AgendaFilm
 
         public void ObterDados()
         {
-            clientes = new BindingList<Cliente>(repository.GetAll());
+            clientes = new BindingList<Cliente>(repository.GetAll().OrderBy(c => c.id).ToList());
             id = repository.getHighestId() + 1;
         }
 
