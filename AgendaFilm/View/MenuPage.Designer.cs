@@ -35,7 +35,6 @@
             pictureBox1 = new PictureBox();
             button2 = new Button();
             Relatorios = new Button();
-            button3 = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             lbUsuarioLogado = new Label();
             lDataMenu = new Label();
@@ -65,7 +64,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(340, 4);
+            button1.Location = new Point(443, 4);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new Size(200, 160);
@@ -98,7 +97,7 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI Semibold", 12F);
             button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(540, 4);
+            button2.Location = new Point(644, 4);
             button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
             button2.Size = new Size(200, 160);
@@ -119,7 +118,7 @@
             Relatorios.FlatStyle = FlatStyle.Flat;
             Relatorios.Font = new Font("Segoe UI Semibold", 12F);
             Relatorios.Image = (Image)resources.GetObject("Relatorios.Image");
-            Relatorios.Location = new Point(740, 4);
+            Relatorios.Location = new Point(844, 4);
             Relatorios.Margin = new Padding(3, 2, 3, 2);
             Relatorios.Name = "Relatorios";
             Relatorios.Size = new Size(200, 160);
@@ -129,27 +128,6 @@
             Relatorios.TextImageRelation = TextImageRelation.ImageAboveText;
             Relatorios.UseVisualStyleBackColor = false;
             Relatorios.Click += Relatorios_Click;
-            // 
-            // button3
-            // 
-            button3.AutoSize = true;
-            button3.BackColor = Color.PowderBlue;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatAppearance.MouseDownBackColor = Color.Teal;
-            button3.FlatAppearance.MouseOverBackColor = Color.Teal;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI Semibold", 12F);
-            button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(940, 4);
-            button3.Margin = new Padding(3, 2, 3, 2);
-            button3.Name = "button3";
-            button3.Size = new Size(200, 160);
-            button3.TabIndex = 4;
-            button3.Text = "Lembretes";
-            button3.TextAlign = ContentAlignment.BottomCenter;
-            button3.TextImageRelation = TextImageRelation.ImageAboveText;
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += button3_Click;
             // 
             // timer1
             // 
@@ -289,7 +267,6 @@
             Controls.Add(label3);
             Controls.Add(button4);
             Controls.Add(pictureBox4);
-            Controls.Add(button3);
             Controls.Add(Relatorios);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -318,7 +295,6 @@
         private PictureBox pictureBox1;
         private Button button2;
         private Button Relatorios;
-        private Button button3;
         private Label lDataMenu;
         private System.Windows.Forms.Timer timer1;
         private Label lbUsuarioLogado;
