@@ -99,9 +99,18 @@ namespace AgendaFilm.Model.Repositories
             using var connection = new ConnectionDb();
 
             agendamento.observacoes = agendamento.observacoes?.ToUpper();
-            string query = @"UPDATE public.agendamentos
-	                        SET id= @id, tipo_cliente= @tipo_cliente, documento= @documento, nome= @nome, telefone= @telefone, funcionario_fk= @funcionario_fk, dataAlteracao= @dataAlteracao, dataCriacao= @dataCriacao
-	                        WHERE id= @id;";
+            agendamento.dataAlteracao = DateTime.Now;
+
+            string query = @"
+                UPDATE public.agendamentos
+                SET 
+                    cliente_fk = @cliente_fk,
+                    veiculo_fk = @veiculo_fk,
+                    dataHoraAgendamento = @dataHoraAgendamento,
+                    observacoes = @observacoes,
+                    funcionario_fk = @funcionario_fk,
+                    dataAlteracao = @dataAlteracao
+                WHERE id = @id;";
 
             var result = connection.Connection.Execute(sql: query, param: agendamento);
 

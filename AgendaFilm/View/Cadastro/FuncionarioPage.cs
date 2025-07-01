@@ -35,10 +35,7 @@ namespace AgendaFilm
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = funcionarios;
             EstiloDataGridView.AplicarEstiloPadrao(dataGridView1);
-            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dataGridView1.Columns["senha"].Visible = false;
-            dataGridView1.Columns["login"].Visible = false;
+            ConfigurarColunasDataGridView();
         }
 
         public void ObterDados()
@@ -51,6 +48,57 @@ namespace AgendaFilm
 
             funcionarios = new BindingList<Funcionario>(filtrados);
             id = repository.getHighestId() + 1;
+        }
+
+        private void ConfigurarColunasDataGridView()
+        {
+            var colunas = dataGridView1.Columns;
+
+            if (colunas.Contains("id"))
+            {
+                colunas["id"].HeaderText = "ID";
+                colunas["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                colunas["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+
+            if (colunas.Contains("nome"))
+            {
+                colunas["nome"].HeaderText = "Nome";
+                colunas["nome"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                colunas["nome"].DisplayIndex = colunas["id"].DisplayIndex + 1;
+            }
+
+            if (colunas.Contains("telefone"))
+            {
+                colunas["telefone"].HeaderText = "Telefone";
+                colunas["telefone"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+
+            if (colunas.Contains("cargo"))
+            {
+                colunas["cargo"].HeaderText = "Cargo";
+                colunas["cargo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            }
+
+            if (colunas.Contains("nivelAcesso"))
+            {
+                colunas["nivelAcesso"].HeaderText = "Nivel de Acesso";
+                colunas["nivelAcesso"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+
+            if (colunas.Contains("dataAlteracao"))
+            {
+                colunas["dataAlteracao"].HeaderText = "Última Alteração";
+                colunas["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+                colunas["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+
+            if (colunas.Contains("dataCriacao"))
+                colunas["dataCriacao"].Visible = false;
+            if (colunas.Contains("funcionarioAlteracao"))
+                colunas["funcionarioAlteracao"].Visible = false;
+            dataGridView1.Columns["senha"].Visible = false;
+            dataGridView1.Columns["login"].Visible = false;
         }
 
 
@@ -156,10 +204,7 @@ namespace AgendaFilm
             ObterDados();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = funcionarios;
-            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dataGridView1.Columns["senha"].Visible = false;
-            dataGridView1.Columns["login"].Visible = false;
+            ConfigurarColunasDataGridView();
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
@@ -171,7 +216,7 @@ namespace AgendaFilm
             GroupBox box = (GroupBox)sender;
             Color corBorda = Color.DarkSlateGray;
             int espessuraBorda = 8;
-            int raio = 10; 
+            int raio = 10;
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
@@ -272,15 +317,13 @@ namespace AgendaFilm
             buscaFuncionarios.Clear();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = buscaFuncionarios;
-            dataGridView1.Columns["senha"].Visible = false;
-            dataGridView1.Columns["login"].Visible = false;
+            ConfigurarColunasDataGridView();
 
             if (radioTodos.Checked)
             {
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = funcionarios;
-                dataGridView1.Columns["senha"].Visible = false;
-                dataGridView1.Columns["login"].Visible = false;
+                ConfigurarColunasDataGridView();
             }
             else
             {
@@ -378,6 +421,7 @@ namespace AgendaFilm
                 }
             }
             textBoxPesquisar.Clear();
+            ConfigurarColunasDataGridView();
         }
 
         private void radioButton1_CheckedChanged_1(object sender, EventArgs e)

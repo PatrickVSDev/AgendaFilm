@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using QuestPDF.Fluent;
 using System.Globalization;
 using AgendaFilm.Utils;
+using AgendaFilm.Model.DTOs;
 
 namespace AgendaFilm.View
 {
@@ -22,8 +23,8 @@ namespace AgendaFilm.View
     {
         ProdutoRepositorio repository = new ProdutoRepositorio();
         Actions actions = new Actions();
-        BindingList<Produto> buscaProdutos = new BindingList<Produto>();
-        BindingList<Produto> produtos;
+        BindingList<ProdutoDTO> buscaProdutos = new BindingList<ProdutoDTO>();
+        BindingList<ProdutoDTO> produtos;
         List<string> textBoxes = new List<string>();
         DateTime dataAtual = DateTime.Today;
         int id;
@@ -35,17 +36,7 @@ namespace AgendaFilm.View
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = produtos;
             EstiloDataGridView.AplicarEstiloPadrao(dataGridView1);
-            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["nome"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["fornecedor_fk"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["marca"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["garantia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["funcionario_fk"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            ConfigurarColunasDataGridView();
         }
 
         private void AtualizarDataGridView()
@@ -53,25 +44,84 @@ namespace AgendaFilm.View
             ObterDados();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = produtos;
-           
-            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["nome"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["fornecedor_fk"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["marca"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["garantia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["funcionario_fk"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            ConfigurarColunasDataGridView();
+        }
+
+        private void ConfigurarColunasDataGridView()
+        {
+            var colunas = dataGridView1.Columns;
+
+            if (colunas.Contains("id"))
+            {
+                colunas["id"].HeaderText = "ID";
+                colunas["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                colunas["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+
+            if (colunas.Contains("nome"))
+            {
+                colunas["nome"].HeaderText = "Nome";
+                colunas["nome"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                colunas["nome"].DisplayIndex = colunas["id"].DisplayIndex + 1;
+            }
+
+            if (colunas.Contains("marca"))
+            {
+                colunas["marca"].HeaderText = "Marca";
+                colunas["marca"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            }
+
+            if (colunas.Contains("garantia"))
+            {
+                colunas["garantia"].HeaderText = "Garantia";
+                colunas["garantia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+
+            if (colunas.Contains("fornecedorNome"))
+            {
+                colunas["fornecedorNome"].HeaderText = "Fornecedor";
+                colunas["fornecedorNome"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            }
+
+            if (colunas.Contains("dataAlteracao"))
+            {
+                colunas["dataAlteracao"].HeaderText = "Última Alteração";
+                colunas["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
+                colunas["dataAlteracao"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+
+            if (colunas.Contains("dataCriacao"))
+                colunas["dataCriacao"].Visible = false;
+            if (colunas.Contains("funcionario_fk"))
+                colunas["funcionario_fk"].Visible = false;
         }
 
         public void ObterDados()
         {
-            produtos = new BindingList<Produto>(repository.GetAll());
-            id = repository.getHighestId() + 1;
+            var fornecedorRepo = new FornecedorRepositorio();
+            var fornecedores = fornecedorRepo.GetAll();
+
+            var produtosOriginais = repository.GetAll();
+
+            produtos = new BindingList<ProdutoDTO>(
+                produtosOriginais
+                .OrderBy(p => p.id)
+                .Select(p => new ProdutoDTO
+                {
+                    id = p.id,
+                    nome = p.nome,
+                    marca = p.marca,
+                    garantia = p.garantia,
+                    fornecedorNome = fornecedores.FirstOrDefault(f => f.id == p.fornecedor_fk)?.nome ?? "Desconhecido",
+                    dataCriacao = p.dataCriacao,
+                    dataAlteracao = p.dataAlteracao,
+                    funcionario_fk = p.funcionario_fk
+                }).ToList()
+            );
+
+            id = produtosOriginais.Max(p => p.id) + 1;
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -85,32 +135,31 @@ namespace AgendaFilm.View
         {
             if (dataGridView1.SelectedRows.Count == 1)
             {
-                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
-                Produto produtoSelecionado = selectedRow.DataBoundItem as Produto;
+                var dto = dataGridView1.SelectedRows[0].DataBoundItem as ProdutoDTO;
 
-                if (produtoSelecionado == null)
+                if (dto == null)
                 {
-                    MessageBox.Show("Erro ao tentar recuperar o produto selecionado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Erro ao tentar recuperar o produto.", "Erro", MessageBoxButtons.OK);
                     return;
                 }
 
-                EditarProdutoPage editarPage = new EditarProdutoPage(produtoSelecionado);
-                editarPage.RefreshGrid += () =>
+                var produto = repository.getById(dto.id);
+                if (produto == null)
                 {
-                    int index = produtos.IndexOf(produtoSelecionado);
+                    MessageBox.Show("Produto não encontrado no banco de dados.", "Erro", MessageBoxButtons.OK);
+                    return;
+                }
 
-                    produtos[index] = repository.getById(produtoSelecionado.id);
-
-                    dataGridView1.Refresh();
-                };
-
+                var editarPage = new EditarProdutoPage(produto);
+                editarPage.RefreshGrid += AtualizarDataGridView;
                 editarPage.ShowDialog();
             }
             else
             {
-                MessageBox.Show("É possível editar apenas um produto por vez!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Selecione apenas um produto!", "Erro", MessageBoxButtons.OK);
             }
         }
+
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
@@ -179,8 +228,10 @@ namespace AgendaFilm.View
 
         private void button5_Click(object sender, EventArgs e)
         {
-            FornecedorRepositorio repository = new FornecedorRepositorio();
-            var fornecedores = repository.GetAll();
+            var fornecedorRepositorio = new FornecedorRepositorio();
+            var fornecedores = fornecedorRepositorio.GetAll().ToList();
+
+            var produtoRepositorio = new ProdutoRepositorio();
 
             DialogResult resultado = MessageBox.Show("Você quer gerar o relatório em PDF?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
@@ -191,16 +242,16 @@ namespace AgendaFilm.View
 
                 if (string.IsNullOrWhiteSpace(pesquisa))
                 {
-                    produtosRelatorio.AddRange(produtos);
+                    produtosRelatorio.AddRange(produtos.Select(p => produtoRepositorio.getById(p.id)));
                     produtoExiste = produtosRelatorio.Count > 0;
                 }
                 else
                 {
-                    foreach (var produto in produtos)
+                    foreach (var dto in produtos)
                     {
-                        var fornecedor = fornecedores.FirstOrDefault(f => f.id == produto.fornecedor_fk);
-                        if (fornecedor != null && fornecedor.nome.Contains(pesquisa, StringComparison.OrdinalIgnoreCase))
+                        if (dto.fornecedorNome.Contains(pesquisa, StringComparison.OrdinalIgnoreCase))
                         {
+                            var produto = produtoRepositorio.getById(dto.id);
                             produtosRelatorio.Add(produto);
                             produtoExiste = true;
                         }
@@ -246,116 +297,76 @@ namespace AgendaFilm.View
         {
             buscaProdutos.Clear();
             dataGridView1.DataSource = null;
-            dataGridView1.DataSource = buscaProdutos;
 
             if (radioTodos.Checked)
             {
-                dataGridView1.DataSource = null;
                 dataGridView1.DataSource = produtos;
+                ConfigurarColunasDataGridView();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(textBoxPesquisar.Text))
+            {
+                MessageBox.Show("Você não digitou nenhum termo para ser pesquisado!", "Erro", MessageBoxButtons.OK);
+                return;
+            }
+
+            string termo = textBoxPesquisar.Text.Trim();
+            bool encontrou = false;
+
+            if (radioNome.Checked)
+            {
+                foreach (var p in produtos)
+                {
+                    if (p.nome.Contains(termo, StringComparison.OrdinalIgnoreCase))
+                    {
+                        buscaProdutos.Add(p);
+                        encontrou = true;
+                    }
+                }
+            }
+            else if (radioId.Checked)
+            {
+                if (!int.TryParse(termo, out int idBusca))
+                {
+                    MessageBox.Show("Digite um número válido para o ID.", "Erro", MessageBoxButtons.OK);
+                    return;
+                }
+
+                foreach (var p in produtos)
+                {
+                    if (p.id == idBusca)
+                    {
+                        buscaProdutos.Add(p);
+                        encontrou = true;
+                        break;
+                    }
+                }
+            }
+            else if (radioFornecedor.Checked)
+            {
+                foreach (var p in produtos)
+                {
+                    if (p.fornecedorNome.Contains(termo, StringComparison.OrdinalIgnoreCase))
+                    {
+                        buscaProdutos.Add(p);
+                        encontrou = true;
+                    }
+                }
             }
             else
             {
-                if (!(string.IsNullOrWhiteSpace(textBoxPesquisar.Text)))
-                {
-                    if (radioNome.Checked)
-                    {
-
-                        bool produtoExiste = false;
-
-                        foreach (var produto in produtos)
-                        {
-                            if (produto.nome.Contains(textBoxPesquisar.Text.Trim(), StringComparison.OrdinalIgnoreCase))
-                            {
-                                buscaProdutos.Add(produto);
-
-                                produtoExiste = true;
-                            }
-                        }
-
-                        if (!produtoExiste)
-                        {
-                            MessageBox.Show("Produto não está cadastrado", "Error", MessageBoxButtons.OK);
-                        }
-                        else
-                        {
-                            dataGridView1.Refresh();
-                        }
-                    }
-                    else if (radioId.Checked)
-                    {
-                        bool produtoExiste = false;
-
-                        try
-                        {
-                            int numId = int.Parse(textBoxPesquisar.Text);
-                        }
-                        catch (FormatException ex)
-                        {
-                            MessageBox.Show("Você tem que digitar apenas numeros", "Error", MessageBoxButtons.OK);
-                            return;
-                        }
-
-
-                        foreach (var produto in produtos)
-                        {
-                            if (produto.id == int.Parse(textBoxPesquisar.Text))
-                            {
-                                buscaProdutos.Add(produto);
-
-                                produtoExiste = true;
-                            }
-                        }
-
-                        if (!produtoExiste)
-                        {
-                            MessageBox.Show("Produto não cadastrado", "Error", MessageBoxButtons.OK);
-                        }
-                        else
-                        {
-                            dataGridView1.Refresh();
-                        }
-                    }
-                    else if (radioFornecedor.Checked)
-                    {
-                        FornecedorRepositorio fornecedorRepositorio = new FornecedorRepositorio();
-                        var fornecedores = fornecedorRepositorio.GetAll();
-                        bool produtoExiste = false;
-
-                        string nomeFornecedor = textBoxPesquisar.Text.Trim();
-
-                        var fornecedoresEncontrados = fornecedores
-                            .Where(f => f.nome.Contains(nomeFornecedor, StringComparison.OrdinalIgnoreCase))
-                            .ToList();
-
-                        foreach (var produto in produtos)
-                        {
-                            if (fornecedoresEncontrados.Any(f => f.id == produto.fornecedor_fk))
-                            {
-                                buscaProdutos.Add(produto);
-                                produtoExiste = true;
-                            }
-                        }
-
-                        if (!produtoExiste)
-                        {
-                            MessageBox.Show("Nenhum produto encontrado com fornecedor com esse nome", "Erro", MessageBoxButtons.OK);
-                        }
-                        else
-                        {
-                            dataGridView1.Refresh();
-                        }
-                    }
-
-                    else
-                    {
-                        MessageBox.Show("Marque uma das opções de busca!", "Error", MessageBoxButtons.OK);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Você não digitou nenhum termo para ser pesquisado!", "Error", MessageBoxButtons.OK);
-                }
+                MessageBox.Show("Selecione um tipo de busca!", "Erro", MessageBoxButtons.OK);
+                return;
             }
+
+            if (!encontrou)
+            {
+                MessageBox.Show("Nenhum produto encontrado!", "Aviso", MessageBoxButtons.OK);
+            }
+
+            dataGridView1.DataSource = buscaProdutos;
+            ConfigurarColunasDataGridView();
             textBoxPesquisar.Clear();
         }
 
@@ -364,13 +375,16 @@ namespace AgendaFilm.View
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
-                Produto produtoSelecionado = selectedRow.DataBoundItem as Produto;
+                ProdutoDTO dto = selectedRow.DataBoundItem as ProdutoDTO;
 
-                if (produtoSelecionado == null)
+                if (dto == null)
                 {
                     MessageBox.Show("Erro ao tentar recuperar o produto selecionado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
+                Produto produtoSelecionado = repository.getById(dto.id);
+
 
                 if (repository.ProdutoTemRelacionamentos(produtoSelecionado.id))
                 {
@@ -390,13 +404,15 @@ namespace AgendaFilm.View
                 for (int i = dataGridView1.SelectedRows.Count - 1; i >= 0; i--)
                 {
                     selectedRow = dataGridView1.SelectedRows[i];
-                    produtoSelecionado = selectedRow.DataBoundItem as Produto;
+                    dto = selectedRow.DataBoundItem as ProdutoDTO;
 
-                    if (produtoSelecionado != null)
+                    if (dto != null)
                     {
-                        produtos.Remove(produtoSelecionado);
-                        buscaProdutos.Remove(produtoSelecionado);
-                        repository.RemoveProduto(produtoSelecionado);
+                        var produto = repository.getById(dto.id);
+
+                        produtos.Remove(dto);
+                        buscaProdutos.Remove(dto);
+                        repository.RemoveProduto(produto);
                     }
                 }
 

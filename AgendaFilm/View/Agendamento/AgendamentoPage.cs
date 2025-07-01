@@ -104,50 +104,52 @@ namespace AgendaFilm.View.Agendamento
         private void ConfigurarColunas()
         {
             if (dataGridView1.Columns.Contains("id"))
+            {
                 dataGridView1.Columns["id"].HeaderText = "ID";
-
+                dataGridView1.Columns["id"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dataGridView1.Columns["id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
 
             if (dataGridView1.Columns.Contains("nome_cliente"))
                 dataGridView1.Columns["nome_cliente"].HeaderText = "Cliente";
-    
 
             if (dataGridView1.Columns.Contains("modelo_veiculo"))
                 dataGridView1.Columns["modelo_veiculo"].HeaderText = "Modelo Veículo";
-   
 
             if (dataGridView1.Columns.Contains("placa_veiculo"))
                 dataGridView1.Columns["placa_veiculo"].HeaderText = "Veículo";
-             
 
             if (dataGridView1.Columns.Contains("dataHoraAgendamento"))
+            {
                 dataGridView1.Columns["dataHoraAgendamento"].HeaderText = "Data/Hora";
+                dataGridView1.Columns["dataHoraAgendamento"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dataGridView1.Columns["dataHoraAgendamento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
 
             if (dataGridView1.Columns.Contains("observacoes"))
                 dataGridView1.Columns["observacoes"].HeaderText = "Observações";
 
             if (dataGridView1.Columns.Contains("dataCriacao"))
-            {
-                dataGridView1.Columns["dataCriacao"].HeaderText = "Data Criação";
-                dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            }
+                dataGridView1.Columns["dataCriacao"].Visible = false;
 
             if (dataGridView1.Columns.Contains("dataAlteracao"))
-            {
-                dataGridView1.Columns["dataAlteracao"].HeaderText = "Última Alteração";
-                dataGridView1.Columns["dataAlteracao"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            }
+                dataGridView1.Columns["dataAlteracao"].Visible = false;
 
             if (dataGridView1.Columns.Contains("nome_funcionario"))
                 dataGridView1.Columns["nome_funcionario"].HeaderText = "Funcionário";
 
+
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
+                if (column.Name != "id" && column.Name != "dataHoraAgendamento")
+                {
+                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
+
                 if (column.ValueType == typeof(string))
                     column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 else
                     column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
 
