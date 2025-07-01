@@ -23,14 +23,13 @@ namespace AgendaFilm.View.Agendamento
         public int clienteIdRecebido { get; set; } = -1;
         public int veiculoIdRecebido { get; set; } = -1;
 
-        private Button btnFechar; // Botão "X"
+        private Button btnFechar; 
 
         public AgendarPage()
         {
             InitializeComponent();
             ObterDados();
 
-            // Estilo da borda e botão "X"
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
             BotaoFecharUtils.AplicarBotaoFechar(this);
@@ -184,7 +183,7 @@ namespace AgendaFilm.View.Agendamento
             }
         }
 
-        // Borda preta da janela
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -199,7 +198,7 @@ namespace AgendaFilm.View.Agendamento
                 borderColor, borderWidth, ButtonBorderStyle.Solid);
         }
 
-        // Botão "X"
+
        
 
         private void label5_Click(object sender, EventArgs e)

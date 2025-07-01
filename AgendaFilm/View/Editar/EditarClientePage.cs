@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices; // Adicionado para o botão "X" arredondado
+using System.Runtime.InteropServices; 
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -59,8 +59,10 @@ namespace AgendaFilm.View.Editar
 
         private void btSalvar_Click(object sender, EventArgs e)
         {
-            string tipo = comboTipoCliente.Text.Trim().ToUpper();
+            string tipo = DocumentoUtils.RemoverAcentos(comboTipoCliente.Text.Trim().ToUpper());
+
             string documento = textDocumento.Text.Trim();
+            documento = new string(documento.Where(char.IsDigit).ToArray());
 
             clientes = new BindingList<Cliente>(repository.GetAll());
 
@@ -73,14 +75,20 @@ namespace AgendaFilm.View.Editar
                 }
             }
 
-            bool documentoValido = tipo == "FISICA"
-                ? DocumentoUtils.ValidarCPF(documento)
-                : DocumentoUtils.ValidarCNPJ(documento);
+            bool documentoAlterado = documento != cliente.documento;
+            bool documentoValido = true;
 
-            if (!documentoValido)
+            if (documentoAlterado)
             {
-                MessageBox.Show("Documento inválido. Verifique o CPF ou CNPJ informado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                documentoValido = tipo == "FISICA"
+                    ? DocumentoUtils.ValidarCPF(documento)
+                    : DocumentoUtils.ValidarCNPJ(documento);
+
+                if (!documentoValido)
+                {
+                    MessageBox.Show("Documento inválido. Verifique o CPF ou CNPJ informado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
 
             this.cliente.tipo_cliente = tipo;
@@ -95,6 +103,7 @@ namespace AgendaFilm.View.Editar
             RefreshGrid?.Invoke();
             this.Close();
         }
+
 
         private void textTelefone_TextChanged(object sender, EventArgs e)
         {
@@ -159,7 +168,6 @@ namespace AgendaFilm.View.Editar
             }
         }
 
-        // ========== Borda Preta ==========
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -174,6 +182,10 @@ namespace AgendaFilm.View.Editar
                 borderColor, borderWidth, ButtonBorderStyle.Solid);
         }
 
-        // ========== Botão "X" ==========
+        private void textDocumento_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

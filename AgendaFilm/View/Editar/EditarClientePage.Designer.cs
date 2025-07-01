@@ -66,6 +66,7 @@
             textDocumento.Name = "textDocumento";
             textDocumento.Size = new Size(279, 23);
             textDocumento.TabIndex = 2;
+            textDocumento.TextChanged += textDocumento_TextChanged;
             // 
             // label3
             // 

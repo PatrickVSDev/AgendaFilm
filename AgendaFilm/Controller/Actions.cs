@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AgendaFilm.View;
 using System.Security.Cryptography;
+using System.Globalization;
 
 namespace AgendaFilm.Controller
 {
@@ -93,6 +94,15 @@ namespace AgendaFilm.Controller
                 int digito2 = resto2 < 2 ? 0 : 11 - resto2;
 
                 return cpf[9] - '0' == digito1 && cpf[10] - '0' == digito2;
+            }
+
+            public static string RemoverAcentos(string texto)
+            {
+                return new string(texto
+                    .Normalize(NormalizationForm.FormD)
+                    .Where(c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+                    .ToArray())
+                    .Normalize(NormalizationForm.FormC);
             }
 
             public static bool ValidarCNPJ(string cnpj)

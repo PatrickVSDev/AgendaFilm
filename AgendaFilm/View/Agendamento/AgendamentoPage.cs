@@ -26,7 +26,7 @@ namespace AgendaFilm.View.Agendamento
         DateTime dataAtual = DateTime.Today;
         int id;
 
-        private Button btnFechar; // Botão "X"
+        private Button btnFechar;
 
         public AgendamentoPage()
         {
@@ -41,8 +41,6 @@ namespace AgendaFilm.View.Agendamento
             EstiloDataGridView.AplicarEstiloPadrao(dataGridView1);
             BotaoFecharUtils.AplicarBotaoFechar(this);
         }
-
-        // ============== BORDA E BOTÃO FECHAR ==============
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -60,7 +58,6 @@ namespace AgendaFilm.View.Agendamento
 
         
 
-        // ====================================================
 
         public void ObterDados(DateTime? dataFiltro = null)
         {

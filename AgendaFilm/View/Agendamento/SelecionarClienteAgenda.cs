@@ -29,7 +29,7 @@ namespace AgendaFilm.View.Agendamento
         DateTime dataAtual = DateTime.Today;
         int id;
 
-        private Button btnFechar; // Botão "X"
+        private Button btnFechar;
 
         public SelecionarClienteAgenda(AgendarPage mainform)
         {
