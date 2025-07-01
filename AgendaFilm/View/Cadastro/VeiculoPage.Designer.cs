@@ -195,7 +195,7 @@
             groupBox1.Size = new Size(1021, 111);
             groupBox1.TabIndex = 32;
             groupBox1.TabStop = false;
-            groupBox1.Paint += a;
+            groupBox1.Paint += groupBox1_Paint;
             groupBox1.Enter += groupBox1_Enter;
             // 
             // button1

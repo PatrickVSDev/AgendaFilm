@@ -70,10 +70,11 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(16, 125);
+            dataGridView1.Location = new Point(16, 123);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(785, 217);
             dataGridView1.TabIndex = 3;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // groupBox1
             // 
@@ -95,7 +96,7 @@
             button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            button2.Location = new Point(384, 348);
+            button2.Location = new Point(346, 348);
             button2.Name = "button2";
             button2.Size = new Size(124, 31);
             button2.TabIndex = 3;

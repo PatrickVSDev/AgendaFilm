@@ -394,11 +394,6 @@ namespace AgendaFilm.View
             }
         }
 
-        private void a(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count == 1)

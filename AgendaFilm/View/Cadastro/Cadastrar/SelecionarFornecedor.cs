@@ -1,6 +1,7 @@
 ﻿using AgendaFilm.Controller;
 using AgendaFilm.Model;
 using AgendaFilm.Model.Repositories;
+using AgendaFilm.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -46,10 +47,10 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
             BotaoFecharUtils.AplicarBotaoFechar(this);
-
+            EstiloDataGridView.AplicarEstiloPadrao(dataGridView1);
 
         }
-        
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -139,6 +140,10 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             dataGridView1.DataSource = new BindingList<Fornecedor>(resultado);
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 

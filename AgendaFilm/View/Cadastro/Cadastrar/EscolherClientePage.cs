@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static AgendaFilm.Utils.EstiloDataGridView;
+using AgendaFilm.Utils;
 
 namespace AgendaFilm.View.Cadastro.Cadastrar
 {
@@ -36,7 +37,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
             BotaoFecharUtils.AplicarBotaoFechar(this);
-
+            EstiloDataGridView.AplicarEstiloPadrao(dataGridView1);
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = clientes;
             dataGridView1.Columns["dataCriacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
@@ -108,7 +109,7 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
                 borderColor, borderWidth, ButtonBorderStyle.Solid);
         }
 
-        
+
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -157,5 +158,9 @@ namespace AgendaFilm.View.Cadastro.Cadastrar
             dataGridView1.DataSource = new BindingList<Cliente>(resultado);
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
