@@ -15,7 +15,7 @@ using System.Windows.Forms;
 using QuestPDF.Fluent;
 using System.Globalization;
 using AgendaFilm.Utils;
-using AgendaFilm.Model.DTOs;
+using AgendaFilm.Model.DTO;
 
 namespace AgendaFilm.View
 {

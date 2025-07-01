@@ -1,5 +1,5 @@
 ﻿using AgendaFilm.Controller;
-using AgendaFilm.Model;
+using AgendaFilm.Model.DTO;
 using AgendaFilm.Model.Repositories;
 using AgendaFilm.Utils;
 using System;

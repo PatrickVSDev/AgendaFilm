@@ -15,7 +15,7 @@ using System.Windows.Forms;
 using QuestPDF.Fluent;
 using System.Globalization;
 using AgendaFilm.Utils;
-using AgendaFilm.Model.DTOs;
+using AgendaFilm.Model.DTO;
 
 namespace AgendaFilm.View
 {
@@ -119,7 +119,10 @@ namespace AgendaFilm.View
                 }).ToList()
             );
 
-            id = produtosOriginais.Max(p => p.id) + 1;
+            if (produtosOriginais.Any())
+                id = produtosOriginais.Max(p => p.id) + 1;
+            else
+                id = 1;
         }
 
 

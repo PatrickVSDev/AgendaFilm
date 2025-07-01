@@ -1,6 +1,5 @@
 ﻿using AgendaFilm.Controller;
 using AgendaFilm.Model.Repositories;
-using AgendaFilm.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AgendaFilm.Utils;
 using static AgendaFilm.Utils.EstiloDataGridView;
+using AgendaFilm.Model.DTO;
 
 namespace AgendaFilm.View.Agendamento
 {

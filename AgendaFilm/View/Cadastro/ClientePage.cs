@@ -15,6 +15,7 @@ using QuestPDF.Fluent;
 using System.Globalization;
 using AgendaFilm.View;
 using AgendaFilm.Utils;
+using AgendaFilm.Model.DTO;
 
 namespace AgendaFilm
 {
@@ -368,25 +369,28 @@ namespace AgendaFilm
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("Você quer gerar o relatorio em PDF?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show("Você quer gerar o relatório em PDF?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado != DialogResult.Yes)
                 return;
 
+            ClienteRepositorio clienteRepo = new ClienteRepositorio();
+            List<ClienteRelatorioDTO> todosClientes = clienteRepo.ObterClientesComNomeFuncionario();
+
             bool clienteExiste = false;
-            List<Cliente> clientesRelatorio = new List<Cliente>();
+            List<ClienteRelatorioDTO> clientesFiltrados = new List<ClienteRelatorioDTO>();
 
             string pesquisa = RelatorioTextBox.Text.Trim();
             if (string.IsNullOrWhiteSpace(pesquisa))
             {
-                clientesRelatorio.AddRange(clientes);
-                clienteExiste = clientesRelatorio.Count > 0;
+                clientesFiltrados = todosClientes;
+                clienteExiste = clientesFiltrados.Count > 0;
             }
             else
             {
-                clientesRelatorio = clientes
-                    .Where(c => c.nome.Contains(pesquisa, StringComparison.OrdinalIgnoreCase))
+                clientesFiltrados = todosClientes
+                    .Where(c => c.Nome.Contains(pesquisa, StringComparison.OrdinalIgnoreCase))
                     .ToList();
-                clienteExiste = clientesRelatorio.Count > 0;
+                clienteExiste = clientesFiltrados.Count > 0;
             }
 
             if (!clienteExiste)
@@ -402,7 +406,7 @@ namespace AgendaFilm
             string tempFolder = Path.GetTempPath();
             string caminhoCompleto = Path.Combine(tempFolder, nomeArquivo);
 
-            var relatorio = new RelatorioClientes(clientesRelatorio, $"Relatório De Clientes Por Nome - {dataAtual}");
+            var relatorio = new RelatorioClientes(clientesFiltrados, $"Relatório De Clientes Por Nome - {dataAtual}");
             relatorio.GeneratePdf(caminhoCompleto);
 
             try

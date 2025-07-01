@@ -1,4 +1,4 @@
-﻿namespace AgendaFilm.Model.DTOs
+﻿namespace AgendaFilm.Model.DTO
 {
     public class ProdutoDTO
     {

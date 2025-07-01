@@ -8,16 +8,17 @@ using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 using AgendaFilm.Model;
 using static Npgsql.Replication.PgOutput.Messages.RelationMessage;
+using AgendaFilm.Model.DTO;
 
 namespace AgendaFilm.Controller
 {
     public class RelatorioClientes : IDocument
     {
 
-        private readonly List<Cliente> _clientes;
+        private readonly List<ClienteRelatorioDTO> _clientes;
         private readonly string _titulo;
 
-        public RelatorioClientes(List<Cliente> clientes, string titulo)
+        public RelatorioClientes(List<ClienteRelatorioDTO> clientes, string titulo)
         {
             _clientes = clientes;
             _titulo = titulo;
@@ -42,7 +43,7 @@ namespace AgendaFilm.Controller
             {
                 column.Item().Row(row =>
                 {
-                    ///row.RelativeColumn().AlignCenter().Height(40).Image("C:\\Users\\patri\\source\\repos\\AgendaFilm\\AgendaFilm\\AgendaFilm\\Resources\\LogoAgendaFilm.png", ImageScaling.FitHeight);
+                    row.RelativeColumn().AlignCenter().Height(40).Image("C:\\Users\\patri\\source\\repos\\AgendaFilm\\AgendaFilm\\AgendaFilm\\Resources\\LogoAgendaFilm.png", ImageScaling.FitHeight);
                 });
 
                 column.Item().Height(30);
@@ -89,14 +90,14 @@ namespace AgendaFilm.Controller
                     var backgroundColor = alternate ? Colors.Grey.Lighten3 : Colors.White;
                     alternate = !alternate;
 
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.id.ToString()).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.tipo_cliente).FontSize(7);
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.documento).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.nome).FontSize(7);
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.telefone).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.funcionario_fk.ToString()).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.dataAlteracao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.dataCriacao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.Id.ToString()).FontSize(7).AlignRight();
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.TipoCliente).FontSize(7);
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.Documento).FontSize(7).AlignRight();
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.Nome).FontSize(7);
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.Telefone).FontSize(7).AlignRight();
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.NomeFuncionario).FontSize(7);
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.DataAlteracao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(cliente.DataCriacao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
                 }
             });
         }

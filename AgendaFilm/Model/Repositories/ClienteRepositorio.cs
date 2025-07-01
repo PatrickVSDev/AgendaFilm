@@ -1,4 +1,5 @@
 ﻿using AgendaFilm.Controller;
+using AgendaFilm.Model.DTO;
 using Dapper;
 using System;
 using System.Collections.Generic;
@@ -134,6 +135,30 @@ namespace AgendaFilm.Model.Repositories
                 );";
 
             return connection.Connection.ExecuteScalar<bool>(query, new { Id = clienteId });
+        }
+
+        public List<ClienteRelatorioDTO> ObterClientesComNomeFuncionario()
+        {
+            using var connection = new ConnectionDb();
+
+            string query = @"
+                SELECT 
+                    c.id AS Id,
+                    c.tipo_cliente AS TipoCliente,
+                    c.documento AS Documento,
+                    c.nome AS Nome,
+                    c.telefone AS Telefone,
+                    f.nome AS NomeFuncionario,
+                    c.dataAlteracao AS DataAlteracao,
+                    c.dataCriacao AS DataCriacao
+                FROM clientes c
+                INNER JOIN funcionarios f ON f.id = c.funcionario_fk
+                ORDER BY c.id;
+            ";
+
+            var clientesDTO = connection.Connection.Query<ClienteRelatorioDTO>(query).ToList();
+
+            return clientesDTO;
         }
 
     }

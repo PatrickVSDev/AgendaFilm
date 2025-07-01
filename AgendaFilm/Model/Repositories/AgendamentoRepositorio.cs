@@ -1,4 +1,5 @@
 ﻿using AgendaFilm.Controller;
+using AgendaFilm.Model.DTO;
 using Dapper;
 using System;
 using System.Collections.Generic;

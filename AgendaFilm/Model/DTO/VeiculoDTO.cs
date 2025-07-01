@@ -1,4 +1,4 @@
-﻿namespace AgendaFilm.Model.DTOs
+﻿namespace AgendaFilm.Model.DTO
 {
     public class VeiculoDTO
     {
@@ -8,6 +8,7 @@
         public int ano { get; set; }
         public string marca { get; set; }
         public string clienteNome { get; set; }
+        public string nomeFuncionario { get; set; }
         public DateTime dataCriacao { get; set; }
         public DateTime dataAlteracao { get; set; }
     }
