@@ -15,12 +15,14 @@ namespace AgendaFilm.Controller
     {
 
         private readonly List<Fornecedor> _fornecedores;
+        private readonly List<Funcionario> _funcionarios;
         private readonly string _titulo;
 
-        public RelatorioFornecedores(List<Fornecedor> fornecedores, string titulo)
+        public RelatorioFornecedores(List<Fornecedor> fornecedores, string titulo, List<Funcionario> funcionarios)
         {
             _fornecedores = fornecedores;
             _titulo = titulo;
+            _funcionarios = funcionarios;
         }
 
         public DocumentMetadata GetMetadata() => DocumentMetadata.Default;
@@ -61,14 +63,14 @@ namespace AgendaFilm.Controller
             {
                 table.ColumnsDefinition(columns =>
                 {
-                    columns.RelativeColumn(1);  
-                    columns.RelativeColumn(3);  
-                    columns.RelativeColumn(2); 
-                    columns.RelativeColumn(3); 
-                    columns.RelativeColumn(2); 
-                    columns.RelativeColumn(2);  
-                    columns.RelativeColumn(2);  
-                    columns.RelativeColumn(2);  
+                    columns.RelativeColumn(1);   
+                    columns.RelativeColumn(3);   
+                    columns.RelativeColumn(2);   
+                    columns.RelativeColumn(3);   
+                    columns.RelativeColumn(2);   
+                    columns.RelativeColumn(2);   
+                    columns.RelativeColumn(2);   
+                    columns.RelativeColumn(2);   
                 });
 
                 table.Header(header =>
@@ -89,12 +91,14 @@ namespace AgendaFilm.Controller
                     var backgroundColor = alternate ? Colors.Grey.Lighten3 : Colors.White;
                     alternate = !alternate;
 
+                    string nomeFuncionario = _funcionarios.FirstOrDefault(f => f.id == fornecedor.funcionario_fk)?.nome ?? "Desconhecido";
+
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(fornecedor.id.ToString()).FontSize(7).AlignRight();
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(fornecedor.documento).FontSize(7).AlignRight();
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(fornecedor.nome).FontSize(7);
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(fornecedor.telefone).FontSize(7).AlignRight();
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(fornecedor.email).FontSize(7);
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(fornecedor.funcionario_fk.ToString()).FontSize(7).AlignRight();
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(nomeFuncionario).FontSize(7);
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(fornecedor.dataAlteracao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(fornecedor.dataCriacao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
                 }
@@ -108,7 +112,7 @@ namespace AgendaFilm.Controller
                 row.RelativeColumn().AlignLeft().Text("\u00a9 2024 - AgendaFilm").FontSize(10).Light();
                 row.ConstantColumn(50).AlignRight().Text(text =>
                 {
-                    text.Span("P\u00e1gina ");
+                    text.Span("Página ");
                     text.CurrentPageNumber();
                 });
             });

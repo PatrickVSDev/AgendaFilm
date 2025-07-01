@@ -13,12 +13,14 @@ namespace AgendaFilm.Controller
     public class RelatorioFuncionarios : IDocument
     {
         private readonly List<Funcionario> _funcionarios;
+        private readonly List<Funcionario> _todosFuncionarios;
         private readonly string _titulo;
 
-        public RelatorioFuncionarios(List<Funcionario> funcionarios, string titulo)
+        public RelatorioFuncionarios(List<Funcionario> funcionarios, string titulo, List<Funcionario> todosFuncionarios)
         {
             _funcionarios = funcionarios;
             _titulo = titulo;
+            _todosFuncionarios = todosFuncionarios;
         }
 
         public DocumentMetadata GetMetadata() => DocumentMetadata.Default;
@@ -59,12 +61,12 @@ namespace AgendaFilm.Controller
             {
                 table.ColumnsDefinition(columns =>
                 {
-                    columns.RelativeColumn(1); 
-                    columns.RelativeColumn(4); 
-                    columns.RelativeColumn(2); 
-                    columns.RelativeColumn(2); 
+                    columns.RelativeColumn(1);
+                    columns.RelativeColumn(4);
                     columns.RelativeColumn(2);
-                    columns.RelativeColumn(2); 
+                    columns.RelativeColumn(2);
+                    columns.RelativeColumn(2);
+                    columns.RelativeColumn(2);
                     columns.RelativeColumn(2);
                     columns.RelativeColumn(2);
                 });
@@ -87,12 +89,15 @@ namespace AgendaFilm.Controller
                     var backgroundColor = alternate ? Colors.Grey.Lighten3 : Colors.White;
                     alternate = !alternate;
 
+                    string nomeFuncionarioAlteracao = _todosFuncionarios
+                        .FirstOrDefault(f => f.id == funcionario.funcionarioAlteracao)?.nome ?? "Desconhecido";
+
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(funcionario.id.ToString()).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(funcionario.nome).FontSize(7).WrapAnywhere(); 
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(funcionario.nome).FontSize(7).WrapAnywhere();
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(funcionario.telefone).FontSize(7);
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(funcionario.nivelAcesso.ToString()).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(funcionario.cargo.ToString()).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(funcionario.funcionarioAlteracao.ToString()).FontSize(7).AlignRight();
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(funcionario.cargo).FontSize(7).AlignRight();
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(nomeFuncionarioAlteracao).FontSize(7);
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(funcionario.dataAlteracao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(funcionario.dataCriacao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
                 }

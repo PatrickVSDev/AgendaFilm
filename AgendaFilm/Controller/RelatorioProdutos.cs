@@ -16,13 +16,17 @@ namespace AgendaFilm.Controller
         private readonly List<Fornecedor> _fornecedores;
         private readonly List<Produto> _produtos;
         private readonly string _titulo;
+        private readonly List<Funcionario> _funcionarios;
 
-        public RelatorioProdutos(List<Produto> produtos, string titulo, List<Fornecedor> fornecedores)
+        public RelatorioProdutos(List<Produto> produtos, string titulo, List<Fornecedor> fornecedores, List<Funcionario> funcionarios)
         {
             _produtos = produtos;
             _titulo = titulo;
             _fornecedores = fornecedores;
+            _funcionarios = funcionarios;
         }
+
+
 
         public DocumentMetadata GetMetadata() => DocumentMetadata.Default;
 
@@ -98,7 +102,9 @@ namespace AgendaFilm.Controller
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(produto.marca).FontSize(7).AlignRight();
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(nomeFornecedor).FontSize(7);
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(produto.garantia + "anos").FontSize(7);
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(produto.funcionario_fk.ToString()).FontSize(7).AlignRight();
+                    var funcionario = _funcionarios.FirstOrDefault(f => f.id == produto.funcionario_fk);
+                    string nomeFuncionario = funcionario != null ? funcionario.nome : "Desconhecido";
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(nomeFuncionario).FontSize(7);
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(produto.dataAlteracao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(produto.dataCriacao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
                 }

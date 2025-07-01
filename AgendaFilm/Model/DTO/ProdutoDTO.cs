@@ -10,5 +10,6 @@
         public DateTime dataCriacao { get; set; }
         public DateTime dataAlteracao { get; set; }
         public int funcionario_fk { get; set; }
+        public string funcionarioNome { get; set; }
     }
 }

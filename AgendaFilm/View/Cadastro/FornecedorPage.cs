@@ -389,6 +389,9 @@ namespace AgendaFilm.View.Cadastro
                     return;
                 }
 
+                var funcionarioRepo = new FuncionarioRepositorio();
+                var funcionarios = funcionarioRepo.GetAll();
+
                 QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
                 string dataAtual = DateTime.Now.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);
                 string titulo = $"Relatório De Fornecedores Por Nome - {dataAtual}";
@@ -397,7 +400,7 @@ namespace AgendaFilm.View.Cadastro
                 string tempFolder = Path.GetTempPath();
                 string caminhoCompleto = Path.Combine(tempFolder, nomeArquivo);
 
-                var relatorio = new RelatorioFornecedores(fornecedoresRelatorio, titulo);
+                var relatorio = new RelatorioFornecedores(fornecedoresRelatorio, titulo, funcionarios);
                 relatorio.GeneratePdf(caminhoCompleto);
 
                 try

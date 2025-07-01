@@ -7,15 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AgendaFilm.Model;
+using AgendaFilm.Model.DTO;
 
 namespace AgendaFilm.Controller
 {
     public class RelatorioVeiculos : IDocument
     {
-        private readonly List<Veiculo> _veiculos;
+        private readonly List<VeiculoDTO> _veiculos;
         private readonly string _titulo;
 
-        public RelatorioVeiculos(List<Veiculo> veiculos, string titulo)
+        public RelatorioVeiculos(List<VeiculoDTO> veiculos, string titulo)
         {
             _veiculos = veiculos;
             _titulo = titulo;
@@ -80,7 +81,7 @@ namespace AgendaFilm.Controller
                     header.Cell().Element(CellStyle).Text("Data Alteração").FontSize(9).SemiBold();
                     header.Cell().Element(CellStyle).Text("Data Criação").FontSize(9).SemiBold();
                     header.Cell().Element(CellStyle).Text("Funcionário").FontSize(9).SemiBold();
-                    header.Cell().Element(CellStyle).Text("Cliente dono").FontSize(9).SemiBold();
+                    header.Cell().Element(CellStyle).Text("Cliente Dono").FontSize(9).SemiBold();
                 });
 
                 bool alternate = false;
@@ -96,8 +97,8 @@ namespace AgendaFilm.Controller
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(veiculo.marca.ToString()).FontSize(7).AlignRight();
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(veiculo.dataAlteracao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
                     table.Cell().Element(CellStyle).Background(backgroundColor).Text(veiculo.dataCriacao.ToString("yyyy/MM/dd")).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(veiculo.funcionario_fk.ToString()).FontSize(7).AlignRight();
-                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(veiculo.cliente_fk.ToString()).FontSize(7).AlignRight();
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(veiculo.nomeFuncionario).FontSize(7);
+                    table.Cell().Element(CellStyle).Background(backgroundColor).Text(veiculo.clienteNome).FontSize(7);
                 }
             });
         }

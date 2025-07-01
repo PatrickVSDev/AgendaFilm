@@ -55,6 +55,7 @@ namespace AgendaFilm.View
                 ano = v.ano,
                 marca = v.marca,
                 clienteNome = clienteRepo.getById(v.cliente_fk)?.nome ?? "Desconhecido",
+                nomeFuncionario = funcionarioRepo.GetById(v.funcionario_fk)?.nome ?? "Desconhecido",
                 dataCriacao = v.dataCriacao,
                 dataAlteracao = v.dataAlteracao
             }).ToList()
@@ -121,6 +122,8 @@ namespace AgendaFilm.View
 
             if (colunas.Contains("dataCriacao"))
                 colunas["dataCriacao"].Visible = false;
+            if (colunas.Contains("nomeFuncionario"))
+                colunas["nomeFuncionario"].Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -188,10 +191,8 @@ namespace AgendaFilm.View
                 return;
             }
 
-            var veiculosRelatorio = veiculosRelatorioDTO
-                .Select(dto => repository.getById(dto.id))
-                .Where(v => v != null)
-                .ToList();
+            var veiculosRelatorio = veiculosRelatorioDTO;
+
 
             QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
             string dataAtual = DateTime.Now.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture);

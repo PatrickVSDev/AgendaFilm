@@ -469,7 +469,8 @@ namespace AgendaFilm
                 string tempFolder = Path.GetTempPath();
                 string caminhoCompleto = Path.Combine(tempFolder, nomeArquivo);
 
-                var relatorio = new RelatorioFuncionarios(funcionariosRelatorio, titulo);
+                var todosFuncionarios = repository.GetAll();
+                var relatorio = new RelatorioFuncionarios(funcionariosRelatorio, titulo, todosFuncionarios);
                 relatorio.GeneratePdf(caminhoCompleto);
 
                 try

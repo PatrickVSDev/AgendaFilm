@@ -1,4 +1,5 @@
 ﻿using AgendaFilm.Controller;
+using AgendaFilm.Model.DTO;
 using Dapper;
 using System;
 using System.Collections.Generic;
@@ -144,5 +145,27 @@ namespace AgendaFilm.Model.Repositories
             return total > 0;
         }
 
+        public List<VeiculoDTO> ObterVeiculosComNomes()
+        {
+            using var connection = new ConnectionDb();
+            string query = @"
+                SELECT 
+                    v.id,
+                    v.placa,
+                    v.modelo,
+                    v.ano,
+                    v.marca,
+                    c.nome AS clienteNome,
+                    f.nome AS nomeFuncionario,
+                    v.dataCriacao,
+                    v.dataAlteracao
+                FROM veiculos v
+                INNER JOIN clientes c ON c.id = v.cliente_fk
+                INNER JOIN funcionarios f ON f.id = v.funcionario_fk
+                ORDER BY v.id;
+            ";
+            return connection.Connection.Query<VeiculoDTO>(query).ToList();
+        }
+
     }
-}
+    }

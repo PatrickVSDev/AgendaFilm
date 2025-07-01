@@ -94,12 +94,17 @@ namespace AgendaFilm.View
                 colunas["dataCriacao"].Visible = false;
             if (colunas.Contains("funcionario_fk"))
                 colunas["funcionario_fk"].Visible = false;
+            if (colunas.Contains("funcionarioNome"))
+                colunas["funcionarioNome"].Visible = false;
         }
 
         public void ObterDados()
         {
             var fornecedorRepo = new FornecedorRepositorio();
             var fornecedores = fornecedorRepo.GetAll();
+
+            var funcionarioRepo = new FuncionarioRepositorio();
+            var funcionarios = funcionarioRepo.GetAll();
 
             var produtosOriginais = repository.GetAll();
 
@@ -113,16 +118,14 @@ namespace AgendaFilm.View
                     marca = p.marca,
                     garantia = p.garantia,
                     fornecedorNome = fornecedores.FirstOrDefault(f => f.id == p.fornecedor_fk)?.nome ?? "Desconhecido",
+                    funcionarioNome = funcionarios.FirstOrDefault(f => f.id == p.funcionario_fk)?.nome ?? "Desconhecido",
                     dataCriacao = p.dataCriacao,
                     dataAlteracao = p.dataAlteracao,
                     funcionario_fk = p.funcionario_fk
                 }).ToList()
             );
 
-            if (produtosOriginais.Any())
-                id = produtosOriginais.Max(p => p.id) + 1;
-            else
-                id = 1;
+            id = produtosOriginais.Any() ? produtosOriginais.Max(p => p.id) + 1 : 1;
         }
 
 
@@ -234,6 +237,9 @@ namespace AgendaFilm.View
             var fornecedorRepositorio = new FornecedorRepositorio();
             var fornecedores = fornecedorRepositorio.GetAll().ToList();
 
+            var funcionarioRepositorio = new FuncionarioRepositorio();
+            var funcionarios = funcionarioRepositorio.GetAll().ToList();
+
             var produtoRepositorio = new ProdutoRepositorio();
 
             DialogResult resultado = MessageBox.Show("Você quer gerar o relatório em PDF?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -273,7 +279,7 @@ namespace AgendaFilm.View
                 string nomeArquivo = $"relatorio-Produtos-Por-Nome-Do-Fornecedor-{dataAtual}.pdf";
 
                 string caminhoCompleto = Path.Combine(Path.GetTempPath(), nomeArquivo);
-                var relatorio = new RelatorioProdutos(produtosRelatorio, titulo, fornecedores);
+                var relatorio = new RelatorioProdutos(produtosRelatorio, titulo, fornecedores, funcionarios);
                 relatorio.GeneratePdf(caminhoCompleto);
 
                 try
