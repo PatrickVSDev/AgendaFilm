@@ -38,15 +38,14 @@ namespace AgendaFilm.View.OrdemDeServiço
             dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.Columns["DataAlteracao"].Visible = false;
             dataGridView1.Columns["ClienteNome"].HeaderText = "Cliente";
-            dataGridView1.Columns["ClienteNome"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns["VeiculoModelo"].HeaderText = "Modelo";
-            dataGridView1.Columns["VeiculoModelo"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns["VeiculoPlaca"].HeaderText = "Placa";
             dataGridView1.Columns["VeiculoPlaca"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns["Status"].HeaderText = "Status";
             dataGridView1.Columns["DataHoraAgendada"].HeaderText = "Data/Hora Agendada";
             dataGridView1.Columns["DataCriacao"].HeaderText = "Data Criação OS";
             dataGridView1.Columns["FuncionarioNome"].HeaderText = "Funcionário";
+            dataGridView1.Columns["FuncionarioNome"].Visible = false;
             dataGridView1.Columns["Produtos"].HeaderText = "Produtos";
             dataGridView1.Columns["Produtos"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns["ValorTotal"].HeaderText = "Total";

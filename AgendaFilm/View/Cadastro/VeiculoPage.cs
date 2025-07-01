@@ -61,7 +61,8 @@ namespace AgendaFilm.View
             }).ToList()
             );
 
-            id = veiculosOriginais.Max(v => v.id) + 1;
+            id = veiculosOriginais.Any() ? veiculosOriginais.Max(v => v.id) + 1 : 1;
+
         }
         private void AtualizarDataGridView()
         {
